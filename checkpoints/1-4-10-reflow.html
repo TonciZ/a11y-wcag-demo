@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.4.10 Reflow — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.10 Reflow failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">1.4.10 Reflow</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-aa">Level AA</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>Content must be presentable without loss of information or functionality, and without requiring scrolling in two dimensions, when displayed at a width equivalent to 320 CSS pixels. This corresponds to a viewport set to 1280 CSS pixels wide and zoomed to 400%. Users with low vision commonly use high zoom levels to read content, and requiring horizontal scrolling in addition to vertical scrolling when zoomed creates a significant cognitive and motor burden.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when zooming to 400% (or viewing at a 320px-wide viewport) causes the page to require horizontal scrolling to access content, or when content becomes hidden or lost at that zoom level. Common failures include fixed-width layouts that do not adapt responsively, tables that do not scroll or collapse at small viewports, navigation bars that overflow their containers, and side-by-side column layouts that do not reflow to a single column. Data visualizations rendered at a fixed size that cannot be scrolled within a container can also fail.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation uses responsive design so that at a 320px viewport width, all content reflows into a single column that can be read by scrolling vertically only. This is typically achieved using CSS media queries, flexible grid layouts, and relative units. Content that requires two-dimensional scrolling by nature — such as data tables, maps, diagrams, or media players — is exempt from this requirement, provided the rest of the page still reflows correctly.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Open the page in a desktop browser at a viewport width of 1280px.</li>
+        <li>Zoom the browser to 400% using Ctrl/Cmd + + or browser zoom settings.</li>
+        <li>Check whether horizontal scrolling is required to read any content.</li>
+        <li>Scroll vertically through the entire page and verify all content remains visible and readable without horizontal scrolling.</li>
+        <li>Alternatively, use browser developer tools to simulate a 320px-wide viewport and test the same conditions.</li>
+        <li>Identify any content that is lost, hidden, or overlapping at this zoom level.</li>
+        <li>Note whether any two-dimensional scrolling content (tables, maps) is contained in a scrollable region with appropriate labels.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion was added in WCAG 2.1 and is closely related to responsive web design practices. The 320 CSS pixel threshold was chosen because it corresponds to 1280px at 400% zoom, which is a common zoom level for low-vision users. Content that inherently requires two-dimensional layout — such as complex spreadsheets or video players — is explicitly excluded.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html">WCAG 2.2 Understanding 1.4.10</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

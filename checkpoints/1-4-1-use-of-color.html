@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.4.1 Use of Color — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.1 Use of Color failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">1.4.1 Use of Color</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>Color must not be used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element. Users who are colorblind or who use high contrast modes or monochrome displays may not be able to perceive color differences, so any information conveyed through color must also be conveyed through another visual means such as text, pattern, shape, or position.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when color is the sole indicator used to communicate important information. Common examples include form fields outlined in red to indicate an error with no error text or icon, charts that use colored lines to distinguish data series with no legend labels or patterns, and links that are distinguished from surrounding text only by color with no underline or other non-color indicator. Users with red-green color blindness, the most common form, would be unable to distinguish these elements.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures that any information communicated through color is also communicated through at least one other visual means. Error fields are marked with both a red border and an error icon or text message. Chart data series are distinguished by both color and pattern or labeled directly. Links in body text are underlined or bold in addition to being a different color. When color is used decoratively and conveys no information, no additional indicator is needed.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Identify all instances where color is used to convey information, indicate an action, prompt a response, or distinguish elements.</li>
+        <li>For each instance, determine whether the same information is also conveyed by a non-color visual means (text, icon, shape, pattern, underline, etc.).</li>
+        <li>Use a grayscale filter or browser extension to view the page without color and verify all information is still perceivable.</li>
+        <li>Test with a color blindness simulation tool to check readability for common types such as deuteranopia and protanopia.</li>
+        <li>Review form validation states, charts, graphs, status indicators, and inline links as common areas of failure.</li>
+        <li>Check navigation and interactive elements to ensure their state (active, selected, required) is not conveyed by color alone.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion does not prohibit the use of color; it only requires that color not be the only means of conveying information. It is important to note that contrast ratio requirements are covered under SC 1.4.3, not this criterion — 1.4.1 is specifically about redundancy of information, not color luminance.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html">WCAG 2.2 Understanding 1.4.1</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

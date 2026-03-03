@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.2.1 On Focus — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 3.2.1 On Focus failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">3.2.1 On Focus</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>When any user interface component receives focus, it must not initiate a change of context. A change of context is a major change in the content of a web page that can disorient users if triggered unexpectedly, including changes such as opening a new window, moving focus to a different component, submitting a form, or significantly rearranging the page's content. This criterion ensures that focus alone — without an explicit user action such as a click or keypress — does not cause such disruptive changes.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A common failure occurs when a <code>&lt;select&gt;</code> element or a custom dropdown automatically submits a form or navigates to a new URL as soon as a user tabs into it. Another failure is a pop-up dialog or new browser window that launches the moment a component receives keyboard focus. These behaviors are especially harmful for keyboard-only users and screen reader users, who cannot predict or prevent focus from triggering consequential actions and may become confused about where they are in the page or workflow.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A page passes when receiving keyboard focus on any interactive component merely highlights or visually indicates that component without triggering navigation, form submissions, new windows, or other context-shifting events. Any meaningful action should require an explicit activation step — such as pressing Enter, Space, or clicking — so that users retain full control over when changes occur.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Using only the keyboard (Tab, Shift+Tab), move focus through all interactive elements on the page: links, buttons, form fields, and custom widgets.</li>
+        <li>Observe whether receiving focus on any element triggers a change of context, such as page navigation, a new window, a form submission, or a significant content change.</li>
+        <li>Pay particular attention to <code>&lt;select&gt;</code> menus, custom comboboxes, and auto-suggest inputs — verify that focus alone does not submit or navigate.</li>
+        <li>Check that modal dialogs, tooltips, and popups triggered by focus do not move focus away from the current control unexpectedly.</li>
+        <li>Use a screen reader (e.g., NVDA + Firefox) and tab through the page, listening for unexpected announcements indicating a context change.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>There is an important distinction between a context change and a simple content update: appearing inline hints, expanding tooltips, or highlighting are generally not context changes and do not fail this criterion. The focus is on major, disorienting changes that interfere with the user's ability to predict the result of their navigation.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html">WCAG 2.2 Understanding 3.2.1</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

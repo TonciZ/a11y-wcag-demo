@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1.2 No Keyboard Trap — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 2.1.2 No Keyboard Trap failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">2.1.2 No Keyboard Trap</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>If keyboard focus can be moved to a component using a keyboard interface, then focus must be able to be moved away from that component using only a keyboard. If moving focus away requires more than standard navigation keys, users must be informed of the method. This ensures that keyboard users cannot become stranded inside a widget or page region with no way to escape.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A keyboard trap occurs when a user tabs into an element — such as an embedded media player, a third-party widget, or a custom dialog — and cannot move focus out using Tab, Shift+Tab, Escape, or any other standard key. For keyboard-only users, including many screen reader users, a trap makes the rest of the page permanently inaccessible during that session. Even a single trapped component is a critical blocker because it forces the user to refresh the page and lose their context.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures that pressing Tab, Shift+Tab, or Escape always allows focus to leave any component and continue navigating the page. When a modal dialog is open, focus may be intentionally constrained within the dialog, but a clearly labeled close mechanism (such as an Escape key handler and a visible Close button) must still allow the user to dismiss the dialog and return focus to the triggering element.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Navigate to the page using only the keyboard (Tab and Shift+Tab).</li>
+        <li>Tab into each interactive widget, embedded iframe, media player, and modal dialog.</li>
+        <li>After entering each component, attempt to exit by pressing Tab, Shift+Tab, and Escape.</li>
+        <li>Verify that focus moves away from the component without requiring mouse interaction.</li>
+        <li>If a component uses a non-standard exit key, check that this is communicated to the user through visible instructions or an accessible announcement.</li>
+        <li>For modal dialogs, confirm that Escape closes the dialog and returns focus to the element that opened it.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>An intentional focus lock inside a modal dialog is acceptable — and often desirable — as long as the dialog itself is dismissible via keyboard. The failure condition is a component from which there is no keyboard escape at all, not one that constrains focus to a logical region while still providing an exit.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html">WCAG 2.2 Understanding 2.1.2</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

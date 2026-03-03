@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1.1 Keyboard — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 2.1.1 Keyboard failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">2.1.1 Keyboard</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>All functionality of the content must be operable through a keyboard interface without requiring specific timings for individual keystrokes. This means any action that can be done with a mouse — clicking buttons, filling forms, activating links, operating custom widgets — must also be achievable using only a keyboard. The criterion does not require a keyboard-specific shortcut for every action, only that every action can be reached and executed via keyboard navigation.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when one or more interactive elements or features are only reachable or operable via mouse, touch, or pointer input. For example, a drag-and-drop file upload widget that has no keyboard alternative, or a custom dropdown menu that opens only on mouse hover, will exclude keyboard-only users and screen reader users who cannot control a pointer device. This prevents access to essential content and tasks for people with motor disabilities, power users, and screen reader users.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures every interactive element can receive keyboard focus and be activated using standard keys (Tab to move focus, Enter or Space to activate, arrow keys for composite widgets). Custom JavaScript widgets such as carousels, date pickers, and accordions must implement appropriate keyboard interaction patterns — typically following the ARIA Authoring Practices Guide — so all functionality is reachable without a mouse.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Disconnect or set aside your mouse so only keyboard input is used.</li>
+        <li>Press Tab to move forward through all interactive elements on the page, and Shift+Tab to move backward.</li>
+        <li>Confirm every link, button, form field, and custom control receives visible focus.</li>
+        <li>Attempt to activate each interactive element using Enter or Space, and use arrow keys inside composite widgets (menus, tabs, sliders).</li>
+        <li>Identify any action that can be triggered by mouse (hover, click, drag) and verify an equivalent keyboard-only path exists.</li>
+        <li>Test any time-based interactions to confirm they do not require precise timing of keystrokes.</li>
+        <li>If a screen reader is available, navigate with NVDA or JAWS (Windows) or VoiceOver (macOS/iOS) and verify all functionality remains reachable.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion applies to all functionality, not just navigation — operations like drag-and-drop, right-click context menus, and hover-triggered tooltips all require keyboard-accessible equivalents. The exception for "path-dependent" input (such as freehand drawing) is narrow and applies only when the path itself, not just the endpoints, is essential.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">WCAG 2.2 Understanding 2.1.1</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

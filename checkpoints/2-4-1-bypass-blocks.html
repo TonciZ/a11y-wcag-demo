@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4.1 Bypass Blocks — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 2.4.1 Bypass Blocks failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">2.4.1 Bypass Blocks</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>A mechanism must be available to allow users to skip blocks of content that are repeated on multiple pages, such as navigation menus, headers, and advertising sidebars. This criterion primarily benefits keyboard-only users and screen reader users, who must otherwise tab through every link in a navigation bar on every page before reaching the main content. The most common and recommended technique is a "skip to main content" link as the first focusable element on the page.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when a page that shares repeated blocks of content with other pages (such as a global navigation with 30 links) provides no skip mechanism. Keyboard-only users must press Tab dozens of times to reach the first piece of main content on every page load. For screen reader users, this means hearing the entire navigation read aloud before reaching the relevant content, which is extremely inefficient and fatiguing over repeated use.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation includes a "Skip to main content" link that is the first focusable element in the DOM and points to a valid in-page anchor on the main content region. This link may be visually hidden until it receives keyboard focus (using a CSS off-screen technique), provided it becomes visible when focused. Alternatively, a proper heading hierarchy or landmark structure (using <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, etc.) may serve as a bypass mechanism in some browser/screen reader combinations, but a skip link is the most universally supported approach.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Load the page and press Tab once — the very first focusable item should be a "Skip to main content" link (it may only appear visually when focused).</li>
+        <li>Press Enter to activate the skip link and verify that keyboard focus moves to the main content area.</li>
+        <li>Confirm focus lands in or immediately before the main content, not back at the top of the page.</li>
+        <li>Inspect the page with a screen reader (NVDA + Firefox or JAWS + Chrome) and use the H key to navigate by headings; verify there is a clear heading structure that also enables efficient navigation.</li>
+        <li>Check that the main content region uses a <code>&lt;main&gt;</code> landmark or <code>role="main"</code> so screen reader users can jump directly using landmark navigation.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>The skip link target must be a real focusable element or have <code>tabindex="-1"</code> applied to receive programmatic focus — simply linking to an anchor on a non-focusable element like a <code>&lt;div&gt;</code> or <code>&lt;h1&gt;</code> may not move focus in all browsers. Testing with actual keyboard navigation is essential because automated tools often cannot verify whether a skip link functions correctly.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html">WCAG 2.2 Understanding 2.4.1</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

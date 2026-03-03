@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4.7 Focus Visible — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 2.4.7 Focus Visible failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">2.4.7 Focus Visible</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-aa">Level AA</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>Any keyboard-operable user interface must have a mode of operation where the keyboard focus indicator is visible. When a user moves focus to an interactive element by pressing Tab or another keyboard key, there must be a visible visual change — typically a border, outline, highlight, or background color change — indicating which element currently has focus. Without a visible focus indicator, keyboard users cannot tell where they are on the page.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs most commonly when CSS contains <code>outline: none</code> or <code>outline: 0</code> applied to focused elements globally (e.g., <code>*:focus { outline: none; }</code>), removing the browser's default focus ring without providing a custom replacement. This leaves keyboard users with no visual indicator of their position on the page, making the entire interface unusable. Low-contrast or very thin custom focus styles that are not perceivable also constitute a failure, though this is more precisely addressed in WCAG 2.2's new 2.4.13 (Focus Appearance).</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures that every focusable element displays a clearly visible focus indicator when focused. The browser's default focus ring is acceptable, but custom focus styles must be visible enough to be noticed. Common passing approaches include a high-contrast outline (e.g., a 2px solid outline in a color with at least 3:1 contrast against adjacent colors), a background color change, or an underline. The focus style must be present on all interactive elements including links, buttons, form inputs, and custom widgets.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Navigate to the page using only the keyboard (Tab and Shift+Tab).</li>
+        <li>As you Tab through each element, observe whether a visible focus indicator appears on the currently focused element.</li>
+        <li>Check whether the focus indicator disappears on any element — this is a failure if <code>outline: none</code> is applied without a replacement.</li>
+        <li>Inspect the CSS for <code>outline: none</code>, <code>outline: 0</code>, or <code>box-shadow</code> replacements on <code>:focus</code> or <code>:focus-visible</code> states.</li>
+        <li>If a custom focus style is provided, assess whether it is visually distinct and perceivable against the background and surrounding content.</li>
+        <li>Test all interactive elements: links, buttons, inputs, selects, checkboxes, radio buttons, and custom widgets.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>WCAG 2.2 introduced the new criterion 2.4.11 (Focus Not Obscured) and 2.4.13 (Focus Appearance) to address additional aspects of focus visibility. Note that 2.4.7 is a relatively low bar — it only requires that focus be visible in some mode, not that the focus indicator meet specific size or contrast requirements. The <code>:focus-visible</code> CSS pseudo-class allows developers to show focus indicators for keyboard navigation only, without showing them on mouse click, which is an acceptable and widely used approach.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html">WCAG 2.2 Understanding 2.4.7</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4.3 Focus Order — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 2.4.3 Focus Order failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">2.4.3 Focus Order</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>If a web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components must receive focus in an order that preserves meaning and operability. This means that as users press Tab to move through a page, the order in which interactive elements receive focus must follow a logical reading and interaction sequence — typically matching the visual top-to-bottom, left-to-right order of the content.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when the tab order jumps unpredictably across the page — for example, tabbing from a form field in the header straight to the footer, then back to the middle of the page, then to a sidebar. This commonly happens when CSS is used to visually reorder content without updating the underlying DOM order, or when <code>tabindex</code> values are set to large positive integers that override the natural DOM sequence. Disordered focus order disorients keyboard users and makes it very difficult for screen reader users to build a mental model of the page.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation achieves a logical focus order by ensuring the DOM source order matches the intended reading and interaction sequence, so that the default tab flow (which follows DOM order) is already correct. Where visual reordering is necessary (e.g., through CSS flexbox <code>order</code> or <code>position: absolute</code>), the DOM order must still be arranged logically. Use of positive <code>tabindex</code> values (anything above 0) should be avoided; using <code>tabindex="0"</code> and <code>tabindex="-1"</code> is acceptable and recommended.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Use only the keyboard and press Tab repeatedly to move through all focusable elements on the page.</li>
+        <li>Observe the order in which elements receive focus and compare it to the visual and logical reading order.</li>
+        <li>Note any instances where focus jumps backward, skips a section, or moves to an unexpected location.</li>
+        <li>Inspect the DOM using browser DevTools to check whether the source order differs significantly from the visual layout.</li>
+        <li>Search for any elements with positive <code>tabindex</code> values (1 or higher) that may be forcing an unnatural focus order.</li>
+        <li>Test interactive widgets such as modal dialogs to confirm focus moves into the dialog when it opens and returns to the trigger when it closes.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>Focus order does not need to be identical to visual reading order in every case — only when the order affects meaning or operation. For example, a search field followed by search results does not require a rigid order as long as the relationship is clear. However, modal dialogs, inline error messages, and dynamically inserted content do require careful focus management to avoid confusion.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html">WCAG 2.2 Understanding 2.4.3</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

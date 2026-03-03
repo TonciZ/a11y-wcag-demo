@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.3.1 Error Identification — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 3.3.1 Error Identification failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">3.3.1 Error Identification</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>If an input error is automatically detected, the item that is in error must be identified and the error must be described to the user in text. When a form is submitted with missing required fields or invalid values, the page must clearly communicate which specific fields have errors and what those errors are, using text that is programmatically associated with the erroneous fields. This ensures that users of assistive technology receive the same error information as sighted users who might rely on visual cues like red borders or warning icons.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A form that uses only colour (such as a red border) or an icon (such as a warning triangle) to indicate an error, without any accompanying text, fails this criterion because users who are blind, have low vision, or have colour blindness cannot perceive or interpret purely visual error signals. Similarly, displaying a generic message like "There was a problem with your submission" without identifying which specific fields caused the error is a failure, because users cannot determine what they need to correct without further exploration.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A form passes when it displays clear, descriptive text error messages that identify both the field in error (by name or label) and the nature of the error (e.g., "Email address is required" or "Password must be at least 8 characters long"). These messages should be programmatically associated with their respective fields — ideally using <code>aria-describedby</code> or by positioning error text adjacent to the labeled input — so that screen readers announce the error when the user navigates to or focuses the affected field.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Submit the form without filling in any required fields and observe how errors are communicated.</li>
+        <li>Confirm that error messages are conveyed in text (not solely through colour, icons, or visual styling).</li>
+        <li>Verify that each error message identifies the specific field that is in error, using the same name or label visible on screen.</li>
+        <li>Check that each error message describes what the error is (e.g., "required", "invalid format", "too short").</li>
+        <li>Inspect the HTML to confirm error messages are programmatically associated with their fields (e.g., via <code>aria-describedby</code>, <code>aria-errormessage</code>, or proximity within a <code>&lt;label&gt;</code> or fieldset).</li>
+        <li>Use a screen reader (e.g., NVDA or VoiceOver) to navigate to each field in error and confirm the error text is announced when the field is focused.</li>
+        <li>Check that the error messages are not removed or obscured when the user begins correcting the field.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion requires error identification in text but does not mandate how errors are surfaced (inline, summary list, or both). For complex forms, providing both an error summary at the top of the page and inline messages next to each field is considered best practice and helps all users, especially those using screen readers.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html">WCAG 2.2 Understanding 3.3.1</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

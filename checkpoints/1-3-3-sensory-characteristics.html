@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.3.3 Sensory Characteristics — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 1.3.3 Sensory Characteristics failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">1.3.3 Sensory Characteristics</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>Instructions provided for understanding and operating content must not rely solely on sensory characteristics of components such as shape, color, size, visual location, orientation, or sound. When instructions depend entirely on one sensory property, users who cannot perceive that property — such as blind users, colorblind users, or users who are deaf — cannot follow the instruction. Additional non-sensory identifiers such as a label or text name must accompany any sensory reference.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when an instruction requires the user to perceive a specific sensory characteristic in order to act. Examples include instructions such as "click the round button", "use the blue link on the right", "see the form below", or "press the button that makes a chime sound". A screen reader user cannot determine which button is "round", a colorblind user cannot identify "the blue link", and a deaf user cannot hear "the chime sound", making these instructions inaccessible.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation supplements sensory references with non-sensory identifiers. For example, "click the Submit button (the round button at the bottom of the form)" provides both a text label and a sensory description, so any user can locate the control regardless of their ability to perceive shape or position. The instruction "select your preferred color using the color picker labeled 'Theme color'" passes because the label is provided as a non-sensory identifier.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Read through all instructions and help text on the page for references to shape, color, size, position, or sound.</li>
+        <li>For each sensory reference found, check whether a non-sensory identifier (such as a text label, name, or heading) is also provided.</li>
+        <li>Test with a screen reader to verify that elements referenced by shape or position can be located based on the provided alternative identifiers.</li>
+        <li>Check whether any instructions rely on sound alone (e.g., "when you hear the beep") and verify a non-auditory cue is also described.</li>
+        <li>Review error messages, tooltips, and contextual help text for sensory-only references.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion is often overlooked in instructional content and onboarding flows where authors assume visual context. It is distinct from 1.4.1 Use of Color, which specifically addresses when color alone is used to convey information; this criterion covers all sensory modalities.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics.html">WCAG 2.2 Understanding 1.3.3</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

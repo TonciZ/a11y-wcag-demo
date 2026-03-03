@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.5.8 Target Size (Minimum) — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 2.5.8 Target Size (Minimum) failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">2.5.8 Target Size (Minimum)</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-aa">Level AA</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>This criterion, new in WCAG 2.2, requires that the size of pointer targets (areas that respond to pointer input such as mouse clicks or touch taps) is at least 24 by 24 CSS pixels, with an exception where targets that do not meet the minimum have sufficient spacing from adjacent targets such that the combined area of the target and its spacing meets the 24×24 pixel threshold. The related Level AAA criterion 2.5.5 requires a minimum of 44×44 CSS pixels with no spacing exception. This criterion reduces the difficulty of accurately tapping small targets for users with motor disabilities.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when a tappable or clickable target is smaller than 24×24 CSS pixels and does not have sufficient spacing around it to compensate. For example, a row of small icon buttons spaced tightly together — each 16×16 pixels with only 2 pixels of gap — fails because the combined area of each icon plus its spacing is less than 24×24 pixels. Users with tremors, limited fine motor control, or who use assistive touch technology cannot reliably tap such small, densely packed targets without accidentally activating adjacent ones.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation either sizes all interactive targets to at least 24×24 CSS pixels, or provides sufficient spacing around smaller targets so that the spacing area around each target, when added to the target itself, covers a 24×24 CSS pixel area. For example, a 16×16 pixel icon button with 4 pixels of transparent padding on each side reaches an effective target area of 24×24 pixels and passes. Native HTML form controls typically meet the minimum in most browsers, but custom small icon buttons, inline links in dense text, and close/dismiss icons frequently fail.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Identify all pointer targets on the page: buttons, links, checkboxes, radio buttons, custom controls, and icon buttons.</li>
+        <li>Use browser DevTools to inspect the computed width and height of each target element, including any padding.</li>
+        <li>For targets smaller than 24×24 CSS pixels, measure the spacing between adjacent targets (the gap between the target's bounding box and the nearest adjacent target).</li>
+        <li>Calculate whether the target size plus the available spacing in each direction meets the 24×24 threshold.</li>
+        <li>Check that there is no other target within the 24×24 CSS pixel area around any failing target (which would reduce available spacing).</li>
+        <li>Pay special attention to icon-only buttons, social media share icons, close buttons on modals or toasts, and pagination links.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion is new in WCAG 2.2 and is particularly important for mobile and touch interfaces where small tap targets are a common usability and accessibility problem. Inline text links are exempt from this criterion when the size of the target is constrained by the line-height of the text. The 24×24 minimum is intentionally more achievable than the 44×44 target of 2.5.5 (Level AAA), but teams should aim for 44×44 as best practice wherever possible.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">WCAG 2.2 Understanding 2.5.8</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

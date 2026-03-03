@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.4.12 Text Spacing — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.12 Text Spacing failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">1.4.12 Text Spacing</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-aa">Level AA</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>No loss of content or functionality must occur when users apply the following text spacing overrides: line height set to at least 1.5 times the font size, letter spacing set to at least 0.12 times the font size, word spacing set to at least 0.16 times the font size, and spacing following paragraphs set to at least 2 times the font size. Users with dyslexia, low vision, or cognitive disabilities commonly apply custom text spacing through user stylesheets or browser extensions to improve readability, and content must not break under these adjustments.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when applying the specified text spacing values causes content to become hidden, truncated, or to overlap in a way that makes it unreadable. Common failure patterns include fixed-height containers that clip text when line height increases, text in tooltips or modal dialogs that overflows its container when letter spacing is increased, navigation menu items that overlap when word spacing is expanded, and truncation of text within table cells or card components. Using CSS <code>overflow: hidden</code> on containers with fixed heights combined with pixel-based font sizes is a frequent cause of failure.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures that the content remains fully readable and functional when any combination of the four text spacing properties is applied at their specified maximum values. This is achieved by using flexible container heights (with <code>min-height</code> rather than <code>height</code>), using relative units for sizing, and avoiding <code>overflow: hidden</code> on text containers. Layouts should be tested with a bookmarklet or browser extension that applies the maximum text spacing values simultaneously.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Install or create a bookmarklet that overrides text spacing to the WCAG 1.4.12 test values: <code>line-height: 1.5em</code>, <code>letter-spacing: 0.12em</code>, <code>word-spacing: 0.16em</code>, and paragraph spacing: <code>2em</code>.</li>
+        <li>Activate the bookmarklet on the page being tested.</li>
+        <li>Scroll through all content and verify no text is clipped, hidden, or overlapping.</li>
+        <li>Test interactive components: menus, modals, tooltips, dropdowns, and accordions.</li>
+        <li>Verify all form labels, button text, and link text remain fully visible.</li>
+        <li>Inspect the DOM for containers using fixed heights with <code>overflow: hidden</code> that may clip expanded text.</li>
+        <li>Return text spacing to default and confirm the before/after comparison shows no loss of content.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion tests resilience to user overrides, not the default text spacing of the page itself. The WCAG Understanding document provides a test bookmarklet that applies all four spacing values simultaneously. Authors should note that this criterion was added in WCAG 2.1 and is commonly overlooked in design systems where card and tooltip heights are defined in pixels.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html">WCAG 2.2 Understanding 1.4.12</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

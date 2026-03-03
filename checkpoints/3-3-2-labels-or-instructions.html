@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.3.2 Labels or Instructions — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 3.3.2 Labels or Instructions failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">3.3.2 Labels or Instructions</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>When user input is required, labels or instructions must be provided to help users understand what is expected. This applies to all form controls and interactive widgets that require the user to enter or select data. Labels must clearly identify what each field expects, and where input format or constraints apply (such as date format, password rules, or character limits), instructions must be provided before or during data entry so users can supply correctly formatted input without trial and error.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A form that uses placeholder text alone as a label fails this criterion, because placeholder text disappears when the user starts typing, leaving them without any indication of what the field expects — particularly problematic for users with cognitive disabilities or short-term memory impairments. Similarly, a date field that accepts only a specific format (e.g., DD/MM/YYYY) but does not display that format requirement before submission is a failure, as users cannot know what is expected until they receive an error message after the fact.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A form passes when every input field has a persistent, visible label that clearly identifies the field's purpose, and when any format requirements or constraints are provided as visible text associated with the field before the user submits. Labels must be programmatically linked to their controls (via <code>&lt;label for&gt;</code> or <code>aria-labelledby</code>) so screen reader users also receive the information. Required fields should be identified either by the word "required" in the label or by a convention that is explained (e.g., "Fields marked with * are required").</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Review each form field on the page and confirm it has a visible, persistent label that is not solely placeholder text.</li>
+        <li>Check that any required fields are clearly identified as required (by text in the label, not colour alone).</li>
+        <li>Review all fields that expect a specific format (dates, phone numbers, postal codes) and confirm the expected format is displayed as visible text near the field.</li>
+        <li>Inspect the HTML to verify that labels are programmatically associated with their controls using <code>&lt;label for="..."&gt;</code> or <code>aria-labelledby</code>.</li>
+        <li>Test with a screen reader (e.g., NVDA or VoiceOver): navigate to each field in forms mode and confirm the field's label and any instructions are announced.</li>
+        <li>Confirm that instructions are available before the user needs to enter data, not only after a submission error.</li>
+        <li>Check that group-level instructions (such as "Select all that apply") are provided for checkbox groups and radio groups via <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>Placeholder text can supplement a proper label but must never be used as a replacement for one; this is a very common anti-pattern. This criterion focuses on the presence and availability of labels and instructions, while 3.3.1 Error Identification covers what happens after an error has occurred.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html">WCAG 2.2 Understanding 3.3.2</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

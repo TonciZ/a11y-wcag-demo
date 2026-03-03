@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.1.1 Language of Page — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 3.1.1 Language of Page failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">3.1.1 Language of Page</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>The default human language of each web page must be programmatically determinable. This is achieved by setting the <code>lang</code> attribute on the <code>&lt;html&gt;</code> element using a valid BCP 47 language tag (e.g., <code>lang="en"</code> for English or <code>lang="fr"</code> for French). Screen readers and other assistive technologies rely on this attribute to select the correct language profile for speech synthesis, Braille output, and other language-specific rendering.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A page that is missing the <code>lang</code> attribute on the <code>&lt;html&gt;</code> element, or that has an incorrect or empty <code>lang</code> value, will cause screen readers to default to whatever language the user has configured as their system default. If that language differs from the page's actual language, the screen reader will mispronounce words, apply incorrect phonetic rules, and deliver content that is unintelligible to users who rely on audio output.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A page passes when its <code>&lt;html&gt;</code> element carries a valid BCP 47 language tag that accurately reflects the primary language of the page content (e.g., <code>&lt;html lang="en"&gt;</code>). This allows screen readers to automatically switch to the correct speech synthesizer voice and pronunciation rules, ensuring the content is rendered accurately for users of assistive technology.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>View the page source or use browser developer tools to inspect the opening <code>&lt;html&gt;</code> tag.</li>
+        <li>Confirm that a <code>lang</code> attribute is present on the <code>&lt;html&gt;</code> element.</li>
+        <li>Verify that the <code>lang</code> value is a valid BCP 47 language tag that matches the primary language of the page content.</li>
+        <li>Check that the <code>lang</code> value is not empty (e.g., <code>lang=""</code> is a failure).</li>
+        <li>If using a screen reader (e.g., NVDA or JAWS), navigate through body text and listen for correct pronunciation consistent with the page language.</li>
+        <li>Use an automated tool such as axe or WAVE to flag missing or invalid <code>lang</code> attributes.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>The <code>lang</code> attribute must reflect the primary language of the page; pages that contain mixed-language content may also need to satisfy 3.1.2 Language of Parts for the secondary-language passages. A region subtag (e.g., <code>lang="en-US"</code>) is optional but acceptable as long as the primary language subtag is correct.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html">WCAG 2.2 Understanding 3.1.1</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

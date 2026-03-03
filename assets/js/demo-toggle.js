@@ -4,12 +4,31 @@
  * Handles all FAIL/PASS toggle buttons across demo containers.
  *
  * Required HTML structure per demo:
- *   .demo-container[data-mode="fail"]
- *     button.demo-toggle[aria-pressed="false"]
- *       .demo-toggle__label--fail
- *       .demo-toggle__label--pass[hidden]
- *     [data-demo-state="fail"]   — visible initially
- *     [data-demo-state="pass"]   — hidden initially (hidden attribute)
+ *
+ *   <div class="demo-container"
+ *        data-mode="fail"
+ *        role="region"
+ *        aria-labelledby="{label-id}"
+ *        data-announce-fail="Showing fail example. {context}"
+ *        data-announce-pass="Showing pass example. {context}">
+ *
+ *     <div class="demo-container__toolbar">
+ *       <span id="{label-id}" class="demo-container__label">...</span>
+ *       <button class="demo-toggle" type="button" aria-pressed="false">
+ *         <span class="demo-toggle__label--fail">Show passing example</span>
+ *         <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+ *       </button>
+ *     </div>
+ *
+ *     <div class="demo-status" aria-hidden="true">...</div>
+ *     <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+ *
+ *     <div class="demo-stage">
+ *       <div data-demo-state="fail">...</div>
+ *       <div data-demo-state="pass" hidden>...</div>
+ *     </div>
+ *
+ *   </div>
  */
 
 (function () {
@@ -43,6 +62,17 @@
       if (failPanel && passPanel) {
         failPanel.hidden = !isCurrentlyPass;
         passPanel.hidden = isCurrentlyPass;
+      }
+
+      // Announce state change to screen readers via live region.
+      // Live regions only fire on DOM text changes — not CSS changes —
+      // so we maintain a dedicated hidden element for this.
+      var announcement = container.querySelector('[data-demo-announcement]');
+      if (announcement) {
+        var msg = nextMode === 'pass'
+          ? (container.dataset.announcePass || 'Now showing: pass example.')
+          : (container.dataset.announceFail || 'Now showing: fail example.');
+        announcement.textContent = msg;
       }
     });
   }

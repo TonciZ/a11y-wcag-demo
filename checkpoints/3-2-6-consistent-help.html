@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.2.6 Consistent Help — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 3.2.6 Consistent Help failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">3.2.6 Consistent Help</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>If a web page provides any of the following help mechanisms — human contact details, a human contact mechanism (such as a chat widget), a self-help option (such as an FAQ), or a fully automated contact mechanism (such as a chatbot) — and that mechanism is repeated across multiple pages of a website, it must appear in the same relative order in the page layout on each page. This new WCAG 2.2 criterion helps users with cognitive disabilities locate help reliably without needing to search for it each time they visit a new page.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when help mechanisms are present across multiple pages but appear in different positions relative to other page content. For example, if a live chat button appears in the top-right corner on the homepage but in the footer on the contact page and in a sidebar on the product page, users with cognitive disabilities or memory impairments may be unable to find assistance when they need it most. Inconsistent placement adds unnecessary cognitive load and may effectively deny help to users who struggle to adapt to changing layouts.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A page passes when any help mechanism that appears across the site is consistently placed in the same relative location within the page template — for example, always appearing as the last item in the primary navigation, or always positioned in the site footer before the copyright notice. The specific position does not matter as long as it remains predictable and consistent across all pages where it appears.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Identify whether the page provides any help mechanism: human contact details, a chat widget, a helpdesk email, an FAQ link, or an automated chatbot.</li>
+        <li>Navigate to several other pages within the same website that include the same help mechanism.</li>
+        <li>On each page, note the relative position of the help mechanism in relation to surrounding landmark regions and content blocks (e.g., header, nav, main, footer).</li>
+        <li>Verify that the help mechanism appears in the same relative order and location across all pages reviewed.</li>
+        <li>Check that changes in page content, length, or layout do not cause the help mechanism to shift its relative position in the page structure.</li>
+        <li>If user-initiated changes (such as expanding menus) temporarily alter the position, confirm that the mechanism returns to its standard location.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion applies only to help mechanisms that are repeated across multiple pages; a help section unique to a single page (such as a dedicated support page) is not in scope. The requirement is about relative order within the page, not pixel-precise positioning, so responsive layout reflows that maintain structural order are acceptable.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html">WCAG 2.2 Understanding 3.2.6</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

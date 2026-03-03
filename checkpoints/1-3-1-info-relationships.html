@@ -55,25 +55,45 @@
         To add a second demo below this one, duplicate .demo-container and update content.
         JS in demo-toggle.js handles all .demo-toggle buttons automatically.
       -->
-      <div class="demo-container" data-mode="fail" aria-label="Table structure demo">
+      <!--
+        role="region" + aria-labelledby gives the demo a landmark name for AT.
+        data-announce-* supplies contextual text for the live region on toggle.
+      -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-1-label"
+           data-announce-fail="Showing fail example. The table uses only td elements — screen readers cannot announce column context."
+           data-announce-pass="Showing pass example. The table uses th elements with scope attribute — screen readers now announce column headers.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" aria-hidden="true">Table without semantic headers</span>
+          <!--
+            id referenced by aria-labelledby above.
+            Not aria-hidden — this label is meaningful to AT users.
+          -->
+          <span class="demo-container__label" id="demo-1-label">Table structure: semantic headers</span>
+          <!--
+            No aria-label on the button — the visible text IS the accessible name.
+            aria-pressed communicates current state.
+          -->
           <button
             class="demo-toggle"
             type="button"
             aria-pressed="false"
-            aria-label="Toggle between fail and pass example"
           >
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
           </button>
         </div>
 
-        <div class="demo-status" aria-live="polite" aria-atomic="true">
+        <!-- Visual status strip — aria-hidden because the live region handles AT announcements -->
+        <div class="demo-status" aria-hidden="true">
           <span class="demo-status__text--fail">Fail — table has no semantic headers</span>
           <span class="demo-status__text--pass">Pass — table uses &lt;th&gt; with scope</span>
         </div>
+
+        <!-- Screen reader live region. JS updates textContent on toggle. -->
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
 
         <div class="demo-stage">
 
@@ -83,8 +103,12 @@
           -->
           <div data-demo-state="fail">
             <div class="demo-table-wrapper">
-              <table class="demo-table" aria-label="Employee data — fail example">
-                <caption class="visually-hidden">Employee data (accessibility failure: no header elements)</caption>
+              <!--
+                tabindex="0" makes the table reachable by Tab for keyboard users.
+                No aria-label — caption provides the accessible name.
+              -->
+              <table class="demo-table" tabindex="0">
+                <caption class="visually-hidden">Fail example — employee data: first row uses td elements, no semantic column headers</caption>
                 <tbody>
                   <tr>
                     <td>Name</td>
@@ -117,8 +141,8 @@
           -->
           <div data-demo-state="pass" hidden>
             <div class="demo-table-wrapper">
-              <table class="demo-table" aria-label="Employee data — pass example">
-                <caption class="visually-hidden">Employee data (accessible: uses th elements with scope)</caption>
+              <table class="demo-table" tabindex="0">
+                <caption class="visually-hidden">Pass example — employee data: header cells use th elements with scope="col"</caption>
                 <thead>
                   <tr>
                     <th scope="col">Name</th>

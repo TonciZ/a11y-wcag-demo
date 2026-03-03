@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.1.2 Language of Parts — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 3.1.2 Language of Parts failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">3.1.2 Language of Parts</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-aa">Level AA</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>When a web page contains passages of text in a language different from the page's primary language, each such passage must have its language programmatically identified using the <code>lang</code> attribute on the containing element. This applies to any phrase, sentence, or block of content written in a secondary language, allowing assistive technologies to apply the correct pronunciation rules for that passage. Exceptions include proper names, technical terms, and words that have become part of the surrounding language's vernacular.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>If a page includes a French quotation, a Spanish phrase, or any extended foreign-language passage without a <code>lang</code> attribute on its container element, a screen reader will read that passage using the phonetic rules of the page's primary language. The result is severely distorted pronunciation that can make the passage incomprehensible to blind or visually impaired users who depend on audio output to understand the content.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A page passes when each foreign-language passage is wrapped in an element (such as <code>&lt;span&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;blockquote&gt;</code>, or <code>&lt;section&gt;</code>) that carries a <code>lang</code> attribute with the correct BCP 47 language tag for that passage (e.g., <code>&lt;span lang="fr"&gt;Bonjour le monde&lt;/span&gt;</code>). Screen readers will detect the attribute, switch to the appropriate voice or speech profile, and render the passage with correct pronunciation.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Identify all passages on the page that are written in a language different from the primary page language declared on <code>&lt;html lang="..."&gt;</code>.</li>
+        <li>For each such passage, inspect the surrounding markup in browser developer tools.</li>
+        <li>Verify that an ancestor element (ideally the most immediate wrapper) carries a <code>lang</code> attribute with the correct language tag for that passage.</li>
+        <li>Confirm the language tag is a valid BCP 47 code (e.g., <code>fr</code>, <code>es</code>, <code>de</code>, <code>zh-Hant</code>).</li>
+        <li>Using a screen reader (e.g., NVDA with a multi-language synthesizer), navigate to the foreign-language passage and listen for correct language switching.</li>
+        <li>Check that proper nouns, technical terms, and internationalised words used in the primary language context are not incorrectly wrapped.</li>
+        <li>Run an automated audit with axe or a similar tool; note that automated tools cannot catch all cases and manual review is essential.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion does not apply to proper names, technical terms, words of indeterminate language, or words that have been assimilated into the surrounding language. The key scope is extended passages of human-readable text where pronunciation would meaningfully differ between languages.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html">WCAG 2.2 Understanding 3.1.2</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2.1 Audio-only and Video-only (Prerecorded) — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 1.2.1 Audio-only and Video-only (Prerecorded) failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">1.2.1 Audio-only and Video-only (Prerecorded)</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>For prerecorded audio-only content, a text transcript must be provided that presents the same information as the audio. For prerecorded video-only content (no audio track), either a text alternative or an audio track must be provided that presents equivalent information. This criterion ensures that people who are deaf, hard of hearing, or blind can access the content of standalone audio and video media.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when a podcast episode, audio clip, or silent video is published without an equivalent alternative. For example, a podcast page with no transcript means deaf and hard-of-hearing users have no access to the spoken content. A silent product demonstration video with no text description or narration track means blind users cannot understand what the video shows.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation for audio-only content provides a full transcript — not just a summary — that includes all spoken dialogue and relevant non-speech sounds. For video-only content, the author either provides a text description of what occurs in the video (including actions, scene changes, and on-screen text) or adds an audio description track that narrates the visual content.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Identify all audio-only and video-only media on the page.</li>
+        <li>For audio-only content, check that a text transcript is available on the page or linked from the page.</li>
+        <li>Verify the transcript includes all spoken words and relevant non-speech sounds (e.g., "[applause]", "[alarm sounds]").</li>
+        <li>For video-only content, check whether a text description or audio description track is provided.</li>
+        <li>Verify the text description covers all visual information including actions, on-screen text, and scene context.</li>
+        <li>Confirm the alternative is clearly labeled and easy to find in proximity to the media player.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion applies only to prerecorded content; live audio-only and live video-only are covered separately. If a video has both audio and video tracks, it falls under the captions and audio description criteria rather than this one.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded.html">WCAG 2.2 Understanding 1.2.1</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

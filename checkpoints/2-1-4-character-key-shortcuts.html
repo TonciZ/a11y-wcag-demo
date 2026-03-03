@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.1.4 Character Key Shortcuts — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 2.1.4 Character Key Shortcuts failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">2.1.4 Character Key Shortcuts</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>If a keyboard shortcut is implemented using only a single letter, punctuation, number, or symbol character key, then the user must be able to turn it off, remap it to include a modifier key (such as Ctrl, Alt, or Shift), or have it active only when the relevant component has focus. This criterion was introduced to address conflicts between web application shortcuts and the single-character shortcuts used by screen readers and other assistive technologies.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when a web application binds functionality to a single character key globally — for example, pressing "S" to search or "D" to delete — with no way for the user to disable or remap that shortcut. Screen reader users often speak commands letter-by-letter or use single-key navigation shortcuts, and these will accidentally trigger the application's shortcut instead, causing unintended actions such as deleting content, submitting forms, or navigating away from the current view.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation either avoids single-character shortcuts altogether, or provides an accessible setting within the application to turn them off or reassign them to include a modifier key (such as Ctrl+S). Alternatively, a shortcut is acceptable if it only activates while a specific component — such as a search input — has keyboard focus, rather than firing globally across the entire page.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Review the page or application documentation for any advertised keyboard shortcuts.</li>
+        <li>Tab through the page and, without focusing any form field, press single letter keys (a–z), number keys, and common punctuation keys (/, ?, !, etc.).</li>
+        <li>Note any unintended actions that are triggered by these single-character keypresses.</li>
+        <li>If single-character shortcuts exist, look for a setting (often in a preferences or help menu) to turn them off or remap them to use a modifier key.</li>
+        <li>Verify the setting works and that shortcuts remain disabled or remapped after the setting is saved.</li>
+        <li>Confirm that shortcuts tied to a specific focused component (e.g., arrow key navigation inside a list) only fire when that component has focus.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion is particularly relevant for single-page applications and productivity tools (email clients, document editors, project management apps) that implement rich keyboard shortcut schemes. Shortcuts that already require a modifier key (e.g., Ctrl+S) are not subject to this criterion.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/character-key-shortcuts.html">WCAG 2.2 Understanding 2.1.4</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

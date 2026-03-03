@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.3.5 Identify Input Purpose — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 1.3.5 Identify Input Purpose failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">1.3.5 Identify Input Purpose</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-aa">Level AA</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>For input fields that collect information about the user, the purpose of each field must be programmatically determinable using HTML autocomplete attributes. This allows browsers and assistive technologies to identify the type of personal data being requested and to offer autofill, custom icons, or other adaptations that help users with cognitive disabilities, memory impairments, or motor difficulties complete forms more easily.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when form inputs that collect common personal information — such as name, email, phone number, address, or credit card details — do not have the appropriate <code>autocomplete</code> attribute. Without this attribute, browsers cannot offer autofill assistance, and tools that replace form labels with familiar icons (an aid for users with cognitive disabilities) cannot identify the field's purpose. Users who rely on autofill to avoid repeated data entry are also disadvantaged.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation adds the correct <code>autocomplete</code> attribute value from the HTML specification's list of input purposes to each relevant form field. For example, a field collecting a user's first name should have <code>autocomplete="given-name"</code>, an email field should have <code>autocomplete="email"</code>, and a field for a street address should have <code>autocomplete="street-address"</code>. The <code>autocomplete</code> attribute value must match the actual purpose of the field.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Identify all form inputs on the page that collect personal information about the user.</li>
+        <li>Inspect each such input element and check whether an <code>autocomplete</code> attribute is present.</li>
+        <li>Verify the <code>autocomplete</code> value matches an appropriate value from the WCAG list of input purposes (e.g., <code>name</code>, <code>email</code>, <code>tel</code>, <code>bday</code>, <code>street-address</code>).</li>
+        <li>Confirm the <code>autocomplete</code> attribute value accurately reflects the actual data being collected by the field.</li>
+        <li>Check that the <code>autocomplete</code> attribute is not set to <code>off</code> for fields where autofill would benefit the user.</li>
+        <li>Use a browser with autofill capability to test that the browser correctly identifies and offers to fill each field.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion applies only to fields that collect information about the user themselves, not arbitrary data entry fields such as a search box or a message composition field. The complete list of valid <code>autocomplete</code> values for this criterion is defined in the WCAG 2.1/2.2 Success Criterion 1.3.5 normative content and the HTML Living Standard.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html">WCAG 2.2 Understanding 1.3.5</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

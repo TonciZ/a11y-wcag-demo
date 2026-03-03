@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.1.1 Non-text Content — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 1.1.1 Non-text Content failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">1.1.1 Non-text Content</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>All non-text content that is presented to the user must have a text alternative that serves the equivalent purpose. This applies to images, icons, charts, graphs, audio, video, controls, and other non-text elements. The text alternative allows assistive technologies such as screen readers to convey the meaning of non-text content to users who cannot perceive it visually or aurally.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when an image, icon, or other non-text element has no accessible name, an empty alt attribute where one is needed, or a meaningless description such as "image" or a file name like "img0042.jpg". Screen reader users will either hear nothing, hear the file name, or hear a generic label that provides no useful information about the content or purpose of the element.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation provides a concise, meaningful text alternative that conveys the same information or function as the non-text content. Decorative images that add no information use an empty alt attribute (<code>alt=""</code>) so screen readers skip them entirely. Complex images such as charts include either a descriptive long-form text alternative nearby or are linked to a full description.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Identify all non-text content on the page: images, icons, buttons with images, charts, graphs, and multimedia.</li>
+        <li>Inspect each image element and check whether an <code>alt</code> attribute is present.</li>
+        <li>For informative images, verify the <code>alt</code> text accurately describes the content or function of the image.</li>
+        <li>For decorative images, verify <code>alt=""</code> is used so screen readers skip them.</li>
+        <li>For functional images (such as a logo linking to the home page or an icon button), verify the <code>alt</code> text describes the function, not just the appearance.</li>
+        <li>Use a screen reader (such as NVDA with Firefox or JAWS with Chrome) to navigate to each image and confirm what is announced matches the expected text alternative.</li>
+        <li>For complex images such as charts, confirm a full text description is available either in the alt attribute, in surrounding content, or via a linked description.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>Images used purely for layout or decoration must use <code>alt=""</code> rather than being omitted entirely; omitting the <code>alt</code> attribute causes some screen readers to read out the file name. ARIA attributes such as <code>aria-label</code> and <code>aria-labelledby</code> can also provide text alternatives for non-image non-text elements such as SVGs and custom controls.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html">WCAG 2.2 Understanding 1.1.1</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

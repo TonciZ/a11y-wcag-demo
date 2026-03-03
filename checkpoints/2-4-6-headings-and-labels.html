@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4.6 Headings and Labels — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 2.4.6 Headings and Labels failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">2.4.6 Headings and Labels</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-aa">Level AA</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>Headings and labels must describe the topic or purpose of the content they introduce or identify. This criterion does not require that headings or labels be present — that is covered by other criteria — but when they are present, they must be meaningful and accurately reflect the content they relate to. Descriptive headings help screen reader users navigate directly to relevant sections, while descriptive labels help all users understand what information a form field requires.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when headings use vague or placeholder text — such as "Section 1," "Content," or "Info" — that does not describe the content of the section they introduce. Similarly, form field labels that say only "Field 1" or "Input" fail this criterion. A screen reader user relying on heading navigation to scan a long page, or a user with cognitive disabilities trying to understand what to enter in a form, cannot make effective use of meaningless labels or headings.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation uses headings that accurately and uniquely describe the content of each major section — for example, "Shipping Address," "Payment Information," and "Order Summary" in a checkout flow. Form labels should name the specific information required: "Email address," "Date of birth (DD/MM/YYYY)," or "Search products." Labels and headings do not need to be exhaustively detailed, but they must be specific enough that a user navigating by headings or scanning form labels can understand the purpose of each element.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Navigate the page using a screen reader's heading navigation (H key in NVDA/JAWS, VO+Command+H in VoiceOver) and listen to each heading.</li>
+        <li>For each heading, assess whether the text describes the content of the section that follows it.</li>
+        <li>Inspect all form fields and confirm each has an associated label (via <code>&lt;label&gt;</code>, <code>aria-label</code>, or <code>aria-labelledby</code>) that describes the expected input.</li>
+        <li>Check for any headings that are generic (e.g., "More Information," "Details") without enough specificity to differentiate sections.</li>
+        <li>Generate a headings outline using a browser extension (such as HeadingsMap) and review it for clarity and meaningful structure.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion is about the quality of headings and labels that exist, not whether headings and labels are present at all — presence of headings is addressed by 1.3.1 (Info and Relationships) and presence of form labels is addressed by 1.3.1 and 3.3.2. Common failures include CMSs with default section titles that developers forget to update, and form labels copied from internal field names.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html">WCAG 2.2 Understanding 2.4.6</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

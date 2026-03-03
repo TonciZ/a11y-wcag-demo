@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.4.4 Resize Text — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.4 Resize Text failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">1.4.4 Resize Text</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-aa">Level AA</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>Text must be resizable up to 200 percent without assistive technology and without loss of content or functionality. Many users with low vision use browser zoom or operating system text size settings to increase text size to a readable level. If a website is built in a way that causes content to become hidden, truncated, or broken when text is enlarged, those users lose access to the content.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when enlarging text to 200% causes content to be cut off, overlap other content, become hidden, or make functionality unavailable. Common failure patterns include fixed-height containers that clip overflowing text, absolutely positioned elements that overlap when text grows, navigation menus that collapse or break at larger text sizes, and text in buttons or labels that becomes truncated. Using viewport units or fixed pixel values for container heights without <code>overflow: auto</code> or <code>min-height</code> settings are common technical causes.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation uses relative units (such as <code>em</code>, <code>rem</code>, or percentages) for font sizes and container dimensions, and avoids fixed-height containers that would clip enlarged text. The layout is tested at 200% text zoom to confirm all content remains visible and readable and all interactive components remain operable. CSS <code>min-height</code> instead of <code>height</code>, and <code>overflow: visible</code> or <code>overflow: auto</code> rather than <code>overflow: hidden</code>, are practical implementation techniques.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Open the page in a browser and navigate to the browser's text size settings.</li>
+        <li>Increase the text size to 200% (or use Ctrl/Cmd + + to zoom to 200% in browsers where text zoom equals page zoom).</li>
+        <li>Read through all sections of the page and verify no text is clipped, hidden, or overlapping.</li>
+        <li>Verify all interactive controls (buttons, links, form inputs, menus) remain visible and operable.</li>
+        <li>Scroll horizontally if necessary and check that content has not been pushed off-screen or made inaccessible.</li>
+        <li>Test modal dialogs, tooltips, dropdown menus, and other dynamic content at 200% zoom.</li>
+        <li>Inspect the CSS for fixed-height containers with <code>overflow: hidden</code> that may clip enlarged text.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion specifically addresses text resize, not full-page zoom. However, in modern browsers, browser zoom also enlarges text, so testing with browser zoom at 200% is a practical and widely accepted testing method. The related criterion 1.4.10 Reflow covers the requirement that content must remain usable at 400% zoom without horizontal scrolling.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">WCAG 2.2 Understanding 1.4.4</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

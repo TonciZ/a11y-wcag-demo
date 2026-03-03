@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.4.13 Content on Hover or Focus — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.13 Content on Hover or Focus failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">1.4.13 Content on Hover or Focus</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-aa">Level AA</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>Where receiving and then removing pointer hover or keyboard focus triggers additional content to become visible and then hidden (such as tooltips and sub-menus), three conditions must be met: the additional content must be dismissible without moving focus or the pointer, the additional content must be hoverable (the pointer can move over the additional content without it disappearing), and the additional content must be persistent until the user dismisses it, moves focus away, or the information is no longer relevant. This ensures low-vision users who zoom in and users with motor disabilities who may accidentally trigger hover events can perceive and use the additional content.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when additional content triggered by hover or focus disappears before the user has had a chance to read or interact with it. Examples include custom tooltips that disappear as soon as the pointer moves slightly off the trigger, dropdown menus that close if the pointer travels in a straight line rather than along the menu edge, and tooltips that cannot be dismissed by pressing Escape. For low-vision users who use screen magnification, triggered content often appears outside their current view and requires them to pan the viewport to find it, during which the hover state may be lost and the content disappears.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures all three conditions are satisfied. The additional content is dismissible by pressing the Escape key (or equivalent) without the user needing to move focus. The triggered content is hoverable — the pointer can travel from the trigger element onto the content itself without the content closing. The content remains visible until the user deliberately dismisses it or moves focus entirely away from the trigger. ARIA tooltips and custom dropdowns should be tested against all three conditions.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Identify all elements on the page that display additional content on hover or focus (tooltips, sub-menus, custom dropdowns, etc.).</li>
+        <li>Hover over or focus each trigger and verify the additional content appears.</li>
+        <li>While the content is visible, move the pointer slowly from the trigger onto the additional content itself and verify the content remains visible (hoverable condition).</li>
+        <li>While the content is visible, press the Escape key and verify the content is dismissed without moving focus away from the trigger (dismissible condition).</li>
+        <li>Hover over the trigger, then move the pointer away without pressing Escape, and verify the content disappears only when focus or hover leaves the region (persistent condition).</li>
+        <li>Test with keyboard focus using the Tab key and verify the same three conditions are satisfied for keyboard-triggered content.</li>
+        <li>Test with a screen magnifier (such as Windows Magnifier or ZoomText) to verify content remains reachable when the view is zoomed.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion was added in WCAG 2.1 specifically to address the problems low-vision users experience with hover-triggered content that disappears before they can read it or navigate to it. The Escape key requirement for dismissal aligns with the general usability convention for closing dialogs and popups.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html">WCAG 2.2 Understanding 1.4.13</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

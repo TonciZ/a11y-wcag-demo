@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.1.2 Name, Role, Value — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 4.1.2 Name, Role, Value failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">4.1.2 Name, Role, Value</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>For all user interface components — including form elements, links, and custom widgets created with scripting — the following must be programmatically determinable or settable: the name and role of the component, and any states, properties, and values that can be set by the user. This criterion ensures that assistive technologies such as screen readers can identify what a component is (its role), what it is called (its name), and what state it is in (e.g., expanded, selected, checked). It is the foundation of accessible rich internet applications and applies to every interactive element on a page.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A custom button built from a <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> element that has no <code>role</code> attribute and no accessible name fails this criterion, because a screen reader has no way to identify it as a button or know what it does. Similarly, a custom accordion widget that expands and collapses content but does not use <code>aria-expanded</code> to communicate its state leaves screen reader users unable to know whether the panel is open or closed. Using images as buttons without <code>alt</code> text, or linking icons without accessible names, are also very common failures.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A component passes when it has a programmatically determinable accessible name (from visible label text, <code>aria-label</code>, <code>aria-labelledby</code>, or an <code>alt</code> attribute), a correct semantic role (either from native HTML semantics or an explicit ARIA <code>role</code>), and accurate state information conveyed via ARIA attributes (such as <code>aria-expanded</code>, <code>aria-checked</code>, <code>aria-selected</code>, <code>aria-pressed</code>). Native HTML elements like <code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;a href&gt;</code> satisfy these requirements when used correctly with proper labels; custom widgets require explicit ARIA and scripting to achieve the same result.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Using browser developer tools or an accessibility tree inspector (e.g., Firefox Accessibility panel), examine every interactive element on the page.</li>
+        <li>Confirm each element has a non-empty accessible name (visible label, <code>aria-label</code>, <code>aria-labelledby</code>, or <code>alt</code> text for images).</li>
+        <li>Confirm each element has an appropriate role — either from native HTML semantics (button, link, checkbox) or an explicit <code>role</code> attribute.</li>
+        <li>For stateful components (accordions, toggles, tabs, checkboxes, comboboxes), confirm the current state is communicated through the appropriate ARIA attribute.</li>
+        <li>Test with a screen reader (e.g., NVDA + Chrome or VoiceOver + Safari): navigate to each interactive control and confirm its name, role, and state are announced correctly.</li>
+        <li>Activate interactive controls (open accordions, toggle switches, select tabs) and confirm the screen reader announces the updated state.</li>
+        <li>Check that any custom widgets built with <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code>, or <code>&lt;a&gt;</code> elements that function as buttons or other controls carry the necessary <code>role</code> and <code>aria-*</code> attributes.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion specifically covers author-created UI components and does not apply to platform-level user agent controls that the author cannot modify. The easiest way to satisfy this criterion is to use native, semantic HTML elements (which have built-in name, role, and value semantics) rather than building custom widgets from generic elements, which require additional ARIA and scripting to achieve the same accessibility outcome.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">WCAG 2.2 Understanding 4.1.2</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

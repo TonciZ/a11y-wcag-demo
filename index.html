@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WCAG Demo — Accessibility Learning Platform</title>
-  <meta name="description" content="Interactive WCAG demos showing accessibility failures and how to fix them. For testers and developers.">
+  <title>WCAG 2.2 Demo — Accessibility Learning Platform</title>
+  <meta name="description" content="Interactive WCAG 2.2 demos showing accessibility failures and how to fix them. For testers and developers.">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
 </head>
@@ -26,28 +26,582 @@
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2</p>
+      <p class="page-header__eyebrow">WCAG 2.2 — Level A &amp; AA</p>
       <h1 class="page-header__title">Accessibility Checkpoints</h1>
-      <p>Interactive demos showing how accessibility failures occur and how to fix them. Each checkpoint includes a toggleable FAIL / PASS example and manual testing instructions.</p>
+      <p>Interactive demos showing how accessibility failures occur and how to fix them. Each implemented checkpoint includes a toggleable FAIL / PASS example and manual testing instructions.</p>
     </div>
 
-    <section aria-labelledby="checkpoints-heading">
-      <h2 id="checkpoints-heading" class="visually-hidden">Checkpoint list</h2>
+    <!--
+      Content source: /content/wcag-index.md
+      To add a checkpoint: add entry to wcag-index.md, create the .md and .html files, add a card below.
+    -->
 
-      <!--
-        Content source: /content/wcag-index.md
-        To add a checkpoint: add entry to wcag-index.md, create the checkpoint .md and .html files.
-      -->
+    <!-- PERCEIVABLE -->
+    <section class="principle-group" aria-labelledby="perceivable-heading">
+      <h2 id="perceivable-heading" class="principle-group__heading">Perceivable</h2>
       <ul class="checkpoint-list">
+
+        <li>
+          <a href="checkpoints/1-1-1-non-text-content.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.1.1</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Non-text Content</div>
+            <p class="checkpoint-card__summary">All non-text content must have a text alternative that serves the same purpose.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-2-1-audio-only-and-video-only-prerecorded.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.2.1</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Audio-only and Video-only (Prerecorded)</div>
+            <p class="checkpoint-card__summary">Prerecorded audio-only and video-only content must have a text or media alternative.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-2-2-captions-prerecorded.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.2.2</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Captions (Prerecorded)</div>
+            <p class="checkpoint-card__summary">Captions must be provided for all prerecorded audio content in synchronized media.</p>
+          </a>
+        </li>
 
         <li>
           <a href="checkpoints/1-3-1-info-relationships.html" class="checkpoint-card">
             <div class="checkpoint-card__header">
               <span class="checkpoint-card__id">1.3.1</span>
               <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-done">Demo ready</span>
             </div>
             <div class="checkpoint-card__title">Info and Relationships</div>
             <p class="checkpoint-card__summary">Structure and relationships conveyed through presentation must also be programmatically determinable or available in text.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-3-2-meaningful-sequence.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.3.2</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Meaningful Sequence</div>
+            <p class="checkpoint-card__summary">When sequence affects meaning, the correct reading order must be programmatically determinable.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-3-3-sensory-characteristics.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.3.3</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Sensory Characteristics</div>
+            <p class="checkpoint-card__summary">Instructions must not rely solely on shape, colour, size, visual location, orientation, or sound.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-3-4-orientation.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.3.4</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Orientation</div>
+            <p class="checkpoint-card__summary">Content must not restrict its view and operation to a single display orientation.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-3-5-identify-input-purpose.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.3.5</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Identify Input Purpose</div>
+            <p class="checkpoint-card__summary">The purpose of each input field collecting user information must be programmatically determinable.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-4-1-use-of-color.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.4.1</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Use of Color</div>
+            <p class="checkpoint-card__summary">Color must not be the only visual means of conveying information or indicating action.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-4-2-audio-control.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.4.2</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Audio Control</div>
+            <p class="checkpoint-card__summary">Audio that plays automatically for more than 3 seconds must be controllable.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-4-3-contrast-minimum.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.4.3</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Contrast (Minimum)</div>
+            <p class="checkpoint-card__summary">Text must have a contrast ratio of at least 4.5:1 against its background.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-4-4-resize-text.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.4.4</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Resize Text</div>
+            <p class="checkpoint-card__summary">Text must be resizable up to 200% without loss of content or functionality.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-4-5-images-of-text.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.4.5</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Images of Text</div>
+            <p class="checkpoint-card__summary">Text must not be presented as images of text unless essential or customisable.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-4-10-reflow.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.4.10</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Reflow</div>
+            <p class="checkpoint-card__summary">Content must not require two-dimensional scrolling at 320 CSS pixels wide.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-4-11-non-text-contrast.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.4.11</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Non-text Contrast</div>
+            <p class="checkpoint-card__summary">UI components and graphical objects must have a contrast ratio of at least 3:1.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-4-12-text-spacing.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.4.12</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Text Spacing</div>
+            <p class="checkpoint-card__summary">No loss of content or functionality when text spacing properties are overridden.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/1-4-13-content-on-hover-or-focus.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.4.13</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Content on Hover or Focus</div>
+            <p class="checkpoint-card__summary">Content that appears on hover or focus must be dismissable, hoverable, and persistent.</p>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- OPERABLE -->
+    <section class="principle-group" aria-labelledby="operable-heading">
+      <h2 id="operable-heading" class="principle-group__heading">Operable</h2>
+      <ul class="checkpoint-list">
+
+        <li>
+          <a href="checkpoints/2-1-1-keyboard.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.1.1</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Keyboard</div>
+            <p class="checkpoint-card__summary">All functionality must be operable through a keyboard interface.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-1-2-no-keyboard-trap.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.1.2</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">No Keyboard Trap</div>
+            <p class="checkpoint-card__summary">Keyboard focus must not be locked inside a component with no way to move it.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-1-4-character-key-shortcuts.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.1.4</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Character Key Shortcuts</div>
+            <p class="checkpoint-card__summary">Single character keyboard shortcuts must be remappable, disableable, or only active on focus.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-2-2-pause-stop-hide.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.2.2</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Pause, Stop, Hide</div>
+            <p class="checkpoint-card__summary">Moving, blinking, or auto-updating content must be pausable, stoppable, or hideable.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-4-1-bypass-blocks.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.4.1</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Bypass Blocks</div>
+            <p class="checkpoint-card__summary">A mechanism must be available to skip blocks of content that are repeated across pages.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-4-2-page-titled.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.4.2</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Page Titled</div>
+            <p class="checkpoint-card__summary">Web pages must have titles that describe their topic or purpose.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-4-3-focus-order.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.4.3</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Focus Order</div>
+            <p class="checkpoint-card__summary">If a page can be navigated sequentially, focus order must preserve meaning and operability.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-4-4-link-purpose-in-context.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.4.4</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Link Purpose (In Context)</div>
+            <p class="checkpoint-card__summary">The purpose of each link must be determinable from the link text or its context.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-4-6-headings-and-labels.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.4.6</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Headings and Labels</div>
+            <p class="checkpoint-card__summary">Headings and labels must describe the topic or purpose of the content they title.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-4-7-focus-visible.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.4.7</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Focus Visible</div>
+            <p class="checkpoint-card__summary">Any keyboard-operable interface must have a visible keyboard focus indicator.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-4-11-focus-not-obscured-minimum.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.4.11</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Focus Not Obscured (Minimum)</div>
+            <p class="checkpoint-card__summary">The focused component must not be entirely hidden by author-created content. New in WCAG 2.2.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-4-13-focus-appearance.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.4.13</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Focus Appearance</div>
+            <p class="checkpoint-card__summary">The keyboard focus indicator must meet minimum size and contrast requirements. New in WCAG 2.2.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-5-2-pointer-cancellation.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.5.2</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Pointer Cancellation</div>
+            <p class="checkpoint-card__summary">Functions triggered by a single pointer must be cancellable or reversible.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-5-3-label-in-name.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.5.3</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Label in Name</div>
+            <p class="checkpoint-card__summary">The accessible name of a component must contain the visible text label.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-5-7-dragging-movements.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.5.7</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Dragging Movements</div>
+            <p class="checkpoint-card__summary">All functionality that uses dragging must be achievable with a single pointer without dragging. New in WCAG 2.2.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/2-5-8-target-size-minimum.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">2.5.8</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Target Size (Minimum)</div>
+            <p class="checkpoint-card__summary">Pointer input targets must be at least 24×24 CSS pixels, or adequately spaced. New in WCAG 2.2.</p>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- UNDERSTANDABLE -->
+    <section class="principle-group" aria-labelledby="understandable-heading">
+      <h2 id="understandable-heading" class="principle-group__heading">Understandable</h2>
+      <ul class="checkpoint-list">
+
+        <li>
+          <a href="checkpoints/3-1-1-language-of-page.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">3.1.1</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Language of Page</div>
+            <p class="checkpoint-card__summary">The default human language of each web page must be programmatically determinable.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/3-1-2-language-of-parts.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">3.1.2</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Language of Parts</div>
+            <p class="checkpoint-card__summary">The human language of each passage or phrase must be programmatically determinable.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/3-2-1-on-focus.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">3.2.1</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">On Focus</div>
+            <p class="checkpoint-card__summary">Receiving focus must not automatically trigger a change of context.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/3-2-2-on-input.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">3.2.2</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">On Input</div>
+            <p class="checkpoint-card__summary">Changing a setting must not automatically cause a change of context unless the user is warned.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/3-2-6-consistent-help.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">3.2.6</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Consistent Help</div>
+            <p class="checkpoint-card__summary">Help mechanisms must appear in the same relative order across pages. New in WCAG 2.2.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/3-3-1-error-identification.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">3.3.1</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Error Identification</div>
+            <p class="checkpoint-card__summary">Input errors must be identified and described to the user in text.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/3-3-2-labels-or-instructions.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">3.3.2</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Labels or Instructions</div>
+            <p class="checkpoint-card__summary">Labels or instructions must be provided when content requires user input.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/3-3-3-error-suggestion.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">3.3.3</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Error Suggestion</div>
+            <p class="checkpoint-card__summary">When an input error is detected, suggestions for correction must be provided if possible.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/3-3-7-redundant-entry.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">3.3.7</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Redundant Entry</div>
+            <p class="checkpoint-card__summary">Information already entered by the user must not be required again in the same process. New in WCAG 2.2.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/3-3-8-accessible-authentication-minimum.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">3.3.8</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Accessible Authentication (Minimum)</div>
+            <p class="checkpoint-card__summary">Authentication processes must not require a cognitive function test unless alternatives are provided. New in WCAG 2.2.</p>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- ROBUST -->
+    <section class="principle-group" aria-labelledby="robust-heading">
+      <h2 id="robust-heading" class="principle-group__heading">Robust</h2>
+      <ul class="checkpoint-list">
+
+        <li>
+          <a href="checkpoints/4-1-2-name-role-value.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">4.1.2</span>
+              <span class="badge badge--level-a">Level A</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Name, Role, Value</div>
+            <p class="checkpoint-card__summary">All UI components must have accessible names, roles, and states determinable by assistive technology.</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="checkpoints/4-1-3-status-messages.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">4.1.3</span>
+              <span class="badge badge--level-aa">Level AA</span>
+              <span class="badge badge--status-placeholder">Coming soon</span>
+            </div>
+            <div class="checkpoint-card__title">Status Messages</div>
+            <p class="checkpoint-card__summary">Status messages must be programmatically determinable so they can be announced without receiving focus.</p>
           </a>
         </li>
 

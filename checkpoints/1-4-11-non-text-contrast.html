@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.4.11 Non-text Contrast — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.11 Non-text Contrast failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">1.4.11 Non-text Contrast</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-aa">Level AA</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>The visual presentation of user interface components and graphical objects must have a contrast ratio of at least 3:1 against adjacent colors. This applies to the visual boundaries and states of interactive elements such as buttons, form inputs, checkboxes, radio buttons, and focus indicators, as well as to meaningful parts of icons and charts. Low-vision users who do not rely on screen readers need sufficient contrast to see and identify interactive elements and understand data visualizations.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when a user interface component or graphical object does not achieve a 3:1 contrast ratio against its adjacent background. Common failures include text input borders that are too light against a white background (such as a very light grey border), custom checkboxes or radio buttons styled without sufficient contrast, icons used as controls whose graphical parts do not meet the threshold, and chart data elements (such as bars or lines) that do not contrast sufficiently against the chart background. Focus indicators — the visible outline shown when a component has keyboard focus — are also covered and frequently fail.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures that the visual boundaries of interactive components, their states (default, hover, focus, error), and meaningful graphical objects all meet the 3:1 contrast ratio requirement. Form fields have borders or other boundary indicators that are clearly distinguishable from the page background. Custom controls are designed with contrast-aware colors. Icons that convey information are checked against their backgrounds. Focus indicators are sufficiently thick and high-contrast to be visible.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Identify all user interface components: buttons, text inputs, checkboxes, radio buttons, select menus, sliders, and custom controls.</li>
+        <li>For each component, identify the visual boundary or indicator that marks its presence (e.g., border, background, icon).</li>
+        <li>Use a contrast checking tool to measure the contrast ratio of that boundary against its adjacent color.</li>
+        <li>Verify the ratio meets or exceeds 3:1.</li>
+        <li>Check each interactive state: default, hover, focus, active, and error — all states must independently meet the threshold.</li>
+        <li>Identify meaningful graphical objects such as chart segments, graph lines, and informational icons, and check their contrast.</li>
+        <li>Pay specific attention to focus indicators, which are required to meet 3:1 under this criterion (and have additional requirements under 2.4.11 Focus Appearance in WCAG 2.2).</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>This criterion was added in WCAG 2.1. It does not apply to disabled components, logos, or graphical elements that are purely decorative. The 3:1 threshold for non-text elements is lower than the 4.5:1 minimum for normal text, reflecting the generally larger size and simpler shapes of UI components compared to text glyphs.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html">WCAG 2.2 Understanding 1.4.11</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

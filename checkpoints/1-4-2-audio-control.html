@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.4.2 Audio Control — WCAG 2.2 Demo</title>
+  <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.2 Audio Control failures and how to fix them.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <h1 class="page-header__title">1.4.2 Audio Control</h1>
+      <div class="page-header__meta">
+        <span class="badge badge--level-a">Level A</span>
+        <span class="badge badge--status-placeholder">Demo coming soon</span>
+      </div>
+    </div>
+
+    <section class="content-section" aria-labelledby="description-heading">
+      <h2 id="description-heading">Description</h2>
+      <p>If any audio on a web page plays automatically for more than three seconds, the user must be able to pause or stop the audio, or control the audio volume independently of the overall system volume. Audio that starts playing without user initiation can interfere with screen readers, which are also audio-based, making it very difficult for blind and low-vision users to hear and operate the page. It can also cause significant distress to users with cognitive disabilities or sensory sensitivities.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-placeholder">
+        <p>Interactive demo coming in a future update.</p>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when audio begins playing automatically on page load and continues for more than three seconds without providing the user a mechanism to stop, pause, or mute it. A common example is a homepage with a background music track or an auto-playing promotional video with audio. When a screen reader user lands on such a page, the auto-playing audio overlaps with the screen reader's speech output, making it nearly impossible to navigate the page and find the stop control.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation either avoids auto-playing audio entirely, or provides a mechanism at the very beginning of the page (before any auto-playing content) that allows the user to pause, stop, or mute the audio. Placing the control early in the page ensures screen reader users can find and operate it before the auto-playing audio makes navigation impossible. Alternatively, the audio can be limited to three seconds or less.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Load the page and listen for any audio that begins playing automatically.</li>
+        <li>If audio auto-plays, check whether it stops on its own within three seconds.</li>
+        <li>If audio continues beyond three seconds, look for a mechanism to pause, stop, or mute it.</li>
+        <li>Verify the audio control mechanism appears near the top of the page and is reachable via keyboard before the audio source.</li>
+        <li>Use a screen reader and attempt to navigate to the audio control while audio is playing, to verify the control is findable and operable.</li>
+        <li>Test that the control actually stops or mutes the audio when activated.</li>
+      </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Notes</h2>
+      <p>Screen reader users are the most severely impacted by auto-playing audio, as audio output from the page can mask the screen reader's own speech. Best practice is simply to not auto-play audio unless the user has clearly initiated it. Where auto-play is used, ensuring the stop or mute control is the first focusable element on the page is a practical approach.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>
+        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html">WCAG 2.2 Understanding 1.4.2</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

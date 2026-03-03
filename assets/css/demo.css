@@ -136,6 +136,16 @@
   border: 0;
 }
 
+/* Demo placeholder (no demo implemented yet) */
+.demo-placeholder {
+  padding: var(--space-8) var(--space-6);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
 /* -------------------------------------------------------
    Checkpoint-specific demo styles
    ------------------------------------------------------- */
