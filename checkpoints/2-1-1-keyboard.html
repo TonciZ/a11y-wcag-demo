@@ -31,7 +31,7 @@
       <h1 class="page-header__title">2.1.1 Keyboard</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
+        <span class="badge badge--status-done">Demo ready</span>
       </div>
     </div>
 
@@ -42,10 +42,117 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-1-label"
+           data-announce-fail="Showing fail example. The interactive element is only operable by mouse — keyboard users cannot activate it."
+           data-announce-pass="Showing pass example. The same functionality is implemented with a native button element, keyboard accessible by default.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-1-label">Interactive control: keyboard operability</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail — control is mouse-only, not reachable by keyboard</span>
+          <span class="demo-status__text--pass">Pass — control is a native button, keyboard accessible</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+
+          <div data-demo-state="fail">
+            <p style="font-size:0.875rem; margin-bottom:1.25rem;">
+              Try to activate the control below using only your <strong>keyboard</strong> (Tab to it, then press Enter or Space).
+              You cannot — it is only reachable and operable with a mouse.
+            </p>
+            <div style="max-width:360px;">
+              <p style="font-size:0.875rem; font-weight:600; margin-bottom:0.5rem;">Add item to list:</p>
+              <!-- Fail: div styled as a button, onclick only, not focusable -->
+              <div style="display:flex; gap:0.5rem; align-items:center;">
+                <input type="text" placeholder="Item name" id="fail-item-input"
+                       style="flex:1; padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit;">
+                <div onclick="addItemFail()"
+                     style="padding:0.5rem 1rem; background:#0055cc; color:#fff; border-radius:4px; cursor:pointer; font-size:0.875rem; font-weight:600; white-space:nowrap; user-select:none;">
+                  Add
+                </div>
+              </div>
+              <ul id="fail-list" style="margin-top:0.75rem; padding-left:1.25rem; font-size:0.875rem; min-height:1.5rem;"></ul>
+              <p style="font-size:0.75rem; margin-top:0.5rem; font-family:monospace; color:#888;">
+                &lt;div onclick="addItem()"&gt;Add&lt;/div&gt; <em style="font-style:normal;">&lt;!-- no tabindex, not keyboard-operable --&gt;</em>
+              </p>
+            </div>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p style="font-size:0.875rem; margin-bottom:1.25rem;">
+              The same feature, built with a <code>&lt;button&gt;</code>.
+              Tab to it and press <strong>Enter</strong> or <strong>Space</strong> — it works.
+            </p>
+            <div style="max-width:360px;">
+              <p style="font-size:0.875rem; font-weight:600; margin-bottom:0.5rem;">Add item to list:</p>
+              <div style="display:flex; gap:0.5rem; align-items:center;">
+                <label for="pass-item-input" class="visually-hidden">Item name</label>
+                <input type="text" id="pass-item-input" placeholder="Item name"
+                       style="flex:1; padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit;">
+                <button type="button" onclick="addItemPass()"
+                        style="padding:0.5rem 1rem; background:#0055cc; color:#fff; border:none; border-radius:4px; font-size:0.875rem; font-weight:600; font-family:inherit; cursor:pointer; white-space:nowrap;">
+                  Add
+                </button>
+              </div>
+              <ul id="pass-list" style="margin-top:0.75rem; padding-left:1.25rem; font-size:0.875rem; min-height:1.5rem;"></ul>
+              <p style="font-size:0.75rem; margin-top:0.5rem; font-family:monospace; color:#888;">
+                &lt;button type="button" onclick="addItem()"&gt;Add&lt;/button&gt;
+              </p>
+            </div>
+          </div>
+
+        </div><!-- /.demo-stage -->
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>A <code>&lt;div&gt;</code> with an <code>onclick</code> handler is not in the tab order and does not respond to keyboard events. Users who navigate by keyboard — including screen reader users, switch access users, and many motor-impaired users — cannot reach or activate the control at all.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>A native <code>&lt;button&gt;</code> is keyboard-focusable by default and responds to both Enter and Space key presses. No extra JavaScript or ARIA is required to make it keyboard accessible — semantic HTML provides this for free.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
     </section>
+
+    <script>
+      function addItemFail() {
+        var input = document.getElementById('fail-item-input');
+        var list = document.getElementById('fail-list');
+        var val = input.value.trim();
+        if (!val) return;
+        var li = document.createElement('li');
+        li.textContent = val;
+        list.appendChild(li);
+        input.value = '';
+      }
+      function addItemPass() {
+        var input = document.getElementById('pass-item-input');
+        var list = document.getElementById('pass-list');
+        var val = input.value.trim();
+        if (!val) return;
+        var li = document.createElement('li');
+        li.textContent = val;
+        list.appendChild(li);
+        input.value = '';
+        input.focus();
+      }
+    </script>
 
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
@@ -86,5 +193,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/left-nav.js"></script>
 </body>
 </html>

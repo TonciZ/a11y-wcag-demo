@@ -31,7 +31,7 @@
       <h1 class="page-header__title">2.4.4 Link Purpose (In Context)</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
+        <span class="badge badge--status-done">Demo ready</span>
       </div>
     </div>
 
@@ -42,9 +42,106 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-1-label"
+           data-announce-fail="Showing fail example. All links say Read more — screen reader users navigating by links cannot distinguish their destinations."
+           data-announce-pass="Showing pass example. Each link has a unique, descriptive accessible name that identifies its destination.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-1-label">Link text: purpose from link text</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail — multiple links share identical, meaningless text</span>
+          <span class="demo-status__text--pass">Pass — each link has a unique, descriptive accessible name</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+
+          <div data-demo-state="fail">
+            <p style="font-size:0.875rem; margin-bottom:1.25rem;">
+              Screen reader users often navigate a page by pulling up a list of all links.
+              When every link says "Read more", there is no way to tell them apart.
+            </p>
+            <div style="display:flex; flex-direction:column; gap:1.25rem; max-width:480px;">
+
+              <article style="padding:0.75rem; background:#f9f9f9; border-radius:4px; border:1px solid #e0e0e0;">
+                <h3 style="font-size:0.9375rem; margin-bottom:0.25rem;">Keyboard accessibility in WCAG 2.2</h3>
+                <p style="font-size:0.8125rem; color:#555; margin-bottom:0.5rem;">All functionality must be operable via keyboard alone.</p>
+                <a href="#" onclick="return false;" style="font-size:0.8125rem; color:#0055cc;">Read more</a>
+              </article>
+
+              <article style="padding:0.75rem; background:#f9f9f9; border-radius:4px; border:1px solid #e0e0e0;">
+                <h3 style="font-size:0.9375rem; margin-bottom:0.25rem;">Understanding contrast requirements</h3>
+                <p style="font-size:0.8125rem; color:#555; margin-bottom:0.5rem;">Text must have a 4.5:1 contrast ratio against its background.</p>
+                <a href="#" onclick="return false;" style="font-size:0.8125rem; color:#0055cc;">Read more</a>
+              </article>
+
+              <article style="padding:0.75rem; background:#f9f9f9; border-radius:4px; border:1px solid #e0e0e0;">
+                <h3 style="font-size:0.9375rem; margin-bottom:0.25rem;">Screen reader testing guide</h3>
+                <p style="font-size:0.8125rem; color:#555; margin-bottom:0.5rem;">Step-by-step instructions for testing with NVDA and VoiceOver.</p>
+                <a href="#" onclick="return false;" style="font-size:0.8125rem; color:#0055cc;">Read more</a>
+              </article>
+
+            </div>
+            <p style="font-size:0.75rem; margin-top:0.75rem; font-family:monospace; color:#888;">Link list announced by SR: "Read more, Read more, Read more"</p>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p style="font-size:0.875rem; margin-bottom:1.25rem;">
+              Each link now has a unique accessible name that identifies its destination.
+              In a screen reader link list, all three are clearly distinguishable.
+            </p>
+            <div style="display:flex; flex-direction:column; gap:1.25rem; max-width:480px;">
+
+              <article style="padding:0.75rem; background:#f9f9f9; border-radius:4px; border:1px solid #e0e0e0;">
+                <h3 style="font-size:0.9375rem; margin-bottom:0.25rem;">Keyboard accessibility in WCAG 2.2</h3>
+                <p style="font-size:0.8125rem; color:#555; margin-bottom:0.5rem;">All functionality must be operable via keyboard alone.</p>
+                <!-- Option A: descriptive visible text -->
+                <a href="#" onclick="return false;" style="font-size:0.8125rem; color:#0055cc;">Read more about keyboard accessibility</a>
+              </article>
+
+              <article style="padding:0.75rem; background:#f9f9f9; border-radius:4px; border:1px solid #e0e0e0;">
+                <h3 id="contrast-heading" style="font-size:0.9375rem; margin-bottom:0.25rem;">Understanding contrast requirements</h3>
+                <p style="font-size:0.8125rem; color:#555; margin-bottom:0.5rem;">Text must have a 4.5:1 contrast ratio against its background.</p>
+                <!-- Option B: aria-label with full context -->
+                <a href="#" onclick="return false;" aria-label="Read more about contrast requirements" style="font-size:0.8125rem; color:#0055cc;">Read more</a>
+              </article>
+
+              <article style="padding:0.75rem; background:#f9f9f9; border-radius:4px; border:1px solid #e0e0e0;">
+                <h3 id="sr-heading" style="font-size:0.9375rem; margin-bottom:0.25rem;">Screen reader testing guide</h3>
+                <p style="font-size:0.8125rem; color:#555; margin-bottom:0.5rem;">Step-by-step instructions for testing with NVDA and VoiceOver.</p>
+                <!-- Option C: aria-labelledby referencing heading -->
+                <a href="#" onclick="return false;" aria-labelledby="sr-heading" style="font-size:0.8125rem; color:#0055cc;">Read more</a>
+              </article>
+
+            </div>
+            <p style="font-size:0.75rem; margin-top:0.75rem; font-family:monospace; color:#888;">Link list announced by SR: "Read more about keyboard accessibility / Read more about contrast requirements / Screen reader testing guide"</p>
+          </div>
+
+        </div><!-- /.demo-stage -->
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>When multiple links have the same text ("Read more"), screen reader users who navigate by links or hear a link list cannot determine where any of them lead. The purpose of each link must be determinable from the link text alone, or from its surrounding context.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>Three patterns are shown: (1) descriptive visible text, (2) <code>aria-label</code> overriding the visible text, (3) <code>aria-labelledby</code> referencing the article heading. All three give screen reader users a unique, meaningful link name that identifies the destination.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -85,5 +182,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/left-nav.js"></script>
 </body>
 </html>

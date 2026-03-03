@@ -31,7 +31,7 @@
       <h1 class="page-header__title">2.1.2 No Keyboard Trap</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
+        <span class="badge badge--status-done">Demo ready</span>
       </div>
     </div>
 
@@ -42,10 +42,198 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-1-label"
+           data-announce-fail="Showing fail example. Opening the dialog traps keyboard focus with no way to escape — you must use a mouse to close it."
+           data-announce-pass="Showing pass example. The dialog traps focus correctly within itself, but Escape key and a close button both allow the user to leave.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-1-label">Modal dialog: focus trap</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail — focus enters the dialog and cannot escape by keyboard</span>
+          <span class="demo-status__text--pass">Pass — focus is contained within dialog, Escape key and close button both exit it</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+
+          <div data-demo-state="fail">
+            <p style="font-size:0.875rem; margin-bottom:1rem;">
+              Open the dialog using keyboard (Tab to the button, press Enter).
+              Tab through the dialog fields — you can never Tab out.
+              There is no Escape key handler and no close button.
+              Only a mouse click outside closes it.
+            </p>
+            <button type="button" id="fail-open-btn" onclick="openFailDialog()"
+                    style="padding:0.5rem 1rem; background:#0055cc; color:#fff; border:none; border-radius:4px; font-size:0.875rem; font-weight:600; font-family:inherit; cursor:pointer;">
+              Open dialog (trap)
+            </button>
+
+            <!-- Fail dialog — no close button, no Escape handler -->
+            <div id="fail-dialog" hidden
+                 role="dialog" aria-labelledby="fail-dialog-title" aria-modal="true"
+                 style="position:fixed; inset:0; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; z-index:50;">
+              <div style="background:#fff; border-radius:6px; padding:1.5rem; width:min(360px,90vw); box-shadow:0 8px 32px rgba(0,0,0,0.2);">
+                <h3 id="fail-dialog-title" style="font-size:1rem; margin-bottom:1rem;">Subscribe to newsletter</h3>
+                <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                  <div>
+                    <label for="fail-dialog-name" style="font-size:0.875rem; font-weight:600; display:block; margin-bottom:0.25rem;">Name</label>
+                    <input type="text" id="fail-dialog-name"
+                           style="width:100%; padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit; box-sizing:border-box;">
+                  </div>
+                  <div>
+                    <label for="fail-dialog-email-input" style="font-size:0.875rem; font-weight:600; display:block; margin-bottom:0.25rem;">Email</label>
+                    <input type="email" id="fail-dialog-email-input"
+                           style="width:100%; padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit; box-sizing:border-box;">
+                  </div>
+                  <button type="button"
+                          style="padding:0.5rem 1rem; background:#0055cc; color:#fff; border:none; border-radius:4px; font-size:0.875rem; font-weight:600; font-family:inherit; cursor:pointer;">
+                    Subscribe
+                  </button>
+                  <!-- No close/cancel button. No Escape key handler. Trapped. -->
+                </div>
+                <p style="font-size:0.75rem; color:#b91c1c; margin-top:1rem; margin-bottom:0;">
+                  No close button. No Escape key support. Keyboard users are trapped.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p style="font-size:0.875rem; margin-bottom:1rem;">
+              Open the dialog. Tab cycles only within the dialog (correct — prevents accidentally
+              leaving an open modal). Press <strong>Escape</strong> or activate the
+              <strong>Close</strong> button to exit. Focus returns to the trigger button.
+            </p>
+            <button type="button" id="pass-open-btn" onclick="openPassDialog()"
+                    style="padding:0.5rem 1rem; background:#0055cc; color:#fff; border:none; border-radius:4px; font-size:0.875rem; font-weight:600; font-family:inherit; cursor:pointer;">
+              Open dialog (accessible)
+            </button>
+
+            <!-- Pass dialog — close button + Escape key + focus return -->
+            <div id="pass-dialog" hidden
+                 role="dialog" aria-labelledby="pass-dialog-title" aria-modal="true"
+                 style="position:fixed; inset:0; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; z-index:50;">
+              <div style="background:#fff; border-radius:6px; padding:1.5rem; width:min(360px,90vw); box-shadow:0 8px 32px rgba(0,0,0,0.2); position:relative;">
+                <button type="button" id="pass-close-btn" onclick="closePassDialog()" aria-label="Close dialog"
+                        style="position:absolute; top:0.75rem; right:0.75rem; padding:0.25rem 0.5rem; background:transparent; border:1px solid #ccc; border-radius:4px; cursor:pointer; font-size:1rem; line-height:1;">
+                  ✕
+                </button>
+                <h3 id="pass-dialog-title" style="font-size:1rem; margin-bottom:1rem;">Subscribe to newsletter</h3>
+                <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                  <div>
+                    <label for="pass-dialog-name" style="font-size:0.875rem; font-weight:600; display:block; margin-bottom:0.25rem;">Name</label>
+                    <input type="text" id="pass-dialog-name"
+                           style="width:100%; padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit; box-sizing:border-box;">
+                  </div>
+                  <div>
+                    <label for="pass-dialog-email-input" style="font-size:0.875rem; font-weight:600; display:block; margin-bottom:0.25rem;">Email</label>
+                    <input type="email" id="pass-dialog-email-input"
+                           style="width:100%; padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit; box-sizing:border-box;">
+                  </div>
+                  <div style="display:flex; gap:0.5rem;">
+                    <button type="button"
+                            style="flex:1; padding:0.5rem 1rem; background:#0055cc; color:#fff; border:none; border-radius:4px; font-size:0.875rem; font-weight:600; font-family:inherit; cursor:pointer;">
+                      Subscribe
+                    </button>
+                    <button type="button" id="pass-cancel-btn" onclick="closePassDialog()"
+                            style="flex:1; padding:0.5rem 1rem; background:transparent; border:1px solid #ccc; border-radius:4px; font-size:0.875rem; font-weight:600; font-family:inherit; cursor:pointer;">
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+                <p style="font-size:0.75rem; color:#15803d; margin-top:1rem; margin-bottom:0;">
+                  Press Escape or activate Cancel/✕ to close and return focus.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.demo-stage -->
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>Without an Escape key handler or a keyboard-operable close mechanism, keyboard users who open this dialog are permanently trapped. They cannot return to the rest of the page without using a mouse. This is a critical blocker for users who rely entirely on keyboard navigation.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>The dialog provides two ways to exit by keyboard: the Escape key and a Cancel/close button. Focus is intentionally contained within the dialog while it is open (this is correct behaviour for modals). When closed, focus returns to the triggering element so the user can continue from where they left off.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
     </section>
+
+    <script>
+      function openFailDialog() {
+        var dialog = document.getElementById('fail-dialog');
+        dialog.hidden = false;
+        dialog.querySelector('input').focus();
+        // No Escape handler. No close button. Intentionally broken for demo.
+        // Click-outside closes it (mouse only)
+        dialog.addEventListener('click', function handler(e) {
+          if (e.target === dialog) {
+            dialog.hidden = true;
+            dialog.removeEventListener('click', handler);
+            document.getElementById('fail-open-btn').focus();
+          }
+        });
+      }
+
+      var passKeyHandler = null;
+      function openPassDialog() {
+        var dialog = document.getElementById('pass-dialog');
+        dialog.hidden = false;
+        document.getElementById('pass-close-btn').focus();
+
+        // Trap focus within dialog
+        var focusable = dialog.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])');
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+
+        passKeyHandler = function(e) {
+          if (e.key === 'Escape') {
+            closePassDialog();
+            return;
+          }
+          if (e.key === 'Tab') {
+            if (e.shiftKey) {
+              if (document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+              }
+            } else {
+              if (document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+              }
+            }
+          }
+        };
+        dialog.addEventListener('keydown', passKeyHandler);
+      }
+
+      function closePassDialog() {
+        var dialog = document.getElementById('pass-dialog');
+        dialog.hidden = true;
+        if (passKeyHandler) {
+          dialog.removeEventListener('keydown', passKeyHandler);
+          passKeyHandler = null;
+        }
+        document.getElementById('pass-open-btn').focus();
+      }
+    </script>
 
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
@@ -85,5 +273,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/left-nav.js"></script>
 </body>
 </html>

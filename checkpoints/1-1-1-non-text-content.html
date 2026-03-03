@@ -31,7 +31,7 @@
       <h1 class="page-header__title">1.1.1 Non-text Content</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
+        <span class="badge badge--status-done">Demo ready</span>
       </div>
     </div>
 
@@ -42,9 +42,83 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-1-label"
+           data-announce-fail="Showing fail example. The chart image has no text alternative — a screen reader announces nothing meaningful."
+           data-announce-pass="Showing pass example. The chart image has a descriptive alt attribute — a screen reader announces the data it contains.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-1-label">Informative image: alt text</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail — image has no useful text alternative</span>
+          <span class="demo-status__text--pass">Pass — image has a descriptive alt attribute</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+
+          <div data-demo-state="fail">
+            <p style="font-size:0.875rem; margin-bottom:1rem;">
+              The following chart is rendered using an <code>&lt;img&gt;</code> element with <code>alt=""</code>.
+              A screen reader will skip it entirely — the data it contains is invisible to non-sighted users.
+            </p>
+            <figure style="display:inline-block; margin:0;">
+              <!-- alt="" is the wrong treatment for an informative image -->
+              <img src="../assets/img/chart-sales.svg" alt="" width="280" height="160"
+                   style="display:block; border:1px solid #ccc; border-radius:4px; background:#fff;">
+              <figcaption style="font-size:0.8rem; color:#666; margin-top:0.25rem;">
+                Quarterly sales performance
+              </figcaption>
+            </figure>
+            <p style="font-size:0.875rem; margin-top:1rem; font-family:monospace; background:#f5f5f5; padding:0.5rem; border-radius:4px;">
+              &lt;img src="chart-sales.svg" <strong>alt=""</strong>&gt;
+            </p>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p style="font-size:0.875rem; margin-bottom:1rem;">
+              The same chart now has a descriptive <code>alt</code> attribute. A screen reader announces
+              the data — the chart is fully accessible without sight.
+            </p>
+            <figure style="display:inline-block; margin:0;">
+              <img src="../assets/img/chart-sales.svg"
+                   alt="Bar chart showing quarterly sales growth: Q1 £12k, Q2 £18k, Q3 £22k, Q4 £31k"
+                   width="280" height="160"
+                   style="display:block; border:1px solid #ccc; border-radius:4px; background:#fff;">
+              <figcaption style="font-size:0.8rem; color:#666; margin-top:0.25rem;">
+                Quarterly sales performance
+              </figcaption>
+            </figure>
+            <p style="font-size:0.875rem; margin-top:1rem; font-family:monospace; background:#f5f5f5; padding:0.5rem; border-radius:4px;">
+              &lt;img src="chart-sales.svg" <strong>alt="Bar chart showing quarterly sales growth: Q1 £12k, Q2 £18k, Q3 £22k, Q4 £31k"</strong>&gt;
+            </p>
+          </div>
+
+        </div><!-- /.demo-stage -->
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p><code>alt=""</code> tells the browser this image is decorative. A screen reader skips it entirely. When an image conveys data (like this chart), omitting the alt text removes that information for users who cannot see it.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>A descriptive <code>alt</code> attribute conveys the same information as the visual chart. Screen readers announce it in full, so the data is available regardless of how the user accesses the page.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -86,5 +160,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/left-nav.js"></script>
 </body>
 </html>

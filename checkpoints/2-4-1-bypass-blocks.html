@@ -31,7 +31,7 @@
       <h1 class="page-header__title">2.4.1 Bypass Blocks</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
+        <span class="badge badge--status-done">Demo ready</span>
       </div>
     </div>
 
@@ -42,9 +42,102 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-1-label"
+           data-announce-fail="Showing fail example. There is no skip link — keyboard users must Tab through all navigation links before reaching the main content."
+           data-announce-pass="Showing pass example. A skip to main content link appears at the top, letting keyboard users bypass the navigation block in one keystroke.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-1-label">Skip link: bypassing navigation</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail — no skip link, keyboard users Tab through all nav items</span>
+          <span class="demo-status__text--pass">Pass — skip link lets keyboard users jump directly to main content</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+
+          <div data-demo-state="fail">
+            <p style="font-size:0.875rem; margin-bottom:1rem;">
+              Tab into the mini-page below. To reach the "Main content" heading,
+              you must Tab through all <strong>8 navigation links</strong> first.
+              On a real site with 12–20 nav items, this is a significant burden.
+            </p>
+            <!-- Simulated page fragment: no skip link -->
+            <div style="border:1px solid #ccc; border-radius:4px; overflow:hidden; font-size:0.875rem;">
+              <!-- No skip link -->
+              <div style="background:#1a1a1a; padding:0.5rem 1rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Home</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">About</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Services</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Portfolio</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Blog</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Pricing</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Support</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Contact</a>
+              </div>
+              <div style="padding:1rem;">
+                <h4 tabindex="0" style="margin:0 0 0.5rem; font-size:0.9375rem;">Main content</h4>
+                <p style="margin:0; color:#555; font-size:0.8125rem;">Tab count to reach here: 8 presses</p>
+              </div>
+            </div>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p style="font-size:0.875rem; margin-bottom:1rem;">
+              Tab into the mini-page below. The <strong>first Tab stop</strong> is "Skip to main content".
+              Press Enter to jump directly to the content area — bypassing all 8 nav links in one keystroke.
+            </p>
+            <!-- Simulated page fragment: with skip link -->
+            <div style="border:1px solid #ccc; border-radius:4px; overflow:hidden; font-size:0.875rem; position:relative;">
+              <!-- Skip link: visually hidden until focused -->
+              <a href="#bypass-demo-main"
+                 style="position:absolute; top:-100%; left:0.5rem; background:#0055cc; color:#fff; padding:0.375rem 0.75rem; text-decoration:none; font-weight:600; font-size:0.8125rem; border-radius:0 0 4px 4px; z-index:10;"
+                 onfocus="this.style.top='0'"
+                 onblur="this.style.top='-100%'">
+                Skip to main content
+              </a>
+              <div style="background:#1a1a1a; padding:0.5rem 1rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Home</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">About</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Services</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Portfolio</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Blog</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Pricing</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Support</a>
+                <a href="#" onclick="return false;" style="color:#fff; text-decoration:none; padding:0.25rem 0; font-size:0.8125rem;">Contact</a>
+              </div>
+              <div id="bypass-demo-main" tabindex="-1" style="padding:1rem; outline:none;">
+                <h4 style="margin:0 0 0.5rem; font-size:0.9375rem;">Main content</h4>
+                <p style="margin:0; color:#555; font-size:0.8125rem;">Tab count to reach here: 1 press (via skip link)</p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.demo-stage -->
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>Without a skip link, keyboard users — including screen reader users and people who cannot use a mouse — must Tab through every navigation link on every page before reaching the content they came for. On pages with large navigation blocks, this makes the site effectively unusable for keyboard users.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>A "Skip to main content" link is the first focusable element on the page. It is visually hidden until focused (so it does not affect sighted users) but becomes visible and functional when a keyboard user presses Tab. The link target has <code>tabindex="-1"</code> so it can receive programmatic focus via the skip link.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -84,5 +177,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/left-nav.js"></script>
 </body>
 </html>

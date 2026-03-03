@@ -31,7 +31,7 @@
       <h1 class="page-header__title">3.3.1 Error Identification</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
+        <span class="badge badge--status-done">Demo ready</span>
       </div>
     </div>
 
@@ -42,10 +42,152 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-1-label"
+           data-announce-fail="Showing fail example. Errors are indicated only by a red border — screen readers do not announce them."
+           data-announce-pass="Showing pass example. Errors are identified in text and programmatically associated with each field, so screen readers announce them.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-1-label">Form validation: error messages</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail — errors conveyed by colour only, not announced</span>
+          <span class="demo-status__text--pass">Pass — errors identified in text and linked to inputs</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+
+          <div data-demo-state="fail">
+            <p style="font-size:0.875rem; margin-bottom:1.25rem;">
+              Submit the form below empty. Errors appear as red borders — but a screen reader
+              announces nothing. Users navigating by keyboard receive no indication of which
+              fields failed or why.
+            </p>
+            <form id="fail-form" novalidate style="max-width:320px; display:flex; flex-direction:column; gap:1rem;" onsubmit="submitFailForm(event);">
+              <div style="display:flex; flex-direction:column; gap:0.25rem;">
+                <label for="fail-email" style="font-size:0.875rem; font-weight:600;">Email address</label>
+                <input type="email" id="fail-email"
+                       style="padding:0.5rem 0.75rem; border:2px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit;"
+                       data-fail-input>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.25rem;">
+                <label for="fail-password" style="font-size:0.875rem; font-weight:600;">Password</label>
+                <input type="password" id="fail-password"
+                       style="padding:0.5rem 0.75rem; border:2px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit;"
+                       data-fail-input>
+              </div>
+              <button type="submit" style="padding:0.5rem 1rem; background:#0055cc; color:#fff; border:none; border-radius:4px; font-size:0.875rem; font-weight:600; font-family:inherit; cursor:pointer; align-self:flex-start;">
+                Sign in
+              </button>
+            </form>
+            <p style="font-size:0.75rem; margin-top:0.75rem; color:#888;">Error = red border only. Screen reader: no announcement.</p>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p style="font-size:0.875rem; margin-bottom:1.25rem;">
+              Submit the same form empty. Errors appear in text, each field is marked
+              <code>aria-invalid="true"</code>, and the error message is linked via
+              <code>aria-describedby</code> — screen readers announce them automatically.
+            </p>
+            <form id="pass-form" novalidate style="max-width:320px; display:flex; flex-direction:column; gap:1rem;" onsubmit="submitPassForm(event);">
+              <div style="display:flex; flex-direction:column; gap:0.25rem;">
+                <label for="pass-email" style="font-size:0.875rem; font-weight:600;">Email address</label>
+                <input type="email" id="pass-email" aria-describedby="pass-email-err"
+                       style="padding:0.5rem 0.75rem; border:2px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit;">
+                <span id="pass-email-err" role="alert" style="font-size:0.8125rem; color:#b91c1c; display:none;"></span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.25rem;">
+                <label for="pass-password" style="font-size:0.875rem; font-weight:600;">Password</label>
+                <input type="password" id="pass-password" aria-describedby="pass-password-err"
+                       style="padding:0.5rem 0.75rem; border:2px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit;">
+                <span id="pass-password-err" role="alert" style="font-size:0.8125rem; color:#b91c1c; display:none;"></span>
+              </div>
+              <button type="submit" style="padding:0.5rem 1rem; background:#0055cc; color:#fff; border:none; border-radius:4px; font-size:0.875rem; font-weight:600; font-family:inherit; cursor:pointer; align-self:flex-start;">
+                Sign in
+              </button>
+            </form>
+            <p style="font-size:0.75rem; margin-top:0.75rem; color:#888;">Error = text message + aria-invalid + aria-describedby. Screen reader announces each error.</p>
+          </div>
+
+        </div><!-- /.demo-stage -->
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>A red border alone conveys the error only through colour and visual styling. Screen readers do not announce CSS changes. A user who cannot see the page has no idea which field failed or what the problem is.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>Each error is described in visible text. <code>aria-invalid="true"</code> is set on the field so screen readers report it as invalid. <code>aria-describedby</code> links the error message to the input, so when the user focuses the field they hear the error text. <code>role="alert"</code> on the message also causes it to be announced immediately when it appears.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
     </section>
+
+    <script>
+      function submitFailForm(e) {
+        e.preventDefault();
+        var inputs = document.querySelectorAll('#fail-form [data-fail-input]');
+        inputs.forEach(function(input) {
+          if (!input.value.trim()) {
+            input.style.borderColor = '#b91c1c';
+          } else {
+            input.style.borderColor = '#15803d';
+          }
+        });
+      }
+
+      function submitPassForm(e) {
+        e.preventDefault();
+        var hasError = false;
+
+        var email = document.getElementById('pass-email');
+        var emailErr = document.getElementById('pass-email-err');
+        if (!email.value.trim()) {
+          email.setAttribute('aria-invalid', 'true');
+          email.style.borderColor = '#b91c1c';
+          emailErr.textContent = 'Error: Email address is required.';
+          emailErr.style.display = 'block';
+          hasError = true;
+        } else {
+          email.setAttribute('aria-invalid', 'false');
+          email.style.borderColor = '#15803d';
+          emailErr.textContent = '';
+          emailErr.style.display = 'none';
+        }
+
+        var password = document.getElementById('pass-password');
+        var passwordErr = document.getElementById('pass-password-err');
+        if (!password.value.trim()) {
+          password.setAttribute('aria-invalid', 'true');
+          password.style.borderColor = '#b91c1c';
+          passwordErr.textContent = 'Error: Password is required.';
+          passwordErr.style.display = 'block';
+          hasError = true;
+        } else {
+          password.setAttribute('aria-invalid', 'false');
+          password.style.borderColor = '#15803d';
+          passwordErr.textContent = '';
+          passwordErr.style.display = 'none';
+        }
+
+        if (!hasError) {
+          alert('Form submitted successfully!');
+        }
+      }
+    </script>
 
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
@@ -86,5 +228,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/left-nav.js"></script>
 </body>
 </html>

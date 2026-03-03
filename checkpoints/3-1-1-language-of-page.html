@@ -31,7 +31,7 @@
       <h1 class="page-header__title">3.1.1 Language of Page</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
+        <span class="badge badge--status-done">Demo ready</span>
       </div>
     </div>
 
@@ -42,9 +42,110 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-1-label"
+           data-announce-fail="Showing fail example. The html element has no lang attribute — a screen reader may use the wrong language voice or mispronounce words."
+           data-announce-pass="Showing pass example. The html element has lang equals en — the screen reader selects the correct English voice.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-1-label">HTML lang attribute</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail — &lt;html&gt; has no lang attribute</span>
+          <span class="demo-status__text--pass">Pass — &lt;html lang="en"&gt; identifies the page language</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+
+          <div data-demo-state="fail">
+            <p style="font-size:0.875rem; margin-bottom:1.25rem;">
+              Without a <code>lang</code> attribute on the <code>&lt;html&gt;</code> element, the screen reader
+              cannot determine the language of the page. It may use the OS default language or attempt to
+              guess — resulting in mispronounced words or the wrong voice entirely.
+            </p>
+            <div style="max-width:480px; display:flex; flex-direction:column; gap:1rem;">
+
+              <div style="background:#fff; border:1px solid #ccc; border-radius:4px; overflow:hidden;">
+                <div style="background:#e0e0e0; padding:0.375rem 0.75rem; font-size:0.75rem; font-family:monospace; color:#444; border-bottom:1px solid #ccc;">
+                  page source
+                </div>
+                <pre style="margin:0; padding:0.75rem; font-size:0.8125rem; background:#1e1e1e; color:#d4d4d4; overflow-x:auto;"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;         &lt;!-- no lang attribute --&gt;
+  &lt;head&gt;...&lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Welcome to our website.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              </div>
+
+              <div style="padding:0.75rem; border:1px solid #e0e0e0; border-radius:4px; background:#fff8f0;">
+                <p style="font-size:0.8rem; font-weight:700; color:#b45309; margin-bottom:0.25rem; text-transform:uppercase; letter-spacing:0.04em;">Screen reader consequence</p>
+                <p style="font-size:0.875rem; color:#555; margin:0;">
+                  Screen reader may use French TTS (or whatever the OS default is) to read English text,
+                  resulting in heavily accented or unintelligible pronunciation.
+                  Braille display software may apply incorrect language-specific rules.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p style="font-size:0.875rem; margin-bottom:1.25rem;">
+              With <code>lang="en"</code> on the <code>&lt;html&gt;</code> element, the screen reader
+              selects the correct English voice and applies correct pronunciation and phonetic rules.
+            </p>
+            <div style="max-width:480px; display:flex; flex-direction:column; gap:1rem;">
+
+              <div style="background:#fff; border:1px solid #ccc; border-radius:4px; overflow:hidden;">
+                <div style="background:#e0e0e0; padding:0.375rem 0.75rem; font-size:0.75rem; font-family:monospace; color:#444; border-bottom:1px solid #ccc;">
+                  page source
+                </div>
+                <pre style="margin:0; padding:0.75rem; font-size:0.8125rem; background:#1e1e1e; color:#d4d4d4; overflow-x:auto;"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;  &lt;!-- language identified --&gt;
+  &lt;head&gt;...&lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Welcome to our website.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              </div>
+
+              <div style="padding:0.75rem; border:1px solid #e0e0e0; border-radius:4px; background:#f0fdf4;">
+                <p style="font-size:0.8rem; font-weight:700; color:#15803d; margin-bottom:0.25rem; text-transform:uppercase; letter-spacing:0.04em;">Screen reader behaviour</p>
+                <p style="font-size:0.875rem; color:#555; margin:0;">
+                  Screen reader selects the English TTS engine and correct phonetic rules.
+                  The same applies to automatic translation tools, search engine indexers,
+                  and Braille embossers — all benefit from an explicit language declaration.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- /.demo-stage -->
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>Without <code>lang</code> on <code>&lt;html&gt;</code>, assistive technology cannot identify the human language of the page. Screen readers may use the wrong voice, mispronounce words, or apply incorrect phonetic rules, making content harder or impossible to understand.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p><code>&lt;html lang="en"&gt;</code> identifies the primary language so screen readers, translation tools, and other software can process the content correctly. Use valid BCP 47 language tags — <code>en</code>, <code>en-GB</code>, <code>fr</code>, <code>de</code>, etc.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -85,5 +186,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/left-nav.js"></script>
 </body>
 </html>

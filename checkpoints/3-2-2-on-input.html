@@ -31,7 +31,7 @@
       <h1 class="page-header__title">3.2.2 On Input</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
+        <span class="badge badge--status-done">Demo ready</span>
       </div>
     </div>
 
@@ -42,10 +42,122 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-1-label"
+           data-announce-fail="Showing fail example. Selecting an option from the dropdown immediately navigates to a new page without warning."
+           data-announce-pass="Showing pass example. Selecting an option updates the selection but does nothing until the user explicitly presses Go.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-1-label">Select element: automatic navigation on change</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail — changing the select value triggers immediate navigation</span>
+          <span class="demo-status__text--pass">Pass — navigation only happens when the user activates the Go button</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+
+          <div data-demo-state="fail">
+            <p style="font-size:0.875rem; margin-bottom:1rem;">
+              Use the keyboard to change the selection in the dropdown (Tab to it, then use arrow keys).
+              Selecting a different country immediately "navigates" — before you can review your choice.
+            </p>
+            <div style="max-width:360px;">
+              <label for="fail-country" style="font-size:0.875rem; font-weight:600; display:block; margin-bottom:0.375rem;">
+                Choose your region:
+              </label>
+              <!-- Fail: onchange triggers immediate navigation -->
+              <select id="fail-country" onchange="onInputFailure(this)"
+                      style="width:100%; padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit; cursor:pointer;">
+                <option value="">— Select region —</option>
+                <option value="uk">United Kingdom</option>
+                <option value="ie">Ireland</option>
+                <option value="us">United States</option>
+                <option value="ca">Canada</option>
+                <option value="au">Australia</option>
+              </select>
+              <div id="input-fail-popup" hidden
+                   style="margin-top:0.75rem; padding:0.75rem; background:#fef9c3; border:1px solid #fde047; border-radius:4px; font-size:0.8125rem; color:#713f12;">
+                Automatic navigation triggered! Keyboard users exploring options with arrow keys
+                are sent to a new page on every keypress.
+              </div>
+            </div>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p style="font-size:0.875rem; margin-bottom:1rem;">
+              Use arrow keys to browse options in the dropdown — nothing happens.
+              Only when you activate the <strong>Go</strong> button does the navigation occur.
+            </p>
+            <div style="max-width:360px; display:flex; flex-direction:column; gap:0.75rem;">
+              <div>
+                <label for="pass-country" style="font-size:0.875rem; font-weight:600; display:block; margin-bottom:0.375rem;">
+                  Choose your region:
+                </label>
+                <!-- Pass: onchange only updates state, button triggers navigation -->
+                <select id="pass-country"
+                        style="width:100%; padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px; font-size:0.875rem; font-family:inherit; cursor:pointer;">
+                  <option value="">— Select region —</option>
+                  <option value="uk">United Kingdom</option>
+                  <option value="ie">Ireland</option>
+                  <option value="us">United States</option>
+                  <option value="ca">Canada</option>
+                  <option value="au">Australia</option>
+                </select>
+              </div>
+              <button type="button" onclick="onInputPass()"
+                      style="padding:0.5rem 1rem; background:#0055cc; color:#fff; border:none; border-radius:4px; font-size:0.875rem; font-weight:600; font-family:inherit; cursor:pointer; align-self:flex-start;">
+                Go
+              </button>
+              <div id="input-pass-popup" hidden
+                   style="padding:0.75rem; background:#f0fdf4; border:1px solid #86efac; border-radius:4px; font-size:0.8125rem; color:#166534;">
+                Navigation initiated by your explicit action (the Go button).
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.demo-stage -->
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>Attaching navigation to the <code>onchange</code> event means the page navigates every time a keyboard user presses an arrow key inside the select. Users exploring options are involuntarily sent to pages they did not intend to visit. This is a severe usability barrier for keyboard and screen reader users.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>The select element records the user's choice without acting on it. A separate "Go" button is the only trigger for navigation, and the user must explicitly activate it. This gives keyboard users full control to browse options before committing to an action.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
     </section>
+
+    <script>
+      function onInputFailure(sel) {
+        if (!sel.value) return;
+        var popup = document.getElementById('input-fail-popup');
+        popup.hidden = false;
+        setTimeout(function() { popup.hidden = true; }, 3000);
+      }
+      function onInputPass() {
+        var sel = document.getElementById('pass-country');
+        if (!sel.value) { alert('Please select a region first.'); return; }
+        var popup = document.getElementById('input-pass-popup');
+        popup.textContent = 'Navigation initiated by your explicit action (the Go button). Destination: ' + sel.options[sel.selectedIndex].text;
+        popup.hidden = false;
+        setTimeout(function() { popup.hidden = true; }, 4000);
+      }
+    </script>
 
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
@@ -85,5 +197,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/left-nav.js"></script>
 </body>
 </html>
