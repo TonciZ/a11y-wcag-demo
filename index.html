@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WCAG Demo — Accessibility Learning Platform</title>
+  <meta name="description" content="Interactive WCAG demos showing accessibility failures and how to fix them. For testers and developers.">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">WCAG Demo</a>
+      <nav aria-label="Site navigation">
+        <ul class="site-nav__list">
+          <li><a href="index.html" aria-current="page">Checkpoints</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">WCAG 2.2</p>
+      <h1 class="page-header__title">Accessibility Checkpoints</h1>
+      <p>Interactive demos showing how accessibility failures occur and how to fix them. Each checkpoint includes a toggleable FAIL / PASS example and manual testing instructions.</p>
+    </div>
+
+    <section aria-labelledby="checkpoints-heading">
+      <h2 id="checkpoints-heading" class="visually-hidden">Checkpoint list</h2>
+
+      <!--
+        Content source: /content/wcag-index.md
+        To add a checkpoint: add entry to wcag-index.md, create the checkpoint .md and .html files.
+      -->
+      <ul class="checkpoint-list">
+
+        <li>
+          <a href="checkpoints/1-3-1-info-relationships.html" class="checkpoint-card">
+            <div class="checkpoint-card__header">
+              <span class="checkpoint-card__id">1.3.1</span>
+              <span class="badge badge--level-a">Level A</span>
+            </div>
+            <div class="checkpoint-card__title">Info and Relationships</div>
+            <p class="checkpoint-card__summary">Structure and relationships conveyed through presentation must also be programmatically determinable or available in text.</p>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p>Static educational resource. Content references <a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2</a>.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

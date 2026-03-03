@@ -1,0 +1,170 @@
+/* demo.css — demo container, toggle button, fail/pass states */
+
+/* Demo container */
+.demo-container {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: var(--space-8);
+}
+
+.demo-container__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.demo-container__label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  flex: 1;
+}
+
+/* Toggle button */
+.demo-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border: 2px solid currentColor;
+  border-radius: var(--radius);
+  cursor: pointer;
+  background: transparent;
+  color: var(--color-fail);
+}
+
+.demo-toggle:hover {
+  background: var(--color-fail-bg);
+}
+
+/* When aria-pressed="true" (showing pass state) */
+.demo-toggle[aria-pressed="true"] {
+  color: var(--color-pass);
+}
+
+.demo-toggle[aria-pressed="true"]:hover {
+  background: var(--color-pass-bg);
+}
+
+.demo-toggle__icon {
+  font-size: 1em;
+  line-height: 1;
+}
+
+/* Status indicator strip */
+.demo-container[data-mode="fail"] .demo-status {
+  background: var(--color-fail-bg);
+  border-bottom: 1px solid var(--color-fail-border);
+  color: var(--color-fail);
+}
+
+.demo-container[data-mode="pass"] .demo-status {
+  background: var(--color-pass-bg);
+  border-bottom: 1px solid var(--color-pass-border);
+  color: var(--color-pass);
+}
+
+.demo-status {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.demo-status__text--fail { display: none; }
+.demo-status__text--pass { display: none; }
+
+.demo-container[data-mode="fail"] .demo-status__text--fail { display: inline; }
+.demo-container[data-mode="pass"] .demo-status__text--pass { display: inline; }
+
+/* Demo stage — where the actual demo lives */
+.demo-stage {
+  padding: var(--space-6);
+}
+
+/* Fail-mode stage styling */
+.demo-container[data-mode="fail"] .demo-stage {
+  background: var(--color-fail-bg);
+}
+
+.demo-container[data-mode="pass"] .demo-stage {
+  background: var(--color-pass-bg);
+}
+
+/* Demo explanation panels */
+.demo-explanation {
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.demo-explanation__panel {
+  display: none;
+  font-size: var(--font-size-sm);
+}
+
+.demo-explanation__panel--fail { color: var(--color-fail); }
+.demo-explanation__panel--pass { color: var(--color-pass); }
+
+.demo-container[data-mode="fail"] .demo-explanation__panel--fail { display: block; }
+.demo-container[data-mode="pass"] .demo-explanation__panel--pass { display: block; }
+
+.demo-explanation__heading {
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* Visually hidden (for screen readers) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* -------------------------------------------------------
+   Checkpoint-specific demo styles
+   ------------------------------------------------------- */
+
+/* 1.3.1 demo — table without headers (fail) vs with headers (pass) */
+.demo-table-wrapper {
+  overflow-x: auto;
+}
+
+.demo-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: var(--font-size-sm);
+}
+
+.demo-table td,
+.demo-table th {
+  border: 1px solid var(--color-border);
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+}
+
+.demo-table th {
+  background: var(--color-surface);
+  font-weight: 700;
+}
+
+/* The fail example table uses no th — just td */
+.demo-container[data-mode="fail"] .demo-table td:first-child {
+  /* no special treatment — demonstrating the problem */
+  font-weight: normal;
+}
