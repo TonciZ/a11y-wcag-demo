@@ -6,7 +6,7 @@
 
 /* Skip link */
 .skip-link {
-  position: absolute;
+  position: fixed;
   top: -100%;
   left: var(--space-4);
   padding: var(--space-2) var(--space-4);
@@ -15,7 +15,7 @@
   text-decoration: none;
   font-weight: 600;
   border-radius: 0 0 var(--radius) var(--radius);
-  z-index: 100;
+  z-index: 200; /* above the sticky hero (z-index: 100) */
 }
 
 .skip-link:focus {
@@ -164,6 +164,7 @@
   max-width: 960px;
   margin: 0 auto;
   padding: var(--space-12) var(--space-6);
+  scroll-margin-top: var(--hero-h);
 }
 
 /* Page header (per-page title block) */
