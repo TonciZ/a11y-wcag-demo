@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.1.1 Keyboard — WCAG 2.2 Demo</title>
+  <title>2.1.1 Keyboard - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 2.1.1 Keyboard failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">2.1.1 Keyboard</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
-      <p>All functionality of the content must be operable through a keyboard interface without requiring specific timings for individual keystrokes. This means any action that can be done with a mouse — clicking buttons, filling forms, activating links, operating custom widgets — must also be achievable using only a keyboard. The criterion does not require a keyboard-specific shortcut for every action, only that every action can be reached and executed via keyboard navigation.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when one or more interactive elements or features are only reachable or operable via mouse, touch, or pointer input. For example, a drag-and-drop file upload widget that has no keyboard alternative, or a custom dropdown menu that opens only on mouse hover, will exclude keyboard-only users and screen reader users who cannot control a pointer device. This prevents access to essential content and tasks for people with motor disabilities, power users, and screen reader users.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation ensures every interactive element can receive keyboard focus and be activated using standard keys (Tab to move focus, Enter or Space to activate, arrow keys for composite widgets). Custom JavaScript widgets such as carousels, date pickers, and accordions must implement appropriate keyboard interaction patterns — typically following the ARIA Authoring Practices Guide — so all functionality is reachable without a mouse.</p>
+      <p>All functionality of the content must be operable through a keyboard interface without requiring specific timings for individual keystrokes. This means any action that can be done with a mouse - clicking buttons, filling forms, activating links, operating custom widgets - must also be achievable using only a keyboard. The criterion does not require a keyboard-specific shortcut for every action, only that every action can be reached and executed via keyboard navigation.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -70,9 +59,60 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-211"
+           data-announce-fail="Showing fail example. The custom div element cannot receive keyboard focus."
+           data-announce-pass="Showing pass example. The native button is keyboard focusable and operable.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-211">Keyboard demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Press Tab to try reaching the control below. The <code>&lt;div&gt;</code> is styled to look like a button but has no <code>tabindex</code> - it cannot receive keyboard focus and cannot be activated without a mouse.</p>
+            <div style="margin-top:0.75rem;display:inline-block;padding:0.5em 1.25em;background:#555;color:#fff;border-radius:4px;cursor:pointer;">
+              Delete account
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The native <code>&lt;button&gt;</code> is keyboard focusable by default. Press Tab to reach it, then Enter or Space to activate.</p>
+            <div style="margin-top:0.75rem;">
+              <button type="button">Delete account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when one or more interactive elements or features are only reachable or operable via mouse, touch, or pointer input. For example, a drag-and-drop file upload widget that has no keyboard alternative, or a custom dropdown menu that opens only on mouse hover, will exclude keyboard-only users and screen reader users who cannot control a pointer device. This prevents access to essential content and tasks for people with motor disabilities, power users, and screen reader users.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures every interactive element can receive keyboard focus and be activated using standard keys (Tab to move focus, Enter or Space to activate, arrow keys for composite widgets). Custom JavaScript widgets such as carousels, date pickers, and accordions must implement appropriate keyboard interaction patterns - typically following the ARIA Authoring Practices Guide - so all functionality is reachable without a mouse.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
-      <p>This criterion applies to all functionality, not just navigation — operations like drag-and-drop, right-click context menus, and hover-triggered tooltips all require keyboard-accessible equivalents. The exception for "path-dependent" input (such as freehand drawing) is narrow and applies only when the path itself, not just the endpoints, is essential.</p>
+      <p>This criterion applies to all functionality, not just navigation - operations like drag-and-drop, right-click context menus, and hover-triggered tooltips all require keyboard-accessible equivalents. The exception for "path-dependent" input (such as freehand drawing) is narrow and applies only when the path itself, not just the endpoints, is essential.</p>
     </section>
 
   </main>
@@ -80,11 +120,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">WCAG 2.2 Understanding 2.1.1</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

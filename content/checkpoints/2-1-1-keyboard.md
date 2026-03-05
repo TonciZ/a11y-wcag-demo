@@ -7,7 +7,7 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html
 
 ## Description
 
-All functionality of the content must be operable through a keyboard interface without requiring specific timings for individual keystrokes. This means any action that can be done with a mouse — clicking buttons, filling forms, activating links, operating custom widgets — must also be achievable using only a keyboard. The criterion does not require a keyboard-specific shortcut for every action, only that every action can be reached and executed via keyboard navigation.
+All functionality of the content must be operable through a keyboard interface without requiring specific timings for individual keystrokes. This means any action that can be done with a mouse - clicking buttons, filling forms, activating links, operating custom widgets - must also be achievable using only a keyboard. The criterion does not require a keyboard-specific shortcut for every action, only that every action can be reached and executed via keyboard navigation.
 
 ## Fail Explanation
 
@@ -15,7 +15,7 @@ A failure occurs when one or more interactive elements or features are only reac
 
 ## Pass Explanation
 
-A passing implementation ensures every interactive element can receive keyboard focus and be activated using standard keys (Tab to move focus, Enter or Space to activate, arrow keys for composite widgets). Custom JavaScript widgets such as carousels, date pickers, and accordions must implement appropriate keyboard interaction patterns — typically following the ARIA Authoring Practices Guide — so all functionality is reachable without a mouse.
+A passing implementation ensures every interactive element can receive keyboard focus and be activated using standard keys (Tab to move focus, Enter or Space to activate, arrow keys for composite widgets). Custom JavaScript widgets such as carousels, date pickers, and accordions must implement appropriate keyboard interaction patterns - typically following the ARIA Authoring Practices Guide - so all functionality is reachable without a mouse.
 
 ## How To Test
 
@@ -29,4 +29,4 @@ A passing implementation ensures every interactive element can receive keyboard 
 
 ## Notes
 
-This criterion applies to all functionality, not just navigation — operations like drag-and-drop, right-click context menus, and hover-triggered tooltips all require keyboard-accessible equivalents. The exception for "path-dependent" input (such as freehand drawing) is narrow and applies only when the path itself, not just the endpoints, is essential.
+This criterion applies to all functionality, not just navigation - operations like drag-and-drop, right-click context menus, and hover-triggered tooltips all require keyboard-accessible equivalents. The exception for "path-dependent" input (such as freehand drawing) is narrow and applies only when the path itself, not just the endpoints, is essential.

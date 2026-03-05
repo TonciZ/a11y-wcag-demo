@@ -7,7 +7,7 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics.ht
 
 ## Description
 
-Instructions provided for understanding and operating content must not rely solely on sensory characteristics of components such as shape, color, size, visual location, orientation, or sound. When instructions depend entirely on one sensory property, users who cannot perceive that property — such as blind users, colorblind users, or users who are deaf — cannot follow the instruction. Additional non-sensory identifiers such as a label or text name must accompany any sensory reference.
+Instructions provided for understanding and operating content must not rely solely on sensory characteristics of components such as shape, color, size, visual location, orientation, or sound. When instructions depend entirely on one sensory property, users who cannot perceive that property - such as blind users, colorblind users, or users who are deaf - cannot follow the instruction. Additional non-sensory identifiers such as a label or text name must accompany any sensory reference.
 
 ## Fail Explanation
 

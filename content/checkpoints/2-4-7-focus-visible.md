@@ -7,7 +7,7 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
 
 ## Description
 
-Any keyboard-operable user interface must have a mode of operation where the keyboard focus indicator is visible. When a user moves focus to an interactive element by pressing Tab or another keyboard key, there must be a visible visual change — typically a border, outline, highlight, or background color change — indicating which element currently has focus. Without a visible focus indicator, keyboard users cannot tell where they are on the page.
+Any keyboard-operable user interface must have a mode of operation where the keyboard focus indicator is visible. When a user moves focus to an interactive element by pressing Tab or another keyboard key, there must be a visible visual change - typically a border, outline, highlight, or background color change - indicating which element currently has focus. Without a visible focus indicator, keyboard users cannot tell where they are on the page.
 
 ## Fail Explanation
 
@@ -21,11 +21,11 @@ A passing implementation ensures that every focusable element displays a clearly
 
 1. Navigate to the page using only the keyboard (Tab and Shift+Tab).
 2. As you Tab through each element, observe whether a visible focus indicator appears on the currently focused element.
-3. Check whether the focus indicator disappears on any element — this is a failure if `outline: none` is applied without a replacement.
+3. Check whether the focus indicator disappears on any element - this is a failure if `outline: none` is applied without a replacement.
 4. Inspect the CSS for `outline: none`, `outline: 0`, or `box-shadow` replacements on `:focus` or `:focus-visible` states.
 5. If a custom focus style is provided, assess whether it is visually distinct and perceivable against the background and surrounding content.
 6. Test all interactive elements: links, buttons, inputs, selects, checkboxes, radio buttons, and custom widgets.
 
 ## Notes
 
-WCAG 2.2 introduced the new criterion 2.4.11 (Focus Not Obscured) and 2.4.13 (Focus Appearance) to address additional aspects of focus visibility. Note that 2.4.7 is a relatively low bar — it only requires that focus be visible in some mode, not that the focus indicator meet specific size or contrast requirements. The `:focus-visible` CSS pseudo-class allows developers to show focus indicators for keyboard navigation only, without showing them on mouse click, which is an acceptable and widely used approach.
+WCAG 2.2 introduced the new criterion 2.4.11 (Focus Not Obscured) and 2.4.13 (Focus Appearance) to address additional aspects of focus visibility. Note that 2.4.7 is a relatively low bar - it only requires that focus be visible in some mode, not that the focus indicator meet specific size or contrast requirements. The `:focus-visible` CSS pseudo-class allows developers to show focus indicators for keyboard navigation only, without showing them on mouse click, which is an acceptable and widely used approach.

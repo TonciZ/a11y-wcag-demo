@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.1.1 Non-text Content — WCAG 2.2 Demo</title>
+  <title>1.1.1 Non-text Content - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 1.1.1 Non-text Content failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">1.1.1 Non-text Content</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>All non-text content that is presented to the user must have a text alternative that serves the equivalent purpose. This applies to images, icons, charts, graphs, audio, video, controls, and other non-text elements. The text alternative allows assistive technologies such as screen readers to convey the meaning of non-text content to users who cannot perceive it visually or aurally.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when an image, icon, or other non-text element has no accessible name, an empty alt attribute where one is needed, or a meaningless description such as "image" or a file name like "img0042.jpg". Screen reader users will either hear nothing, hear the file name, or hear a generic label that provides no useful information about the content or purpose of the element.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation provides a concise, meaningful text alternative that conveys the same information or function as the non-text content. Decorative images that add no information use an empty alt attribute (<code>alt=""</code>) so screen readers skip them entirely. Complex images such as charts include either a descriptive long-form text alternative nearby or are linked to a full description.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -70,6 +59,65 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-111"
+           data-announce-fail="Showing fail example. SVG graphic has no accessible name - screen readers announce nothing useful."
+           data-announce-pass="Showing pass example. SVG graphic has role img and a descriptive aria-label.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-111">Non-text Content demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This SVG chart has no accessible name. A screen reader announces nothing useful - it may say "image" or read a file path, conveying no chart data.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" focusable="false" style="margin-top:0.75rem;display:block;">
+              <rect x="10" y="80" width="30" height="40" fill="#4a90e2"/>
+              <rect x="55" y="55" width="30" height="65" fill="#4a90e2"/>
+              <rect x="100" y="70" width="30" height="50" fill="#4a90e2"/>
+              <rect x="145" y="40" width="30" height="80" fill="#4a90e2"/>
+            </svg>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same SVG now has <code>role="img"</code> and a descriptive <code>aria-label</code>. A screen reader announces the full chart description.</p>
+            <svg role="img"
+                 aria-label="Bar chart: quarterly sales. Q1: 40, Q2: 65, Q3: 50, Q4: 80."
+                 xmlns="http://www.w3.org/2000/svg" width="200" height="120" focusable="false" style="margin-top:0.75rem;display:block;">
+              <rect x="10" y="80" width="30" height="40" fill="#4a90e2"/>
+              <rect x="55" y="55" width="30" height="65" fill="#4a90e2"/>
+              <rect x="100" y="70" width="30" height="50" fill="#4a90e2"/>
+              <rect x="145" y="40" width="30" height="80" fill="#4a90e2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when an image, icon, or other non-text element has no accessible name, an empty alt attribute where one is needed, or a meaningless description such as "image" or a file name like "img0042.jpg". Screen reader users will either hear nothing, hear the file name, or hear a generic label that provides no useful information about the content or purpose of the element.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation provides a concise, meaningful text alternative that conveys the same information or function as the non-text content. Decorative images that add no information use an empty alt attribute (<code>alt=""</code>) so screen readers skip them entirely. Complex images such as charts include either a descriptive long-form text alternative nearby or are linked to a full description.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>Images used purely for layout or decoration must use <code>alt=""</code> rather than being omitted entirely; omitting the <code>alt</code> attribute causes some screen readers to read out the file name. ARIA attributes such as <code>aria-label</code> and <code>aria-labelledby</code> can also provide text alternatives for non-image non-text elements such as SVGs and custom controls.</p>
@@ -80,11 +128,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html">WCAG 2.2 Understanding 1.1.1</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

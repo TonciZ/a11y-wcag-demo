@@ -7,7 +7,7 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
 
 ## Description
 
-The visual presentation of text and images of text must have a contrast ratio of at least 4.5:1 against their background. Large text — defined as 18pt (approximately 24px) or 14pt bold (approximately 18.67px bold) or larger — requires a lower minimum ratio of 3:1. Sufficient contrast is essential for users with low vision, color deficiencies, or those viewing screens in bright ambient light conditions.
+The visual presentation of text and images of text must have a contrast ratio of at least 4.5:1 against their background. Large text - defined as 18pt (approximately 24px) or 14pt bold (approximately 18.67px bold) or larger - requires a lower minimum ratio of 3:1. Sufficient contrast is essential for users with low vision, color deficiencies, or those viewing screens in bright ambient light conditions.
 
 ## Fail Explanation
 

@@ -7,11 +7,11 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html
 
 ## Description
 
-If a web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components must receive focus in an order that preserves meaning and operability. This means that as users press Tab to move through a page, the order in which interactive elements receive focus must follow a logical reading and interaction sequence — typically matching the visual top-to-bottom, left-to-right order of the content.
+If a web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components must receive focus in an order that preserves meaning and operability. This means that as users press Tab to move through a page, the order in which interactive elements receive focus must follow a logical reading and interaction sequence - typically matching the visual top-to-bottom, left-to-right order of the content.
 
 ## Fail Explanation
 
-A failure occurs when the tab order jumps unpredictably across the page — for example, tabbing from a form field in the header straight to the footer, then back to the middle of the page, then to a sidebar. This commonly happens when CSS is used to visually reorder content without updating the underlying DOM order, or when `tabindex` values are set to large positive integers that override the natural DOM sequence. Disordered focus order disorients keyboard users and makes it very difficult for screen reader users to build a mental model of the page.
+A failure occurs when the tab order jumps unpredictably across the page - for example, tabbing from a form field in the header straight to the footer, then back to the middle of the page, then to a sidebar. This commonly happens when CSS is used to visually reorder content without updating the underlying DOM order, or when `tabindex` values are set to large positive integers that override the natural DOM sequence. Disordered focus order disorients keyboard users and makes it very difficult for screen reader users to build a mental model of the page.
 
 ## Pass Explanation
 
@@ -28,4 +28,4 @@ A passing implementation achieves a logical focus order by ensuring the DOM sour
 
 ## Notes
 
-Focus order does not need to be identical to visual reading order in every case — only when the order affects meaning or operation. For example, a search field followed by search results does not require a rigid order as long as the relationship is clear. However, modal dialogs, inline error messages, and dynamically inserted content do require careful focus management to avoid confusion.
+Focus order does not need to be identical to visual reading order in every case - only when the order affects meaning or operation. For example, a search field followed by search results does not require a rigid order as long as the relationship is clear. However, modal dialogs, inline error messages, and dynamically inserted content do require careful focus management to avoid confusion.

@@ -15,7 +15,7 @@ A failure occurs when the accessible name of a control (set via `aria-label`, `a
 
 ## Pass Explanation
 
-A passing implementation ensures the accessible name either exactly matches the visible label text or begins with or includes the visible label text. The accessible name may contain additional information beyond the visible text (e.g., "Submit — Place your order now") as long as it starts with or contains the visible text "Submit." The safest approach is to use native HTML labeling mechanisms (`<label>` for form controls, button text content for `<button>` elements) which automatically derive the accessible name from visible text, avoiding mismatches entirely.
+A passing implementation ensures the accessible name either exactly matches the visible label text or begins with or includes the visible label text. The accessible name may contain additional information beyond the visible text (e.g., "Submit - Place your order now") as long as it starts with or contains the visible text "Submit." The safest approach is to use native HTML labeling mechanisms (`<label>` for form controls, button text content for `<button>` elements) which automatically derive the accessible name from visible text, avoiding mismatches entirely.
 
 ## How To Test
 
@@ -24,8 +24,8 @@ A passing implementation ensures the accessible name either exactly matches the 
 3. Compare the accessible name to the visible label text of the component.
 4. Verify that the visible label text is contained within the accessible name (the accessible name may include additional words, but must include the visible label).
 5. Test with a speech recognition tool such as Dragon NaturallySpeaking: say "click [visible label text]" and verify the correct control is activated.
-6. Look for `aria-label` attributes that completely replace visible text with different wording — these are common sources of failures.
+6. Look for `aria-label` attributes that completely replace visible text with different wording - these are common sources of failures.
 
 ## Notes
 
-This criterion is particularly important for speech recognition users, who activate controls by speaking their visible labels. It does not prohibit accessible names that are longer than the visible label — augmenting the accessible name with additional context is fine as long as the visible text is present within it. Acronyms and abbreviations should be treated carefully: if the visible label says "CTA" and the accessible name says "Call to Action," neither contains the other verbatim.
+This criterion is particularly important for speech recognition users, who activate controls by speaking their visible labels. It does not prohibit accessible names that are longer than the visible label - augmenting the accessible name with additional context is fine as long as the visible text is present within it. Acronyms and abbreviations should be treated carefully: if the visible label says "CTA" and the accessible name says "Call to Action," neither contains the other verbatim.

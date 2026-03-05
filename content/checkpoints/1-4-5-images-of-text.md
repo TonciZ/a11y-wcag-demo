@@ -15,7 +15,7 @@ A failure occurs when text content is embedded in an image file (such as a JPEG,
 
 ## Pass Explanation
 
-A passing implementation renders all informational text using HTML text elements styled with CSS. Web fonts such as those available through Google Fonts or self-hosted font files can achieve virtually any typographic style without requiring text to be saved as an image. If an image of text is used for a logo or brand mark, it is considered essential and is exempt from this requirement. Text that is part of an image where the specific visual appearance is essential to the content — such as a historical document photograph — is also exempt.
+A passing implementation renders all informational text using HTML text elements styled with CSS. Web fonts such as those available through Google Fonts or self-hosted font files can achieve virtually any typographic style without requiring text to be saved as an image. If an image of text is used for a logo or brand mark, it is considered essential and is exempt from this requirement. Text that is part of an image where the specific visual appearance is essential to the content - such as a historical document photograph - is also exempt.
 
 ## How To Test
 
@@ -23,7 +23,7 @@ A passing implementation renders all informational text using HTML text elements
 2. For each image, check whether it contains text.
 3. For images containing text, assess whether that text could reasonably have been rendered as HTML text styled with CSS.
 4. If the image text could be replaced with real text, this constitutes a failure.
-5. Check whether the image has an appropriate `alt` attribute providing the same text as a fallback — this mitigates screen reader impact but does not make the implementation pass this criterion.
+5. Check whether the image has an appropriate `alt` attribute providing the same text as a fallback - this mitigates screen reader impact but does not make the implementation pass this criterion.
 6. Review banner images, promotional images, and decorative headers as common areas of failure.
 
 ## Notes

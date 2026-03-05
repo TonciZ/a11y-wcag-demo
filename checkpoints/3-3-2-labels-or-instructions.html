@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3.3.2 Labels or Instructions — WCAG 2.2 Demo</title>
+  <title>3.3.2 Labels or Instructions - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 3.3.2 Labels or Instructions failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">3.3.2 Labels or Instructions</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>When user input is required, labels or instructions must be provided to help users understand what is expected. This applies to all form controls and interactive widgets that require the user to enter or select data. Labels must clearly identify what each field expects, and where input format or constraints apply (such as date format, password rules, or character limits), instructions must be provided before or during data entry so users can supply correctly formatted input without trial and error.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A form that uses placeholder text alone as a label fails this criterion, because placeholder text disappears when the user starts typing, leaving them without any indication of what the field expects — particularly problematic for users with cognitive disabilities or short-term memory impairments. Similarly, a date field that accepts only a specific format (e.g., DD/MM/YYYY) but does not display that format requirement before submission is a failure, as users cannot know what is expected until they receive an error message after the fact.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A form passes when every input field has a persistent, visible label that clearly identifies the field's purpose, and when any format requirements or constraints are provided as visible text associated with the field before the user submits. Labels must be programmatically linked to their controls (via <code>&lt;label for&gt;</code> or <code>aria-labelledby</code>) so screen reader users also receive the information. Required fields should be identified either by the word "required" in the label or by a convention that is explained (e.g., "Fields marked with * are required").</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -70,6 +59,58 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-332"
+           data-announce-fail="Showing fail example. Input uses only placeholder text - no persistent label."
+           data-announce-pass="Showing pass example. Input has a persistent visible label associated programmatically.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-332">Labels or Instructions demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This input has no <code>&lt;label&gt;</code>. Only placeholder text is provided - it disappears the moment the user starts typing, leaving no indication of what the field expects.</p>
+            <div style="margin-top:0.75rem;">
+              <input type="email" placeholder="Email address" style="padding:0.5em 0.75em;border:1px solid #aaa;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>A persistent <code>&lt;label&gt;</code> is linked to the input via <code>for</code> and <code>id</code>. It remains visible at all times and is announced by screen readers when the field is focused.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="email-332-pass" style="display:block;margin-bottom:0.25rem;font-weight:600;">Email address</label>
+              <input type="email" id="email-332-pass" placeholder="name@example.com" style="padding:0.5em 0.75em;border:1px solid #aaa;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A form that uses placeholder text alone as a label fails this criterion, because placeholder text disappears when the user starts typing, leaving them without any indication of what the field expects - particularly problematic for users with cognitive disabilities or short-term memory impairments. Similarly, a date field that accepts only a specific format (e.g., DD/MM/YYYY) but does not display that format requirement before submission is a failure, as users cannot know what is expected until they receive an error message after the fact.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A form passes when every input field has a persistent, visible label that clearly identifies the field's purpose, and when any format requirements or constraints are provided as visible text associated with the field before the user submits. Labels must be programmatically linked to their controls (via <code>&lt;label for&gt;</code> or <code>aria-labelledby</code>) so screen reader users also receive the information. Required fields should be identified either by the word "required" in the label or by a convention that is explained (e.g., "Fields marked with * are required").</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>Placeholder text can supplement a proper label but must never be used as a replacement for one; this is a very common anti-pattern. This criterion focuses on the presence and availability of labels and instructions, while 3.3.1 Error Identification covers what happens after an error has occurred.</p>
@@ -80,11 +121,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html">WCAG 2.2 Understanding 3.3.2</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

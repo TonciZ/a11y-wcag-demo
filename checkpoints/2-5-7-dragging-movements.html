@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.5.7 Dragging Movements — WCAG 2.2 Demo</title>
+  <title>2.5.7 Dragging Movements - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 2.5.7 Dragging Movements failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">2.5.7 Dragging Movements</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-aa">Level AA</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
-      <p>This criterion, new in WCAG 2.2, requires that all functionality that uses a dragging movement can also be achieved with a single pointer without dragging. Dragging requires the user to press down, maintain contact while moving the pointer, and then release — a multi-step motor action that many users with motor impairments cannot reliably perform. A simple alternative such as clicking a "Move left" button, clicking to pick up and then clicking to place, or entering coordinates achieves the same result without dragging.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when content is only operable through a drag interaction with no non-dragging alternative. For example, a Kanban board where cards can only be moved between columns by dragging, a slider that has no corresponding number input field, or a sortable list where items can only be reordered by drag-and-drop — all fail if no equivalent single-click or keyboard mechanism is provided. Users with Parkinson's disease, hand tremors, or those using switch access or voice control cannot reliably perform sustained drag actions.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation provides at least one alternative to every drag interaction that requires only a single pointer action (a tap or click). For a sortable list, this could be "Move up" and "Move down" buttons on each item. For a range slider, a text input that accepts the numeric value is a valid alternative. For a map with draggable pins, a button that opens a dialog where coordinates can be typed would satisfy the requirement. The alternative does not need to provide an identical experience, only equivalent functionality.</p>
+      <p>This criterion, new in WCAG 2.2, requires that all functionality that uses a dragging movement can also be achieved with a single pointer without dragging. Dragging requires the user to press down, maintain contact while moving the pointer, and then release - a multi-step motor action that many users with motor impairments cannot reliably perform. A simple alternative such as clicking a "Move left" button, clicking to pick up and then clicking to place, or entering coordinates achieves the same result without dragging.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -62,10 +51,70 @@
       <ol>
         <li>Identify all drag interactions on the page: sortable lists, sliders, draggable cards, resizable panels, map pins, and file upload drop zones.</li>
         <li>For each drag interaction, look for a non-dragging alternative that accomplishes the same task using only single-pointer clicks or taps.</li>
-        <li>Attempt to complete each drag-based task without performing any drag movement — using only clicks, taps, or keyboard input.</li>
+        <li>Attempt to complete each drag-based task without performing any drag movement - using only clicks, taps, or keyboard input.</li>
         <li>Verify the non-drag alternative is accessible via keyboard as well (this also relates to 2.1.1 Keyboard).</li>
         <li>Test with a pointing device set to a low precision (or simulated tremor) to understand the difficulty of drag interactions for affected users.</li>
       </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-257"
+           data-announce-fail="Showing fail example. The volume control is a slider with only drag interaction and no alternative input."
+           data-announce-pass="Showing pass example. A number input is provided alongside the slider as a non-drag alternative.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-257">Dragging movements demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The volume control below is a range slider. Although keyboard arrow keys do work, there is no single-point alternative for users who cannot perform a dragging motion.</p>
+            <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.5rem;">
+              <label for="vol-fail-257">Volume</label>
+              <input type="range" id="vol-fail-257" min="0" max="100" value="50" style="max-width:240px;">
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>A number input is provided alongside the slider. Users who cannot drag can type a value directly. Both controls stay in sync.</p>
+            <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.5rem;">
+              <label for="vol-pass-257">Volume</label>
+              <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+                <input type="range" id="vol-pass-257" min="0" max="100" value="50" style="max-width:200px;"
+                       oninput="document.getElementById('vol-num-257').value=this.value;">
+                <input type="number" id="vol-num-257" min="0" max="100" value="50"
+                       aria-label="Volume (number input)"
+                       style="width:64px;padding:0.3rem 0.4rem;border:1px solid #8a8a8a;border-radius:4px;"
+                       oninput="var v=Math.min(100,Math.max(0,this.value||0));document.getElementById('vol-pass-257').value=v;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when content is only operable through a drag interaction with no non-dragging alternative. For example, a Kanban board where cards can only be moved between columns by dragging, a slider that has no corresponding number input field, or a sortable list where items can only be reordered by drag-and-drop - all fail if no equivalent single-click or keyboard mechanism is provided. Users with Parkinson's disease, hand tremors, or those using switch access or voice control cannot reliably perform sustained drag actions.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation provides at least one alternative to every drag interaction that requires only a single pointer action (a tap or click). For a sortable list, this could be "Move up" and "Move down" buttons on each item. For a range slider, a text input that accepts the numeric value is a valid alternative. For a map with draggable pins, a button that opens a dialog where coordinates can be typed would satisfy the requirement. The alternative does not need to provide an identical experience, only equivalent functionality.</p>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">
@@ -78,11 +127,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html">WCAG 2.2 Understanding 2.5.7</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html
 
 ## Description
 
-If a web page provides any of the following help mechanisms — human contact details, a human contact mechanism (such as a chat widget), a self-help option (such as an FAQ), or a fully automated contact mechanism (such as a chatbot) — and that mechanism is repeated across multiple pages of a website, it must appear in the same relative order in the page layout on each page. This new WCAG 2.2 criterion helps users with cognitive disabilities locate help reliably without needing to search for it each time they visit a new page.
+If a web page provides any of the following help mechanisms - human contact details, a human contact mechanism (such as a chat widget), a self-help option (such as an FAQ), or a fully automated contact mechanism (such as a chatbot) - and that mechanism is repeated across multiple pages of a website, it must appear in the same relative order in the page layout on each page. This new WCAG 2.2 criterion helps users with cognitive disabilities locate help reliably without needing to search for it each time they visit a new page.
 
 ## Fail Explanation
 
@@ -15,7 +15,7 @@ A failure occurs when help mechanisms are present across multiple pages but appe
 
 ## Pass Explanation
 
-A page passes when any help mechanism that appears across the site is consistently placed in the same relative location within the page template — for example, always appearing as the last item in the primary navigation, or always positioned in the site footer before the copyright notice. The specific position does not matter as long as it remains predictable and consistent across all pages where it appears.
+A page passes when any help mechanism that appears across the site is consistently placed in the same relative location within the page template - for example, always appearing as the last item in the primary navigation, or always positioned in the site footer before the copyright notice. The specific position does not matter as long as it remains predictable and consistent across all pages where it appears.
 
 ## How To Test
 

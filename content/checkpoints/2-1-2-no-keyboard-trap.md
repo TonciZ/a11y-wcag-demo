@@ -11,7 +11,7 @@ If keyboard focus can be moved to a component using a keyboard interface, then f
 
 ## Fail Explanation
 
-A keyboard trap occurs when a user tabs into an element — such as an embedded media player, a third-party widget, or a custom dialog — and cannot move focus out using Tab, Shift+Tab, Escape, or any other standard key. For keyboard-only users, including many screen reader users, a trap makes the rest of the page permanently inaccessible during that session. Even a single trapped component is a critical blocker because it forces the user to refresh the page and lose their context.
+A keyboard trap occurs when a user tabs into an element - such as an embedded media player, a third-party widget, or a custom dialog - and cannot move focus out using Tab, Shift+Tab, Escape, or any other standard key. For keyboard-only users, including many screen reader users, a trap makes the rest of the page permanently inaccessible during that session. Even a single trapped component is a critical blocker because it forces the user to refresh the page and lose their context.
 
 ## Pass Explanation
 
@@ -28,4 +28,4 @@ A passing implementation ensures that pressing Tab, Shift+Tab, or Escape always 
 
 ## Notes
 
-An intentional focus lock inside a modal dialog is acceptable — and often desirable — as long as the dialog itself is dismissible via keyboard. The failure condition is a component from which there is no keyboard escape at all, not one that constrains focus to a logical region while still providing an exit.
+An intentional focus lock inside a modal dialog is acceptable - and often desirable - as long as the dialog itself is dismissible via keyboard. The failure condition is a component from which there is no keyboard escape at all, not one that constrains focus to a logical region while still providing an exit.

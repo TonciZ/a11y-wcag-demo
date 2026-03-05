@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.2.1 Audio-only and Video-only (Prerecorded) — WCAG 2.2 Demo</title>
+  <title>1.2.1 Audio-only and Video-only (Prerecorded) - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 1.2.1 Audio-only and Video-only (Prerecorded) failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">1.2.1 Audio-only and Video-only (Prerecorded)</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>For prerecorded audio-only content, a text transcript must be provided that presents the same information as the audio. For prerecorded video-only content (no audio track), either a text alternative or an audio track must be provided that presents equivalent information. This criterion ensures that people who are deaf, hard of hearing, or blind can access the content of standalone audio and video media.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when a podcast episode, audio clip, or silent video is published without an equivalent alternative. For example, a podcast page with no transcript means deaf and hard-of-hearing users have no access to the spoken content. A silent product demonstration video with no text description or narration track means blind users cannot understand what the video shows.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation for audio-only content provides a full transcript — not just a summary — that includes all spoken dialogue and relevant non-speech sounds. For video-only content, the author either provides a text description of what occurs in the video (including actions, scene changes, and on-screen text) or adds an audio description track that narrates the visual content.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -69,6 +58,70 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-121"
+           data-announce-fail="Showing fail example. A podcast episode card with no transcript - deaf users cannot access the audio content."
+           data-announce-pass="Showing pass example. The same card includes a transcript that provides the same information as the audio.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-121">Audio-only transcript demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A podcast episode card with a play button but no text transcript. Users who are deaf or hard of hearing cannot access the content.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;max-width:400px;">
+              <p style="margin:0 0 0.25rem;font-weight:600;">Episode 7: Focus management in SPAs</p>
+              <p style="margin:0 0 0.75rem;font-size:0.875rem;color:#5a5a5a;">Duration: 24 min</p>
+              <button type="button" aria-label="Play Episode 7">&#9654; Play</button>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same card includes a transcript in a <code>&lt;details&gt;</code> element - the full audio content is available as text.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;max-width:400px;">
+              <p style="margin:0 0 0.25rem;font-weight:600;">Episode 7: Focus management in SPAs</p>
+              <p style="margin:0 0 0.75rem;font-size:0.875rem;color:#5a5a5a;">Duration: 24 min</p>
+              <button type="button" aria-label="Play Episode 7">&#9654; Play</button>
+              <details style="margin-top:0.75rem;">
+                <summary style="cursor:pointer;font-size:0.875rem;color:#0055cc;">Read transcript</summary>
+                <div style="margin-top:0.5rem;font-size:0.875rem;border-top:1px solid #e0e0e0;padding-top:0.5rem;">
+                  <p><strong>[Intro music]</strong></p>
+                  <p><strong>Host:</strong> Welcome to Accessible by Design. I&apos;m your host, and today we&apos;re talking about focus management in single-page applications&hellip;</p>
+                  <p><strong>Guest:</strong> Thanks for having me. Focus management is one of the most common issues I see in React and Vue apps&hellip;</p>
+                  <p style="margin:0;color:#5a5a5a;">[Transcript continues&hellip;]</p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when a podcast episode, audio clip, or silent video is published without an equivalent alternative. For example, a podcast page with no transcript means deaf and hard-of-hearing users have no access to the spoken content. A silent product demonstration video with no text description or narration track means blind users cannot understand what the video shows.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation for audio-only content provides a full transcript - not just a summary - that includes all spoken dialogue and relevant non-speech sounds. For video-only content, the author either provides a text description of what occurs in the video (including actions, scene changes, and on-screen text) or adds an audio description track that narrates the visual content.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion applies only to prerecorded content; live audio-only and live video-only are covered separately. If a video has both audio and video tracks, it falls under the captions and audio description criteria rather than this one.</p>
@@ -79,11 +132,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded.html">WCAG 2.2 Understanding 1.2.1</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

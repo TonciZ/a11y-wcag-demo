@@ -11,11 +11,11 @@ Web pages must have titles that describe their topic or purpose. The page title 
 
 ## Fail Explanation
 
-A failure occurs when a page has a missing, empty, or generic title — such as "Untitled Document," "Page 1," or a title that is identical across every page of a multi-page site. Screen reader users who have multiple browser tabs open rely on page titles to identify each tab without switching to it; identical or meaningless titles make this impossible. Users with cognitive disabilities and short-term memory challenges also depend on descriptive titles to re-orient themselves when returning to a tab.
+A failure occurs when a page has a missing, empty, or generic title - such as "Untitled Document," "Page 1," or a title that is identical across every page of a multi-page site. Screen reader users who have multiple browser tabs open rely on page titles to identify each tab without switching to it; identical or meaningless titles make this impossible. Users with cognitive disabilities and short-term memory challenges also depend on descriptive titles to re-orient themselves when returning to a tab.
 
 ## Pass Explanation
 
-A passing implementation provides a unique, descriptive `<title>` element for every page that clearly communicates both the specific page topic and the site name — for example, "Contact Us — Acme Corporation" or "Product Details: Blue Widget — ShopExample." The most specific information should appear first in the title so it is announced first by screen readers and visible in truncated browser tabs.
+A passing implementation provides a unique, descriptive `<title>` element for every page that clearly communicates both the specific page topic and the site name - for example, "Contact Us - Acme Corporation" or "Product Details: Blue Widget - ShopExample." The most specific information should appear first in the title so it is announced first by screen readers and visible in truncated browser tabs.
 
 ## How To Test
 
@@ -23,7 +23,7 @@ A passing implementation provides a unique, descriptive `<title>` element for ev
 2. Verify that the title text is not empty and is not a placeholder like "Untitled" or "New Page."
 3. Confirm the title meaningfully describes the specific page's topic or purpose.
 4. If the site has multiple pages, compare the titles across several pages to confirm each is unique.
-5. Use a screen reader (NVDA, JAWS, or VoiceOver) and navigate to the page — confirm the title is announced when the page loads.
+5. Use a screen reader (NVDA, JAWS, or VoiceOver) and navigate to the page - confirm the title is announced when the page loads.
 6. Check browser tabs to confirm the title is readable and distinguishable from other open tabs.
 
 ## Notes

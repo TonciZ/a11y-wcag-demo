@@ -11,7 +11,7 @@ For input fields that collect information about the user, the purpose of each fi
 
 ## Fail Explanation
 
-A failure occurs when form inputs that collect common personal information — such as name, email, phone number, address, or credit card details — do not have the appropriate `autocomplete` attribute. Without this attribute, browsers cannot offer autofill assistance, and tools that replace form labels with familiar icons (an aid for users with cognitive disabilities) cannot identify the field's purpose. Users who rely on autofill to avoid repeated data entry are also disadvantaged.
+A failure occurs when form inputs that collect common personal information - such as name, email, phone number, address, or credit card details - do not have the appropriate `autocomplete` attribute. Without this attribute, browsers cannot offer autofill assistance, and tools that replace form labels with familiar icons (an aid for users with cognitive disabilities) cannot identify the field's purpose. Users who rely on autofill to avoid repeated data entry are also disadvantaged.
 
 ## Pass Explanation
 

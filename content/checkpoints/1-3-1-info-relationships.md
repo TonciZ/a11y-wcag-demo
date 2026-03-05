@@ -7,15 +7,15 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.htm
 
 ## Description
 
-Information, structure, and relationships conveyed through visual presentation must also be programmatically determinable — or available in text. Screen readers and assistive technologies cannot infer meaning from visual layout alone. Structure must be expressed in the HTML itself.
+Information, structure, and relationships conveyed through visual presentation must also be programmatically determinable - or available in text. Screen readers and assistive technologies cannot infer meaning from visual layout alone. Structure must be expressed in the HTML itself.
 
 ## Fail Explanation
 
-When a table uses only `<td>` elements for all cells — including the header row — screen readers announce every cell as plain data with no column context. A user navigating by table cell hears values like "Name", "Score", "Rank" with no indication that these are column headers. The relationship between the header and data cells is invisible to assistive technology.
+When a table uses only `<td>` elements for all cells - including the header row - screen readers announce every cell as plain data with no column context. A user navigating by table cell hears values like "Name", "Score", "Rank" with no indication that these are column headers. The relationship between the header and data cells is invisible to assistive technology.
 
 ## Pass Explanation
 
-Using `<th>` elements for header cells, with an appropriate `scope` attribute (`scope="col"` for column headers, `scope="row"` for row headers), allows screen readers to announce context. When a user navigates to a data cell, the screen reader can say "Score column, Alice: 92" — conveying the structural relationship programmatically.
+Using `<th>` elements for header cells, with an appropriate `scope` attribute (`scope="col"` for column headers, `scope="row"` for row headers), allows screen readers to announce context. When a user navigates to a data cell, the screen reader can say "Score column, Alice: 92" - conveying the structural relationship programmatically.
 
 ## How To Test
 
@@ -31,4 +31,4 @@ Using `<th>` elements for header cells, with an appropriate `scope` attribute (`
 
 ## Notes
 
-This is one of the most commonly failed WCAG criteria. It applies beyond tables — heading levels (`<h1>`–`<h6>`), list markup (`<ul>`, `<ol>`, `<li>`), and landmark roles are all part of 1.3.1. A visually styled bold paragraph that functions as a heading but uses `<p><strong>` instead of an `<h>` element also fails this criterion.
+This is one of the most commonly failed WCAG criteria. It applies beyond tables - heading levels (`<h1>`–`<h6>`), list markup (`<ul>`, `<ol>`, `<li>`), and landmark roles are all part of 1.3.1. A visually styled bold paragraph that functions as a heading but uses `<p><strong>` instead of an `<h>` element also fails this criterion.

@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4.1.3 Status Messages — WCAG 2.2 Demo</title>
+  <title>4.1.3 Status Messages - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 4.1.3 Status Messages failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">4.1.3 Status Messages</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-aa">Level AA</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
-      <p>In content implemented using markup languages, status messages must be programmatically determinable through role or properties so that they can be presented to the user by assistive technologies without receiving focus. A status message is any update that informs the user of the success or result of an action, a waiting state, the progress of a process, or the existence of errors — where that message does not take focus. Examples include "Your form has been submitted successfully", "3 items added to cart", "Loading, please wait…", or "5 search results found." These messages must reach screen reader users even though keyboard focus remains elsewhere on the page.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A dynamic success message that appears visually on screen after a form submission but is injected into the DOM without an appropriate ARIA live region role will not be announced by screen readers, because the user's focus has not moved to the message. Screen reader users will complete an action — such as adding an item to their cart or submitting a search query — and receive no feedback that the action succeeded or produced results. This is a significant usability barrier for blind users who depend entirely on audio output to understand the result of their interactions.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>Status messages pass when they are inserted into a container element that carries an appropriate ARIA live region role or property. For success and completion messages, <code>role="status"</code> (which maps to <code>aria-live="polite"</code>) is appropriate; for urgent alerts, <code>role="alert"</code> (which maps to <code>aria-live="assertive"</code>) can be used when the message requires immediate attention. The container element should ideally be present in the DOM on page load (even if empty), and the message text should be injected into it dynamically so that assistive technologies can detect and announce the change.</p>
+      <p>In content implemented using markup languages, status messages must be programmatically determinable through role or properties so that they can be presented to the user by assistive technologies without receiving focus. A status message is any update that informs the user of the success or result of an action, a waiting state, the progress of a process, or the existence of errors - where that message does not take focus. Examples include "Your form has been submitted successfully", "3 items added to cart", "Loading, please wait…", or "5 search results found." These messages must reach screen reader users even though keyboard focus remains elsewhere on the page.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -70,6 +59,71 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-413"
+           data-announce-fail="Showing fail example. Cart count updates visually but has no live region - screen readers do not announce the change."
+           data-announce-pass="Showing pass example. Cart count is in a role status element - screen readers announce the update without moving focus.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-413">Status messages demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Click <strong>Add to cart</strong>. The cart count updates visually but has no <code>role="status"</code> or live region - screen reader users receive no announcement.</p>
+            <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:0.75rem;">
+              <button type="button"
+                      onclick="var c=document.getElementById('cart-fail-413');c.textContent=parseInt(c.textContent)+1;">
+                Add to cart
+              </button>
+              <div style="font-size:0.9rem;">
+                Cart: <span id="cart-fail-413" style="font-weight:700;">0</span> item(s)
+              </div>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Screen readers will not announce the cart update. No <code>role</code> or <code>aria-live</code> on the count.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Click <strong>Add to cart</strong>. The cart count is in a <code>role="status"</code> container - screen readers announce the change politely without moving focus.</p>
+            <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:0.75rem;">
+              <button type="button"
+                      onclick="var c=document.getElementById('cart-pass-413');c.textContent=parseInt(c.textContent)+1;">
+                Add to cart
+              </button>
+              <div style="font-size:0.9rem;" role="status" aria-live="polite" aria-atomic="true">
+                Cart: <span id="cart-pass-413" style="font-weight:700;">0</span> item(s)
+              </div>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;"><code>role="status"</code> (equivalent to <code>aria-live="polite"</code>) announces the update automatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A dynamic success message that appears visually on screen after a form submission but is injected into the DOM without an appropriate ARIA live region role will not be announced by screen readers, because the user's focus has not moved to the message. Screen reader users will complete an action - such as adding an item to their cart or submitting a search query - and receive no feedback that the action succeeded or produced results. This is a significant usability barrier for blind users who depend entirely on audio output to understand the result of their interactions.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>Status messages pass when they are inserted into a container element that carries an appropriate ARIA live region role or property. For success and completion messages, <code>role="status"</code> (which maps to <code>aria-live="polite"</code>) is appropriate; for urgent alerts, <code>role="alert"</code> (which maps to <code>aria-live="assertive"</code>) can be used when the message requires immediate attention. The container element should ideally be present in the DOM on page load (even if empty), and the message text should be injected into it dynamically so that assistive technologies can detect and announce the change.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion applies to status messages that do not receive focus; messages that are displayed in a dialog or by moving focus to the notification do not need a live region, as the focus management itself informs the screen reader. The pre-existing container pattern is important because some browsers do not announce live region content if the element itself is inserted dynamically into the DOM.</p>
@@ -80,11 +134,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html">WCAG 2.2 Understanding 4.1.3</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

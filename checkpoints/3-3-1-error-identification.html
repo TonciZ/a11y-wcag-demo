@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3.3.1 Error Identification — WCAG 2.2 Demo</title>
+  <title>3.3.1 Error Identification - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 3.3.1 Error Identification failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">3.3.1 Error Identification</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>If an input error is automatically detected, the item that is in error must be identified and the error must be described to the user in text. When a form is submitted with missing required fields or invalid values, the page must clearly communicate which specific fields have errors and what those errors are, using text that is programmatically associated with the erroneous fields. This ensures that users of assistive technology receive the same error information as sighted users who might rely on visual cues like red borders or warning icons.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A form that uses only colour (such as a red border) or an icon (such as a warning triangle) to indicate an error, without any accompanying text, fails this criterion because users who are blind, have low vision, or have colour blindness cannot perceive or interpret purely visual error signals. Similarly, displaying a generic message like "There was a problem with your submission" without identifying which specific fields caused the error is a failure, because users cannot determine what they need to correct without further exploration.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A form passes when it displays clear, descriptive text error messages that identify both the field in error (by name or label) and the nature of the error (e.g., "Email address is required" or "Password must be at least 8 characters long"). These messages should be programmatically associated with their respective fields — ideally using <code>aria-describedby</code> or by positioning error text adjacent to the labeled input — so that screen readers announce the error when the user navigates to or focuses the affected field.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -70,6 +59,64 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-331"
+           data-announce-fail="Showing fail example. Error indicated by colour and border only - no text description."
+           data-announce-pass="Showing pass example. Error described in text and linked to the input field.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-331">Error Identification demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A form was submitted with an empty required field. The error is indicated only by a red border - no text message. Screen reader users receive no information about what went wrong.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="email-331-fail" style="display:block;margin-bottom:0.25rem;font-weight:600;">Email address</label>
+              <input type="email" id="email-331-fail" aria-invalid="true"
+                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same error state includes a descriptive text message linked to the field via <code>aria-describedby</code>. Screen readers announce the error when the field is focused.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="email-331-pass" style="display:block;margin-bottom:0.25rem;font-weight:600;">Email address</label>
+              <input type="email" id="email-331-pass" aria-invalid="true" aria-describedby="email-331-error"
+                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+              <p id="email-331-error" style="margin:0.35rem 0 0;color:#c0392b;font-size:0.9rem;">
+                Error: Email address is required.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A form that uses only colour (such as a red border) or an icon (such as a warning triangle) to indicate an error, without any accompanying text, fails this criterion because users who are blind, have low vision, or have colour blindness cannot perceive or interpret purely visual error signals. Similarly, displaying a generic message like "There was a problem with your submission" without identifying which specific fields caused the error is a failure, because users cannot determine what they need to correct without further exploration.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A form passes when it displays clear, descriptive text error messages that identify both the field in error (by name or label) and the nature of the error (e.g., "Email address is required" or "Password must be at least 8 characters long"). These messages should be programmatically associated with their respective fields - ideally using <code>aria-describedby</code> or by positioning error text adjacent to the labeled input - so that screen readers announce the error when the user navigates to or focuses the affected field.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion requires error identification in text but does not mandate how errors are surfaced (inline, summary list, or both). For complex forms, providing both an error summary at the top of the page and inline messages next to each field is considered best practice and helps all users, especially those using screen readers.</p>
@@ -80,11 +127,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html">WCAG 2.2 Understanding 3.3.1</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

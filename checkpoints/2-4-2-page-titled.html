@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.4.2 Page Titled — WCAG 2.2 Demo</title>
+  <title>2.4.2 Page Titled - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 2.4.2 Page Titled failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">2.4.2 Page Titled</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>Web pages must have titles that describe their topic or purpose. The page title is the text in the HTML <code>&lt;title&gt;</code> element, which browsers display in tabs and window title bars and which screen readers announce immediately when a page loads or when a user switches tabs. A descriptive title allows users to quickly identify the content of a page without reading any of the page body.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when a page has a missing, empty, or generic title — such as "Untitled Document," "Page 1," or a title that is identical across every page of a multi-page site. Screen reader users who have multiple browser tabs open rely on page titles to identify each tab without switching to it; identical or meaningless titles make this impossible. Users with cognitive disabilities and short-term memory challenges also depend on descriptive titles to re-orient themselves when returning to a tab.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation provides a unique, descriptive <code>&lt;title&gt;</code> element for every page that clearly communicates both the specific page topic and the site name — for example, "Contact Us — Acme Corporation" or "Product Details: Blue Widget — ShopExample." The most specific information should appear first in the title so it is announced first by screen readers and visible in truncated browser tabs.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -64,9 +53,70 @@
         <li>Verify that the title text is not empty and is not a placeholder like "Untitled" or "New Page."</li>
         <li>Confirm the title meaningfully describes the specific page's topic or purpose.</li>
         <li>If the site has multiple pages, compare the titles across several pages to confirm each is unique.</li>
-        <li>Use a screen reader (NVDA, JAWS, or VoiceOver) and navigate to the page — confirm the title is announced when the page loads.</li>
+        <li>Use a screen reader (NVDA, JAWS, or VoiceOver) and navigate to the page - confirm the title is announced when the page loads.</li>
         <li>Check browser tabs to confirm the title is readable and distinguishable from other open tabs.</li>
       </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-242"
+           data-announce-fail="Showing fail example. Page title is generic and uninformative."
+           data-announce-pass="Showing pass example. Page title describes the specific page and site name.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-242">Page Titled demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>These titles give screen reader users no useful information about the page's topic. They are indistinguishable across multiple tabs.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Fail: missing title --&gt;
+&lt;title&gt;&lt;/title&gt;
+
+&lt;!-- Fail: generic placeholder --&gt;
+&lt;title&gt;Untitled Document&lt;/title&gt;
+
+&lt;!-- Fail: same title on every page --&gt;
+&lt;title&gt;My Website&lt;/title&gt;</code></pre>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Each page has a unique, descriptive title. The most specific information comes first so it is announced first by screen readers and visible in truncated browser tabs.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Pass: specific page name first, then site name --&gt;
+&lt;title&gt;Contact Us - Acme Corporation&lt;/title&gt;
+
+&lt;!-- Pass: product detail page --&gt;
+&lt;title&gt;Blue Widget (Large) - ShopExample&lt;/title&gt;
+
+&lt;!-- Pass: search results with context --&gt;
+&lt;title&gt;Search results for "keyboard" - WCAG 2.2 Demo&lt;/title&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when a page has a missing, empty, or generic title - such as "Untitled Document," "Page 1," or a title that is identical across every page of a multi-page site. Screen reader users who have multiple browser tabs open rely on page titles to identify each tab without switching to it; identical or meaningless titles make this impossible. Users with cognitive disabilities and short-term memory challenges also depend on descriptive titles to re-orient themselves when returning to a tab.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation provides a unique, descriptive <code>&lt;title&gt;</code> element for every page that clearly communicates both the specific page topic and the site name - for example, "Contact Us - Acme Corporation" or "Product Details: Blue Widget - ShopExample." The most specific information should appear first in the title so it is announced first by screen readers and visible in truncated browser tabs.</p>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">
@@ -79,11 +129,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/page-titled.html">WCAG 2.2 Understanding 2.4.2</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

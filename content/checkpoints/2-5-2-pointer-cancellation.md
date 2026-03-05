@@ -11,7 +11,7 @@ For functionality that can be operated using a single pointer (mouse click, touc
 
 ## Fail Explanation
 
-A failure occurs when functionality triggers immediately on the pointer down event (mousedown or touchstart) with no way to abort or reverse the action before releasing the pointer. For example, a "Delete account" button that executes the deletion the instant the user presses down — before they even release the mouse button — means a user who mis-clicks cannot simply slide their pointer away to cancel. Users with motor disabilities that cause involuntary movements or tremors are particularly affected, as they may frequently trigger down events unintentionally.
+A failure occurs when functionality triggers immediately on the pointer down event (mousedown or touchstart) with no way to abort or reverse the action before releasing the pointer. For example, a "Delete account" button that executes the deletion the instant the user presses down - before they even release the mouse button - means a user who mis-clicks cannot simply slide their pointer away to cancel. Users with motor disabilities that cause involuntary movements or tremors are particularly affected, as they may frequently trigger down events unintentionally.
 
 ## Pass Explanation
 
@@ -23,7 +23,7 @@ A passing implementation triggers actions on the pointer up event (mouseup or cl
 2. Press and hold the mouse button down on a control, then drag the pointer away from the control before releasing.
 3. Verify that the action is NOT triggered when you drag away and release outside the control.
 4. Confirm that activating the control only occurs when the pointer is released (up-event) while still within the control's bounds.
-5. For touch devices, perform the same test: tap and hold on a control, then slide your finger away before lifting — the action should not fire.
+5. For touch devices, perform the same test: tap and hold on a control, then slide your finger away before lifting - the action should not fire.
 6. Check whether any JavaScript event listeners use `mousedown`, `touchstart`, or `pointerdown` to trigger primary actions directly.
 
 ## Notes

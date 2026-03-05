@@ -1,4 +1,4 @@
-/* layout.css — page structure, nav, skip link, main regions */
+/* layout.css - page structure, nav, skip link, main regions */
 
 /* Skip link */
 .skip-link {
@@ -35,7 +35,7 @@
 }
 
 .site-header__logo {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-2xl);
   font-weight: 700;
   color: var(--color-text);
   text-decoration: none;
@@ -43,6 +43,91 @@
 
 .site-header__logo:hover {
   color: var(--color-accent);
+}
+
+/* -------------------------------------------------------
+   Site hero - index page merged header + title block
+   Layout: [brand square] | [eyebrow + h1] | [actions square]
+   ------------------------------------------------------- */
+.site-hero {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.site-hero__inner {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  width: 100%;
+  height: 100px;
+}
+
+/* Left square — logo */
+.site-hero__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--color-border);
+}
+
+.site-hero .site-header__logo {
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Centre — eyebrow + title */
+.site-hero__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 var(--space-6);
+}
+
+.site-hero__eyebrow {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.2rem;
+}
+
+.site-hero__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Right square — button fills the full grid cell */
+.site-hero__actions {
+  border-left: 1px solid var(--color-border);
+}
+
+.site-hero__actions .theme-toggle {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm);
+  white-space: normal;
+}
+
+/* Intro paragraph sitting above the checkpoint list */
+.index-intro {
+  margin-bottom: var(--space-8);
+  color: var(--color-text-muted);
 }
 
 /* Site nav */
@@ -140,9 +225,24 @@
 }
 
 .badge--status-done {
-  color: #15803d;
-  background: #f0fdf4;
-  border-color: #86efac;
+  color: var(--color-pass);
+  background: var(--color-pass-bg);
+  border-color: var(--color-pass);
+}
+
+.badge--status-skipped {
+  color: #92400e;
+  background: #fffbeb;
+  border-color: #b45309;
+  font-weight: 400;
+}
+
+.badge--status-obsolete {
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  font-weight: 400;
+  text-decoration: line-through;
 }
 
 /* Content sections */
@@ -189,43 +289,247 @@
 }
 
 .checkpoint-card {
-  display: block;
-  padding: var(--space-4) var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--space-3);
+  row-gap: var(--space-1);
+  padding: var(--space-2) var(--space-4);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   text-decoration: none;
   color: var(--color-text);
+  background: var(--color-surface);
+}
+
+/* Demo-ready cards (always <a> elements): brighter bg to invite interaction */
+a.checkpoint-card {
   background: var(--color-bg);
 }
 
-.checkpoint-card:hover {
+a.checkpoint-card:hover {
   border-color: var(--color-accent);
   background: #f0f4ff;
 }
 
-.checkpoint-card__header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-2);
+/* Skipped: no opacity — dim via explicit color on id */
+.checkpoint-card--skipped {
+  cursor: default;
 }
 
-.checkpoint-card__id {
-  font-size: var(--font-size-sm);
-  font-weight: 700;
-  font-family: var(--font-family-mono);
+.checkpoint-card--skipped .checkpoint-card__id {
   color: var(--color-text-muted);
 }
 
-.checkpoint-card__title {
-  font-weight: 600;
-  font-size: var(--font-size-base);
+/* AAA: similar, slightly more subdued border */
+.checkpoint-card--aaa {
+  cursor: default;
+  border-style: dashed;
 }
 
+.checkpoint-card--aaa .checkpoint-card__id {
+  color: var(--color-text-muted);
+}
+
+/* Obsolete: muted id + strikethrough on title */
+.checkpoint-card--obsolete {
+  cursor: default;
+}
+
+.checkpoint-card--obsolete .checkpoint-card__id {
+  color: var(--color-text-muted);
+}
+
+.checkpoint-card--obsolete .checkpoint-card__title {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+/* Unbox header — id and badges join the first flex row */
+.checkpoint-card__header {
+  display: contents;
+}
+
+/* Code number — row 1, col 1 */
+.checkpoint-card__id {
+  order: 1;
+  font-size: var(--font-size-lg);
+  font-weight: 800;
+  font-family: var(--font-family-mono);
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* Title — row 1, col 2, fills remaining space */
+.checkpoint-card__title {
+  order: 2;
+  flex: 1;
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  min-width: 0;
+}
+
+/* Badges — row 1, after title */
+.checkpoint-card__header .badge {
+  order: 3;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  padding: 1px var(--space-2);
+}
+
+/* Summary — forced to its own full-width row */
 .checkpoint-card__summary {
+  order: 4;
+  flex: 0 0 100%;
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
   margin: 0;
+}
+
+/* Note — forced to its own full-width row, smaller and separated */
+.checkpoint-card__note {
+  order: 5;
+  flex: 0 0 100%;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin: 0;
+  padding-top: var(--space-1);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Index page: two-column layout with checkpoint nav */
+.index-layout {
+  display: flex;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.checkpoint-nav {
+  width: 210px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  border-right: 1px solid var(--color-border);
+  padding: var(--space-6) var(--space-4) var(--space-6) var(--space-6);
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) var(--color-bg);
+}
+/* Chromium/Safari */
+.checkpoint-nav::-webkit-scrollbar {
+  width: 6px;
+}
+.checkpoint-nav::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+.checkpoint-nav::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+.checkpoint-nav::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+.checkpoint-nav__group {
+  margin-bottom: var(--space-3);
+}
+
+.checkpoint-nav__heading {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  margin-bottom: var(--space-1);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.checkpoint-nav__heading:hover,
+.checkpoint-nav__heading:focus {
+  color: var(--color-accent);
+}
+
+.checkpoint-nav__list {
+  list-style: none;
+  padding: 0 0 0 0.55rem;
+  margin: 0;
+}
+
+.checkpoint-nav__list li {
+  margin: 0;
+}
+
+/* Criteria (1.1.1) — deepest indent, no extra line */
+.checkpoint-nav__link {
+  display: flex;
+  gap: 0.35em;
+  align-items: baseline;
+  padding: 0.15em 0.3em 0.15em 0.65rem;
+  border-radius: 3px;
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
+.checkpoint-nav__link:hover,
+.checkpoint-nav__link:focus {
+  background: var(--color-surface);
+  color: var(--color-accent);
+}
+
+/* Guideline (1.1) — medium indent */
+.checkpoint-nav__guideline {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 0.35em 0.3em 0.1em 0.35em;
+  margin-top: 0.3em;
+}
+
+.checkpoint-nav__guideline:hover,
+.checkpoint-nav__guideline:focus {
+  color: var(--color-accent);
+}
+
+/* Criteria that have no page on this site - italic + muted for dual coding */
+.checkpoint-nav__link--unavailable {
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.checkpoint-nav__link--unavailable:hover {
+  color: var(--color-accent);
+}
+
+.checkpoint-nav__code {
+  font-family: var(--font-family-mono);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  font-size: 0.68rem;
+}
+
+.checkpoint-nav__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* site-main overrides inside index layout */
+.index-layout .site-main {
+  flex: 1;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding-left: var(--space-8);
 }
 
 /* Site footer */
@@ -239,6 +543,172 @@
   max-width: 960px;
   margin: 0 auto;
   padding: 0 var(--space-6);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   color: var(--color-text-muted);
+}
+
+.site-footer__inner a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.site-footer__inner a:hover {
+  text-decoration: none;
+}
+
+/* -------------------------------------------------------
+   Dark mode toggle button
+   Light mode: dark button (moon icon)
+   Dark mode:  light button (sun icon)
+   Colors are hardcoded so they stay consistent in both themes.
+   ------------------------------------------------------- */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: #ffffff;
+  background: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  border-radius: var(--radius);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  background: #333333;
+  border-color: #333333;
+}
+
+/* aria-pressed="true" = dark mode is active - show light button with sun */
+.theme-toggle[aria-pressed="true"] {
+  color: #1a1a1a;
+  background: #f1f5f9;
+  border-color: #f1f5f9;
+}
+
+.theme-toggle[aria-pressed="true"]:hover {
+  background: #e2e8f0;
+  border-color: #e2e8f0;
+}
+
+.theme-toggle__icon {
+  display: inline-block;
+  /* Icon uses its own animation, not the global theme transition */
+  transition: none;
+}
+
+.theme-toggle__icon {
+  animation: theme-icon-in 0.25s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle__icon {
+    animation: none;
+  }
+}
+
+/* -------------------------------------------------------
+   Dark mode overrides for hardcoded colors
+   ------------------------------------------------------- */
+
+/* Skip link: white text fails on the new light-blue accent
+   in dark mode - swap to dark text instead */
+[data-theme="dark"] .skip-link {
+  color: var(--color-bg);
+}
+
+/* Card hover tint - dark equivalent for demo-ready (<a>) cards */
+[data-theme="dark"] a.checkpoint-card:hover {
+  background: #1e3358;
+}
+
+/* Level badges - each uses a distinct hue; override all three */
+[data-theme="dark"] .badge--level-a {
+  color: #93c5fd;     /* blue-300  - 7.7:1 on bg */
+  background: #1e3358;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .badge--level-aa {
+  color: #c4b5fd;     /* violet-300 - 7.9:1 on bg */
+  background: #2d1b69;
+  border-color: #7c3aed;
+}
+
+[data-theme="dark"] .badge--level-aaa {
+  color: #6ee7b7;     /* emerald-300 - 8.1:1 on bg */
+  background: #064e3b;
+  border-color: #10b981;
+}
+
+/* Status badges */
+[data-theme="dark"] .badge--status-done {
+  border-color: #22c55e;
+}
+
+[data-theme="dark"] .badge--status-skipped {
+  color: #fcd34d;     /* amber-300 - 9.9:1 on bg */
+  background: #451a03;
+  border-color: #d97706;
+}
+
+/* -------------------------------------------------------
+   Responsive - Tablet (≤1024px)
+   ------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .checkpoint-nav {
+    width: 170px;
+    padding: var(--space-4) var(--space-3) var(--space-4) var(--space-4);
+  }
+}
+
+/* -------------------------------------------------------
+   Responsive - Mobile (≤640px)
+   ------------------------------------------------------- */
+@media (max-width: 640px) {
+  /* Header: allow logo + nav to wrap to second line */
+  .site-header__inner {
+    flex-wrap: wrap;
+    padding: 0 var(--space-4);
+    gap: var(--space-3);
+  }
+
+  /* Hero: shrink height and squares on mobile */
+  .site-hero__inner {
+    height: 72px;
+  }
+
+  .site-hero__text {
+    padding: 0 var(--space-3);
+  }
+
+  /* Page padding: tighter sides */
+  .site-main {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  /* Index layout: single-column, no sidebar */
+  .index-layout {
+    display: block;
+  }
+
+  .checkpoint-nav {
+    display: none;
+  }
+
+  .index-layout .site-main {
+    padding-left: var(--space-4);
+  }
+
+  /* Cards already flex-wrap; nothing extra needed for header */
+
+  /* Footer padding */
+  .site-footer__inner {
+    padding: 0 var(--space-4);
+  }
 }

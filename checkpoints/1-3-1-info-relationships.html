@@ -3,31 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.3.1 Info and Relationships — WCAG Demo</title>
+  <title>1.3.1 Info and Relationships - WCAG Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 1.3.1 Info and Relationships failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">1.3.1 Info and Relationships</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
@@ -42,16 +49,35 @@
       <h2 id="description-heading">Description</h2>
       <p>
         Information, structure, and relationships conveyed through visual presentation must also be
-        programmatically determinable — or available in text. Screen readers and assistive technologies
+        programmatically determinable - or available in text. Screen readers and assistive technologies
         cannot infer meaning from visual layout alone. Structure must be expressed in the HTML itself.
       </p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Open the page in a browser.</li>
+        <li>Inspect the table markup using browser DevTools.</li>
+        <li>Look for <code>&lt;th&gt;</code> elements in header rows or columns. If all cells use <code>&lt;td&gt;</code>, this is a failure.</li>
+        <li>Check that <code>&lt;th&gt;</code> elements have a <code>scope</code> attribute where the table has both row and column headers.</li>
+        <li>
+          Use a screen reader (NVDA + Firefox, JAWS + Chrome, or VoiceOver + Safari):
+          <ul>
+            <li>Navigate into the table using the table navigation key (T in NVDA browse mode).</li>
+            <li>Move through cells with arrow keys.</li>
+            <li>Listen for whether the screen reader announces the column or row header along with each data cell.</li>
+          </ul>
+        </li>
+        <li>If no header context is announced, the criterion fails.</li>
+      </ol>
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
 
       <!--
-        Demo block — reusable pattern.
+        Demo block - reusable pattern.
         To add a second demo below this one, duplicate .demo-container and update content.
         JS in demo-toggle.js handles all .demo-toggle buttons automatically.
       -->
@@ -63,17 +89,17 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-1-label"
-           data-announce-fail="Showing fail example. The table uses only td elements — screen readers cannot announce column context."
-           data-announce-pass="Showing pass example. The table uses th elements with scope attribute — screen readers now announce column headers.">
+           data-announce-fail="Showing fail example. The table uses only td elements - screen readers cannot announce column context."
+           data-announce-pass="Showing pass example. The table uses th elements with scope attribute - screen readers now announce column headers.">
 
         <div class="demo-container__toolbar">
           <!--
             id referenced by aria-labelledby above.
-            Not aria-hidden — this label is meaningful to AT users.
+            Not aria-hidden - this label is meaningful to AT users.
           -->
           <span class="demo-container__label" id="demo-1-label">Table structure: semantic headers</span>
           <!--
-            No aria-label on the button — the visible text IS the accessible name.
+            No aria-label on the button - the visible text IS the accessible name.
             aria-pressed communicates current state.
           -->
           <button
@@ -86,10 +112,10 @@
           </button>
         </div>
 
-        <!-- Visual status strip — aria-hidden because the live region handles AT announcements -->
+        <!-- Visual status strip - aria-hidden because the live region handles AT announcements -->
         <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail — table has no semantic headers</span>
-          <span class="demo-status__text--pass">Pass — table uses &lt;th&gt; with scope</span>
+          <span class="demo-status__text--fail">Fail - table has no semantic headers</span>
+          <span class="demo-status__text--pass">Pass - table uses &lt;th&gt; with scope</span>
         </div>
 
         <!-- Screen reader live region. JS updates textContent on toggle. -->
@@ -105,10 +131,10 @@
             <div class="demo-table-wrapper">
               <!--
                 tabindex="0" makes the table reachable by Tab for keyboard users.
-                No aria-label — caption provides the accessible name.
+                No aria-label - caption provides the accessible name.
               -->
               <table class="demo-table" tabindex="0">
-                <caption class="visually-hidden">Fail example — employee data: first row uses td elements, no semantic column headers</caption>
+                <caption class="visually-hidden">Fail example - employee data: first row uses td elements, no semantic column headers</caption>
                 <tbody>
                   <tr>
                     <td>Name</td>
@@ -142,7 +168,7 @@
           <div data-demo-state="pass" hidden>
             <div class="demo-table-wrapper">
               <table class="demo-table" tabindex="0">
-                <caption class="visually-hidden">Pass example — employee data: header cells use th elements with scope="col"</caption>
+                <caption class="visually-hidden">Pass example - employee data: header cells use th elements with scope="col"</caption>
                 <thead>
                   <tr>
                     <th scope="col">Name</th>
@@ -180,7 +206,7 @@
           </div>
           <div class="demo-explanation__panel demo-explanation__panel--pass">
             <p class="demo-explanation__heading">Why this passes</p>
-            <p>Header cells use <code>&lt;th scope="col"&gt;</code> inside <code>&lt;thead&gt;</code>. Screen readers can announce "Score column, Carol: 95" — the relationship is programmatically defined.</p>
+            <p>Header cells use <code>&lt;th scope="col"&gt;</code> inside <code>&lt;thead&gt;</code>. Screen readers can announce "Score column, Carol: 95" - the relationship is programmatically defined.</p>
           </div>
         </div>
 
@@ -191,7 +217,7 @@
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
       <p>
-        When a table uses only <code>&lt;td&gt;</code> elements for all cells — including the header row —
+        When a table uses only <code>&lt;td&gt;</code> elements for all cells - including the header row -
         screen readers announce every cell as plain data with no column context. A user navigating by
         table cell hears values like "Name", "Score", "Rank" with no indication that these are column
         headers. The relationship between the header and data cells is invisible to assistive technology.
@@ -204,33 +230,14 @@
         Using <code>&lt;th&gt;</code> elements for header cells, with an appropriate <code>scope</code>
         attribute (<code>scope="col"</code> for column headers, <code>scope="row"</code> for row headers),
         allows screen readers to announce context. When a user navigates to a data cell, the screen reader
-        can say "Score column, Alice: 92" — conveying the structural relationship programmatically.
+        can say "Score column, Alice: 92" - conveying the structural relationship programmatically.
       </p>
-    </section>
-
-    <section class="content-section" aria-labelledby="testing-heading">
-      <h2 id="testing-heading">How To Test</h2>
-      <ol>
-        <li>Open the page in a browser.</li>
-        <li>Inspect the table markup using browser DevTools.</li>
-        <li>Look for <code>&lt;th&gt;</code> elements in header rows or columns. If all cells use <code>&lt;td&gt;</code>, this is a failure.</li>
-        <li>Check that <code>&lt;th&gt;</code> elements have a <code>scope</code> attribute where the table has both row and column headers.</li>
-        <li>
-          Use a screen reader (NVDA + Firefox, JAWS + Chrome, or VoiceOver + Safari):
-          <ul>
-            <li>Navigate into the table using the table navigation key (T in NVDA browse mode).</li>
-            <li>Move through cells with arrow keys.</li>
-            <li>Listen for whether the screen reader announces the column or row header along with each data cell.</li>
-          </ul>
-        </li>
-        <li>If no header context is announced, the criterion fails.</li>
-      </ol>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>
-        This is one of the most commonly failed WCAG criteria. It applies beyond tables — heading levels
+        This is one of the most commonly failed WCAG criteria. It applies beyond tables - heading levels
         (<code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code>), list markup (<code>&lt;ul&gt;</code>,
         <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code>), and landmark roles are all part of 1.3.1.
         A visually styled bold paragraph that functions as a heading but uses
@@ -244,7 +251,7 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html">WCAG 2.2 Understanding 1.3.1</a>
       </p>
     </div>
@@ -252,5 +259,6 @@
 
   <script src="../assets/js/demo-toggle.js"></script>
 
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

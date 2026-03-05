@@ -3,35 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.4.5 Images of Text — WCAG 2.2 Demo</title>
+  <title>1.4.5 Images of Text - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.5 Images of Text failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">1.4.5 Images of Text</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-aa">Level AA</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
@@ -40,10 +46,60 @@
       <p>If the same visual presentation can be achieved using text, images of text must not be used to convey information. Text rendered as an image cannot be resized cleanly by the browser, cannot be styled by user stylesheets, cannot be translated by browser translation tools, and is often not accessible to screen readers unless a text alternative is provided. Actual text is always preferable because it is flexible, scalable, and adaptable to user needs.</p>
     </section>
 
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Identify all images on the page using browser developer tools or an accessibility inspector.</li>
+        <li>For each image, check whether it contains text.</li>
+        <li>For images containing text, assess whether that text could reasonably have been rendered as HTML text styled with CSS.</li>
+        <li>If the image text could be replaced with real text, this constitutes a failure.</li>
+        <li>Check whether the image has an appropriate <code>alt</code> attribute providing the same text as a fallback - this mitigates screen reader impact but does not make the implementation pass this criterion.</li>
+        <li>Review banner images, promotional images, and decorative headers as common areas of failure.</li>
+      </ol>
+    </section>
+
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-145"
+           data-announce-fail="Showing fail example. The heading is rendered as an SVG graphic - users cannot resize, recolour, or copy the text."
+           data-announce-pass="Showing pass example. The same heading is real HTML text - fully resizable, selectable, and adaptable.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-145">Images of text demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The heading below is an SVG graphic. Increasing browser font size or applying a custom stylesheet will not affect it. Users cannot select or copy the text.</p>
+            <div style="margin-top:0.75rem;">
+              <svg width="280" height="56" role="img" aria-label="Contact us today" focusable="false">
+                <text x="0" y="42" font-family="Georgia, serif" font-size="36" fill="#1a1a1a">Contact us today</text>
+              </svg>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Try selecting the text with your mouse - you cannot.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same heading is real HTML text. It scales with browser zoom, can be restyled by the user, and is fully selectable.</p>
+            <div style="margin-top:0.75rem;">
+              <p style="font-family:Georgia,serif;font-size:2.25rem;font-weight:400;color:#1a1a1a;margin:0;line-height:1.2;">Contact us today</p>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Try selecting the text - you can copy and resize it freely.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -54,19 +110,7 @@
 
     <section class="content-section" aria-labelledby="pass-heading">
       <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation renders all informational text using HTML text elements styled with CSS. Web fonts such as those available through Google Fonts or self-hosted font files can achieve virtually any typographic style without requiring text to be saved as an image. If an image of text is used for a logo or brand mark, it is considered essential and is exempt from this requirement. Text that is part of an image where the specific visual appearance is essential to the content — such as a historical document photograph — is also exempt.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="testing-heading">
-      <h2 id="testing-heading">How To Test</h2>
-      <ol>
-        <li>Identify all images on the page using browser developer tools or an accessibility inspector.</li>
-        <li>For each image, check whether it contains text.</li>
-        <li>For images containing text, assess whether that text could reasonably have been rendered as HTML text styled with CSS.</li>
-        <li>If the image text could be replaced with real text, this constitutes a failure.</li>
-        <li>Check whether the image has an appropriate <code>alt</code> attribute providing the same text as a fallback — this mitigates screen reader impact but does not make the implementation pass this criterion.</li>
-        <li>Review banner images, promotional images, and decorative headers as common areas of failure.</li>
-      </ol>
+      <p>A passing implementation renders all informational text using HTML text elements styled with CSS. Web fonts such as those available through Google Fonts or self-hosted font files can achieve virtually any typographic style without requiring text to be saved as an image. If an image of text is used for a logo or brand mark, it is considered essential and is exempt from this requirement. Text that is part of an image where the specific visual appearance is essential to the content - such as a historical document photograph - is also exempt.</p>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">
@@ -79,11 +123,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/images-of-text.html">WCAG 2.2 Understanding 1.4.5</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

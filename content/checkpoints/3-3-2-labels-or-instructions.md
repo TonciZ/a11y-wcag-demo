@@ -11,7 +11,7 @@ When user input is required, labels or instructions must be provided to help use
 
 ## Fail Explanation
 
-A form that uses placeholder text alone as a label fails this criterion, because placeholder text disappears when the user starts typing, leaving them without any indication of what the field expects — particularly problematic for users with cognitive disabilities or short-term memory impairments. Similarly, a date field that accepts only a specific format (e.g., DD/MM/YYYY) but does not display that format requirement before submission is a failure, as users cannot know what is expected until they receive an error message after the fact.
+A form that uses placeholder text alone as a label fails this criterion, because placeholder text disappears when the user starts typing, leaving them without any indication of what the field expects - particularly problematic for users with cognitive disabilities or short-term memory impairments. Similarly, a date field that accepts only a specific format (e.g., DD/MM/YYYY) but does not display that format requirement before submission is a failure, as users cannot know what is expected until they receive an error message after the fact.
 
 ## Pass Explanation
 
