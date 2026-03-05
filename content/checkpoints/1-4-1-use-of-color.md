@@ -28,4 +28,4 @@ A passing implementation ensures that any information communicated through color
 
 ## Notes
 
-This criterion does not prohibit the use of color; it only requires that color not be the only means of conveying information. It is important to note that contrast ratio requirements are covered under SC 1.4.3, not this criterion — 1.4.1 is specifically about redundancy of information, not color luminance.
+This criterion does not prohibit the use of color; it only requires that color not be the only means of conveying information. It is important to note that contrast ratio requirements are covered under SC 1.4.3, not this criterion - 1.4.1 is specifically about redundancy of information, not color luminance.

@@ -6,18 +6,18 @@ Interactive accessibility demos showing WCAG 2.2 failures and how to fix them. B
 
 ## What it is
 
-Each checkpoint includes:
-- A toggleable FAIL / PASS demo
-- Explanation of why the failure occurs
+Each checkpoint page includes:
+- Description of the criterion
 - Manual testing instructions
+- A toggleable FAIL / PASS interactive demo
+- Fail and pass explanations
+- Notes
 
-## Current checkpoints
+## Current status
 
-| ID | Title | Level | Status |
-|----|-------|-------|--------|
-| 1.3.1 | Info and Relationships | A | Demo ready |
+All 44 WCAG 2.2 Level A and AA checkpoints are fully implemented with interactive demos.
 
-All other WCAG 2.2 Level A and AA checkpoints are scaffolded with full content (description, fail/pass explanations, testing instructions) and are awaiting demo implementation.
+A small number of criteria that cannot be demonstrated on a static site (live captions, audio description tracks, etc.) are documented with an explanation of why and link to the official Understanding doc.
 
 ## Accessibility
 
@@ -25,11 +25,12 @@ The site itself is built to be accessible:
 - Skip to content link
 - Semantic landmark structure
 - Logical heading hierarchy
-- Visible focus indicators
+- Visible focus indicators on all interactive elements
 - No `outline: none`
 - All interactive elements are native HTML
 - Screen reader live regions for demo state changes
 - Keyboard-reachable demo content
+- Dark mode with verified contrast ratios in both themes
 
 ## Tech
 

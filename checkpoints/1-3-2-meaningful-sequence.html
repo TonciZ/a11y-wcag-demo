@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.3.2 Meaningful Sequence — WCAG 2.2 Demo</title>
+  <title>1.3.2 Meaningful Sequence - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 1.3.2 Meaningful Sequence failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">1.3.2 Meaningful Sequence</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>If the sequence in which content is presented affects its meaning, a correct reading sequence must be programmatically determinable. This means the order in which a screen reader or other assistive technology encounters content in the DOM must match the logical reading order that conveys the intended meaning. When visual layout is achieved with CSS positioning or tables, the underlying code order must still be meaningful.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when CSS positioning, floats, or layout tables cause content to be read in a different order than it appears visually, resulting in nonsensical or confusing output for screen reader users. For example, if a sidebar column appears visually after a main content block but is positioned before it in the DOM, screen reader users will encounter sidebar navigation or advertisements before the main page content, disrupting comprehension.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation ensures that the DOM order of content reflects the logical reading sequence. When CSS is disabled or a screen reader reads the page linearly, the content still flows in a meaningful order. Authors achieve this by writing HTML in the correct order and using CSS only for visual presentation, not to reorder content that has semantic relationships.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -69,6 +58,82 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-132"
+           data-announce-fail="Showing fail example. Visual order is Steps 1, 2, 3 but DOM order is Steps 3, 1, 2 - keyboard and screen reader follow DOM order."
+           data-announce-pass="Showing pass example. DOM order matches the visual order - keyboard and reading sequence are logical.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-132">Meaningful sequence demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The steps <em>look</em> ordered 1&rarr;2&rarr;3, but press <kbd>Tab</kbd> to see the actual keyboard order: 3&rarr;1&rarr;2. CSS <code>order</code> property reorders visuals without changing the DOM.</p>
+            <div style="display:flex;gap:0.5rem;margin-top:0.75rem;" aria-label="Steps (fail - DOM order does not match visual order)">
+              <!-- DOM order: 3, 1, 2 - CSS order makes them appear as 1, 2, 3 -->
+              <a href="#" onclick="return false;"
+                 style="flex:1;order:2;padding:0.75rem 0.5rem;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:4px;text-align:center;text-decoration:none;color:inherit;">
+                <strong>Step 3</strong><br><span style="font-size:0.8rem;">Confirm</span>
+              </a>
+              <a href="#" onclick="return false;"
+                 style="flex:1;order:0;padding:0.75rem 0.5rem;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:4px;text-align:center;text-decoration:none;color:inherit;">
+                <strong>Step 1</strong><br><span style="font-size:0.8rem;">Details</span>
+              </a>
+              <a href="#" onclick="return false;"
+                 style="flex:1;order:1;padding:0.75rem 0.5rem;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:4px;text-align:center;text-decoration:none;color:inherit;">
+                <strong>Step 2</strong><br><span style="font-size:0.8rem;">Review</span>
+              </a>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Tab sequence: Step 3 &rarr; Step 1 &rarr; Step 2</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Press <kbd>Tab</kbd> - the keyboard order follows the visual order 1&rarr;2&rarr;3. DOM order matches the intended reading sequence.</p>
+            <div style="display:flex;gap:0.5rem;margin-top:0.75rem;" aria-label="Steps (pass - DOM order matches visual order)">
+              <a href="#" onclick="return false;"
+                 style="flex:1;padding:0.75rem 0.5rem;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:4px;text-align:center;text-decoration:none;color:inherit;">
+                <strong>Step 1</strong><br><span style="font-size:0.8rem;">Details</span>
+              </a>
+              <a href="#" onclick="return false;"
+                 style="flex:1;padding:0.75rem 0.5rem;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:4px;text-align:center;text-decoration:none;color:inherit;">
+                <strong>Step 2</strong><br><span style="font-size:0.8rem;">Review</span>
+              </a>
+              <a href="#" onclick="return false;"
+                 style="flex:1;padding:0.75rem 0.5rem;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:4px;text-align:center;text-decoration:none;color:inherit;">
+                <strong>Step 3</strong><br><span style="font-size:0.8rem;">Confirm</span>
+              </a>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Tab sequence: Step 1 &rarr; Step 2 &rarr; Step 3</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when CSS positioning, floats, or layout tables cause content to be read in a different order than it appears visually, resulting in nonsensical or confusing output for screen reader users. For example, if a sidebar column appears visually after a main content block but is positioned before it in the DOM, screen reader users will encounter sidebar navigation or advertisements before the main page content, disrupting comprehension.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures that the DOM order of content reflects the logical reading sequence. When CSS is disabled or a screen reader reads the page linearly, the content still flows in a meaningful order. Authors achieve this by writing HTML in the correct order and using CSS only for visual presentation, not to reorder content that has semantic relationships.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>The criterion only applies when the sequence matters for understanding; purely decorative content with no reading-order dependency is not in scope. CSS <code>order</code> and <code>grid-template-areas</code> are common sources of meaningful sequence failures in modern layouts.</p>
@@ -79,11 +144,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html">WCAG 2.2 Understanding 1.3.2</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

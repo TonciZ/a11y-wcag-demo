@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.2.2 Captions (Prerecorded) — WCAG 2.2 Demo</title>
+  <title>1.2.2 Captions (Prerecorded) - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 1.2.2 Captions (Prerecorded) failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">1.2.2 Captions (Prerecorded)</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>Captions must be provided for all prerecorded audio content in synchronized media. Synchronized media refers to audio paired with video, such as a film, webinar recording, or instructional video. Captions are a text version of the audio that is synchronized with the video, allowing deaf and hard-of-hearing users to follow both the spoken content and relevant non-speech audio information.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when a video that contains speech or meaningful audio is published without synchronized captions. Auto-generated captions that have not been reviewed and corrected are generally not sufficient, as they often contain errors that make them unusable or misleading. A video with no captions at all leaves deaf and hard-of-hearing users with no way to access the spoken dialogue or audio cues.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation provides accurate, synchronized captions that include all spoken dialogue, identify speakers when more than one person is speaking, and convey relevant non-speech audio such as "[music]" or "[phone ringing]". Captions must be synchronized closely enough with the audio that they do not cause confusion, and they must be presented in a format that can be enabled by the user.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -70,6 +59,74 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-122"
+           data-announce-fail="Showing fail example. A video element with no track element for captions - deaf users cannot follow the spoken content."
+           data-announce-pass="Showing pass example. The same video includes a track element providing English captions.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-122">Captions demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A <code>&lt;video&gt;</code> element with no <code>&lt;track&gt;</code> element. No captions are available - deaf users cannot follow the spoken dialogue.</p>
+            <div style="margin-top:0.75rem;">
+              <video controls style="width:100%;max-width:400px;background:#000;aspect-ratio:16/9;">
+                <source src="" type="video/mp4">
+                Your browser does not support video.
+              </video>
+              <p style="font-size:0.8rem;color:#5a5a5a;margin-top:0.25rem;">(No video file loaded - this demonstrates the markup structure.)</p>
+            </div>
+            <pre><code>&lt;video controls&gt;
+  &lt;source src="talk.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>A <code>&lt;track kind="captions"&gt;</code> element is added. Browsers display captions; screen readers and captioning tools can access the text.</p>
+            <div style="margin-top:0.75rem;">
+              <video controls style="width:100%;max-width:400px;background:#000;aspect-ratio:16/9;">
+                <source src="" type="video/mp4">
+                <track kind="captions" src="" srclang="en" label="English" default>
+                Your browser does not support video.
+              </video>
+              <p style="font-size:0.8rem;color:#5a5a5a;margin-top:0.25rem;">(No video file loaded - the <code>&lt;track&gt;</code> element is present in the markup.)</p>
+            </div>
+            <pre><code>&lt;video controls&gt;
+  &lt;source src="talk.mp4" type="video/mp4"&gt;
+  &lt;track kind="captions" src="captions-en.vtt"
+         srclang="en" label="English" default&gt;
+&lt;/video&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when a video that contains speech or meaningful audio is published without synchronized captions. Auto-generated captions that have not been reviewed and corrected are generally not sufficient, as they often contain errors that make them unusable or misleading. A video with no captions at all leaves deaf and hard-of-hearing users with no way to access the spoken dialogue or audio cues.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation provides accurate, synchronized captions that include all spoken dialogue, identify speakers when more than one person is speaking, and convey relevant non-speech audio such as "[music]" or "[phone ringing]". Captions must be synchronized closely enough with the audio that they do not cause confusion, and they must be presented in a format that can be enabled by the user.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>Auto-generated captions from platforms such as YouTube are not automatically compliant; they must be reviewed and corrected for accuracy before they can be considered sufficient. This criterion does not apply to media that is itself a text alternative for other content, such as a video version of a text document.</p>
@@ -80,11 +137,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html">WCAG 2.2 Understanding 1.2.2</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

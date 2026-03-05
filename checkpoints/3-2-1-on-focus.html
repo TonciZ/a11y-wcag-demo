@@ -3,47 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3.2.1 On Focus — WCAG 2.2 Demo</title>
+  <title>3.2.1 On Focus - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 3.2.1 On Focus failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">3.2.1 On Focus</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
-      <p>When any user interface component receives focus, it must not initiate a change of context. A change of context is a major change in the content of a web page that can disorient users if triggered unexpectedly, including changes such as opening a new window, moving focus to a different component, submitting a form, or significantly rearranging the page's content. This criterion ensures that focus alone — without an explicit user action such as a click or keypress — does not cause such disruptive changes.</p>
+      <p>When any user interface component receives focus, it must not initiate a change of context. A change of context is a major change in the content of a web page that can disorient users if triggered unexpectedly, including changes such as opening a new window, moving focus to a different component, submitting a form, or significantly rearranging the page's content. This criterion ensures that focus alone - without an explicit user action such as a click or keypress - does not cause such disruptive changes.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Using only the keyboard (Tab, Shift+Tab), move focus through all interactive elements on the page: links, buttons, form fields, and custom widgets.</li>
+        <li>Observe whether receiving focus on any element triggers a change of context, such as page navigation, a new window, a form submission, or a significant content change.</li>
+        <li>Pay particular attention to <code>&lt;select&gt;</code> menus, custom comboboxes, and auto-suggest inputs - verify that focus alone does not submit or navigate.</li>
+        <li>Check that modal dialogs, tooltips, and popups triggered by focus do not move focus away from the current control unexpectedly.</li>
+        <li>Use a screen reader (e.g., NVDA + Firefox) and tab through the page, listening for unexpected announcements indicating a context change.</li>
+      </ol>
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-321"
+           data-announce-fail="Showing fail example. Changing the select value triggers automatic navigation."
+           data-announce-pass="Showing pass example. Navigation only occurs when the user explicitly submits.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-321">On Focus demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This markup auto-navigates the moment the user changes the <code>&lt;select&gt;</code> value - including when keyboard users press arrow keys to browse options, before they have made a choice.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Fail: context change triggered by input, not explicit action --&gt;
+&lt;label for="country-fail"&gt;Choose a country:&lt;/label&gt;
+&lt;select id="country-fail"
+        onchange="window.location = this.value"&gt;
+  &lt;option value="/en/"&gt;English&lt;/option&gt;
+  &lt;option value="/fr/"&gt;Français&lt;/option&gt;
+  &lt;option value="/de/"&gt;Deutsch&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same select requires an explicit "Go" button press to navigate. Focus alone - or arrow key browsing - causes no context change.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Pass: navigation requires explicit activation --&gt;
+&lt;label for="country-pass"&gt;Choose a country:&lt;/label&gt;
+&lt;select id="country-pass"&gt;
+  &lt;option value="/en/"&gt;English&lt;/option&gt;
+  &lt;option value="/fr/"&gt;Français&lt;/option&gt;
+  &lt;option value="/de/"&gt;Deutsch&lt;/option&gt;
+&lt;/select&gt;
+&lt;button type="button"
+        onclick="window.location = document.getElementById('country-pass').value"&gt;
+  Go
+&lt;/button&gt;</code></pre>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -54,18 +118,7 @@
 
     <section class="content-section" aria-labelledby="pass-heading">
       <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A page passes when receiving keyboard focus on any interactive component merely highlights or visually indicates that component without triggering navigation, form submissions, new windows, or other context-shifting events. Any meaningful action should require an explicit activation step — such as pressing Enter, Space, or clicking — so that users retain full control over when changes occur.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="testing-heading">
-      <h2 id="testing-heading">How To Test</h2>
-      <ol>
-        <li>Using only the keyboard (Tab, Shift+Tab), move focus through all interactive elements on the page: links, buttons, form fields, and custom widgets.</li>
-        <li>Observe whether receiving focus on any element triggers a change of context, such as page navigation, a new window, a form submission, or a significant content change.</li>
-        <li>Pay particular attention to <code>&lt;select&gt;</code> menus, custom comboboxes, and auto-suggest inputs — verify that focus alone does not submit or navigate.</li>
-        <li>Check that modal dialogs, tooltips, and popups triggered by focus do not move focus away from the current control unexpectedly.</li>
-        <li>Use a screen reader (e.g., NVDA + Firefox) and tab through the page, listening for unexpected announcements indicating a context change.</li>
-      </ol>
+      <p>A page passes when receiving keyboard focus on any interactive component merely highlights or visually indicates that component without triggering navigation, form submissions, new windows, or other context-shifting events. Any meaningful action should require an explicit activation step - such as pressing Enter, Space, or clicking - so that users retain full control over when changes occur.</p>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">
@@ -78,11 +131,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html">WCAG 2.2 Understanding 3.2.1</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

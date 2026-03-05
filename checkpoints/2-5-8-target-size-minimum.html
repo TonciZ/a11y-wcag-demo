@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.5.8 Target Size (Minimum) — WCAG 2.2 Demo</title>
+  <title>2.5.8 Target Size (Minimum) - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 2.5.8 Target Size (Minimum) failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">2.5.8 Target Size (Minimum)</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-aa">Level AA</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>This criterion, new in WCAG 2.2, requires that the size of pointer targets (areas that respond to pointer input such as mouse clicks or touch taps) is at least 24 by 24 CSS pixels, with an exception where targets that do not meet the minimum have sufficient spacing from adjacent targets such that the combined area of the target and its spacing meets the 24×24 pixel threshold. The related Level AAA criterion 2.5.5 requires a minimum of 44×44 CSS pixels with no spacing exception. This criterion reduces the difficulty of accurately tapping small targets for users with motor disabilities.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when a tappable or clickable target is smaller than 24×24 CSS pixels and does not have sufficient spacing around it to compensate. For example, a row of small icon buttons spaced tightly together — each 16×16 pixels with only 2 pixels of gap — fails because the combined area of each icon plus its spacing is less than 24×24 pixels. Users with tremors, limited fine motor control, or who use assistive touch technology cannot reliably tap such small, densely packed targets without accidentally activating adjacent ones.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation either sizes all interactive targets to at least 24×24 CSS pixels, or provides sufficient spacing around smaller targets so that the spacing area around each target, when added to the target itself, covers a 24×24 CSS pixel area. For example, a 16×16 pixel icon button with 4 pixels of transparent padding on each side reaches an effective target area of 24×24 pixels and passes. Native HTML form controls typically meet the minimum in most browsers, but custom small icon buttons, inline links in dense text, and close/dismiss icons frequently fail.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -69,6 +58,69 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-258"
+           data-announce-fail="Showing fail example. Action buttons are 16 by 16 CSS pixels - below the 24 by 24 minimum target size."
+           data-announce-pass="Showing pass example. Action buttons meet the 24 by 24 minimum target size with adequate padding.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-258">Target size demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Three action buttons sized at 16&times;16&thinsp;px - below the 24&times;24&thinsp;px minimum. Small targets are difficult to activate for users with motor impairments or on touch screens.</p>
+            <div style="display:flex;gap:0.5rem;align-items:center;margin-top:0.75rem;padding:0.75rem;background:#f5f5f5;border-radius:4px;">
+              <span style="flex:1;font-size:0.9rem;">Project report.pdf</span>
+              <button type="button" aria-label="Edit"
+                      style="width:16px;height:16px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#9998;</button>
+              <button type="button" aria-label="Share"
+                      style="width:16px;height:16px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#8679;</button>
+              <button type="button" aria-label="Delete"
+                      style="width:16px;height:16px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#10005;</button>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Same buttons with <code>min-width: 24px; min-height: 24px</code> and padding - each target meets the 24&times;24&thinsp;px minimum.</p>
+            <div style="display:flex;gap:0.5rem;align-items:center;margin-top:0.75rem;padding:0.75rem;background:#f5f5f5;border-radius:4px;">
+              <span style="flex:1;font-size:0.9rem;">Project report.pdf</span>
+              <button type="button" aria-label="Edit"
+                      style="min-width:24px;min-height:24px;padding:4px 8px;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:0.8rem;flex-shrink:0;">&#9998;</button>
+              <button type="button" aria-label="Share"
+                      style="min-width:24px;min-height:24px;padding:4px 8px;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:0.8rem;flex-shrink:0;">&#8679;</button>
+              <button type="button" aria-label="Delete"
+                      style="min-width:24px;min-height:24px;padding:4px 8px;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:0.8rem;flex-shrink:0;">&#10005;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when a tappable or clickable target is smaller than 24×24 CSS pixels and does not have sufficient spacing around it to compensate. For example, a row of small icon buttons spaced tightly together - each 16×16 pixels with only 2 pixels of gap - fails because the combined area of each icon plus its spacing is less than 24×24 pixels. Users with tremors, limited fine motor control, or who use assistive touch technology cannot reliably tap such small, densely packed targets without accidentally activating adjacent ones.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation either sizes all interactive targets to at least 24×24 CSS pixels, or provides sufficient spacing around smaller targets so that the spacing area around each target, when added to the target itself, covers a 24×24 CSS pixel area. For example, a 16×16 pixel icon button with 4 pixels of transparent padding on each side reaches an effective target area of 24×24 pixels and passes. Native HTML form controls typically meet the minimum in most browsers, but custom small icon buttons, inline links in dense text, and close/dismiss icons frequently fail.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion is new in WCAG 2.2 and is particularly important for mobile and touch interfaces where small tap targets are a common usability and accessibility problem. Inline text links are exempt from this criterion when the size of the target is constrained by the line-height of the text. The 24×24 minimum is intentionally more achievable than the 44×44 target of 2.5.5 (Level AAA), but teams should aim for 44×44 as best practice wherever possible.</p>
@@ -79,11 +131,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html">WCAG 2.2 Understanding 2.5.8</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

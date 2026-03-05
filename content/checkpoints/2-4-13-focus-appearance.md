@@ -20,7 +20,7 @@ A passing implementation provides a focus indicator that meets both the size and
 ## How To Test
 
 1. Navigate to the page using only the keyboard and observe the focus indicator on each interactive element.
-2. For each focus indicator, estimate its width and perimeter — it should be at least equivalent to a 2px outline around the full component boundary.
+2. For each focus indicator, estimate its width and perimeter - it should be at least equivalent to a 2px outline around the full component boundary.
 3. Use a color contrast checking tool (such as the APCA Colour Contrast Checker or browser DevTools) to measure the contrast between the focused state pixels and the unfocused state pixels.
 4. Verify the contrast ratio is at least 3:1 between focused and unfocused states.
 5. Check that the focus indicator is not partially or fully hidden by other elements.
@@ -28,4 +28,4 @@ A passing implementation provides a focus indicator that meets both the size and
 
 ## Notes
 
-This criterion is new in WCAG 2.2 and is one of the most technically specific criteria in the standard, providing concrete measurable thresholds. It applies to focus indicators that are author-created — the browser's default focus ring is generally acceptable if it meets the thresholds, but browser defaults vary significantly. Designers should explicitly specify focus styles rather than relying on browser defaults to ensure compliance.
+This criterion is new in WCAG 2.2 and is one of the most technically specific criteria in the standard, providing concrete measurable thresholds. It applies to focus indicators that are author-created - the browser's default focus ring is generally acceptable if it meets the thresholds, but browser defaults vary significantly. Designers should explicitly specify focus styles rather than relying on browser defaults to ensure compliance.

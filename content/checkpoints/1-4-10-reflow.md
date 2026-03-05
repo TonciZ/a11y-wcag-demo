@@ -15,7 +15,7 @@ A failure occurs when zooming to 400% (or viewing at a 320px-wide viewport) caus
 
 ## Pass Explanation
 
-A passing implementation uses responsive design so that at a 320px viewport width, all content reflows into a single column that can be read by scrolling vertically only. This is typically achieved using CSS media queries, flexible grid layouts, and relative units. Content that requires two-dimensional scrolling by nature — such as data tables, maps, diagrams, or media players — is exempt from this requirement, provided the rest of the page still reflows correctly.
+A passing implementation uses responsive design so that at a 320px viewport width, all content reflows into a single column that can be read by scrolling vertically only. This is typically achieved using CSS media queries, flexible grid layouts, and relative units. Content that requires two-dimensional scrolling by nature - such as data tables, maps, diagrams, or media players - is exempt from this requirement, provided the rest of the page still reflows correctly.
 
 ## How To Test
 
@@ -29,4 +29,4 @@ A passing implementation uses responsive design so that at a 320px viewport widt
 
 ## Notes
 
-This criterion was added in WCAG 2.1 and is closely related to responsive web design practices. The 320 CSS pixel threshold was chosen because it corresponds to 1280px at 400% zoom, which is a common zoom level for low-vision users. Content that inherently requires two-dimensional layout — such as complex spreadsheets or video players — is explicitly excluded.
+This criterion was added in WCAG 2.1 and is closely related to responsive web design practices. The 320 CSS pixel threshold was chosen because it corresponds to 1280px at 400% zoom, which is a common zoom level for low-vision users. Content that inherently requires two-dimensional layout - such as complex spreadsheets or video players - is explicitly excluded.

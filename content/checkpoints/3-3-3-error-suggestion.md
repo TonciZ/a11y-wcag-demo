@@ -7,15 +7,15 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html
 
 ## Description
 
-If an input error is automatically detected and suggestions for correction are known, the suggestions must be provided to the user, unless doing so would jeopardise the security or purpose of the content. This criterion builds on 3.3.1 Error Identification by going a step further: it is not enough to tell users what went wrong — where the system can determine how to fix the problem, it must tell users that too. For example, if a required field is left blank, the error should say "Email address is required" and not merely flag the field as incorrect.
+If an input error is automatically detected and suggestions for correction are known, the suggestions must be provided to the user, unless doing so would jeopardise the security or purpose of the content. This criterion builds on 3.3.1 Error Identification by going a step further: it is not enough to tell users what went wrong - where the system can determine how to fix the problem, it must tell users that too. For example, if a required field is left blank, the error should say "Email address is required" and not merely flag the field as incorrect.
 
 ## Fail Explanation
 
-A form that identifies an error but offers no guidance on how to resolve it fails this criterion when a suggestion is knowable. For instance, a password field that rejects an entry because it does not contain an uppercase letter, but only displays "Invalid password" without explaining the requirement, leaves users — especially those with cognitive disabilities or those relying on screen readers — unable to determine the correct course of action. Providing only a red border or a generic "Error" label with no instructive text is also a failure at this level.
+A form that identifies an error but offers no guidance on how to resolve it fails this criterion when a suggestion is knowable. For instance, a password field that rejects an entry because it does not contain an uppercase letter, but only displays "Invalid password" without explaining the requirement, leaves users - especially those with cognitive disabilities or those relying on screen readers - unable to determine the correct course of action. Providing only a red border or a generic "Error" label with no instructive text is also a failure at this level.
 
 ## Pass Explanation
 
-A form passes when each error message not only identifies the problem but also provides an actionable suggestion. For example, "Date of birth must be in DD/MM/YYYY format" or "Username must be between 3 and 20 characters" or "This email address is already registered — try logging in instead." The suggestion must be conveyed in text and programmatically associated with the relevant field so that screen reader users receive it when focusing the erroneous control.
+A form passes when each error message not only identifies the problem but also provides an actionable suggestion. For example, "Date of birth must be in DD/MM/YYYY format" or "Username must be between 3 and 20 characters" or "This email address is already registered - try logging in instead." The suggestion must be conveyed in text and programmatically associated with the relevant field so that screen reader users receive it when focusing the erroneous control.
 
 ## How To Test
 

@@ -3,47 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>4.1.2 Name, Role, Value — WCAG 2.2 Demo</title>
+  <title>4.1.2 Name, Role, Value - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 4.1.2 Name, Role, Value failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">4.1.2 Name, Role, Value</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
-      <p>For all user interface components — including form elements, links, and custom widgets created with scripting — the following must be programmatically determinable or settable: the name and role of the component, and any states, properties, and values that can be set by the user. This criterion ensures that assistive technologies such as screen readers can identify what a component is (its role), what it is called (its name), and what state it is in (e.g., expanded, selected, checked). It is the foundation of accessible rich internet applications and applies to every interactive element on a page.</p>
+      <p>For all user interface components - including form elements, links, and custom widgets created with scripting - the following must be programmatically determinable or settable: the name and role of the component, and any states, properties, and values that can be set by the user. This criterion ensures that assistive technologies such as screen readers can identify what a component is (its role), what it is called (its name), and what state it is in (e.g., expanded, selected, checked). It is the foundation of accessible rich internet applications and applies to every interactive element on a page.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Using browser developer tools or an accessibility tree inspector (e.g., Firefox Accessibility panel), examine every interactive element on the page.</li>
+        <li>Confirm each element has a non-empty accessible name (visible label, <code>aria-label</code>, <code>aria-labelledby</code>, or <code>alt</code> text for images).</li>
+        <li>Confirm each element has an appropriate role - either from native HTML semantics (button, link, checkbox) or an explicit <code>role</code> attribute.</li>
+        <li>For stateful components (accordions, toggles, tabs, checkboxes, comboboxes), confirm the current state is communicated through the appropriate ARIA attribute.</li>
+        <li>Test with a screen reader (e.g., NVDA + Chrome or VoiceOver + Safari): navigate to each interactive control and confirm its name, role, and state are announced correctly.</li>
+        <li>Activate interactive controls (open accordions, toggle switches, select tabs) and confirm the screen reader announces the updated state.</li>
+        <li>Check that any custom widgets built with <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code>, or <code>&lt;a&gt;</code> elements that function as buttons or other controls carry the necessary <code>role</code> and <code>aria-*</code> attributes.</li>
+      </ol>
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-412"
+           data-announce-fail="Showing fail example. Custom div control has no accessible name, role, or state."
+           data-announce-pass="Showing pass example. Native checkbox provides name, role, and state automatically.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-412">Name, Role, Value demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This control is a <code>&lt;div&gt;</code>. It has no <code>role</code>, no accessible name, and no state - a screen reader cannot identify it as a checkbox or read whether it is checked. It is also not keyboard focusable.</p>
+            <div style="margin-top:0.75rem;display:flex;align-items:center;gap:0.5rem;cursor:pointer;user-select:none;"
+                 onclick="this.querySelector('.fake-check').textContent = this.querySelector('.fake-check').textContent === '☐' ? '☑' : '☐'">
+              <span class="fake-check" style="font-size:1.25rem;line-height:1;" aria-hidden="true">☐</span>
+              <span>Accept terms and conditions</span>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>A native <code>&lt;input type="checkbox"&gt;</code> with a linked <code>&lt;label&gt;</code> automatically provides name ("Accept terms and conditions"), role ("checkbox"), and state ("checked" or "unchecked") to assistive technology.</p>
+            <div style="margin-top:0.75rem;display:flex;align-items:center;gap:0.5rem;">
+              <input type="checkbox" id="terms-412-pass">
+              <label for="terms-412-pass">Accept terms and conditions</label>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -57,19 +113,6 @@
       <p>A component passes when it has a programmatically determinable accessible name (from visible label text, <code>aria-label</code>, <code>aria-labelledby</code>, or an <code>alt</code> attribute), a correct semantic role (either from native HTML semantics or an explicit ARIA <code>role</code>), and accurate state information conveyed via ARIA attributes (such as <code>aria-expanded</code>, <code>aria-checked</code>, <code>aria-selected</code>, <code>aria-pressed</code>). Native HTML elements like <code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;a href&gt;</code> satisfy these requirements when used correctly with proper labels; custom widgets require explicit ARIA and scripting to achieve the same result.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="testing-heading">
-      <h2 id="testing-heading">How To Test</h2>
-      <ol>
-        <li>Using browser developer tools or an accessibility tree inspector (e.g., Firefox Accessibility panel), examine every interactive element on the page.</li>
-        <li>Confirm each element has a non-empty accessible name (visible label, <code>aria-label</code>, <code>aria-labelledby</code>, or <code>alt</code> text for images).</li>
-        <li>Confirm each element has an appropriate role — either from native HTML semantics (button, link, checkbox) or an explicit <code>role</code> attribute.</li>
-        <li>For stateful components (accordions, toggles, tabs, checkboxes, comboboxes), confirm the current state is communicated through the appropriate ARIA attribute.</li>
-        <li>Test with a screen reader (e.g., NVDA + Chrome or VoiceOver + Safari): navigate to each interactive control and confirm its name, role, and state are announced correctly.</li>
-        <li>Activate interactive controls (open accordions, toggle switches, select tabs) and confirm the screen reader announces the updated state.</li>
-        <li>Check that any custom widgets built with <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code>, or <code>&lt;a&gt;</code> elements that function as buttons or other controls carry the necessary <code>role</code> and <code>aria-*</code> attributes.</li>
-      </ol>
-    </section>
-
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion specifically covers author-created UI components and does not apply to platform-level user agent controls that the author cannot modify. The easiest way to satisfy this criterion is to use native, semantic HTML elements (which have built-in name, role, and value semantics) rather than building custom widgets from generic elements, which require additional ARIA and scripting to achieve the same accessibility outcome.</p>
@@ -80,11 +123,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">WCAG 2.2 Understanding 4.1.2</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

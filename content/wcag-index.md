@@ -15,7 +15,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-1-1-non-text-content
   summary: All non-text content must have a text alternative that serves the same purpose.
-  status: placeholder
+  status: implemented
 
 - id: 1-2-1
   title: Audio-only and Video-only (Prerecorded)
@@ -23,7 +23,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-2-1-audio-only-and-video-only-prerecorded
   summary: Prerecorded audio-only and video-only content must have a text or media alternative.
-  status: placeholder
+  status: implemented
 
 - id: 1-2-2
   title: Captions (Prerecorded)
@@ -31,7 +31,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-2-2-captions-prerecorded
   summary: Captions must be provided for all prerecorded audio content in synchronized media.
-  status: placeholder
+  status: implemented
 
 - id: 1-3-1
   title: Info and Relationships
@@ -47,7 +47,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-3-2-meaningful-sequence
   summary: When sequence affects meaning, the correct reading order must be programmatically determinable.
-  status: placeholder
+  status: implemented
 
 - id: 1-3-3
   title: Sensory Characteristics
@@ -55,7 +55,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-3-3-sensory-characteristics
   summary: Instructions must not rely solely on shape, colour, size, visual location, orientation, or sound.
-  status: placeholder
+  status: implemented
 
 - id: 1-3-4
   title: Orientation
@@ -63,7 +63,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-3-4-orientation
   summary: Content must not restrict its view and operation to a single display orientation.
-  status: placeholder
+  status: implemented
 
 - id: 1-3-5
   title: Identify Input Purpose
@@ -71,7 +71,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-3-5-identify-input-purpose
   summary: The purpose of each input field collecting user information must be programmatically determinable.
-  status: placeholder
+  status: implemented
 
 - id: 1-4-1
   title: Use of Color
@@ -79,7 +79,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-4-1-use-of-color
   summary: Color must not be the only visual means of conveying information or indicating action.
-  status: placeholder
+  status: implemented
 
 - id: 1-4-2
   title: Audio Control
@@ -87,7 +87,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-4-2-audio-control
   summary: Audio that plays automatically for more than 3 seconds must be controllable.
-  status: placeholder
+  status: implemented
 
 - id: 1-4-3
   title: Contrast (Minimum)
@@ -95,7 +95,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-4-3-contrast-minimum
   summary: Text must have a contrast ratio of at least 4.5:1 against its background.
-  status: placeholder
+  status: implemented
 
 - id: 1-4-4
   title: Resize Text
@@ -103,7 +103,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-4-4-resize-text
   summary: Text must be resizable up to 200% without loss of content or functionality.
-  status: placeholder
+  status: implemented
 
 - id: 1-4-5
   title: Images of Text
@@ -111,7 +111,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-4-5-images-of-text
   summary: Text must not be presented as images of text unless essential or customisable.
-  status: placeholder
+  status: implemented
 
 - id: 1-4-10
   title: Reflow
@@ -119,7 +119,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-4-10-reflow
   summary: Content must not require two-dimensional scrolling at 320 CSS pixels wide.
-  status: placeholder
+  status: implemented
 
 - id: 1-4-11
   title: Non-text Contrast
@@ -127,7 +127,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-4-11-non-text-contrast
   summary: UI components and graphical objects must have a contrast ratio of at least 3:1.
-  status: placeholder
+  status: implemented
 
 - id: 1-4-12
   title: Text Spacing
@@ -135,7 +135,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-4-12-text-spacing
   summary: No loss of content or functionality when text spacing properties are overridden.
-  status: placeholder
+  status: implemented
 
 - id: 1-4-13
   title: Content on Hover or Focus
@@ -143,7 +143,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Perceivable
   slug: 1-4-13-content-on-hover-or-focus
   summary: Content that appears on hover or focus must be dismissable, hoverable, and persistent.
-  status: placeholder
+  status: implemented
 
 ## Operable
 
@@ -153,7 +153,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-1-1-keyboard
   summary: All functionality must be operable through a keyboard interface.
-  status: placeholder
+  status: implemented
 
 - id: 2-1-2
   title: No Keyboard Trap
@@ -161,7 +161,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-1-2-no-keyboard-trap
   summary: Keyboard focus must not be locked inside a component with no way to move it.
-  status: placeholder
+  status: implemented
 
 - id: 2-1-4
   title: Character Key Shortcuts
@@ -169,7 +169,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-1-4-character-key-shortcuts
   summary: Single character keyboard shortcuts must be remappable, disableable, or only active on focus.
-  status: placeholder
+  status: implemented
 
 - id: 2-2-2
   title: Pause, Stop, Hide
@@ -177,7 +177,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-2-2-pause-stop-hide
   summary: Moving, blinking, or auto-updating content must be pausable, stoppable, or hideable.
-  status: placeholder
+  status: implemented
 
 - id: 2-4-1
   title: Bypass Blocks
@@ -185,7 +185,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-4-1-bypass-blocks
   summary: A mechanism must be available to skip blocks of content that are repeated across pages.
-  status: placeholder
+  status: implemented
 
 - id: 2-4-2
   title: Page Titled
@@ -193,7 +193,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-4-2-page-titled
   summary: Web pages must have titles that describe their topic or purpose.
-  status: placeholder
+  status: implemented
 
 - id: 2-4-3
   title: Focus Order
@@ -201,7 +201,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-4-3-focus-order
   summary: If a page can be navigated sequentially, focus order must preserve meaning and operability.
-  status: placeholder
+  status: implemented
 
 - id: 2-4-4
   title: Link Purpose (In Context)
@@ -209,7 +209,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-4-4-link-purpose-in-context
   summary: The purpose of each link must be determinable from the link text or its context.
-  status: placeholder
+  status: implemented
 
 - id: 2-4-6
   title: Headings and Labels
@@ -217,7 +217,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-4-6-headings-and-labels
   summary: Headings and labels must describe the topic or purpose of the content they title.
-  status: placeholder
+  status: implemented
 
 - id: 2-4-7
   title: Focus Visible
@@ -225,7 +225,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-4-7-focus-visible
   summary: Any keyboard-operable interface must have a visible keyboard focus indicator.
-  status: placeholder
+  status: implemented
 
 - id: 2-4-11
   title: Focus Not Obscured (Minimum)
@@ -233,7 +233,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-4-11-focus-not-obscured-minimum
   summary: The focused component must not be entirely hidden by author-created content.
-  status: placeholder
+  status: implemented
 
 - id: 2-4-13
   title: Focus Appearance
@@ -241,7 +241,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-4-13-focus-appearance
   summary: The keyboard focus indicator must meet minimum size and contrast requirements.
-  status: placeholder
+  status: implemented
 
 - id: 2-5-2
   title: Pointer Cancellation
@@ -249,7 +249,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-5-2-pointer-cancellation
   summary: Functions triggered by a single pointer must be cancellable or reversible.
-  status: placeholder
+  status: implemented
 
 - id: 2-5-3
   title: Label in Name
@@ -257,7 +257,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-5-3-label-in-name
   summary: The accessible name of a component must contain the visible text label.
-  status: placeholder
+  status: implemented
 
 - id: 2-5-7
   title: Dragging Movements
@@ -265,7 +265,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-5-7-dragging-movements
   summary: All functionality that uses dragging must be achievable with a single pointer without dragging.
-  status: placeholder
+  status: implemented
 
 - id: 2-5-8
   title: Target Size (Minimum)
@@ -273,7 +273,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Operable
   slug: 2-5-8-target-size-minimum
   summary: Pointer input targets must be at least 24×24 CSS pixels, or adequately spaced.
-  status: placeholder
+  status: implemented
 
 ## Understandable
 
@@ -283,7 +283,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Understandable
   slug: 3-1-1-language-of-page
   summary: The default human language of each web page must be programmatically determinable.
-  status: placeholder
+  status: implemented
 
 - id: 3-1-2
   title: Language of Parts
@@ -291,7 +291,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Understandable
   slug: 3-1-2-language-of-parts
   summary: The human language of each passage or phrase must be programmatically determinable.
-  status: placeholder
+  status: implemented
 
 - id: 3-2-1
   title: On Focus
@@ -299,7 +299,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Understandable
   slug: 3-2-1-on-focus
   summary: Receiving focus must not automatically trigger a change of context.
-  status: placeholder
+  status: implemented
 
 - id: 3-2-2
   title: On Input
@@ -307,7 +307,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Understandable
   slug: 3-2-2-on-input
   summary: Changing a setting must not automatically cause a change of context unless the user is warned.
-  status: placeholder
+  status: implemented
 
 - id: 3-2-6
   title: Consistent Help
@@ -315,7 +315,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Understandable
   slug: 3-2-6-consistent-help
   summary: Help mechanisms must appear in the same relative order across pages.
-  status: placeholder
+  status: implemented
 
 - id: 3-3-1
   title: Error Identification
@@ -323,7 +323,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Understandable
   slug: 3-3-1-error-identification
   summary: Input errors must be identified and described to the user in text.
-  status: placeholder
+  status: implemented
 
 - id: 3-3-2
   title: Labels or Instructions
@@ -331,7 +331,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Understandable
   slug: 3-3-2-labels-or-instructions
   summary: Labels or instructions must be provided when content requires user input.
-  status: placeholder
+  status: implemented
 
 - id: 3-3-3
   title: Error Suggestion
@@ -339,7 +339,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Understandable
   slug: 3-3-3-error-suggestion
   summary: When an input error is detected, suggestions for correction must be provided if possible.
-  status: placeholder
+  status: implemented
 
 - id: 3-3-7
   title: Redundant Entry
@@ -347,7 +347,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Understandable
   slug: 3-3-7-redundant-entry
   summary: Information already entered by the user must not be required again in the same process.
-  status: placeholder
+  status: implemented
 
 - id: 3-3-8
   title: Accessible Authentication (Minimum)
@@ -355,7 +355,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Understandable
   slug: 3-3-8-accessible-authentication-minimum
   summary: Authentication processes must not require a cognitive function test unless alternatives are provided.
-  status: placeholder
+  status: implemented
 
 ## Robust
 
@@ -365,7 +365,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Robust
   slug: 4-1-2-name-role-value
   summary: All UI components must have accessible names, roles, and states determinable by assistive technology.
-  status: placeholder
+  status: implemented
 
 - id: 4-1-3
   title: Status Messages
@@ -373,7 +373,7 @@ Level A and AA only. Criteria excluded from this site are noted below.
   principle: Robust
   slug: 4-1-3-status-messages
   summary: Status messages must be programmatically determinable so they can be announced without receiving focus.
-  status: placeholder
+  status: implemented
 
 ---
 
@@ -381,15 +381,15 @@ Level A and AA only. Criteria excluded from this site are noted below.
 
 These WCAG 2.2 A/AA criteria are not included on this site:
 
-- **1.2.3** Audio Description or Media Alternative (A) — requires prerecorded video production
-- **1.2.4** Captions (Live) (AA) — requires live broadcast infrastructure
-- **1.2.5** Audio Description (Prerecorded) (AA) — requires prerecorded video production
-- **2.2.1** Timing Adjustable (A) — requires server-side session management
-- **2.3.1** Three Flashes or Below Threshold (A) — no demo due to photosensitive seizure risk
-- **2.4.5** Multiple Ways (AA) — site-wide navigation pattern, not isolatable as a single demo
-- **2.5.1** Pointer Gestures (A) — requires multi-touch device interaction
-- **2.5.4** Motion Actuation (A) — requires device motion/orientation sensors
-- **3.2.3** Consistent Navigation (AA) — site-wide pattern, not isolatable as a single demo
-- **3.2.4** Consistent Identification (AA) — site-wide pattern, not isolatable as a single demo
-- **3.3.4** Error Prevention (Legal, Financial, Data) (AA) — requires multi-step transactional flow
-- **4.1.1** Parsing (A) — always passes in WCAG 2.2; criterion is effectively obsolete
+- **1.2.3** Audio Description or Media Alternative (A) - requires prerecorded video production
+- **1.2.4** Captions (Live) (AA) - requires live broadcast infrastructure
+- **1.2.5** Audio Description (Prerecorded) (AA) - requires prerecorded video production
+- **2.2.1** Timing Adjustable (A) - requires server-side session management
+- **2.3.1** Three Flashes or Below Threshold (A) - no demo due to photosensitive seizure risk
+- **2.4.5** Multiple Ways (AA) - site-wide navigation pattern, not isolatable as a single demo
+- **2.5.1** Pointer Gestures (A) - requires multi-touch device interaction
+- **2.5.4** Motion Actuation (A) - requires device motion/orientation sensors
+- **3.2.3** Consistent Navigation (AA) - site-wide pattern, not isolatable as a single demo
+- **3.2.4** Consistent Identification (AA) - site-wide pattern, not isolatable as a single demo
+- **3.3.4** Error Prevention (Legal, Financial, Data) (AA) - requires multi-step transactional flow
+- **4.1.1** Parsing (A) - always passes in WCAG 2.2; criterion is effectively obsolete

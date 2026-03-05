@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.4.4 Link Purpose (In Context) — WCAG 2.2 Demo</title>
+  <title>2.4.4 Link Purpose (In Context) - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 2.4.4 Link Purpose (In Context) failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">2.4.4 Link Purpose (In Context)</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>The purpose of each link must be determinable either from the link text alone or from the link text together with its programmatically determined context. Context includes the sentence, paragraph, list item, or table cell that contains the link, as well as an associated label provided through ARIA. This criterion enables screen reader users and users with cognitive disabilities to understand where a link will take them without needing to follow every link to find out its purpose.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when multiple links on the same page share the same visible link text but point to different destinations — for example, several "Read more" or "Click here" links in a list of articles, each pointing to a different article page. Screen reader users who browse links out of context (using a links list or navigating by Tab) will hear only the repeated text "Read more" for each link and have no way to determine which article each link leads to. This is a significant barrier to efficient navigation.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation ensures each link's text is descriptive enough to convey its purpose on its own — for example, "Read more about the 2024 Annual Report" instead of just "Read more." When the surrounding context already makes the link purpose clear (e.g., a link within a paragraph that discusses a specific topic), the link text may be shorter, but the context must be programmatically associated. ARIA techniques such as <code>aria-label</code>, <code>aria-labelledby</code>, or visually hidden text within the link element are also acceptable solutions.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -69,9 +58,88 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-244"
+           data-announce-fail="Showing fail example. Multiple Read more links are ambiguous when read out of context."
+           data-announce-pass="Showing pass example. Each link text describes its destination.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-244">Link Purpose demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Screen reader users browsing a links list (e.g., NVDA Insert+F7) hear three identical "Read more" labels with no way to distinguish which article each leads to.</p>
+            <ul style="list-style:none;padding:0;margin-top:0.75rem;display:flex;flex-direction:column;gap:0.75rem;">
+              <li>
+                <strong>Keyboard Accessibility Basics</strong>
+                <p style="margin:0.25rem 0;">An introduction to making web content operable without a mouse.</p>
+                <a href="#">Read more</a>
+              </li>
+              <li>
+                <strong>Screen Reader Testing Guide</strong>
+                <p style="margin:0.25rem 0;">How to test with NVDA, JAWS, and VoiceOver step by step.</p>
+                <a href="#">Read more</a>
+              </li>
+              <li>
+                <strong>ARIA Authoring Practices</strong>
+                <p style="margin:0.25rem 0;">Recommended interaction patterns for custom widgets.</p>
+                <a href="#">Read more</a>
+              </li>
+            </ul>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Each link includes visually hidden text that extends its accessible name. Sighted users see "Read more"; screen reader users hear the full descriptive label.</p>
+            <ul style="list-style:none;padding:0;margin-top:0.75rem;display:flex;flex-direction:column;gap:0.75rem;">
+              <li>
+                <strong>Keyboard Accessibility Basics</strong>
+                <p style="margin:0.25rem 0;">An introduction to making web content operable without a mouse.</p>
+                <a href="#">Read more<span class="visually-hidden"> about Keyboard Accessibility Basics</span></a>
+              </li>
+              <li>
+                <strong>Screen Reader Testing Guide</strong>
+                <p style="margin:0.25rem 0;">How to test with NVDA, JAWS, and VoiceOver step by step.</p>
+                <a href="#">Read more<span class="visually-hidden"> about Screen Reader Testing Guide</span></a>
+              </li>
+              <li>
+                <strong>ARIA Authoring Practices</strong>
+                <p style="margin:0.25rem 0;">Recommended interaction patterns for custom widgets.</p>
+                <a href="#">Read more<span class="visually-hidden"> about ARIA Authoring Practices</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when multiple links on the same page share the same visible link text but point to different destinations - for example, several "Read more" or "Click here" links in a list of articles, each pointing to a different article page. Screen reader users who browse links out of context (using a links list or navigating by Tab) will hear only the repeated text "Read more" for each link and have no way to determine which article each link leads to. This is a significant barrier to efficient navigation.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures each link's text is descriptive enough to convey its purpose on its own - for example, "Read more about the 2024 Annual Report" instead of just "Read more." When the surrounding context already makes the link purpose clear (e.g., a link within a paragraph that discusses a specific topic), the link text may be shorter, but the context must be programmatically associated. ARIA techniques such as <code>aria-label</code>, <code>aria-labelledby</code>, or visually hidden text within the link element are also acceptable solutions.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
-      <p>The related but stricter criterion 2.4.9 (Link Purpose — Link Only, Level AAA) requires each link to be understandable from its link text alone, with no reliance on context. At Level A, relying on programmatic context is acceptable, but designing descriptive link text by default is the most robust approach and reduces reliance on context-reading behavior across different assistive technologies.</p>
+      <p>The related but stricter criterion 2.4.9 (Link Purpose - Link Only, Level AAA) requires each link to be understandable from its link text alone, with no reliance on context. At Level A, relying on programmatic context is acceptable, but designing descriptive link text by default is the most robust approach and reduces reliance on context-reading behavior across different assistive technologies.</p>
     </section>
 
   </main>
@@ -79,11 +147,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html">WCAG 2.2 Understanding 2.4.4</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

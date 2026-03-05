@@ -20,7 +20,7 @@ A passing implementation provides a clearly labeled, keyboard-accessible Pause o
 ## How To Test
 
 1. Load the page and observe whether any content moves, blinks, scrolls, or auto-updates on its own.
-2. Measure approximately how long the motion lasts — if it exceeds five seconds and runs alongside other content, a control is required.
+2. Measure approximately how long the motion lasts - if it exceeds five seconds and runs alongside other content, a control is required.
 3. Look for a Pause, Stop, or Hide button near the animated content and verify it is keyboard accessible (Tab to it and press Enter or Space).
 4. Activate the pause control and confirm the animation actually stops or freezes.
 5. If a Stop control is present, confirm it permanently halts the animation (unlike Pause, which is temporary).
@@ -29,4 +29,4 @@ A passing implementation provides a clearly labeled, keyboard-accessible Pause o
 
 ## Notes
 
-This criterion does not apply to animations that are essential to the content — for example, a progress indicator that must move to convey status, or an animation that is the only means of conveying information. Prefers-reduced-motion CSS support is a good complementary technique but does not on its own satisfy this criterion.
+This criterion does not apply to animations that are essential to the content - for example, a progress indicator that must move to convey status, or an animation that is the only means of conveying information. Prefers-reduced-motion CSS support is a good complementary technique but does not on its own satisfy this criterion.

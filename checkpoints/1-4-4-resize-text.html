@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.4.4 Resize Text — WCAG 2.2 Demo</title>
+  <title>1.4.4 Resize Text - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.4 Resize Text failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">1.4.4 Resize Text</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-aa">Level AA</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>Text must be resizable up to 200 percent without assistive technology and without loss of content or functionality. Many users with low vision use browser zoom or operating system text size settings to increase text size to a readable level. If a website is built in a way that causes content to become hidden, truncated, or broken when text is enlarged, those users lose access to the content.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when enlarging text to 200% causes content to be cut off, overlap other content, become hidden, or make functionality unavailable. Common failure patterns include fixed-height containers that clip overflowing text, absolutely positioned elements that overlap when text grows, navigation menus that collapse or break at larger text sizes, and text in buttons or labels that becomes truncated. Using viewport units or fixed pixel values for container heights without <code>overflow: auto</code> or <code>min-height</code> settings are common technical causes.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation uses relative units (such as <code>em</code>, <code>rem</code>, or percentages) for font sizes and container dimensions, and avoids fixed-height containers that would clip enlarged text. The layout is tested at 200% text zoom to confirm all content remains visible and readable and all interactive components remain operable. CSS <code>min-height</code> instead of <code>height</code>, and <code>overflow: visible</code> or <code>overflow: auto</code> rather than <code>overflow: hidden</code>, are practical implementation techniques.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -70,6 +59,59 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-144"
+           data-announce-fail="Showing fail example. A fixed-height container clips text when font size is increased."
+           data-announce-pass="Showing pass example. A min-height container expands to accommodate larger text.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-144">Resize text demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The card below has a fixed <code>height: 72px; overflow: hidden</code>. Increase your browser font size (<kbd>Ctrl +</kbd> or <kbd>Cmd +</kbd>) to see text become clipped.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem 1rem;margin-top:0.75rem;height:72px;overflow:hidden;">
+              <strong>Important notice</strong>
+              <p style="margin:0.25rem 0 0;">Your subscription renews automatically on the 15th of each month. To cancel at any time, visit Account Settings and select Manage Subscription.</p>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Same card with <code>min-height: 72px; overflow: visible</code>. Increasing font size expands the container - no content is clipped.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem 1rem;margin-top:0.75rem;min-height:72px;overflow:visible;">
+              <strong>Important notice</strong>
+              <p style="margin:0.25rem 0 0;">Your subscription renews automatically on the 15th of each month. To cancel at any time, visit Account Settings and select Manage Subscription.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when enlarging text to 200% causes content to be cut off, overlap other content, become hidden, or make functionality unavailable. Common failure patterns include fixed-height containers that clip overflowing text, absolutely positioned elements that overlap when text grows, navigation menus that collapse or break at larger text sizes, and text in buttons or labels that becomes truncated. Using viewport units or fixed pixel values for container heights without <code>overflow: auto</code> or <code>min-height</code> settings are common technical causes.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation uses relative units (such as <code>em</code>, <code>rem</code>, or percentages) for font sizes and container dimensions, and avoids fixed-height containers that would clip enlarged text. The layout is tested at 200% text zoom to confirm all content remains visible and readable and all interactive components remain operable. CSS <code>min-height</code> instead of <code>height</code>, and <code>overflow: visible</code> or <code>overflow: auto</code> rather than <code>overflow: hidden</code>, are practical implementation techniques.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion specifically addresses text resize, not full-page zoom. However, in modern browsers, browser zoom also enlarges text, so testing with browser zoom at 200% is a practical and widely accepted testing method. The related criterion 1.4.10 Reflow covers the requirement that content must remain usable at 400% zoom without horizontal scrolling.</p>
@@ -80,11 +122,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">WCAG 2.2 Understanding 1.4.4</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.5.2 Pointer Cancellation — WCAG 2.2 Demo</title>
+  <title>2.5.2 Pointer Cancellation - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 2.5.2 Pointer Cancellation failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">2.5.2 Pointer Cancellation</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>For functionality that can be operated using a single pointer (mouse click, touch tap, or stylus), at least one of the following must be true: the down-event is not used to execute the function; the function is executed on the up-event and a mechanism exists to abort or undo it before completion; the up-event reverses any outcome of the preceding down-event; or completing the function on the down-event is essential. This criterion prevents accidental activation of controls because users can cancel a pointer action by moving away before releasing.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when functionality triggers immediately on the pointer down event (mousedown or touchstart) with no way to abort or reverse the action before releasing the pointer. For example, a "Delete account" button that executes the deletion the instant the user presses down — before they even release the mouse button — means a user who mis-clicks cannot simply slide their pointer away to cancel. Users with motor disabilities that cause involuntary movements or tremors are particularly affected, as they may frequently trigger down events unintentionally.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation triggers actions on the pointer up event (mouseup or click), which is the browser default for standard HTML buttons and links. When an action is triggered on the up event, users can press down on a control, change their mind, drag the pointer away, and then release without activating the function. For more critical actions, an additional undo mechanism (such as a confirmation dialog or an undo command) provides an additional safety net. Drag-and-drop operations where down-event initiation is necessary may be acceptable if the drag can be canceled before drop completion.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -64,9 +53,72 @@
         <li>Press and hold the mouse button down on a control, then drag the pointer away from the control before releasing.</li>
         <li>Verify that the action is NOT triggered when you drag away and release outside the control.</li>
         <li>Confirm that activating the control only occurs when the pointer is released (up-event) while still within the control's bounds.</li>
-        <li>For touch devices, perform the same test: tap and hold on a control, then slide your finger away before lifting — the action should not fire.</li>
+        <li>For touch devices, perform the same test: tap and hold on a control, then slide your finger away before lifting - the action should not fire.</li>
         <li>Check whether any JavaScript event listeners use <code>mousedown</code>, <code>touchstart</code>, or <code>pointerdown</code> to trigger primary actions directly.</li>
       </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-252"
+           data-announce-fail="Showing fail example. The button fires immediately on pointer down - users cannot cancel by moving the pointer away."
+           data-announce-pass="Showing pass example. The button fires on pointer up - users can cancel by moving the pointer away before releasing.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-252">Pointer cancellation demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The button below fires on <code>pointerdown</code> - the action triggers the instant you press, with no opportunity to cancel.</p>
+            <div style="display:flex;align-items:center;gap:1rem;margin-top:0.75rem;flex-wrap:wrap;">
+              <button type="button" id="del-fail-252"
+                      onpointerdown="document.getElementById('msg-fail-252').textContent='&#10060; Deleted! (fired on pointerdown - cannot cancel)';"
+                      style="background:#b91c1c;color:#fff;border:none;padding:0.5rem 1rem;border-radius:4px;cursor:pointer;">
+                Delete item
+              </button>
+              <span id="msg-fail-252" style="font-size:0.875rem;color:#b91c1c;"></span>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Try pressing and dragging away before releasing - the action already fired.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The button fires on <code>click</code> (pointer up). Press and drag the pointer away from the button before releasing to cancel the action.</p>
+            <div style="display:flex;align-items:center;gap:1rem;margin-top:0.75rem;flex-wrap:wrap;">
+              <button type="button" id="del-pass-252"
+                      onclick="document.getElementById('msg-pass-252').textContent='&#10060; Deleted! (fired on click - you could have cancelled)';"
+                      style="background:#b91c1c;color:#fff;border:none;padding:0.5rem 1rem;border-radius:4px;cursor:pointer;">
+                Delete item
+              </button>
+              <span id="msg-pass-252" style="font-size:0.875rem;color:#15803d;"></span>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Press, drag away, then release - no action fires. Release on the button to confirm.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when functionality triggers immediately on the pointer down event (mousedown or touchstart) with no way to abort or reverse the action before releasing the pointer. For example, a "Delete account" button that executes the deletion the instant the user presses down - before they even release the mouse button - means a user who mis-clicks cannot simply slide their pointer away to cancel. Users with motor disabilities that cause involuntary movements or tremors are particularly affected, as they may frequently trigger down events unintentionally.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation triggers actions on the pointer up event (mouseup or click), which is the browser default for standard HTML buttons and links. When an action is triggered on the up event, users can press down on a control, change their mind, drag the pointer away, and then release without activating the function. For more critical actions, an additional undo mechanism (such as a confirmation dialog or an undo command) provides an additional safety net. Drag-and-drop operations where down-event initiation is necessary may be acceptable if the drag can be canceled before drop completion.</p>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">
@@ -79,11 +131,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation.html">WCAG 2.2 Understanding 2.5.2</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

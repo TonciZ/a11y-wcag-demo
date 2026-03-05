@@ -15,7 +15,7 @@ A form that uses only colour (such as a red border) or an icon (such as a warnin
 
 ## Pass Explanation
 
-A form passes when it displays clear, descriptive text error messages that identify both the field in error (by name or label) and the nature of the error (e.g., "Email address is required" or "Password must be at least 8 characters long"). These messages should be programmatically associated with their respective fields — ideally using `aria-describedby` or by positioning error text adjacent to the labeled input — so that screen readers announce the error when the user navigates to or focuses the affected field.
+A form passes when it displays clear, descriptive text error messages that identify both the field in error (by name or label) and the nature of the error (e.g., "Email address is required" or "Password must be at least 8 characters long"). These messages should be programmatically associated with their respective fields - ideally using `aria-describedby` or by positioning error text adjacent to the labeled input - so that screen readers announce the error when the user navigates to or focuses the affected field.
 
 ## How To Test
 

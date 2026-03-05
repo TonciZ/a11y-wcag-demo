@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.4.11 Non-text Contrast — WCAG 2.2 Demo</title>
+  <title>1.4.11 Non-text Contrast - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.11 Non-text Contrast failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">1.4.11 Non-text Contrast</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-aa">Level AA</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>The visual presentation of user interface components and graphical objects must have a contrast ratio of at least 3:1 against adjacent colors. This applies to the visual boundaries and states of interactive elements such as buttons, form inputs, checkboxes, radio buttons, and focus indicators, as well as to meaningful parts of icons and charts. Low-vision users who do not rely on screen readers need sufficient contrast to see and identify interactive elements and understand data visualizations.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when a user interface component or graphical object does not achieve a 3:1 contrast ratio against its adjacent background. Common failures include text input borders that are too light against a white background (such as a very light grey border), custom checkboxes or radio buttons styled without sufficient contrast, icons used as controls whose graphical parts do not meet the threshold, and chart data elements (such as bars or lines) that do not contrast sufficiently against the chart background. Focus indicators — the visible outline shown when a component has keyboard focus — are also covered and frequently fail.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation ensures that the visual boundaries of interactive components, their states (default, hover, focus, error), and meaningful graphical objects all meet the 3:1 contrast ratio requirement. Form fields have borders or other boundary indicators that are clearly distinguishable from the page background. Custom controls are designed with contrast-aware colors. Icons that convey information are checked against their backgrounds. Focus indicators are sufficiently thick and high-contrast to be visible.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -64,10 +53,75 @@
         <li>For each component, identify the visual boundary or indicator that marks its presence (e.g., border, background, icon).</li>
         <li>Use a contrast checking tool to measure the contrast ratio of that boundary against its adjacent color.</li>
         <li>Verify the ratio meets or exceeds 3:1.</li>
-        <li>Check each interactive state: default, hover, focus, active, and error — all states must independently meet the threshold.</li>
+        <li>Check each interactive state: default, hover, focus, active, and error - all states must independently meet the threshold.</li>
         <li>Identify meaningful graphical objects such as chart segments, graph lines, and informational icons, and check their contrast.</li>
         <li>Pay specific attention to focus indicators, which are required to meet 3:1 under this criterion (and have additional requirements under 2.4.11 Focus Appearance in WCAG 2.2).</li>
       </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-1411"
+           data-announce-fail="Showing fail example. Form controls have a very faint border at 1.54 to 1 contrast - hard to perceive against a white background."
+           data-announce-pass="Showing pass example. Form controls have a border at 4.5 to 1 contrast - clearly visible to users with low vision.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-1411">Non-text contrast demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>UI controls use <code>border: 1px solid #d0d0d0</code> - contrast ratio 1.54:1 against white. Users with low vision may not see the control boundary at all.</p>
+            <form style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;" onsubmit="return false;">
+              <div>
+                <label for="fail-1411-text" style="display:block;margin-bottom:0.25rem;">Full name</label>
+                <input type="text" id="fail-1411-text" style="border:1px solid #d0d0d0;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:280px;">
+              </div>
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <div style="width:18px;height:18px;border:1px solid #d0d0d0;border-radius:3px;flex-shrink:0;" role="presentation"></div>
+                <span style="font-size:0.9rem;">I agree to the terms</span>
+              </div>
+            </form>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Same controls use <code>border: 2px solid #767676</code> - contrast ratio 4.54:1 against white. The control boundary is clearly perceivable.</p>
+            <form style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;" onsubmit="return false;">
+              <div>
+                <label for="pass-1411-text" style="display:block;margin-bottom:0.25rem;">Full name</label>
+                <input type="text" id="pass-1411-text" style="border:2px solid #767676;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:280px;">
+              </div>
+              <div style="display:flex;align-items:center;gap:0.5rem;">
+                <input type="checkbox" id="pass-1411-cb" style="width:18px;height:18px;accent-color:#0055cc;">
+                <label for="pass-1411-cb" style="font-size:0.9rem;">I agree to the terms</label>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when a user interface component or graphical object does not achieve a 3:1 contrast ratio against its adjacent background. Common failures include text input borders that are too light against a white background (such as a very light grey border), custom checkboxes or radio buttons styled without sufficient contrast, icons used as controls whose graphical parts do not meet the threshold, and chart data elements (such as bars or lines) that do not contrast sufficiently against the chart background. Focus indicators - the visible outline shown when a component has keyboard focus - are also covered and frequently fail.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures that the visual boundaries of interactive components, their states (default, hover, focus, error), and meaningful graphical objects all meet the 3:1 contrast ratio requirement. Form fields have borders or other boundary indicators that are clearly distinguishable from the page background. Custom controls are designed with contrast-aware colors. Icons that convey information are checked against their backgrounds. Focus indicators are sufficiently thick and high-contrast to be visible.</p>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">
@@ -80,11 +134,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html">WCAG 2.2 Understanding 1.4.11</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

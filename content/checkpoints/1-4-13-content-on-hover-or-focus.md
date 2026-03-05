@@ -15,7 +15,7 @@ A failure occurs when additional content triggered by hover or focus disappears 
 
 ## Pass Explanation
 
-A passing implementation ensures all three conditions are satisfied. The additional content is dismissible by pressing the Escape key (or equivalent) without the user needing to move focus. The triggered content is hoverable — the pointer can travel from the trigger element onto the content itself without the content closing. The content remains visible until the user deliberately dismisses it or moves focus entirely away from the trigger. ARIA tooltips and custom dropdowns should be tested against all three conditions.
+A passing implementation ensures all three conditions are satisfied. The additional content is dismissible by pressing the Escape key (or equivalent) without the user needing to move focus. The triggered content is hoverable - the pointer can travel from the trigger element onto the content itself without the content closing. The content remains visible until the user deliberately dismisses it or moves focus entirely away from the trigger. ARIA tooltips and custom dropdowns should be tested against all three conditions.
 
 ## How To Test
 

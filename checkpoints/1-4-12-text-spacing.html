@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.4.12 Text Spacing — WCAG 2.2 Demo</title>
+  <title>1.4.12 Text Spacing - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.12 Text Spacing failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">1.4.12 Text Spacing</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-aa">Level AA</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>No loss of content or functionality must occur when users apply the following text spacing overrides: line height set to at least 1.5 times the font size, letter spacing set to at least 0.12 times the font size, word spacing set to at least 0.16 times the font size, and spacing following paragraphs set to at least 2 times the font size. Users with dyslexia, low vision, or cognitive disabilities commonly apply custom text spacing through user stylesheets or browser extensions to improve readability, and content must not break under these adjustments.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when applying the specified text spacing values causes content to become hidden, truncated, or to overlap in a way that makes it unreadable. Common failure patterns include fixed-height containers that clip text when line height increases, text in tooltips or modal dialogs that overflows its container when letter spacing is increased, navigation menu items that overlap when word spacing is expanded, and truncation of text within table cells or card components. Using CSS <code>overflow: hidden</code> on containers with fixed heights combined with pixel-based font sizes is a frequent cause of failure.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation ensures that the content remains fully readable and functional when any combination of the four text spacing properties is applied at their specified maximum values. This is achieved by using flexible container heights (with <code>min-height</code> rather than <code>height</code>), using relative units for sizing, and avoiding <code>overflow: hidden</code> on text containers. Layouts should be tested with a bookmarklet or browser extension that applies the maximum text spacing values simultaneously.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -70,6 +59,59 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-1412"
+           data-announce-fail="Showing fail example. A fixed-height container clips content when WCAG text-spacing overrides are applied."
+           data-announce-pass="Showing pass example. A flexible container adapts to text-spacing overrides without clipping.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-1412">Text spacing demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>WCAG 1.4.12 text-spacing overrides are simulated below (<code>line-height: 1.5; letter-spacing: 0.12em; word-spacing: 0.16em</code>). The fixed-height container clips the content.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem 1rem;margin-top:0.75rem;height:80px;overflow:hidden;">
+              <p style="margin:0;line-height:1.5;letter-spacing:0.12em;word-spacing:0.16em;">User-controlled text spacing can increase the space between lines, letters, and words. Content in fixed-height containers will be cut off when these overrides are applied.</p>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Text is clipped - <code>height: 80px; overflow: hidden</code></p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Same text-spacing overrides applied to a flexible container. The container expands to fit - no content is lost.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem 1rem;margin-top:0.75rem;min-height:80px;overflow:visible;">
+              <p style="margin:0;line-height:1.5;letter-spacing:0.12em;word-spacing:0.16em;">User-controlled text spacing can increase the space between lines, letters, and words. Content in flexible containers expands naturally when these overrides are applied.</p>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">All text visible - <code>min-height: 80px; overflow: visible</code></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when applying the specified text spacing values causes content to become hidden, truncated, or to overlap in a way that makes it unreadable. Common failure patterns include fixed-height containers that clip text when line height increases, text in tooltips or modal dialogs that overflows its container when letter spacing is increased, navigation menu items that overlap when word spacing is expanded, and truncation of text within table cells or card components. Using CSS <code>overflow: hidden</code> on containers with fixed heights combined with pixel-based font sizes is a frequent cause of failure.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures that the content remains fully readable and functional when any combination of the four text spacing properties is applied at their specified maximum values. This is achieved by using flexible container heights (with <code>min-height</code> rather than <code>height</code>), using relative units for sizing, and avoiding <code>overflow: hidden</code> on text containers. Layouts should be tested with a bookmarklet or browser extension that applies the maximum text spacing values simultaneously.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion tests resilience to user overrides, not the default text spacing of the page itself. The WCAG Understanding document provides a test bookmarklet that applies all four spacing values simultaneously. Authors should note that this criterion was added in WCAG 2.1 and is commonly overlooked in design systems where card and tooltip heights are defined in pixels.</p>
@@ -80,11 +122,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html">WCAG 2.2 Understanding 1.4.12</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

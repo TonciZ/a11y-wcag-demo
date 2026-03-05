@@ -3,47 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.4.7 Focus Visible — WCAG 2.2 Demo</title>
+  <title>2.4.7 Focus Visible - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 2.4.7 Focus Visible failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">2.4.7 Focus Visible</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-aa">Level AA</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
-      <p>Any keyboard-operable user interface must have a mode of operation where the keyboard focus indicator is visible. When a user moves focus to an interactive element by pressing Tab or another keyboard key, there must be a visible visual change — typically a border, outline, highlight, or background color change — indicating which element currently has focus. Without a visible focus indicator, keyboard users cannot tell where they are on the page.</p>
+      <p>Any keyboard-operable user interface must have a mode of operation where the keyboard focus indicator is visible. When a user moves focus to an interactive element by pressing Tab or another keyboard key, there must be a visible visual change - typically a border, outline, highlight, or background color change - indicating which element currently has focus. Without a visible focus indicator, keyboard users cannot tell where they are on the page.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Navigate to the page using only the keyboard (Tab and Shift+Tab).</li>
+        <li>As you Tab through each element, observe whether a visible focus indicator appears on the currently focused element.</li>
+        <li>Check whether the focus indicator disappears on any element - this is a failure if <code>outline: none</code> is applied without a replacement.</li>
+        <li>Inspect the CSS for <code>outline: none</code>, <code>outline: 0</code>, or <code>box-shadow</code> replacements on <code>:focus</code> or <code>:focus-visible</code> states.</li>
+        <li>If a custom focus style is provided, assess whether it is visually distinct and perceivable against the background and surrounding content.</li>
+        <li>Test all interactive elements: links, buttons, inputs, selects, checkboxes, radio buttons, and custom widgets.</li>
+      </ol>
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-247"
+           data-announce-fail="Showing fail example. Links have outline set to none - no visible focus indicator appears on keyboard navigation."
+           data-announce-pass="Showing pass example. Links display a clear focus ring when navigated by keyboard.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-247">Focus visible demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Press <kbd>Tab</kbd> to move through the links below. No focus indicator appears - keyboard users cannot tell which link is active.</p>
+            <nav aria-label="Example navigation (no focus ring)">
+              <ul style="list-style:none;padding:0;display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.75rem;">
+                <li><a href="#" style="outline:none;" onclick="return false;">Home</a></li>
+                <li><a href="#" style="outline:none;" onclick="return false;">Products</a></li>
+                <li><a href="#" style="outline:none;" onclick="return false;">Contact</a></li>
+              </ul>
+            </nav>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">CSS applied: <code>outline: none</code></p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Press <kbd>Tab</kbd> to move through the links below. A clear focus ring appears on the active link.</p>
+            <nav aria-label="Example navigation (with focus ring)">
+              <ul style="list-style:none;padding:0;display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.75rem;">
+                <li><a href="#" onclick="return false;">Home</a></li>
+                <li><a href="#" onclick="return false;">Products</a></li>
+                <li><a href="#" onclick="return false;">Contact</a></li>
+              </ul>
+            </nav>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">No override - the site's <code>:focus-visible</code> style applies.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -57,21 +119,9 @@
       <p>A passing implementation ensures that every focusable element displays a clearly visible focus indicator when focused. The browser's default focus ring is acceptable, but custom focus styles must be visible enough to be noticed. Common passing approaches include a high-contrast outline (e.g., a 2px solid outline in a color with at least 3:1 contrast against adjacent colors), a background color change, or an underline. The focus style must be present on all interactive elements including links, buttons, form inputs, and custom widgets.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="testing-heading">
-      <h2 id="testing-heading">How To Test</h2>
-      <ol>
-        <li>Navigate to the page using only the keyboard (Tab and Shift+Tab).</li>
-        <li>As you Tab through each element, observe whether a visible focus indicator appears on the currently focused element.</li>
-        <li>Check whether the focus indicator disappears on any element — this is a failure if <code>outline: none</code> is applied without a replacement.</li>
-        <li>Inspect the CSS for <code>outline: none</code>, <code>outline: 0</code>, or <code>box-shadow</code> replacements on <code>:focus</code> or <code>:focus-visible</code> states.</li>
-        <li>If a custom focus style is provided, assess whether it is visually distinct and perceivable against the background and surrounding content.</li>
-        <li>Test all interactive elements: links, buttons, inputs, selects, checkboxes, radio buttons, and custom widgets.</li>
-      </ol>
-    </section>
-
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
-      <p>WCAG 2.2 introduced the new criterion 2.4.11 (Focus Not Obscured) and 2.4.13 (Focus Appearance) to address additional aspects of focus visibility. Note that 2.4.7 is a relatively low bar — it only requires that focus be visible in some mode, not that the focus indicator meet specific size or contrast requirements. The <code>:focus-visible</code> CSS pseudo-class allows developers to show focus indicators for keyboard navigation only, without showing them on mouse click, which is an acceptable and widely used approach.</p>
+      <p>WCAG 2.2 introduced the new criterion 2.4.11 (Focus Not Obscured) and 2.4.13 (Focus Appearance) to address additional aspects of focus visibility. Note that 2.4.7 is a relatively low bar - it only requires that focus be visible in some mode, not that the focus indicator meet specific size or contrast requirements. The <code>:focus-visible</code> CSS pseudo-class allows developers to show focus indicators for keyboard navigation only, without showing them on mouse click, which is an acceptable and widely used approach.</p>
     </section>
 
   </main>
@@ -79,11 +129,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html">WCAG 2.2 Understanding 2.4.7</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

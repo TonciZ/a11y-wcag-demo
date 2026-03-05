@@ -7,7 +7,7 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
 
 ## Description
 
-For all user interface components — including form elements, links, and custom widgets created with scripting — the following must be programmatically determinable or settable: the name and role of the component, and any states, properties, and values that can be set by the user. This criterion ensures that assistive technologies such as screen readers can identify what a component is (its role), what it is called (its name), and what state it is in (e.g., expanded, selected, checked). It is the foundation of accessible rich internet applications and applies to every interactive element on a page.
+For all user interface components - including form elements, links, and custom widgets created with scripting - the following must be programmatically determinable or settable: the name and role of the component, and any states, properties, and values that can be set by the user. This criterion ensures that assistive technologies such as screen readers can identify what a component is (its role), what it is called (its name), and what state it is in (e.g., expanded, selected, checked). It is the foundation of accessible rich internet applications and applies to every interactive element on a page.
 
 ## Fail Explanation
 
@@ -21,7 +21,7 @@ A component passes when it has a programmatically determinable accessible name (
 
 1. Using browser developer tools or an accessibility tree inspector (e.g., Firefox Accessibility panel), examine every interactive element on the page.
 2. Confirm each element has a non-empty accessible name (visible label, `aria-label`, `aria-labelledby`, or `alt` text for images).
-3. Confirm each element has an appropriate role — either from native HTML semantics (button, link, checkbox) or an explicit `role` attribute.
+3. Confirm each element has an appropriate role - either from native HTML semantics (button, link, checkbox) or an explicit `role` attribute.
 4. For stateful components (accordions, toggles, tabs, checkboxes, comboboxes), confirm the current state is communicated through the appropriate ARIA attribute.
 5. Test with a screen reader (e.g., NVDA + Chrome or VoiceOver + Safari): navigate to each interactive control and confirm its name, role, and state are announced correctly.
 6. Activate interactive controls (open accordions, toggle switches, select tabs) and confirm the screen reader announces the updated state.

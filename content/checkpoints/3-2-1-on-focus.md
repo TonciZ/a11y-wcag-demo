@@ -7,7 +7,7 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html
 
 ## Description
 
-When any user interface component receives focus, it must not initiate a change of context. A change of context is a major change in the content of a web page that can disorient users if triggered unexpectedly, including changes such as opening a new window, moving focus to a different component, submitting a form, or significantly rearranging the page's content. This criterion ensures that focus alone — without an explicit user action such as a click or keypress — does not cause such disruptive changes.
+When any user interface component receives focus, it must not initiate a change of context. A change of context is a major change in the content of a web page that can disorient users if triggered unexpectedly, including changes such as opening a new window, moving focus to a different component, submitting a form, or significantly rearranging the page's content. This criterion ensures that focus alone - without an explicit user action such as a click or keypress - does not cause such disruptive changes.
 
 ## Fail Explanation
 
@@ -15,13 +15,13 @@ A common failure occurs when a `select` element or a custom dropdown automatical
 
 ## Pass Explanation
 
-A page passes when receiving keyboard focus on any interactive component merely highlights or visually indicates that component without triggering navigation, form submissions, new windows, or other context-shifting events. Any meaningful action should require an explicit activation step — such as pressing Enter, Space, or clicking — so that users retain full control over when changes occur.
+A page passes when receiving keyboard focus on any interactive component merely highlights or visually indicates that component without triggering navigation, form submissions, new windows, or other context-shifting events. Any meaningful action should require an explicit activation step - such as pressing Enter, Space, or clicking - so that users retain full control over when changes occur.
 
 ## How To Test
 
 1. Using only the keyboard (Tab, Shift+Tab), move focus through all interactive elements on the page: links, buttons, form fields, and custom widgets.
 2. Observe whether receiving focus on any element triggers a change of context, such as page navigation, a new window, a form submission, or a significant content change.
-3. Pay particular attention to `<select>` menus, custom comboboxes, and auto-suggest inputs — verify that focus alone does not submit or navigate.
+3. Pay particular attention to `<select>` menus, custom comboboxes, and auto-suggest inputs - verify that focus alone does not submit or navigate.
 4. Check that modal dialogs, tooltips, and popups triggered by focus do not move focus away from the current control unexpectedly.
 5. Use a screen reader (e.g., NVDA + Firefox) and tab through the page, listening for unexpected announcements indicating a context change.
 

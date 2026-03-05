@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3.2.6 Consistent Help — WCAG 2.2 Demo</title>
+  <title>3.2.6 Consistent Help - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 3.2.6 Consistent Help failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">3.2.6 Consistent Help</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
-      <p>If a web page provides any of the following help mechanisms — human contact details, a human contact mechanism (such as a chat widget), a self-help option (such as an FAQ), or a fully automated contact mechanism (such as a chatbot) — and that mechanism is repeated across multiple pages of a website, it must appear in the same relative order in the page layout on each page. This new WCAG 2.2 criterion helps users with cognitive disabilities locate help reliably without needing to search for it each time they visit a new page.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when help mechanisms are present across multiple pages but appear in different positions relative to other page content. For example, if a live chat button appears in the top-right corner on the homepage but in the footer on the contact page and in a sidebar on the product page, users with cognitive disabilities or memory impairments may be unable to find assistance when they need it most. Inconsistent placement adds unnecessary cognitive load and may effectively deny help to users who struggle to adapt to changing layouts.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A page passes when any help mechanism that appears across the site is consistently placed in the same relative location within the page template — for example, always appearing as the last item in the primary navigation, or always positioned in the site footer before the copyright notice. The specific position does not matter as long as it remains predictable and consistent across all pages where it appears.</p>
+      <p>If a web page provides any of the following help mechanisms - human contact details, a human contact mechanism (such as a chat widget), a self-help option (such as an FAQ), or a fully automated contact mechanism (such as a chatbot) - and that mechanism is repeated across multiple pages of a website, it must appear in the same relative order in the page layout on each page. This new WCAG 2.2 criterion helps users with cognitive disabilities locate help reliably without needing to search for it each time they visit a new page.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -69,6 +58,75 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-326"
+           data-announce-fail="Showing fail example. Help link appears in a different position on each page, making it hard to find."
+           data-announce-pass="Showing pass example. Help link appears in the same position on every page.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-326">Consistent help demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The help link appears in a different position on each step - users who rely on consistent layout cannot predict where to find it.</p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
+              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
+                <strong style="font-size:0.8rem;color:#5a5a5a;">Step 1 of 3</strong>
+                <p style="font-size:0.875rem;margin:0.5rem 0 0;">Enter your details</p>
+                <a href="#" onclick="return false;" style="position:absolute;top:0.75rem;right:0.75rem;font-size:0.8rem;">Help</a>
+              </div>
+              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
+                <strong style="font-size:0.8rem;color:#5a5a5a;">Step 2 of 3</strong>
+                <p style="font-size:0.875rem;margin:0.5rem 0 0;">Review your order</p>
+                <a href="#" onclick="return false;" style="position:absolute;bottom:0.75rem;left:0.75rem;font-size:0.8rem;">Help</a>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The help link appears in the same position (top-right) on every step - users can reliably find it.</p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
+              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
+                <strong style="font-size:0.8rem;color:#5a5a5a;">Step 1 of 3</strong>
+                <p style="font-size:0.875rem;margin:0.5rem 0 0;">Enter your details</p>
+                <a href="#" onclick="return false;" style="position:absolute;top:0.75rem;right:0.75rem;font-size:0.8rem;">Help</a>
+              </div>
+              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
+                <strong style="font-size:0.8rem;color:#5a5a5a;">Step 2 of 3</strong>
+                <p style="font-size:0.875rem;margin:0.5rem 0 0;">Review your order</p>
+                <a href="#" onclick="return false;" style="position:absolute;top:0.75rem;right:0.75rem;font-size:0.8rem;">Help</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when help mechanisms are present across multiple pages but appear in different positions relative to other page content. For example, if a live chat button appears in the top-right corner on the homepage but in the footer on the contact page and in a sidebar on the product page, users with cognitive disabilities or memory impairments may be unable to find assistance when they need it most. Inconsistent placement adds unnecessary cognitive load and may effectively deny help to users who struggle to adapt to changing layouts.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A page passes when any help mechanism that appears across the site is consistently placed in the same relative location within the page template - for example, always appearing as the last item in the primary navigation, or always positioned in the site footer before the copyright notice. The specific position does not matter as long as it remains predictable and consistent across all pages where it appears.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion applies only to help mechanisms that are repeated across multiple pages; a help section unique to a single page (such as a dedicated support page) is not in scope. The requirement is about relative order within the page, not pixel-precise positioning, so responsive layout reflows that maintain structural order are acceptable.</p>
@@ -79,11 +137,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html">WCAG 2.2 Understanding 3.2.6</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

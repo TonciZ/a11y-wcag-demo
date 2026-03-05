@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3.3.3 Error Suggestion — WCAG 2.2 Demo</title>
+  <title>3.3.3 Error Suggestion - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 3.3.3 Error Suggestion failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">3.3.3 Error Suggestion</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-aa">Level AA</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
-      <p>If an input error is automatically detected and suggestions for correction are known, the suggestions must be provided to the user, unless doing so would jeopardise the security or purpose of the content. This criterion builds on 3.3.1 Error Identification by going a step further: it is not enough to tell users what went wrong — where the system can determine how to fix the problem, it must tell users that too. For example, if a required field is left blank, the error should say "Email address is required" and not merely flag the field as incorrect.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A form that identifies an error but offers no guidance on how to resolve it fails this criterion when a suggestion is knowable. For instance, a password field that rejects an entry because it does not contain an uppercase letter, but only displays "Invalid password" without explaining the requirement, leaves users — especially those with cognitive disabilities or those relying on screen readers — unable to determine the correct course of action. Providing only a red border or a generic "Error" label with no instructive text is also a failure at this level.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A form passes when each error message not only identifies the problem but also provides an actionable suggestion. For example, "Date of birth must be in DD/MM/YYYY format" or "Username must be between 3 and 20 characters" or "This email address is already registered — try logging in instead." The suggestion must be conveyed in text and programmatically associated with the relevant field so that screen reader users receive it when focusing the erroneous control.</p>
+      <p>If an input error is automatically detected and suggestions for correction are known, the suggestions must be provided to the user, unless doing so would jeopardise the security or purpose of the content. This criterion builds on 3.3.1 Error Identification by going a step further: it is not enough to tell users what went wrong - where the system can determine how to fix the problem, it must tell users that too. For example, if a required field is left blank, the error should say "Email address is required" and not merely flag the field as incorrect.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -70,6 +59,66 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-333"
+           data-announce-fail="Showing fail example. The error message only says Invalid input with no correction guidance."
+           data-announce-pass="Showing pass example. The error message explains the required format and gives an example.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-333">Error suggestion demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The error message identifies that something is wrong but offers no guidance on how to fix it:</p>
+            <div style="margin-top:0.75rem;">
+              <label for="date-fail-333" style="display:block;margin-bottom:0.25rem;">Date of birth</label>
+              <input type="text" id="date-fail-333" value="15/01/90" aria-invalid="true"
+                     style="border:2px solid #b91c1c;border-radius:4px;padding:0.4rem 0.6rem;">
+              <span style="color:#b91c1c;font-size:0.875rem;display:block;margin-top:0.25rem;">&#9888; Invalid input</span>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The error message describes the expected format and includes a concrete example:</p>
+            <div style="margin-top:0.75rem;">
+              <label for="date-pass-333" style="display:block;margin-bottom:0.25rem;">Date of birth</label>
+              <input type="text" id="date-pass-333" value="15/01/90" aria-invalid="true"
+                     aria-describedby="date-err-333"
+                     style="border:2px solid #b91c1c;border-radius:4px;padding:0.4rem 0.6rem;">
+              <span id="date-err-333" style="color:#b91c1c;font-size:0.875rem;display:block;margin-top:0.25rem;">
+                &#9888; Please enter your date of birth in DD/MM/YYYY format - for example, <strong>15/01/1990</strong>.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A form that identifies an error but offers no guidance on how to resolve it fails this criterion when a suggestion is knowable. For instance, a password field that rejects an entry because it does not contain an uppercase letter, but only displays "Invalid password" without explaining the requirement, leaves users - especially those with cognitive disabilities or those relying on screen readers - unable to determine the correct course of action. Providing only a red border or a generic "Error" label with no instructive text is also a failure at this level.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A form passes when each error message not only identifies the problem but also provides an actionable suggestion. For example, "Date of birth must be in DD/MM/YYYY format" or "Username must be between 3 and 20 characters" or "This email address is already registered - try logging in instead." The suggestion must be conveyed in text and programmatically associated with the relevant field so that screen reader users receive it when focusing the erroneous control.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion only applies when the system can programmatically determine a correct suggestion; if the input is ambiguous or the cause of failure is genuinely unknown to the system, a suggestion is not required. This criterion is closely paired with 3.3.1 (Error Identification) and together they form a comprehensive error-handling pattern for accessible forms.</p>
@@ -80,11 +129,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html">WCAG 2.2 Understanding 3.3.3</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

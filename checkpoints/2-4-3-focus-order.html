@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.4.3 Focus Order — WCAG 2.2 Demo</title>
+  <title>2.4.3 Focus Order - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 2.4.3 Focus Order failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">2.4.3 Focus Order</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
-      <p>If a web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components must receive focus in an order that preserves meaning and operability. This means that as users press Tab to move through a page, the order in which interactive elements receive focus must follow a logical reading and interaction sequence — typically matching the visual top-to-bottom, left-to-right order of the content.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when the tab order jumps unpredictably across the page — for example, tabbing from a form field in the header straight to the footer, then back to the middle of the page, then to a sidebar. This commonly happens when CSS is used to visually reorder content without updating the underlying DOM order, or when <code>tabindex</code> values are set to large positive integers that override the natural DOM sequence. Disordered focus order disorients keyboard users and makes it very difficult for screen reader users to build a mental model of the page.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation achieves a logical focus order by ensuring the DOM source order matches the intended reading and interaction sequence, so that the default tab flow (which follows DOM order) is already correct. Where visual reordering is necessary (e.g., through CSS flexbox <code>order</code> or <code>position: absolute</code>), the DOM order must still be arranged logically. Use of positive <code>tabindex</code> values (anything above 0) should be avoided; using <code>tabindex="0"</code> and <code>tabindex="-1"</code> is acceptable and recommended.</p>
+      <p>If a web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components must receive focus in an order that preserves meaning and operability. This means that as users press Tab to move through a page, the order in which interactive elements receive focus must follow a logical reading and interaction sequence - typically matching the visual top-to-bottom, left-to-right order of the content.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -69,9 +58,64 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-243"
+           data-announce-fail="Showing fail example. Conflicting tabindex values create an illogical Tab order."
+           data-announce-pass="Showing pass example. Natural DOM order gives a logical Tab sequence.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-243">Focus Order demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The buttons appear visually as Step 1 → Step 2 → Step 3, but positive <code>tabindex</code> values override DOM order. Pressing Tab moves focus: Step 2 → Step 3 → Step 1.</p>
+            <div style="margin-top:0.75rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <button type="button" tabindex="3">Step 1</button>
+              <button type="button" tabindex="1">Step 2</button>
+              <button type="button" tabindex="2">Step 3</button>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same buttons use no <code>tabindex</code> overrides. Tab follows DOM order: Step 1 → Step 2 → Step 3, matching the visual and logical sequence.</p>
+            <div style="margin-top:0.75rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <button type="button">Step 1</button>
+              <button type="button">Step 2</button>
+              <button type="button">Step 3</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when the tab order jumps unpredictably across the page - for example, tabbing from a form field in the header straight to the footer, then back to the middle of the page, then to a sidebar. This commonly happens when CSS is used to visually reorder content without updating the underlying DOM order, or when <code>tabindex</code> values are set to large positive integers that override the natural DOM sequence. Disordered focus order disorients keyboard users and makes it very difficult for screen reader users to build a mental model of the page.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation achieves a logical focus order by ensuring the DOM source order matches the intended reading and interaction sequence, so that the default tab flow (which follows DOM order) is already correct. Where visual reordering is necessary (e.g., through CSS flexbox <code>order</code> or <code>position: absolute</code>), the DOM order must still be arranged logically. Use of positive <code>tabindex</code> values (anything above 0) should be avoided; using <code>tabindex="0"</code> and <code>tabindex="-1"</code> is acceptable and recommended.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
-      <p>Focus order does not need to be identical to visual reading order in every case — only when the order affects meaning or operation. For example, a search field followed by search results does not require a rigid order as long as the relationship is clear. However, modal dialogs, inline error messages, and dynamically inserted content do require careful focus management to avoid confusion.</p>
+      <p>Focus order does not need to be identical to visual reading order in every case - only when the order affects meaning or operation. For example, a search field followed by search results does not require a rigid order as long as the relationship is clear. However, modal dialogs, inline error messages, and dynamically inserted content do require careful focus management to avoid confusion.</p>
     </section>
 
   </main>
@@ -79,11 +123,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html">WCAG 2.2 Understanding 2.4.3</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

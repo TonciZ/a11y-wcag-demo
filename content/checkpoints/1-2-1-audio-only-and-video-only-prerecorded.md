@@ -15,7 +15,7 @@ A failure occurs when a podcast episode, audio clip, or silent video is publishe
 
 ## Pass Explanation
 
-A passing implementation for audio-only content provides a full transcript — not just a summary — that includes all spoken dialogue and relevant non-speech sounds. For video-only content, the author either provides a text description of what occurs in the video (including actions, scene changes, and on-screen text) or adds an audio description track that narrates the visual content.
+A passing implementation for audio-only content provides a full transcript - not just a summary - that includes all spoken dialogue and relevant non-speech sounds. For video-only content, the author either provides a text description of what occurs in the video (including actions, scene changes, and on-screen text) or adds an audio description track that narrates the visual content.
 
 ## How To Test
 

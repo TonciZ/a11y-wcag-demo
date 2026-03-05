@@ -19,7 +19,7 @@ A passing implementation includes a "Skip to main content" link that is the firs
 
 ## How To Test
 
-1. Load the page and press Tab once — the very first focusable item should be a "Skip to main content" link (it may only appear visually when focused).
+1. Load the page and press Tab once - the very first focusable item should be a "Skip to main content" link (it may only appear visually when focused).
 2. Press Enter to activate the skip link and verify that keyboard focus moves to the main content area.
 3. Confirm focus lands in or immediately before the main content, not back at the top of the page.
 4. Inspect the page with a screen reader (NVDA + Firefox or JAWS + Chrome) and use the H key to navigate by headings; verify there is a clear heading structure that also enables efficient navigation.
@@ -27,4 +27,4 @@ A passing implementation includes a "Skip to main content" link that is the firs
 
 ## Notes
 
-The skip link target must be a real focusable element or have `tabindex="-1"` applied to receive programmatic focus — simply linking to an anchor on a non-focusable element like a `<div>` or `<h1>` may not move focus in all browsers. Testing with actual keyboard navigation is essential because automated tools often cannot verify whether a skip link functions correctly.
+The skip link target must be a real focusable element or have `tabindex="-1"` applied to receive programmatic focus - simply linking to an anchor on a non-focusable element like a `<div>` or `<h1>` may not move focus in all browsers. Testing with actual keyboard navigation is essential because automated tools often cannot verify whether a skip link functions correctly.

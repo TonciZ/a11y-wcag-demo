@@ -11,7 +11,7 @@ This criterion, new in WCAG 2.2, requires that the size of pointer targets (area
 
 ## Fail Explanation
 
-A failure occurs when a tappable or clickable target is smaller than 24×24 CSS pixels and does not have sufficient spacing around it to compensate. For example, a row of small icon buttons spaced tightly together — each 16×16 pixels with only 2 pixels of gap — fails because the combined area of each icon plus its spacing is less than 24×24 pixels. Users with tremors, limited fine motor control, or who use assistive touch technology cannot reliably tap such small, densely packed targets without accidentally activating adjacent ones.
+A failure occurs when a tappable or clickable target is smaller than 24×24 CSS pixels and does not have sufficient spacing around it to compensate. For example, a row of small icon buttons spaced tightly together - each 16×16 pixels with only 2 pixels of gap - fails because the combined area of each icon plus its spacing is less than 24×24 pixels. Users with tremors, limited fine motor control, or who use assistive touch technology cannot reliably tap such small, densely packed targets without accidentally activating adjacent ones.
 
 ## Pass Explanation
 

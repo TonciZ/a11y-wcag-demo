@@ -3,35 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2.4.13 Focus Appearance — WCAG 2.2 Demo</title>
+  <title>2.4.13 Focus Appearance - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 2.4.13 Focus Appearance failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">2.4.13 Focus Appearance</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-aa">Level AA</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
@@ -40,10 +46,58 @@
       <p>This criterion, new in WCAG 2.2, establishes minimum measurable requirements for the visual appearance of keyboard focus indicators. When the keyboard focus indicator is visible, it must: (1) have a focus indicator area of at least the perimeter of the unfocused component multiplied by a 2 CSS pixel outline; (2) have a contrast ratio of at least 3:1 between the pixels in the focused and unfocused states; and (3) not be fully obscured by author-created content. This criterion provides measurable thresholds that the weaker 2.4.7 (Focus Visible) does not.</p>
     </section>
 
+    <section class="content-section" aria-labelledby="testing-heading">
+      <h2 id="testing-heading">How To Test</h2>
+      <ol>
+        <li>Navigate to the page using only the keyboard and observe the focus indicator on each interactive element.</li>
+        <li>For each focus indicator, estimate its width and perimeter - it should be at least equivalent to a 2px outline around the full component boundary.</li>
+        <li>Use a color contrast checking tool (such as the APCA Colour Contrast Checker or browser DevTools) to measure the contrast between the focused state pixels and the unfocused state pixels.</li>
+        <li>Verify the contrast ratio is at least 3:1 between focused and unfocused states.</li>
+        <li>Check that the focus indicator is not partially or fully hidden by other elements.</li>
+        <li>Pay particular attention to custom buttons, links with removed underlines, and form controls with custom styling.</li>
+      </ol>
+    </section>
+
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-2413"
+           data-announce-fail="Showing fail example. The focus outline is 1 pixel and low contrast - too thin and too faint to meet WCAG 2.2 requirements."
+           data-announce-pass="Showing pass example. The focus outline is 3 pixels with high contrast - meets the minimum area and contrast requirements.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-2413">Focus appearance demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Tab to focus the button. The outline is 1&thinsp;px and #cccccc - contrast 1.6:1 against white. Does not meet the minimum 2&thinsp;px / 3:1 contrast requirement.</p>
+            <div style="margin-top:0.75rem;">
+              <style>.btn-fail-2413:focus-visible { outline: 1px solid #cccccc !important; outline-offset: 1px !important; }</style>
+              <button class="btn-fail-2413" type="button">Save changes</button>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Tab to focus the button. The outline is 3&thinsp;px and #0055cc - contrast 8.6:1 against white. Meets the 2&thinsp;px minimum and 3:1 contrast threshold.</p>
+            <div style="margin-top:0.75rem;">
+              <style>.btn-pass-2413:focus-visible { outline: 3px solid #0055cc !important; outline-offset: 2px !important; }</style>
+              <button class="btn-pass-2413" type="button">Save changes</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -57,21 +111,9 @@
       <p>A passing implementation provides a focus indicator that meets both the size and contrast thresholds. The minimum size requirement is roughly equivalent to a solid 2px outline that traces the full perimeter of the focused component. The contrast requirement means the outline color (or the change in appearance) must contrast at 3:1 or greater against both the unfocused state of the component and the adjacent background. A common passing implementation is a 3px solid outline in a dark color combined with an offset so the outline appears around the element boundary with a white gap between the element and the outline.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="testing-heading">
-      <h2 id="testing-heading">How To Test</h2>
-      <ol>
-        <li>Navigate to the page using only the keyboard and observe the focus indicator on each interactive element.</li>
-        <li>For each focus indicator, estimate its width and perimeter — it should be at least equivalent to a 2px outline around the full component boundary.</li>
-        <li>Use a color contrast checking tool (such as the APCA Colour Contrast Checker or browser DevTools) to measure the contrast between the focused state pixels and the unfocused state pixels.</li>
-        <li>Verify the contrast ratio is at least 3:1 between focused and unfocused states.</li>
-        <li>Check that the focus indicator is not partially or fully hidden by other elements.</li>
-        <li>Pay particular attention to custom buttons, links with removed underlines, and form controls with custom styling.</li>
-      </ol>
-    </section>
-
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
-      <p>This criterion is new in WCAG 2.2 and is one of the most technically specific criteria in the standard, providing concrete measurable thresholds. It applies to focus indicators that are author-created — the browser's default focus ring is generally acceptable if it meets the thresholds, but browser defaults vary significantly. Designers should explicitly specify focus styles rather than relying on browser defaults to ensure compliance.</p>
+      <p>This criterion is new in WCAG 2.2 and is one of the most technically specific criteria in the standard, providing concrete measurable thresholds. It applies to focus indicators that are author-created - the browser's default focus ring is generally acceptable if it meets the thresholds, but browser defaults vary significantly. Designers should explicitly specify focus styles rather than relying on browser defaults to ensure compliance.</p>
     </section>
 
   </main>
@@ -79,11 +121,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html">WCAG 2.2 Understanding 2.4.13</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

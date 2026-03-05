@@ -11,7 +11,7 @@ Information that has already been entered by the user in a previous step of the 
 
 ## Fail Explanation
 
-A checkout process that asks users to enter their billing address on one screen and then asks them to enter their shipping address on the next screen — without offering a "same as billing" option or auto-populating the fields — is a failure when both addresses are the same workflow. Similarly, a multi-step registration form that asks for a user's name on step one and then asks for the same name again on step three, without pre-filling it, forces users with cognitive disabilities, motor impairments, or anyone relying on assistive technology to perform unnecessary repetitive work.
+A checkout process that asks users to enter their billing address on one screen and then asks them to enter their shipping address on the next screen - without offering a "same as billing" option or auto-populating the fields - is a failure when both addresses are the same workflow. Similarly, a multi-step registration form that asks for a user's name on step one and then asks for the same name again on step three, without pre-filling it, forces users with cognitive disabilities, motor impairments, or anyone relying on assistive technology to perform unnecessary repetitive work.
 
 ## Pass Explanation
 
@@ -29,4 +29,4 @@ A process passes when it either auto-populates previously entered information in
 
 ## Notes
 
-This criterion applies within a single process or session; it does not require sites to remember data across separate visits. The exceptions (security, expired data, intentional confirmation) are intentionally narrow — the default expectation is that users should not have to re-enter data they have already provided in the current workflow.
+This criterion applies within a single process or session; it does not require sites to remember data across separate visits. The exceptions (security, expired data, intentional confirmation) are intentionally narrow - the default expectation is that users should not have to re-enter data they have already provided in the current workflow.

@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3.2.2 On Input — WCAG 2.2 Demo</title>
+  <title>3.2.2 On Input - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 3.2.2 On Input failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">3.2.2 On Input</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
-      <p>Changing the setting of any user interface component must not automatically cause a change of context unless the user has been advised of the behaviour before using the component. A change of context includes events like navigating to a new page, submitting a form, opening a pop-up window, or moving keyboard focus to an entirely different part of the interface. Users must be able to change settings — such as selecting a radio button, checking a checkbox, or choosing an option from a dropdown — without triggering unexpected, disruptive behaviour.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A classic failure is a navigation <code>&lt;select&gt;</code> element that immediately redirects the browser to a new URL when the user selects an option, without requiring the user to also activate a "Go" button. Another failure is a radio button group that submits a form automatically when a radio is selected. These patterns are particularly problematic for keyboard and switch-device users, who may inadvertently change a value while scanning options using arrow keys and be sent to an unintended destination before they can make a deliberate choice.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A page passes when changing the value of a form control — selecting a radio button, toggling a checkbox, typing in a field, or picking from a dropdown — does not by itself trigger a context change. If an automated behaviour is intentional and desirable, the page must warn the user in advance (for example, with visible label text that says "Selecting an option will immediately navigate to that section"). The safest implementation is to always require an explicit submit or activate action to process user input.</p>
+      <p>Changing the setting of any user interface component must not automatically cause a change of context unless the user has been advised of the behaviour before using the component. A change of context includes events like navigating to a new page, submitting a form, opening a pop-up window, or moving keyboard focus to an entirely different part of the interface. Users must be able to change settings - such as selecting a radio button, checking a checkbox, or choosing an option from a dropdown - without triggering unexpected, disruptive behaviour.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -65,8 +54,80 @@
         <li>Verify that no unexpected navigation, form submissions, new windows, or focus movements are triggered solely by the input change.</li>
         <li>If an automated context change does occur, check whether the page clearly warned the user before they interacted with the component.</li>
         <li>Test with a screen reader (e.g., JAWS or NVDA) to confirm that changing values does not produce unexpected announcements indicating navigation or major content shifts.</li>
-        <li>Specifically test any <code>&lt;select&gt;</code> elements — confirm they require a submit action rather than automatically navigating on <code>change</code>.</li>
+        <li>Specifically test any <code>&lt;select&gt;</code> elements - confirm they require a submit action rather than automatically navigating on <code>change</code>.</li>
       </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-322"
+           data-announce-fail="Showing fail example. Selecting an option from the list immediately triggers a context change."
+           data-announce-pass="Showing pass example. Selecting an option does nothing until the user clicks Go.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-322">On input demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Choosing a department immediately triggers a navigation (simulated). Users who accidentally select the wrong option cannot recover before the action fires.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="dept-fail-322" style="display:block;margin-bottom:0.25rem;">Go to department:</label>
+              <select id="dept-fail-322"
+                      onchange="var m=document.getElementById('msg-fail-322');if(this.value)m.textContent='Navigating to: '+this.options[this.selectedIndex].text+' (simulated)';else m.textContent='';">
+                <option value="">Select&hellip;</option>
+                <option value="hr">Human Resources</option>
+                <option value="it">Information Technology</option>
+                <option value="finance">Finance</option>
+              </select>
+              <p id="msg-fail-322" style="font-size:0.875rem;color:#b91c1c;margin-top:0.5rem;min-height:1.2em;"></p>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Choosing a department does nothing until the user explicitly clicks <strong>Go</strong>. The user remains in control of when the context change happens.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="dept-pass-322" style="display:block;margin-bottom:0.25rem;">Go to department:</label>
+              <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+                <select id="dept-pass-322">
+                  <option value="">Select&hellip;</option>
+                  <option value="hr">Human Resources</option>
+                  <option value="it">Information Technology</option>
+                  <option value="finance">Finance</option>
+                </select>
+                <button type="button"
+                        onclick="var s=document.getElementById('dept-pass-322');var m=document.getElementById('msg-pass-322');if(s.value)m.textContent='Navigating to: '+s.options[s.selectedIndex].text+' (simulated)';else m.textContent='Please select a department first.';">
+                  Go
+                </button>
+              </div>
+              <p id="msg-pass-322" style="font-size:0.875rem;color:#15803d;margin-top:0.5rem;min-height:1.2em;"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A classic failure is a navigation <code>&lt;select&gt;</code> element that immediately redirects the browser to a new URL when the user selects an option, without requiring the user to also activate a "Go" button. Another failure is a radio button group that submits a form automatically when a radio is selected. These patterns are particularly problematic for keyboard and switch-device users, who may inadvertently change a value while scanning options using arrow keys and be sent to an unintended destination before they can make a deliberate choice.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A page passes when changing the value of a form control - selecting a radio button, toggling a checkbox, typing in a field, or picking from a dropdown - does not by itself trigger a context change. If an automated behaviour is intentional and desirable, the page must warn the user in advance (for example, with visible label text that says "Selecting an option will immediately navigate to that section"). The safest implementation is to always require an explicit submit or activate action to process user input.</p>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">
@@ -79,11 +140,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input.html">WCAG 2.2 Understanding 3.2.2</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

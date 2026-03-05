@@ -11,11 +11,11 @@ If a keyboard shortcut is implemented using only a single letter, punctuation, n
 
 ## Fail Explanation
 
-A failure occurs when a web application binds functionality to a single character key globally — for example, pressing "S" to search or "D" to delete — with no way for the user to disable or remap that shortcut. Screen reader users often speak commands letter-by-letter or use single-key navigation shortcuts, and these will accidentally trigger the application's shortcut instead, causing unintended actions such as deleting content, submitting forms, or navigating away from the current view.
+A failure occurs when a web application binds functionality to a single character key globally - for example, pressing "S" to search or "D" to delete - with no way for the user to disable or remap that shortcut. Screen reader users often speak commands letter-by-letter or use single-key navigation shortcuts, and these will accidentally trigger the application's shortcut instead, causing unintended actions such as deleting content, submitting forms, or navigating away from the current view.
 
 ## Pass Explanation
 
-A passing implementation either avoids single-character shortcuts altogether, or provides an accessible setting within the application to turn them off or reassign them to include a modifier key (such as Ctrl+S). Alternatively, a shortcut is acceptable if it only activates while a specific component — such as a search input — has keyboard focus, rather than firing globally across the entire page.
+A passing implementation either avoids single-character shortcuts altogether, or provides an accessible setting within the application to turn them off or reassign them to include a modifier key (such as Ctrl+S). Alternatively, a shortcut is acceptable if it only activates while a specific component - such as a search input - has keyboard focus, rather than firing globally across the entire page.
 
 ## How To Test
 

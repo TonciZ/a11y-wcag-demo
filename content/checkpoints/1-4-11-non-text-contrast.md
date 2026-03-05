@@ -11,7 +11,7 @@ The visual presentation of user interface components and graphical objects must 
 
 ## Fail Explanation
 
-A failure occurs when a user interface component or graphical object does not achieve a 3:1 contrast ratio against its adjacent background. Common failures include text input borders that are too light against a white background (such as a very light grey border), custom checkboxes or radio buttons styled without sufficient contrast, icons used as controls whose graphical parts do not meet the threshold, and chart data elements (such as bars or lines) that do not contrast sufficiently against the chart background. Focus indicators — the visible outline shown when a component has keyboard focus — are also covered and frequently fail.
+A failure occurs when a user interface component or graphical object does not achieve a 3:1 contrast ratio against its adjacent background. Common failures include text input borders that are too light against a white background (such as a very light grey border), custom checkboxes or radio buttons styled without sufficient contrast, icons used as controls whose graphical parts do not meet the threshold, and chart data elements (such as bars or lines) that do not contrast sufficiently against the chart background. Focus indicators - the visible outline shown when a component has keyboard focus - are also covered and frequently fail.
 
 ## Pass Explanation
 
@@ -23,7 +23,7 @@ A passing implementation ensures that the visual boundaries of interactive compo
 2. For each component, identify the visual boundary or indicator that marks its presence (e.g., border, background, icon).
 3. Use a contrast checking tool to measure the contrast ratio of that boundary against its adjacent color.
 4. Verify the ratio meets or exceeds 3:1.
-5. Check each interactive state: default, hover, focus, active, and error — all states must independently meet the threshold.
+5. Check each interactive state: default, hover, focus, active, and error - all states must independently meet the threshold.
 6. Identify meaningful graphical objects such as chart segments, graph lines, and informational icons, and check their contrast.
 7. Pay specific attention to focus indicators, which are required to meet 3:1 under this criterion (and have additional requirements under 2.4.11 Focus Appearance in WCAG 2.2).
 

@@ -7,11 +7,11 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-
 
 ## Description
 
-Cognitive function tests must not be required at any step of an authentication process, unless the test provides at least one of the following: an alternative authentication method that does not rely on a cognitive function test; a mechanism to assist the user in completing the cognitive function test; or the cognitive function test involves recognising objects or identifying non-text content the user previously provided to the website. A cognitive function test is anything that requires the user to remember, transcribe, or solve something — including traditional text-based CAPTCHA, knowledge-based security questions, or mathematical puzzles. This new WCAG 2.2 criterion directly addresses authentication barriers for users with cognitive disabilities.
+Cognitive function tests must not be required at any step of an authentication process, unless the test provides at least one of the following: an alternative authentication method that does not rely on a cognitive function test; a mechanism to assist the user in completing the cognitive function test; or the cognitive function test involves recognising objects or identifying non-text content the user previously provided to the website. A cognitive function test is anything that requires the user to remember, transcribe, or solve something - including traditional text-based CAPTCHA, knowledge-based security questions, or mathematical puzzles. This new WCAG 2.2 criterion directly addresses authentication barriers for users with cognitive disabilities.
 
 ## Fail Explanation
 
-A login page that requires users to solve a distorted text CAPTCHA with no accessible alternative (such as an audio CAPTCHA or a simple "I'm not a robot" checkbox backed by behaviour analysis) fails this criterion. Similarly, a security checkpoint that asks users to recall which city they were born in, their mother's maiden name, or any other memorised fact — without offering an alternative path — presents a barrier to users with cognitive impairments, amnesia, or brain injuries. Traditional knowledge-based authentication questions are a particularly common source of failure.
+A login page that requires users to solve a distorted text CAPTCHA with no accessible alternative (such as an audio CAPTCHA or a simple "I'm not a robot" checkbox backed by behaviour analysis) fails this criterion. Similarly, a security checkpoint that asks users to recall which city they were born in, their mother's maiden name, or any other memorised fact - without offering an alternative path - presents a barrier to users with cognitive impairments, amnesia, or brain injuries. Traditional knowledge-based authentication questions are a particularly common source of failure.
 
 ## Pass Explanation
 
@@ -29,4 +29,4 @@ An authentication process passes when it does not require any cognitive function
 
 ## Notes
 
-This criterion is at Level AA; WCAG 2.2 also includes 3.3.9 Accessible Authentication (Enhanced) at Level AAA which removes all cognitive test exceptions. Importantly, this criterion does not prohibit passwords — it prohibits requiring users to memorise or transcribe credentials without any accessible alternative or support mechanism.
+This criterion is at Level AA; WCAG 2.2 also includes 3.3.9 Accessible Authentication (Enhanced) at Level AAA which removes all cognitive test exceptions. Importantly, this criterion does not prohibit passwords - it prohibits requiring users to memorise or transcribe credentials without any accessible alternative or support mechanism.

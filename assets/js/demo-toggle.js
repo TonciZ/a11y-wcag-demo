@@ -65,7 +65,7 @@
       }
 
       // Announce state change to screen readers via live region.
-      // Live regions only fire on DOM text changes — not CSS changes —
+      // Live regions only fire on DOM text changes - not CSS changes -
       // so we maintain a dedicated hidden element for this.
       var announcement = container.querySelector('[data-demo-announcement]');
       if (announcement) {

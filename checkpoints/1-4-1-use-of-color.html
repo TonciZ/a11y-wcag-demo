@@ -3,58 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1.4.1 Use of Color — WCAG 2.2 Demo</title>
+  <title>1.4.1 Use of Color - WCAG 2.2 Demo</title>
   <meta name="description" content="Interactive demo showing WCAG 2.2 1.4.1 Use of Color failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <a href="../index.html" class="site-header__logo">WCAG Demo</a>
-      <nav aria-label="Site navigation">
-        <ul class="site-nav__list">
-          <li><a href="../index.html">Checkpoints</a></li>
-        </ul>
-      </nav>
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">WCAG 2.2 - All Success Criteria</p>
+        <p class="site-hero__title">Accessibility Checkpoints</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main-content" class="site-main">
 
     <div class="page-header">
-      <p class="page-header__eyebrow">WCAG 2.2 — Success Criterion</p>
+      <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">1.4.1 Use of Color</h1>
       <div class="page-header__meta">
         <span class="badge badge--level-a">Level A</span>
-        <span class="badge badge--status-placeholder">Demo coming soon</span>
       </div>
     </div>
 
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>Color must not be used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element. Users who are colorblind or who use high contrast modes or monochrome displays may not be able to perceive color differences, so any information conveyed through color must also be conveyed through another visual means such as text, pattern, shape, or position.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
-      <div class="demo-placeholder">
-        <p>Interactive demo coming in a future update.</p>
-      </div>
-    </section>
-
-    <section class="content-section" aria-labelledby="fail-heading">
-      <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when color is the sole indicator used to communicate important information. Common examples include form fields outlined in red to indicate an error with no error text or icon, charts that use colored lines to distinguish data series with no legend labels or patterns, and links that are distinguished from surrounding text only by color with no underline or other non-color indicator. Users with red-green color blindness, the most common form, would be unable to distinguish these elements.</p>
-    </section>
-
-    <section class="content-section" aria-labelledby="pass-heading">
-      <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation ensures that any information communicated through color is also communicated through at least one other visual means. Error fields are marked with both a red border and an error icon or text message. Chart data series are distinguished by both color and pattern or labeled directly. Links in body text are underlined or bold in addition to being a different color. When color is used decoratively and conveys no information, no additional indicator is needed.</p>
     </section>
 
     <section class="content-section" aria-labelledby="testing-heading">
@@ -69,9 +58,83 @@
       </ol>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading">
+      <h2 id="demo-heading">Demo</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-141"
+           data-announce-fail="Showing fail example. Required fields are indicated by colour alone - users who cannot perceive colour receive no indication."
+           data-announce-pass="Showing pass example. Required fields are marked with both colour and a text symbol, explained in a legend.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-141">Use of colour demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Required fields are shown only by changing the label colour to red. Users who cannot distinguish colour have no way to know which fields are mandatory.</p>
+            <form style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;" onsubmit="return false;">
+              <div>
+                <label for="fail-141-name" style="display:block;margin-bottom:0.25rem;color:#b91c1c;">Full name</label>
+                <input type="text" id="fail-141-name">
+              </div>
+              <div>
+                <label for="fail-141-company" style="display:block;margin-bottom:0.25rem;">Company (optional)</label>
+                <input type="text" id="fail-141-company">
+              </div>
+              <div>
+                <label for="fail-141-email" style="display:block;margin-bottom:0.25rem;color:#b91c1c;">Email address</label>
+                <input type="email" id="fail-141-email">
+              </div>
+            </form>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Required fields are marked with a red asterisk <strong style="color:#b91c1c;">*</strong> and a visible legend - two distinct cues, not colour alone.</p>
+            <form style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;" onsubmit="return false;">
+              <p style="font-size:0.875rem;margin:0;"><strong style="color:#b91c1c;" aria-hidden="true">*</strong> Required field</p>
+              <div>
+                <label for="pass-141-name" style="display:block;margin-bottom:0.25rem;color:#b91c1c;"><strong aria-hidden="true">*</strong> Full name</label>
+                <input type="text" id="pass-141-name" required aria-required="true">
+              </div>
+              <div>
+                <label for="pass-141-company" style="display:block;margin-bottom:0.25rem;">Company <span style="color:#5a5a5a;">(optional)</span></label>
+                <input type="text" id="pass-141-company">
+              </div>
+              <div>
+                <label for="pass-141-email" style="display:block;margin-bottom:0.25rem;color:#b91c1c;"><strong aria-hidden="true">*</strong> Email address</label>
+                <input type="email" id="pass-141-email" required aria-required="true">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="fail-heading">
+      <h2 id="fail-heading">Fail Explanation</h2>
+      <p>A failure occurs when color is the sole indicator used to communicate important information. Common examples include form fields outlined in red to indicate an error with no error text or icon, charts that use colored lines to distinguish data series with no legend labels or patterns, and links that are distinguished from surrounding text only by color with no underline or other non-color indicator. Users with red-green color blindness, the most common form, would be unable to distinguish these elements.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="pass-heading">
+      <h2 id="pass-heading">Pass Explanation</h2>
+      <p>A passing implementation ensures that any information communicated through color is also communicated through at least one other visual means. Error fields are marked with both a red border and an error icon or text message. Chart data series are distinguished by both color and pattern or labeled directly. Links in body text are underlined or bold in addition to being a different color. When color is used decoratively and conveys no information, no additional indicator is needed.</p>
+    </section>
+
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
-      <p>This criterion does not prohibit the use of color; it only requires that color not be the only means of conveying information. It is important to note that contrast ratio requirements are covered under SC 1.4.3, not this criterion — 1.4.1 is specifically about redundancy of information, not color luminance.</p>
+      <p>This criterion does not prohibit the use of color; it only requires that color not be the only means of conveying information. It is important to note that contrast ratio requirements are covered under SC 1.4.3, not this criterion - 1.4.1 is specifically about redundancy of information, not color luminance.</p>
     </section>
 
   </main>
@@ -79,11 +142,13 @@
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner">
       <p>
-        <a href="../index.html">← All checkpoints</a> &nbsp;|&nbsp;
+        <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
         <a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html">WCAG 2.2 Understanding 1.4.1</a>
       </p>
     </div>
   </footer>
 
+  <script src="../assets/js/demo-toggle.js"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

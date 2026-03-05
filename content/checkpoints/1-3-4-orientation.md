@@ -15,7 +15,7 @@ A failure occurs when a web page or application forces a specific orientation us
 
 ## Pass Explanation
 
-A passing implementation allows content to reflow and function correctly in both portrait and landscape orientations. The layout adapts using responsive design techniques so that all features remain usable regardless of how the device is held. If an orientation restriction is genuinely essential — such as for a piano keyboard application or a specific game mechanic — the restriction is permissible, but such exceptions are rare.
+A passing implementation allows content to reflow and function correctly in both portrait and landscape orientations. The layout adapts using responsive design techniques so that all features remain usable regardless of how the device is held. If an orientation restriction is genuinely essential - such as for a piano keyboard application or a specific game mechanic - the restriction is permissible, but such exceptions are rare.
 
 ## How To Test
 

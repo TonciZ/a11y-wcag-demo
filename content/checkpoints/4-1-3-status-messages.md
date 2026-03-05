@@ -7,11 +7,11 @@ wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html
 
 ## Description
 
-In content implemented using markup languages, status messages must be programmatically determinable through role or properties so that they can be presented to the user by assistive technologies without receiving focus. A status message is any update that informs the user of the success or result of an action, a waiting state, the progress of a process, or the existence of errors — where that message does not take focus. Examples include "Your form has been submitted successfully", "3 items added to cart", "Loading, please wait…", or "5 search results found." These messages must reach screen reader users even though keyboard focus remains elsewhere on the page.
+In content implemented using markup languages, status messages must be programmatically determinable through role or properties so that they can be presented to the user by assistive technologies without receiving focus. A status message is any update that informs the user of the success or result of an action, a waiting state, the progress of a process, or the existence of errors - where that message does not take focus. Examples include "Your form has been submitted successfully", "3 items added to cart", "Loading, please wait…", or "5 search results found." These messages must reach screen reader users even though keyboard focus remains elsewhere on the page.
 
 ## Fail Explanation
 
-A dynamic success message that appears visually on screen after a form submission but is injected into the DOM without an appropriate ARIA live region role will not be announced by screen readers, because the user's focus has not moved to the message. Screen reader users will complete an action — such as adding an item to their cart or submitting a search query — and receive no feedback that the action succeeded or produced results. This is a significant usability barrier for blind users who depend entirely on audio output to understand the result of their interactions.
+A dynamic success message that appears visually on screen after a form submission but is injected into the DOM without an appropriate ARIA live region role will not be announced by screen readers, because the user's focus has not moved to the message. Screen reader users will complete an action - such as adding an item to their cart or submitting a search query - and receive no feedback that the action succeeded or produced results. This is a significant usability barrier for blind users who depend entirely on audio output to understand the result of their interactions.
 
 ## Pass Explanation
 
