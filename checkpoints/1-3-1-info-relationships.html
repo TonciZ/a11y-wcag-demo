@@ -134,13 +134,15 @@
                 No aria-label - caption provides the accessible name.
               -->
               <table class="demo-table" tabindex="0">
-                <caption class="visually-hidden">Fail example - employee data: first row uses td elements, no semantic column headers</caption>
-                <tbody>
+                <caption class="visually-hidden">Fail example - employee data: header row uses td elements instead of th, so columns have no programmatic role</caption>
+                <thead>
                   <tr>
                     <td>Name</td>
                     <td>Department</td>
                     <td>Score</td>
                   </tr>
+                </thead>
+                <tbody>
                   <tr>
                     <td>Alice</td>
                     <td>Engineering</td>
