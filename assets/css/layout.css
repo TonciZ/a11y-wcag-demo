@@ -69,6 +69,13 @@
   height: var(--hero-h);
 }
 
+/* Explicit column placement keeps visual order locked even if DOM order
+   ever changes for tab-sequence reasons. Current tab order matches DOM:
+   skip link → logo (home) → theme toggle → left nav → main content. */
+.site-hero__brand   { grid-column: 1; }
+.site-hero__text    { grid-column: 2; }
+.site-hero__actions { grid-column: 3; }
+
 /* Left square — logo */
 .site-hero__brand {
   display: flex;
