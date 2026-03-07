@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
-<body>
+<body class="checkpoint-page">
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -64,8 +64,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-2411"
-           data-announce-fail="Showing fail example. A sticky header fully covers the focused button when it scrolls into view."
-           data-announce-pass="Showing pass example. scroll-padding-top keeps the focused button visible below the sticky header.">
+           data-announce-fail="Showing fail example. Focused element is completely hidden behind overlapping content - user cannot see what has focus."
+           data-announce-pass="Showing pass example. Focused element remains at least partially visible - user can track keyboard position.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-2411">Focus not obscured demo</span>
@@ -137,6 +137,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
 </body>

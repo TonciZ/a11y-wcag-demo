@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
-<body>
+<body class="checkpoint-page">
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -65,8 +65,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-143"
-           data-announce-fail="Showing fail example. Text colour #aaaaaa on white gives a contrast ratio of 2.32 to 1, which fails."
-           data-announce-pass="Showing pass example. Text colour #595959 on white gives a contrast ratio of 7.0 to 1, which passes.">
+           data-announce-fail="Showing fail example. Text is too faint to read reliably - creates barriers for users with low vision or in bright environments."
+           data-announce-pass="Showing pass example. Text is easily readable at sufficient contrast - accessible to users with low vision.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-143">Contrast minimum demo</span>
@@ -128,6 +128,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
 </body>

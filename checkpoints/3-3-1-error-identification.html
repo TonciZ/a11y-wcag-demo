@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
-<body>
+<body class="checkpoint-page">
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -65,8 +65,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-331"
-           data-announce-fail="Showing fail example. Error indicated by colour and border only - no text description."
-           data-announce-pass="Showing pass example. Error described in text and linked to the input field.">
+           data-announce-fail="Showing fail example. Error is not communicated to screen reader users - no text description provided."
+           data-announce-pass="Showing pass example. Error message is announced to screen reader users and explains what needs correction.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-331">Error Identification demo</span>
@@ -133,6 +133,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
 </body>

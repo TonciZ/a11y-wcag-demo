@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
-<body>
+<body class="checkpoint-page">
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -64,8 +64,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-141"
-           data-announce-fail="Showing fail example. Required fields are indicated by colour alone - users who cannot perceive colour receive no indication."
-           data-announce-pass="Showing pass example. Required fields are marked with both colour and a text symbol, explained in a legend.">
+           data-announce-fail="Showing fail example. Required fields lack any non-color indicator - users who cannot perceive color have no way to identify them."
+           data-announce-pass="Showing pass example. Required fields use multiple indicators including text symbols - all users can identify them.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-141">Use of colour demo</span>
@@ -148,6 +148,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
 </body>

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
-<body>
+<body class="checkpoint-page">
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -65,8 +65,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-1411"
-           data-announce-fail="Showing fail example. Form controls have a very faint border at 1.54 to 1 contrast - hard to perceive against a white background."
-           data-announce-pass="Showing pass example. Form controls have a border at 4.5 to 1 contrast - clearly visible to users with low vision.">
+           data-announce-fail="Showing fail example. Form controls are difficult to locate and distinguish from the background."
+           data-announce-pass="Showing pass example. Form controls have clearly visible boundaries that users with low vision can perceive.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-1411">Non-text contrast demo</span>
@@ -140,6 +140,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
 </body>

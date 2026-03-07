@@ -487,6 +487,28 @@ a.checkpoint-card:hover {
   color: var(--color-accent);
 }
 
+/* Active page in navigation */
+.checkpoint-nav__link--active,
+.checkpoint-nav__link[aria-current="page"] {
+  background: var(--color-accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.checkpoint-nav__link--active:hover,
+.checkpoint-nav__link[aria-current="page"]:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+/* Ensure child elements also get white text */
+.checkpoint-nav__link--active .checkpoint-nav__code,
+.checkpoint-nav__link[aria-current="page"] .checkpoint-nav__code,
+.checkpoint-nav__link--active .checkpoint-nav__title,
+.checkpoint-nav__link[aria-current="page"] .checkpoint-nav__title {
+  color: #ffffff;
+}
+
 /* Guideline (1.1) — medium indent */
 .checkpoint-nav__guideline {
   display: block;

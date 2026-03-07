@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
-<body>
+<body class="checkpoint-page">
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -65,8 +65,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-1410"
-           data-announce-fail="Showing fail example. A fixed-width layout forces horizontal scrolling at narrow viewports or high zoom."
-           data-announce-pass="Showing pass example. A responsive layout reflows without horizontal scrolling at any zoom level.">
+           data-announce-fail="Showing fail example. Content requires horizontal scrolling when zoomed - users must scroll in two directions to read."
+           data-announce-pass="Showing pass example. Content reflows to fit the viewport when zoomed - users only need to scroll vertically.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-1410">Reflow demo</span>
@@ -170,6 +170,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
 </body>

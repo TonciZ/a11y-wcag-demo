@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
-<body>
+<body class="checkpoint-page">
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -63,7 +63,7 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-133"
-           data-announce-fail="Showing fail example. Instructions identify the submit button by shape and colour only."
+           data-announce-fail="Showing fail example. Instructions identify the submit button by visual characteristics only - not accessible to all users."
            data-announce-pass="Showing pass example. Instructions identify the button by its accessible name.">
 
         <div class="demo-container__toolbar">
@@ -100,9 +100,9 @@
             </blockquote>
             <div style="display:flex;gap:0.75rem;align-items:center;margin-top:0.5rem;">
               <button type="button">Cancel</button>
-              <button type="button" style="border-radius:50%;width:44px;height:44px;background:#15803d;color:#fff;border:none;cursor:pointer;font-size:1.25rem;flex-shrink:0;" aria-label="Submit order">&#10003;</button>
+              <button type="button" style="background:#15803d;color:#fff;border:none;cursor:pointer;padding:0.5rem 1.5rem;border-radius:4px;font-weight:600;">Submit order</button>
             </div>
-            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">Any user can find and activate the button, regardless of visual ability.</p>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">Any user can find and activate the button by its visible text label, regardless of visual ability.</p>
           </div>
         </div>
       </div>
@@ -134,6 +134,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
 </body>
