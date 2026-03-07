@@ -3,6 +3,9 @@ id: 4.1.2
 title: Name, Role, Value
 level: A
 wcag_url: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html
+research: complete
+implementation: pending
+last_updated: 2026-03-07
 ---
 
 ## Description
