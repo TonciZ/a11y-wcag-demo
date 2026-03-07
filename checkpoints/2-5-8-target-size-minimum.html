@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
-<body>
+<body class="checkpoint-page">
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -64,8 +64,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-258"
-           data-announce-fail="Showing fail example. Action buttons are 16 by 16 CSS pixels - below the 24 by 24 minimum target size."
-           data-announce-pass="Showing pass example. Action buttons meet the 24 by 24 minimum target size with adequate padding.">
+           data-announce-fail="Showing fail example. Small action buttons are difficult to activate accurately - barriers for users with motor impairments or on touch screens."
+           data-announce-pass="Showing pass example. Larger action buttons are easy to activate accurately - accessible to users with motor impairments.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-258">Target size demo</span>
@@ -137,6 +137,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
 </body>

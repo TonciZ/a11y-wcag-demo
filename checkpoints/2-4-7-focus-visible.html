@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
-<body>
+<body class="checkpoint-page">
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -64,8 +64,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-247"
-           data-announce-fail="Showing fail example. Links have outline set to none - no visible focus indicator appears on keyboard navigation."
-           data-announce-pass="Showing pass example. Links display a clear focus ring when navigated by keyboard.">
+           data-announce-fail="Showing fail example. Focus indicator is completely hidden - keyboard users cannot track their position on the page."
+           data-announce-pass="Showing pass example. Clear focus indicator appears - keyboard users can track their position.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-247">Focus visible demo</span>
@@ -135,6 +135,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
 </body>

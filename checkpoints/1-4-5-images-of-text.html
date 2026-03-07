@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
-<body>
+<body class="checkpoint-page">
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -64,7 +64,7 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-145"
-           data-announce-fail="Showing fail example. The heading is rendered as an SVG graphic - users cannot resize, recolour, or copy the text."
+           data-announce-fail="Showing fail example. The heading is rendered as an SVG graphic - users cannot resize, customize, or copy the text."
            data-announce-pass="Showing pass example. The same heading is real HTML text - fully resizable, selectable, and adaptable.">
 
         <div class="demo-container__toolbar">
@@ -129,6 +129,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
 </body>

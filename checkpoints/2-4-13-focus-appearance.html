@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
-<body>
+<body class="checkpoint-page">
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -64,8 +64,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-2413"
-           data-announce-fail="Showing fail example. The focus outline is 1 pixel and low contrast - too thin and too faint to meet WCAG 2.2 requirements."
-           data-announce-pass="Showing pass example. The focus outline is 3 pixels with high contrast - meets the minimum area and contrast requirements.">
+           data-announce-fail="Showing fail example. Focus indicator is too subtle to perceive reliably - difficult for users with low vision to track keyboard position."
+           data-announce-pass="Showing pass example. Focus indicator is clearly visible and perceivable - users can reliably track keyboard position.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-2413">Focus appearance demo</span>
@@ -127,6 +127,7 @@
     </div>
   </footer>
 
+  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
 </body>
