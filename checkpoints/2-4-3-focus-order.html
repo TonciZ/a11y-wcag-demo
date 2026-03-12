@@ -60,15 +60,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Positive tabindex overriding natural order -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-243"
-           data-announce-fail="Showing fail example. Conflicting tabindex values create an illogical Tab order."
-           data-announce-pass="Showing pass example. Natural DOM order gives a logical Tab sequence.">
+           aria-labelledby="demo-label-243-1"
+           data-announce-fail="Showing fail example. Positive tabindex values override the natural DOM order, causing Tab to jump between buttons in an illogical sequence."
+           data-announce-pass="Showing pass example. Without tabindex overrides, Tab follows the natural DOM order, moving through buttons in the visual sequence.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-243">Focus Order demo</span>
+          <span class="demo-container__label" id="demo-label-243-1">Demo 1: Tabindex override</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -84,21 +86,96 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>The buttons appear visually as Step 1 → Step 2 → Step 3, but positive <code>tabindex</code> values override DOM order. Pressing Tab moves focus: Step 2 → Step 3 → Step 1.</p>
-            <div style="margin-top:0.75rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
-              <button type="button" tabindex="3">Step 1</button>
-              <button type="button" tabindex="1">Step 2</button>
-              <button type="button" tabindex="2">Step 3</button>
-            </div>
+            <p>This code demonstrates the failure pattern—tab order does not follow visual order:</p>
+            <pre><code>&lt;button tabindex="3"&gt;Step 1&lt;/button&gt;
+&lt;button tabindex="1"&gt;Step 2&lt;/button&gt;
+&lt;button tabindex="2"&gt;Step 3&lt;/button&gt;</code></pre>
+            <p style="margin-top: 0.75rem; color: var(--color-fail);">Pressing Tab moves focus: Step 2 → Step 3 → Step 1 (illogical).</p>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>The same buttons use no <code>tabindex</code> overrides. Tab follows DOM order: Step 1 → Step 2 → Step 3, matching the visual and logical sequence.</p>
-            <div style="margin-top:0.75rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
-              <button type="button">Step 1</button>
-              <button type="button">Step 2</button>
-              <button type="button">Step 3</button>
-            </div>
+            <p>This code shows the correct approach—no tabindex overrides:</p>
+            <pre><code>&lt;button&gt;Step 1&lt;/button&gt;
+&lt;button&gt;Step 2&lt;/button&gt;
+&lt;button&gt;Step 3&lt;/button&gt;</code></pre>
+            <p style="margin-top: 0.75rem; color: var(--color-pass);">Pressing Tab moves focus: Step 1 → Step 2 → Step 3 (logical).</p>
           </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;div style="display:flex;gap:0.75rem;flex-wrap:wrap;"&gt;
+  &lt;button type="button" tabindex="3"&gt;Step 1&lt;/button&gt;
+  &lt;button type="button" tabindex="1"&gt;Step 2&lt;/button&gt;
+  &lt;button type="button" tabindex="2"&gt;Step 3&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;div style="display:flex;gap:0.75rem;flex-wrap:wrap;"&gt;
+  &lt;button type="button"&gt;Step 1&lt;/button&gt;
+  &lt;button type="button"&gt;Step 2&lt;/button&gt;
+  &lt;button type="button"&gt;Step 3&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Demo 2: Visually reordered content with mismatched DOM order -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-243-2"
+           data-announce-fail="Showing fail example. CSS flexbox reorders content visually, but DOM order remains unchanged. Keyboard focus order does not match visual order."
+           data-announce-pass="Showing pass example. The DOM source order matches the visual order, so Tab moves through elements logically.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-243-2">Demo 2: CSS visual reordering</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This code demonstrates the failure—CSS reorders visual display but not the DOM:</p>
+            <pre><code>&lt;!-- HTML source order: A, B, C --&gt;
+&lt;button style="order: 3;"&gt;A&lt;/button&gt;
+&lt;button style="order: 1;"&gt;B&lt;/button&gt;
+&lt;button style="order: 2;"&gt;C&lt;/button&gt;</code></pre>
+            <p style="margin-top: 0.75rem; color: var(--color-fail);">Visual order: B → C → A, but Tab follows source order: A → B → C (mismatch).</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>This code shows the correct approach—DOM order matches visual order:</p>
+            <pre><code>&lt;!-- HTML source and visual order: B, C, A --&gt;
+&lt;button&gt;B&lt;/button&gt;
+&lt;button&gt;C&lt;/button&gt;
+&lt;button&gt;A&lt;/button&gt;</code></pre>
+            <p style="margin-top: 0.75rem; color: var(--color-pass);">Both visual and Tab order: B → C → A (match).</p>
+          </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;div style="display:flex;gap:0.75rem;flex-wrap:wrap;"&gt;
+  &lt;button type="button" style="order:3;"&gt;A&lt;/button&gt;
+  &lt;button type="button" style="order:1;"&gt;B&lt;/button&gt;
+  &lt;button type="button" style="order:2;"&gt;C&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;div style="display:flex;gap:0.75rem;flex-wrap:wrap;"&gt;
+  &lt;button type="button"&gt;B&lt;/button&gt;
+  &lt;button type="button"&gt;C&lt;/button&gt;
+  &lt;button type="button"&gt;A&lt;/button&gt;
+&lt;/div&gt;</code></pre>
         </div>
       </div>
     </section>
@@ -116,6 +193,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>Focus order does not need to be identical to visual reading order in every case - only when the order affects meaning or operation. For example, a search field followed by search results does not require a rigid order as long as the relationship is clear. However, modal dialogs, inline error messages, and dynamically inserted content do require careful focus management to avoid confusion.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failures:</strong> F44, F85</li>
+        <li><strong>Success Techniques:</strong> C27, G59, H4</li>
+      </ul>
     </section>
 
   </main>
