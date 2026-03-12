@@ -100,6 +100,20 @@
             <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Try selecting the text - you can copy and resize it freely.</p>
           </div>
         </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;svg width="280" height="56" role="img" aria-label="Contact us today"&gt;
+  &lt;text x="0" y="42" font-family="Georgia, serif" font-size="36" fill="#1a1a1a"&gt;
+    Contact us today
+  &lt;/text&gt;
+&lt;/svg&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;p style="font-family: Georgia, serif; font-size: 2.25rem; color: #1a1a1a;"&gt;
+  Contact us today
+&lt;/p&gt;</code></pre>
+        </div>
       </div>
     </section>
 
@@ -116,6 +130,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion does not apply to logos, wordmarks, or situations where a particular visual presentation of the text is essential. The advancement of web fonts and CSS text effects has significantly reduced the need to use images of text; most typographic effects achievable in Photoshop can now be reproduced using CSS.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Success Techniques:</strong> C30 (Using CSS to replace text with images), H30 (Providing link text that describes the purpose of a link for anchor elements), G109 (Using the alt attribute to provide a text description for images)</li>
+        <li><strong>Failure Techniques:</strong> F3 (Failure of 1.4.5 due to using images of text for important content), F27 (Failure of 1.4.5 due to using images with text), F32 (Failure of 1.4.5 due to using background images instead of text)</li>
+      </ul>
     </section>
 
   </main>
