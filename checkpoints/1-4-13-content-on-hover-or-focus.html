@@ -141,21 +141,10 @@
         </div>
 
         <!-- Code blocks for Demo 1 -->
-        <div data-demo-code="fail">
-          <pre><code>&lt;button type="button"&gt;Format options&lt;/button&gt;
-&lt;span role="tooltip" style="pointer-events: none;"&gt;
-  Bold, italic, underline, strikethrough
-&lt;/span&gt;
-/* Fail: pointer-events: none prevents hovering */</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;button type="button"&gt;Format options&lt;/button&gt;
-&lt;span role="tooltip" style="pointer-events: auto;"&gt;
-  Bold, italic, underline, strikethrough
-&lt;/span&gt;
-/* Pass: pointer-events: auto allows hovering; Escape dismisses */</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <!-- Demo 2: Popover that disappears on focus loss -->
@@ -235,22 +224,10 @@
         </div>
 
         <!-- Code blocks for Demo 2 -->
-        <div data-demo-code="fail">
-          <pre><code>&lt;button aria-haspopup="true"&gt;Help&lt;/button&gt;
-&lt;div role="dialog"&gt;
-  &lt;p&gt;Help content disappears on blur&lt;/p&gt;
-&lt;/div&gt;
-/* Fail: Only visible while button has focus */</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;button aria-haspopup="true"&gt;Help&lt;/button&gt;
-&lt;div role="dialog" class="popover-pass-visible"&gt;
-  &lt;p&gt;Help content persists until dismissed&lt;/p&gt;
-&lt;/div&gt;
-/* Pass: Visible on focus; Escape key dismisses */
-/* JavaScript manages visibility and dismissal */</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

@@ -142,52 +142,10 @@
           </div>
         </div>
 
-        <div data-demo-code="fail">
-          <pre><code>&lt;table style="width: 600px;"&gt;
-  &lt;caption&gt;Q1 Sales Summary&lt;/caption&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Product&lt;/th&gt;
-      &lt;th&gt;Units&lt;/th&gt;
-      &lt;th&gt;Revenue&lt;/th&gt;
-      &lt;th&gt;Region&lt;/th&gt;
-      &lt;th&gt;Status&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Widget A&lt;/td&gt;
-      &lt;td&gt;1,240&lt;/td&gt;
-      &lt;td&gt;&amp;pound;24,800&lt;/td&gt;
-      &lt;td&gt;North&lt;/td&gt;
-      &lt;td&gt;On target&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;!-- Problem: Fixed width requires horizontal scrolling at 400% zoom --&gt;</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;!-- Solution: Use flexbox with no fixed widths --&gt;
-&lt;div style="display: flex; flex-direction: column; gap: 0.5rem;"&gt;
-  &lt;div&gt;
-    &lt;strong&gt;Widget A&lt;/strong&gt;
-    &lt;dl&gt;
-      &lt;dt&gt;Units&lt;/dt&gt;&lt;dd&gt;1,240&lt;/dd&gt;
-      &lt;dt&gt;Revenue&lt;/dt&gt;&lt;dd&gt;&amp;pound;24,800&lt;/dd&gt;
-      &lt;dt&gt;Region&lt;/dt&gt;&lt;dd&gt;North&lt;/dd&gt;
-      &lt;dt&gt;Status&lt;/dt&gt;&lt;dd&gt;On target&lt;/dd&gt;
-    &lt;/dl&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-    &lt;strong&gt;Widget B&lt;/strong&gt;
-    &lt;!-- Additional item... --&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- Flex layout reflows naturally to fit any width --&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

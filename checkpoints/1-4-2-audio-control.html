@@ -110,17 +110,10 @@
           </div>
         </div>
 
-        <div data-demo-code="fail">
-          <pre><code>&lt;audio autoplay loop&gt;
-  &lt;source src="episode.mp3" type="audio/mpeg"&gt;
-&lt;/audio&gt;</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;audio autoplay loop <strong>controls</strong>&gt;
-  &lt;source src="episode.mp3" type="audio/mpeg"&gt;
-&lt;/audio&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <!-- Demo 2: Sound effect timing control -->
@@ -168,28 +161,10 @@
           </div>
         </div>
 
-        <div data-demo-code="fail">
-          <pre><code>&lt;audio <strong>autoplay</strong> id="notification"&gt;
-  &lt;source src="beep.mp3" type="audio/mpeg"&gt;
-&lt;/audio&gt;
-&lt;!-- No stop control --&gt;</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;button type="button" onclick="playSound()"&gt;
-  Play Sound
-&lt;/button&gt;
-
-&lt;audio id="notification"&gt;
-  &lt;source src="beep.mp3" type="audio/mpeg"&gt;
-&lt;/audio&gt;
-
-&lt;script&gt;
-function playSound() {
-  document.getElementById('notification').play();
-}
-&lt;/script&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

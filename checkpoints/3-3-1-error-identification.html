@@ -105,21 +105,10 @@
           </div>
         </div>
 
-        <div data-demo-code="fail">
-          <pre><code>&lt;label for="email"&gt;Email address&lt;/label&gt;
-&lt;input type="email" id="email" aria-invalid="true"
-       style="border: 2px solid red;"&gt;
-&lt;!-- Error is only shown by red border; no text message --&gt;</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;label for="email"&gt;Email address&lt;/label&gt;
-&lt;input type="email" id="email" aria-invalid="true"
-       aria-describedby="email-error"&gt;
-&lt;p id="email-error" style="color: red;"&gt;
-  Error: Email address is required.
-&lt;/p&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <div class="demo-container"
@@ -182,35 +171,10 @@
           </div>
         </div>
 
-        <div data-demo-code="fail">
-          <pre><code>&lt;!-- Generic error message; doesn't identify which fields --&gt;
-&lt;div role="alert"&gt;
-  There was a problem with your submission.
-&lt;/div&gt;
-
-&lt;label for="username"&gt;Username&lt;/label&gt;
-&lt;input type="text" id="username" aria-invalid="true"&gt;
-
-&lt;label for="password"&gt;Password&lt;/label&gt;
-&lt;input type="password" id="password" aria-invalid="true"&gt;</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;!-- Field-specific error messages --&gt;
-&lt;label for="username"&gt;Username&lt;/label&gt;
-&lt;input type="text" id="username" aria-invalid="true"
-       aria-describedby="username-error"&gt;
-&lt;p id="username-error" role="alert"&gt;
-  Error: Username is required.
-&lt;/p&gt;
-
-&lt;label for="password"&gt;Password&lt;/label&gt;
-&lt;input type="password" id="password" aria-invalid="true"
-       aria-describedby="password-error"&gt;
-&lt;p id="password-error" role="alert"&gt;
-  Error: Password must be at least 8 characters long.
-&lt;/p&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

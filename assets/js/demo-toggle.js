@@ -74,12 +74,29 @@
           : (container.dataset.announceFail || 'Now showing: fail example.');
         announcement.textContent = msg;
       }
+
+      // Serialize active demo state HTML into live code block
+      updateLiveCode(container, nextMode);
     });
+  }
+
+  function updateLiveCode(container, mode) {
+    var activeState = container.querySelector('[data-demo-state="' + mode + '"]');
+    var codeEl = container.querySelector('.demo-live-code');
+    if (activeState && codeEl) {
+      codeEl.textContent = activeState.innerHTML.trim();
+    }
   }
 
   function init() {
     var buttons = document.querySelectorAll('.demo-toggle');
     buttons.forEach(initDemoToggle);
+
+    // Populate live code blocks with initial state on page load
+    document.querySelectorAll('.demo-container').forEach(function (container) {
+      var mode = container.getAttribute('data-mode') || 'fail';
+      updateLiveCode(container, mode);
+    });
   }
 
   if (document.readyState === 'loading') {

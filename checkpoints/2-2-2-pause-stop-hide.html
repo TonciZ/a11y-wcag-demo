@@ -152,39 +152,10 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>&lt;style&gt;
-  @keyframes slide { ... }
-  .carousel { animation: slide 9s infinite; }
-&lt;/style&gt;
-
-&lt;div class="carousel"&gt;
-  &lt;div class="slides"&gt;
-    &lt;div&gt;Slide 1&lt;/div&gt;
-    &lt;div&gt;Slide 2&lt;/div&gt;
-    &lt;div&gt;Slide 3&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-/* No pause button - animation plays forever */</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;div class="carousel" id="carousel"&gt;
-  &lt;div class="slides"&gt;
-    &lt;div&gt;Slide 1&lt;/div&gt;
-    &lt;div&gt;Slide 2&lt;/div&gt;
-    &lt;div&gt;Slide 3&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;button onclick="carousel.classList.toggle('paused')"&gt;
-  Pause
-&lt;/button&gt;
-
-.carousel.paused .slides {
-  animation-play-state: paused;
-}</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <!-- Demo 2: Blinking content -->
@@ -254,34 +225,10 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>&lt;style&gt;
-  @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-  }
-  .alert { animation: blink 0.8s infinite; }
-&lt;/style&gt;
-
-&lt;div class="alert"&gt;
-  Warning: update in progress
-&lt;/div&gt;</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;style&gt;
-  .alert { animation: blink 0.8s infinite; }
-  .alert.disabled {
-    animation: none;
-    opacity: 1;
-  }
-&lt;/style&gt;
-
-&lt;div class="alert" id="alert"&gt;Warning&lt;/div&gt;
-&lt;input type="checkbox"
-       onchange="alert.classList.toggle('disabled')"&gt;
-Stop animation</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

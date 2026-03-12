@@ -113,27 +113,10 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>&lt;button onclick="var c=document.getElementById('cart');
-           c.textContent=parseInt(c.textContent)+1;"&gt;
-  Add to cart
-&lt;/button&gt;
-&lt;div&gt;
-  Cart: &lt;span id="cart"&gt;0&lt;/span&gt; item(s)
-&lt;/div&gt;
-&lt;!-- No role or aria-live - screen readers don't announce --&gt;</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;button onclick="var c=document.getElementById('cart');
-           c.textContent=parseInt(c.textContent)+1;"&gt;
-  Add to cart
-&lt;/button&gt;
-&lt;div role="status" aria-live="polite" aria-atomic="true"&gt;
-  Cart: &lt;span id="cart"&gt;0&lt;/span&gt; item(s)
-&lt;/div&gt;
-&lt;!-- role="status" enables live region announcements --&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <!-- Demo 2: Search Results Without Live Region -->
@@ -182,20 +165,10 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>&lt;input type="text" placeholder="Search for products..."
-     onkeyup="document.getElementById('results').innerHTML = ..."&gt;
-&lt;div id="results"&gt;&lt;/div&gt;
-&lt;!-- Results appear visually but without a live region --&gt;</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;input type="text" placeholder="Search for products..."
-     onkeyup="document.getElementById('status').textContent = '5 results found'; ..."&gt;
-&lt;div id="status" role="status" aria-live="polite" aria-atomic="true"&gt;&lt;/div&gt;
-&lt;div id="results"&gt;&lt;/div&gt;
-&lt;!-- role="status" announces the count automatically --&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

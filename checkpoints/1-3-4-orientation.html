@@ -123,38 +123,10 @@
           </div>
         </div>
 
-        <div data-demo-code="fail">
-          <p><strong>Fail: Orientation locked to landscape</strong></p>
-          <pre><code>&lt;meta name="viewport"
-      content="width=device-width, initial-scale=1.0" /&gt;
-
-&lt;style&gt;
-  @media (orientation: portrait) {
-    main { display: none; }
-  }
-&lt;/style&gt;</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <p><strong>Pass: Responsive design works in all orientations</strong></p>
-          <pre><code>&lt;meta name="viewport"
-      content="width=device-width, initial-scale=1.0" /&gt;
-
-&lt;style&gt;
-  main {
-    /* Uses flexbox or grid to adapt to any width */
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  @media (min-width: 768px) {
-    main {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-&lt;/style&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

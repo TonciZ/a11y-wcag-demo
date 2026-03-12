@@ -94,43 +94,10 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>&lt;div role="dialog" aria-modal="true" aria-labelledby="dlg-title"&gt;
-  &lt;h2 id="dlg-title"&gt;Confirm action&lt;/h2&gt;
-  &lt;p&gt;Are you sure you want to proceed?&lt;/p&gt;
-  &lt;button&gt;Yes&lt;/button&gt;
-  &lt;!-- Problem: No close button. Focus loops inside. --&gt;
-&lt;/div&gt;
-
-&lt;script&gt;
-dialog.addEventListener('keydown', e =&gt; {
-  if (e.key === 'Tab') {
-    // Cycles focus inside the dialog
-  }
-  // Missing: No Escape handler to exit
-});
-&lt;/script&gt;</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;div role="dialog" aria-modal="true" aria-labelledby="dlg-title"&gt;
-  &lt;h2 id="dlg-title"&gt;Confirm action&lt;/h2&gt;
-  &lt;p&gt;Are you sure you want to proceed?&lt;/p&gt;
-  &lt;button&gt;Yes&lt;/button&gt;
-  &lt;button&gt;Cancel&lt;/button&gt;  &lt;!-- Visible close option --&gt;
-&lt;/div&gt;
-
-&lt;script&gt;
-dialog.addEventListener('keydown', e =&gt; {
-  if (e.key === 'Tab') {
-    // Cycles focus inside dialog only
-  }
-  if (e.key === 'Escape') {
-    closeDialog(); // Keyboard exit provided
-  }
-});
-&lt;/script&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <!-- Demo 2: Positive tabindex creating focus order trap -->
@@ -166,27 +133,10 @@ dialog.addEventListener('keydown', e =&gt; {
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>&lt;div&gt;
-  &lt;button tabindex="100"&gt;Jump to me&lt;/button&gt;
-  &lt;button tabindex="10"&gt;Then me&lt;/button&gt;
-  &lt;button tabindex="50"&gt;Then me&lt;/button&gt;
-  &lt;button&gt;I am last despite appearing first&lt;/button&gt;
-&lt;/div&gt;
-&lt;!-- Problem: Focus jumps in unpredictable order --&gt;
-&lt;!-- (tabindex 10 → 50 → 100 → natural order) --&gt;</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>&lt;div&gt;
-  &lt;button&gt;I am first&lt;/button&gt;
-  &lt;button&gt;Then me&lt;/button&gt;
-  &lt;button&gt;Then me&lt;/button&gt;
-  &lt;button&gt;Then me&lt;/button&gt;
-&lt;/div&gt;
-&lt;!-- Solution: Natural tab order follows DOM order --&gt;
-&lt;!-- No positive tabindex needed for simple layouts --&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <!-- WCAG Techniques -->

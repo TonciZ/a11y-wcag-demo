@@ -111,43 +111,10 @@
           </div>
         </div>
 
-        <div class="demo-code-section" data-demo-code="fail">
-          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Fail Code</h3>
-          <pre><code>&lt;!-- No skip link, navigation is first --&gt;
-&lt;nav aria-label="Example site navigation"&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="/services"&gt;Services&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;
-&lt;!-- Main content comes after all navigation --&gt;
-&lt;main id="main-content"&gt;
-  ...
-&lt;/main&gt;</code></pre>
-        </div>
-
-        <div class="demo-code-section" data-demo-code="pass" hidden>
-          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Pass Code</h3>
-          <pre><code>&lt;!-- Skip link is the first focusable element --&gt;
-&lt;a href="#main-content" class="skip-link"&gt;
-  Skip to main content
-&lt;/a&gt;
-&lt;nav aria-label="Example site navigation"&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="/services"&gt;Services&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;
-&lt;main id="main-content" tabindex="-1"&gt;
-  ...
-&lt;/main&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <!-- Demo 2: Repeated blocks across pages -->
@@ -221,48 +188,10 @@
           </div>
         </div>
 
-        <div class="demo-code-section" data-demo-code="fail">
-          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Fail Code</h3>
-          <pre><code>&lt;aside id="sidebar"&gt;
-  &lt;nav aria-label="Related articles"&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Related Post 1&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Related Post 2&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Related Post 3&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Related Post 4&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Related Post 5&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/nav&gt;
-&lt;/aside&gt;
-&lt;article&gt;
-  &lt;h1&gt;Main Article&lt;/h1&gt;
-  ...
-&lt;/article&gt;</code></pre>
-        </div>
-
-        <div class="demo-code-section" data-demo-code="pass" hidden>
-          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Pass Code</h3>
-          <pre><code>&lt;!-- Skip links allow bypass of navigation blocks --&gt;
-&lt;a href="#main-article"&gt;Skip to main content&lt;/a&gt;
-&lt;a href="#sidebar-end"&gt;Skip sidebar&lt;/a&gt;
-
-&lt;aside id="sidebar"&gt;
-  &lt;nav aria-label="Related articles"&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Related Post 1&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Related Post 2&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Related Post 3&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Related Post 4&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Related Post 5&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/nav&gt;
-&lt;/aside&gt;
-&lt;article&gt;
-  &lt;h1 id="main-article" tabindex="-1"&gt;Main Article&lt;/h1&gt;
-  ...
-&lt;/article&gt;
-&lt;span id="sidebar-end"&gt;&lt;/span&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

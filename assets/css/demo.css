@@ -175,26 +175,42 @@
   font-size: var(--font-size-sm);
 }
 
-/* Code block visibility synced to demo state */
-[data-demo-code] { display: none; }
-
-.demo-container[data-mode="fail"] [data-demo-code="fail"] { display: block; }
-
-.demo-container[data-mode="pass"] [data-demo-code="pass"] { display: block; }
-
 /* Code display section styling */
 .demo-code-section {
-  padding: var(--space-4) var(--space-6);
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
 }
 
+.demo-code-section__toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-6);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+
+.demo-code-section__toggle::-webkit-details-marker { display: none; }
+
+.demo-code-section__toggle::before {
+  content: '▶';
+  font-size: 0.6em;
+  transition: none;
+}
+
+.demo-code-section[open] .demo-code-section__toggle::before {
+  content: '▼';
+}
+
 .demo-code-section pre {
   margin: 0;
-  padding: var(--space-4);
+  padding: var(--space-4) var(--space-6);
   background: #f5f5f5;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  border-top: 1px solid var(--color-border);
   overflow-x: auto;
   font-size: var(--font-size-sm);
   line-height: 1.5;

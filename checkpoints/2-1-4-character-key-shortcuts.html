@@ -102,23 +102,10 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>// Fail: global single-character shortcut
-document.addEventListener('keydown', e =&gt; {
-  if (e.key === 's' || e.key === 'S') {
-    openSearch(); // fires for all users, always
-  }
-});</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>// Pass: require a modifier key
-document.addEventListener('keydown', e =&gt; {
-  if (e.ctrlKey &amp;&amp; (e.key === 's' || e.key === 'S')) {
-    openSearch(); // Ctrl+S only
-  }
-});</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <!-- Demo 2: Undocumented vs documented shortcuts -->
@@ -177,30 +164,10 @@ document.addEventListener('keydown', e =&gt; {
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>// Fail: shortcuts exist but are undocumented
-// Users cannot disable them
-document.addEventListener('keydown', e =&gt; {
-  if (e.key === 'd') deleteMessage();
-  if (e.key === 'a') archiveMessage();
-  if (e.key === 'r') replyMessage();
-});</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>// Pass: shortcuts are documented and configurable
-const shortcuts = {
-  'd': { label: 'Delete', enabled: true },
-  'a': { label: 'Archive', enabled: true },
-  'r': { label: 'Reply', enabled: true }
-};
-
-document.addEventListener('keydown', e =&gt; {
-  if (shortcuts[e.key]?.enabled) {
-    // Execute shortcut
-  }
-});</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

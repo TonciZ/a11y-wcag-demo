@@ -247,17 +247,10 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>.demo-scroll-container {
-  scroll-padding-top: 0;  /* No offset - header covers focused items */
-}</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>.demo-scroll-container {
-  scroll-padding-top: 50px;  /* Offset matches header height */
-}</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <!-- Demo 2: Modal dialog positioned off-screen -->
@@ -319,26 +312,10 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>.demo-modal {
-  margin-top: 300px;    /* Positions dialog off-screen */
-  margin-left: auto;
-  /* When user tabs to buttons, they may be scrolled off-screen */
-}</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>.demo-modal {
-  margin: 0;  /* Centered via flexbox container */
-  /* Overlay uses display: flex with center positioning */
-}
-
-.demo-modal-overlay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

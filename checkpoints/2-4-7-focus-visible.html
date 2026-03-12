@@ -162,19 +162,10 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>button:focus {
-  outline: none;  /* Removes focus indicator */
-  border: none;
-}</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>button:focus {
-  outline: 3px solid #0055cc;
-  outline-offset: 2px;
-}</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <!-- Demo 2: Low contrast focus vs high contrast focus -->
@@ -220,20 +211,10 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <div data-demo-code="fail">
-          <pre><code>button:focus {
-  outline: 2px solid #e0e0e0;  /* Light gray - poor contrast */
-  outline-offset: 0;
-}</code></pre>
-        </div>
-
-        <div data-demo-code="pass" hidden>
-          <pre><code>button:focus {
-  outline: 3px solid #0055cc;
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(0, 85, 204, 0.25);
-}</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

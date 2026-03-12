@@ -91,29 +91,10 @@
           </div>
         </div>
 
-        <div class="demo-code-section" data-demo-code="fail">
-          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Fail Code</h3>
-          <pre><code>&lt;!-- Fail: missing title --&gt;
-&lt;title&gt;&lt;/title&gt;
-
-&lt;!-- Fail: generic placeholder --&gt;
-&lt;title&gt;Untitled Document&lt;/title&gt;
-
-&lt;!-- Fail: same title on every page --&gt;
-&lt;title&gt;My Website&lt;/title&gt;</code></pre>
-        </div>
-
-        <div class="demo-code-section" data-demo-code="pass" hidden>
-          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Pass Code</h3>
-          <pre><code>&lt;!-- Pass: specific page name first, then site name --&gt;
-&lt;title&gt;Contact Us - Acme Corporation&lt;/title&gt;
-
-&lt;!-- Pass: product detail page --&gt;
-&lt;title&gt;Blue Widget (Large) - ShopExample&lt;/title&gt;
-
-&lt;!-- Pass: search results with context --&gt;
-&lt;title&gt;Search results for "keyboard" - WCAG 2.2 Demo&lt;/title&gt;</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
 
       <!-- Demo 2: SPA title updates -->
@@ -172,38 +153,10 @@
           </div>
         </div>
 
-        <div class="demo-code-section" data-demo-code="fail">
-          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Fail Code</h3>
-          <pre><code>// Single-page app - no title updates on navigation
-function navigate(page) {
-  // Update content
-  document.querySelector('#app').innerHTML = getPageContent(page);
-  // BUG: Title never changes
-}
-
-&lt;title&gt;Home&lt;/title&gt;
-&lt;!-- Title stays "Home" even after navigate('products') --&gt;</code></pre>
-        </div>
-
-        <div class="demo-code-section" data-demo-code="pass" hidden>
-          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Pass Code</h3>
-          <pre><code>// Single-page app with proper title updates
-function navigate(page) {
-  // Update content
-  document.querySelector('#app').innerHTML = getPageContent(page);
-  // Update title
-  document.title = getTitleForPage(page);
-  // Announce to screen readers
-  announcePageChange(getTitleForPage(page));
-}
-
-// Or use Intersection Observer if using frameworks
-const pages = {
-  'products': 'Products - Acme Corporation',
-  'contact': 'Contact Us - Acme Corporation',
-  'home': 'Home - Acme Corporation'
-};</code></pre>
-        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
