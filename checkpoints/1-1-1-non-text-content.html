@@ -61,15 +61,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: SVG with aria-label -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-111"
+           aria-labelledby="demo-1-label"
            data-announce-fail="Showing fail example. SVG graphic has no accessible name - screen readers announce nothing useful."
            data-announce-pass="Showing pass example. SVG graphic has role img and a descriptive aria-label.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-111">Non-text Content demo</span>
+          <span class="demo-container__label" id="demo-1-label">Demo 1: SVG with accessible name</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -105,7 +107,70 @@
             </svg>
           </div>
         </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;200&quot; height=&quot;120&quot;&gt;
+  &lt;rect x=&quot;10&quot; y=&quot;80&quot; width=&quot;30&quot; height=&quot;40&quot; fill=&quot;#4a90e2&quot;/&gt;
+  &lt;!-- More rectangles... --&gt;
+&lt;/svg&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;svg role=&quot;img&quot;
+     aria-label=&quot;Bar chart: quarterly sales. Q1: 40, Q2: 65, Q3: 50, Q4: 80.&quot;
+     xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;200&quot; height=&quot;120&quot;&gt;
+  &lt;rect x=&quot;10&quot; y=&quot;80&quot; width=&quot;30&quot; height=&quot;40&quot; fill=&quot;#4a90e2&quot;/&gt;
+  &lt;!-- More rectangles... --&gt;
+&lt;/svg&gt;</code></pre>
+        </div>
+
       </div>
+
+      <!-- Demo 2: Image alt text -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-2-label"
+           data-announce-fail="Showing fail example. Image alt text is generic - screen readers announce nothing useful about the actual content."
+           data-announce-pass="Showing pass example. Image alt text describes the meaningful content - screen readers announce what the image shows.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-2-label">Demo 2: Image alt text</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This image has a vague alt attribute:</p>
+            <img src="../assets/img/poster.png" alt="image" style="margin-top:0.75rem;max-width:200px;border:1px solid #ccc;border-radius:4px;">
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>This image has a meaningful alt attribute:</p>
+            <img src="../assets/img/poster.png" alt="Company XYZ Product Launch event poster, April 2024" style="margin-top:0.75rem;max-width:200px;border:1px solid #ccc;border-radius:4px;">
+          </div>
+        </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;img src=&quot;poster.png&quot; alt=&quot;image&quot;&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;img src=&quot;poster.png&quot;
+     alt=&quot;Company XYZ Product Launch event poster, April 2024&quot;&gt;</code></pre>
+        </div>
+
+      </div>
+
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -121,6 +186,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>Images used purely for layout or decoration must use <code>alt=""</code> rather than being omitted entirely; omitting the <code>alt</code> attribute causes some screen readers to read out the file name. ARIA attributes such as <code>aria-label</code> and <code>aria-labelledby</code> can also provide text alternatives for non-image non-text elements such as SVGs and custom controls.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failures:</strong> F65, F67, F72</li>
+        <li><strong>Success Techniques:</strong> H37, H36, ARIA10, ARIA16</li>
+      </ul>
     </section>
 
   </main>
