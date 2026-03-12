@@ -37,7 +37,7 @@
       <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
       <h1 class="page-header__title">4.1.3 Status Messages</h1>
       <div class="page-header__meta">
-        <span class="badge badge--level-aa">Level AA</span>
+        <span class="badge badge--level-a">Level A</span>
       </div>
     </div>
 
@@ -111,6 +111,91 @@
             <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;"><code>role="status"</code> (equivalent to <code>aria-live="polite"</code>) announces the update automatically.</p>
           </div>
         </div>
+
+        <!-- Code blocks synced to demo state -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;button onclick="var c=document.getElementById('cart');
+           c.textContent=parseInt(c.textContent)+1;"&gt;
+  Add to cart
+&lt;/button&gt;
+&lt;div&gt;
+  Cart: &lt;span id="cart"&gt;0&lt;/span&gt; item(s)
+&lt;/div&gt;
+&lt;!-- No role or aria-live - screen readers don't announce --&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;button onclick="var c=document.getElementById('cart');
+           c.textContent=parseInt(c.textContent)+1;"&gt;
+  Add to cart
+&lt;/button&gt;
+&lt;div role="status" aria-live="polite" aria-atomic="true"&gt;
+  Cart: &lt;span id="cart"&gt;0&lt;/span&gt; item(s)
+&lt;/div&gt;
+&lt;!-- role="status" enables live region announcements --&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Demo 2: Search Results Without Live Region -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-search"
+           data-announce-fail="Search results appear on the page but screen readers are not notified of the change"
+           data-announce-pass="Search results are announced by the live region; screen readers notify the user immediately">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-search">Demo 2: Search results notification</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Type in the search field. Results appear visually but are not announced:</p>
+            <div style="margin-top:0.75rem;margin-bottom:0.75rem;">
+              <input type="text" placeholder="Search for products..."
+                     onkeyup="var val=this.value; if(val.length > 0) { document.getElementById('fail-results').innerHTML = '&lt;strong&gt;5 results found&lt;/strong&gt;&lt;ul style=&quot;margin-top:0.5rem;&quot;&gt;&lt;li&gt;Product matching &quot;' + val + '&quot;&lt;/li&gt;&lt;li&gt;Another match&lt;/li&gt;&lt;li&gt;Third match&lt;/li&gt;&lt;li&gt;Fourth match&lt;/li&gt;&lt;li&gt;Fifth match&lt;/li&gt;&lt;/ul&gt;'; } else { document.getElementById('fail-results').innerHTML = ''; }">
+            </div>
+            <div id="fail-results"></div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Screen readers will not announce the results. The container has no live region role.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Type in the search field. Results appear in a live region and are announced:</p>
+            <div style="margin-top:0.75rem;margin-bottom:0.75rem;">
+              <input type="text" placeholder="Search for products..."
+                     onkeyup="var val=this.value; if(val.length > 0) { document.getElementById('pass-results-status').textContent = '5 results found'; document.getElementById('pass-results-list').innerHTML = '&lt;ul style=&quot;margin-top:0.5rem;&quot;&gt;&lt;li&gt;Product matching &quot;' + val + '&quot;&lt;/li&gt;&lt;li&gt;Another match&lt;/li&gt;&lt;li&gt;Third match&lt;/li&gt;&lt;li&gt;Fourth match&lt;/li&gt;&lt;li&gt;Fifth match&lt;/li&gt;&lt;/ul&gt;'; } else { document.getElementById('pass-results-status').textContent = ''; document.getElementById('pass-results-list').innerHTML = ''; }">
+            </div>
+            <div id="pass-results-status" role="status" aria-live="polite" aria-atomic="true" style="font-weight:700;"></div>
+            <div id="pass-results-list"></div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;"><code>role="status"</code> announces the result count automatically.</p>
+          </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;input type="text" placeholder="Search for products..."
+     onkeyup="document.getElementById('results').innerHTML = ..."&gt;
+&lt;div id="results"&gt;&lt;/div&gt;
+&lt;!-- Results appear visually but without a live region --&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;input type="text" placeholder="Search for products..."
+     onkeyup="document.getElementById('status').textContent = '5 results found'; ..."&gt;
+&lt;div id="status" role="status" aria-live="polite" aria-atomic="true"&gt;&lt;/div&gt;
+&lt;div id="results"&gt;&lt;/div&gt;
+&lt;!-- role="status" announces the count automatically --&gt;</code></pre>
+        </div>
       </div>
     </section>
 
@@ -127,6 +212,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion applies to status messages that do not receive focus; messages that are displayed in a dialog or by moving focus to the notification do not need a live region, as the focus management itself informs the screen reader. The pre-existing container pattern is important because some browsers do not announce live region content if the element itself is inserted dynamically into the DOM.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F59, F86</li>
+        <li><strong>Success Techniques:</strong> ARIA22, ARIA23, G193</li>
+      </ul>
     </section>
 
   </main>
