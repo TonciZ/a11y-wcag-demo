@@ -108,6 +108,21 @@
             <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Press, drag away, then release - no action fires. Release on the button to confirm.</p>
           </div>
         </div>
+
+        <!-- Code display blocks -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;button type="button" id="del-fail-252"
+        onpointerdown="document.getElementById('msg-fail-252').textContent='Deleted!';"&gt;
+  Delete item
+&lt;/button&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;button type="button" id="del-pass-252"
+        onclick="document.getElementById('msg-pass-252').textContent='Deleted!';"&gt;
+  Delete item
+&lt;/button&gt;</code></pre>
+        </div>
       </div>
     </section>
 
@@ -124,6 +139,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>Standard HTML <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code> elements natively fire their actions on the up-event by default, so they pass this criterion without additional effort. Failures typically arise from custom JavaScript event handlers that bind to <code>mousedown</code> or <code>touchstart</code> for performance reasons without a corresponding cancellation mechanism. This criterion does not prohibit down-event triggers for actions where it is essential, such as piano keyboard simulations or drawing applications.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F100</li>
+        <li><strong>Success Techniques:</strong> G210, G212, SCR20</li>
+      </ul>
     </section>
 
   </main>
