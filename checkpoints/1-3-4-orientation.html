@@ -122,6 +122,39 @@
             <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">No orientation lock - responsive layout works in both portrait and landscape.</p>
           </div>
         </div>
+
+        <div data-demo-code="fail">
+          <p><strong>Fail: Orientation locked to landscape</strong></p>
+          <pre><code>&lt;meta name="viewport"
+      content="width=device-width, initial-scale=1.0" /&gt;
+
+&lt;style&gt;
+  @media (orientation: portrait) {
+    main { display: none; }
+  }
+&lt;/style&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <p><strong>Pass: Responsive design works in all orientations</strong></p>
+          <pre><code>&lt;meta name="viewport"
+      content="width=device-width, initial-scale=1.0" /&gt;
+
+&lt;style&gt;
+  main {
+    /* Uses flexbox or grid to adapt to any width */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    main {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+&lt;/style&gt;</code></pre>
+        </div>
       </div>
     </section>
 
@@ -138,6 +171,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion was added in WCAG 2.1 and is particularly important for users who have mounted tablets or phones in fixed positions due to physical disabilities. The "essential" exception is intended for genuinely content-specific needs, not developer convenience.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F97 (Failure of Success Criterion 1.3.4 due to locking the orientation to portrait or landscape)</li>
+        <li><strong>Success Techniques:</strong> G214 (Using a control to allow the user to toggle between portrait and landscape orientations), GAUX1 (Ensuring that content is available to users with devices in portrait or landscape orientation)</li>
+      </ul>
     </section>
 
   </main>
