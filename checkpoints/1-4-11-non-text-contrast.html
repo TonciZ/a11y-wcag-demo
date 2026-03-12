@@ -61,15 +61,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Icon contrast -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-1411"
-           data-announce-fail="Showing fail example. Form controls are difficult to locate and distinguish from the background."
-           data-announce-pass="Showing pass example. Form controls have clearly visible boundaries that users with low vision can perceive.">
+           aria-labelledby="demo-label-1411-1"
+           data-announce-fail="Icon is barely visible against the light background. Users with low vision cannot see what button this is."
+           data-announce-pass="Icon is dark and clearly visible against the light background. All users can identify the button purpose.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-1411">Non-text contrast demo</span>
+          <span class="demo-container__label" id="demo-label-1411-1">Demo 1: Icon contrast</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -85,31 +87,114 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>UI controls use <code>border: 1px solid #d0d0d0</code> - contrast ratio 1.54:1 against white. Users with low vision may not see the control boundary at all.</p>
-            <form style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;" onsubmit="return false;">
-              <div>
-                <label for="fail-1411-text" style="display:block;margin-bottom:0.25rem;">Full name</label>
-                <input type="text" id="fail-1411-text" style="border:1px solid #d0d0d0;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:280px;">
-              </div>
-              <div style="display:flex;align-items:center;gap:0.5rem;">
-                <div style="width:18px;height:18px;border:1px solid #d0d0d0;border-radius:3px;flex-shrink:0;" role="presentation"></div>
-                <span style="font-size:0.9rem;">I agree to the terms</span>
-              </div>
-            </form>
+            <p>Light icon on light background:</p>
+            <div style="display:flex;gap:1.5rem;margin-top:0.75rem;">
+              <button type="button" style="padding:0.5rem;border:1px solid #ccc;background:#fff;cursor:pointer;font-size:1.2rem;" aria-label="Search">
+                <span style="color:#f0f0f0;">🔍</span>
+              </button>
+              <button type="button" style="padding:0.5rem;border:1px solid #ccc;background:#fff;cursor:pointer;font-size:1.2rem;" aria-label="Settings">
+                <span style="color:#f0f0f0;">⚙️</span>
+              </button>
+              <button type="button" style="padding:0.5rem;border:1px solid #ccc;background:#fff;cursor:pointer;font-size:1.2rem;" aria-label="Help">
+                <span style="color:#f0f0f0;">❓</span>
+              </button>
+            </div>
+            <p style="margin-top:0.75rem;font-size:0.85rem;color:#666;">Icons are barely distinguishable from the background.</p>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>Same controls use <code>border: 2px solid #767676</code> - contrast ratio 4.54:1 against white. The control boundary is clearly perceivable.</p>
+            <p>Dark icon on light background:</p>
+            <div style="display:flex;gap:1.5rem;margin-top:0.75rem;">
+              <button type="button" style="padding:0.5rem;border:1px solid #0055cc;background:#fff;cursor:pointer;font-size:1.2rem;" aria-label="Search">
+                <span style="color:#1a1a1a;">🔍</span>
+              </button>
+              <button type="button" style="padding:0.5rem;border:1px solid #0055cc;background:#fff;cursor:pointer;font-size:1.2rem;" aria-label="Settings">
+                <span style="color:#1a1a1a;">⚙️</span>
+              </button>
+              <button type="button" style="padding:0.5rem;border:1px solid #0055cc;background:#fff;cursor:pointer;font-size:1.2rem;" aria-label="Help">
+                <span style="color:#1a1a1a;">❓</span>
+              </button>
+            </div>
+            <p style="margin-top:0.75rem;font-size:0.85rem;color:#666;">Icons are clear and easily distinguishable from the background.</p>
+          </div>
+        </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;button&gt;
+  &lt;span style="color: #f0f0f0;"&gt;🔍&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;button style="border: 2px solid #0055cc;"&gt;
+  &lt;span style="color: #1a1a1a;"&gt;🔍&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Demo 2: Focus indicator contrast -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-1411-2"
+           data-announce-fail="Focus outline is light and barely visible. Keyboard users cannot see which button has focus."
+           data-announce-pass="Focus outline is dark and prominent. Keyboard users can clearly see which button has keyboard focus.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-1411-2">Demo 2: Focus indicator contrast</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Form with light focus indicator:</p>
             <form style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;" onsubmit="return false;">
               <div>
-                <label for="pass-1411-text" style="display:block;margin-bottom:0.25rem;">Full name</label>
-                <input type="text" id="pass-1411-text" style="border:2px solid #767676;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:280px;">
+                <label for="fail-1411-name" style="display:block;margin-bottom:0.25rem;font-size:0.9rem;">Full name</label>
+                <input type="text" id="fail-1411-name" placeholder="Enter your name" style="border:1px solid #999;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:280px;outline:2px solid #e0e0e0;outline-offset:2px;">
               </div>
-              <div style="display:flex;align-items:center;gap:0.5rem;">
-                <input type="checkbox" id="pass-1411-cb" style="width:18px;height:18px;accent-color:#0055cc;">
-                <label for="pass-1411-cb" style="font-size:0.9rem;">I agree to the terms</label>
+              <div>
+                <label for="fail-1411-email" style="display:block;margin-bottom:0.25rem;font-size:0.9rem;">Email</label>
+                <input type="email" id="fail-1411-email" placeholder="you@example.com" style="border:1px solid #999;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:280px;outline:2px solid #e0e0e0;outline-offset:2px;">
               </div>
             </form>
+            <p style="margin-top:0.75rem;font-size:0.85rem;color:#666;"><em>Press Tab to see the light blue focus outline — it is barely visible.</em></p>
           </div>
+          <div data-demo-state="pass" hidden>
+            <p>Form with dark focus indicator:</p>
+            <form style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;" onsubmit="return false;">
+              <div>
+                <label for="pass-1411-name" style="display:block;margin-bottom:0.25rem;font-size:0.9rem;">Full name</label>
+                <input type="text" id="pass-1411-name" placeholder="Enter your name" style="border:1px solid #999;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:280px;outline:3px solid #0055cc;outline-offset:2px;">
+              </div>
+              <div>
+                <label for="pass-1411-email" style="display:block;margin-bottom:0.25rem;font-size:0.9rem;">Email</label>
+                <input type="email" id="pass-1411-email" placeholder="you@example.com" style="border:1px solid #999;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:280px;outline:3px solid #0055cc;outline-offset:2px;">
+              </div>
+            </form>
+            <p style="margin-top:0.75rem;font-size:0.85rem;color:#666;"><em>Press Tab to see the dark blue focus outline — it is clear and obvious.</em></p>
+          </div>
+        </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;input type="text"
+       style="outline: 2px solid #e0e0e0;
+               outline-offset: 2px;"&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;input type="text"
+       style="outline: 3px solid #0055cc;
+               outline-offset: 2px;"&gt;</code></pre>
         </div>
       </div>
     </section>
@@ -127,6 +212,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion was added in WCAG 2.1. It does not apply to disabled components, logos, or graphical elements that are purely decorative. The 3:1 threshold for non-text elements is lower than the 4.5:1 minimum for normal text, reflecting the generally larger size and simpler shapes of UI components compared to text glyphs.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F81 (failure of 4.1.2 Name, Role, Value due to non-accessible forms); relevant to low-contrast UI boundaries</li>
+        <li><strong>Success Techniques:</strong> G175 (using a web tool to measure the contrast ratio); G183 (ensuring that form components are distinguishable from background)</li>
+      </ul>
     </section>
 
   </main>

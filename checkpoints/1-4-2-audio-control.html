@@ -60,15 +60,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Autoplay without controls -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-142"
-           data-announce-fail="Showing fail example. Audio element uses autoplay with no controls - users cannot pause or stop it."
-           data-announce-pass="Showing pass example. Audio element includes the controls attribute - users have a pause mechanism.">
+           aria-labelledby="demo-label-142-1"
+           data-announce-fail="Audio plays automatically with no pause or stop control. Screen reader users cannot silence it to operate the page."
+           data-announce-pass="Audio has visible pause and volume controls. Users can stop the audio or adjust its volume at any time.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-142">Audio control demo</span>
+          <span class="demo-container__label" id="demo-label-142-1">Demo 1: Autoplay without controls</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -84,34 +86,109 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>The <code>&lt;audio&gt;</code> element below uses <code>autoplay loop</code> but has no <code>controls</code> attribute and no alternative pause mechanism. Screen reader users who land on this page cannot stop the audio.</p>
-            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f5f5f5;">
-              <p style="margin:0 0 0.5rem;font-weight:600;">Podcast: Episode 12</p>
+            <p>Audio plays automatically with no pause mechanism:</p>
+            <div style="border:1px solid #ccc;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f9f9f9;">
+              <p style="margin:0 0 0.5rem;font-weight:600;">Background Music</p>
               <!-- No audio file loaded - src intentionally blank. Controls deliberately absent. -->
               <audio autoplay loop>
                 <source src="" type="audio/mpeg">
                 Your browser does not support the audio element.
               </audio>
-              <p style="margin:0.5rem 0 0;font-size:0.8rem;color:#5a5a5a;">(No audio plays - no file is loaded in this demo. The issue is the absence of controls.)</p>
+              <p style="margin:0.5rem 0 0;font-size:0.85rem;color:#666;">(No audio plays — no file loaded. The issue: no pause button.)</p>
             </div>
-            <pre><code>&lt;audio autoplay loop&gt;
-  &lt;source src="episode12.mp3" type="audio/mpeg"&gt;
-&lt;/audio&gt;</code></pre>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>Adding <code>controls</code> provides a visible, keyboard-accessible interface to pause, stop, and adjust volume.</p>
-            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f5f5f5;">
-              <p style="margin:0 0 0.5rem;font-weight:600;">Podcast: Episode 12</p>
+            <p>Adding <code>controls</code> gives users a pause button:</p>
+            <div style="border:1px solid #ccc;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f9f9f9;">
+              <p style="margin:0 0 0.5rem;font-weight:600;">Background Music</p>
               <audio controls style="width:100%;max-width:400px;">
                 <source src="" type="audio/mpeg">
                 Your browser does not support the audio element.
               </audio>
-              <p style="margin:0.5rem 0 0;font-size:0.8rem;color:#5a5a5a;">(No audio file loaded - the browser controls are still rendered and keyboard-accessible.)</p>
+              <p style="margin:0.5rem 0 0;font-size:0.85rem;color:#666;">(No audio plays — no file loaded. Browser controls are visible and keyboard-accessible.)</p>
             </div>
-            <pre><code>&lt;audio autoplay loop controls&gt;
-  &lt;source src="episode12.mp3" type="audio/mpeg"&gt;
-&lt;/audio&gt;</code></pre>
           </div>
+        </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;audio autoplay loop&gt;
+  &lt;source src="episode.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;audio autoplay loop <strong>controls</strong>&gt;
+  &lt;source src="episode.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Demo 2: Sound effect timing control -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-142-2"
+           data-announce-fail="Sound effect plays automatically and cannot be stopped. Users cannot disable it."
+           data-announce-pass="Sound plays briefly and can be stopped with a button. Users have control over sound playback.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-142-2">Demo 2: Sound effect control</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A sound effect plays automatically when the page loads, with no way to stop it:</p>
+            <div style="border:1px solid #ccc;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f9f9f9;">
+              <p style="margin:0;font-size:0.85rem;color:#666;">Sound effect plays for 3+ seconds (beeping / notification sound)</p>
+              <audio id="fail-sound-142" autoplay>
+                <source src="" type="audio/mpeg">
+              </audio>
+              <p style="margin:0.5rem 0 0;font-size:0.85rem;color:#666;">No controls, no stop button.</p>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Sound effect has a visible stop button:</p>
+            <div style="border:1px solid #ccc;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f9f9f9;">
+              <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.75rem;">
+                <button id="pass-sound-142" type="button" style="padding:0.4rem 0.8rem;border:1px solid #0055cc;background:#0055cc;color:#fff;border-radius:4px;cursor:pointer;font-size:0.9rem;">Play Sound</button>
+                <span style="font-size:0.85rem;color:#666;">User controls sound playback</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;audio <strong>autoplay</strong> id="notification"&gt;
+  &lt;source src="beep.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+&lt;!-- No stop control --&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;button type="button" onclick="playSound()"&gt;
+  Play Sound
+&lt;/button&gt;
+
+&lt;audio id="notification"&gt;
+  &lt;source src="beep.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+
+&lt;script&gt;
+function playSound() {
+  document.getElementById('notification').play();
+}
+&lt;/script&gt;</code></pre>
         </div>
       </div>
     </section>
@@ -129,6 +206,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>Screen reader users are the most severely impacted by auto-playing audio, as audio output from the page can mask the screen reader's own speech. Best practice is simply to not auto-play audio unless the user has clearly initiated it. Where auto-play is used, ensuring the stop or mute control is the first focusable element on the page is a practical approach.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F24 (using inappropriate markup to mark up structure); G60 applies to auto-play control</li>
+        <li><strong>Success Techniques:</strong> H53 (using the body of the object element); F24 removal; limiting auto-play duration to under 3 seconds</li>
+      </ul>
     </section>
 
   </main>
