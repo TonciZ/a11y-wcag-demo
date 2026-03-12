@@ -182,6 +182,29 @@
 
 .demo-container[data-mode="pass"] [data-demo-code="pass"] { display: block; }
 
+/* Code display section styling */
+.demo-code-section {
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.demo-code-section pre {
+  margin: 0;
+  padding: var(--space-4);
+  background: #f5f5f5;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.demo-code-section code {
+  font-family: monospace;
+  color: var(--color-text);
+}
+
 /* -------------------------------------------------------
    Checkpoint-specific demo styles
    ------------------------------------------------------- */
