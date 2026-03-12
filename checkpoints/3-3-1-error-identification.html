@@ -69,7 +69,7 @@
            data-announce-pass="Showing pass example. Error message is announced to screen reader users and explains what needs correction.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-331">Error Identification demo</span>
+          <span class="demo-container__label" id="demo-label-331">Error message identification demo</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -104,6 +104,113 @@
             </div>
           </div>
         </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;label for="email"&gt;Email address&lt;/label&gt;
+&lt;input type="email" id="email" aria-invalid="true"
+       style="border: 2px solid red;"&gt;
+&lt;!-- Error is only shown by red border; no text message --&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;label for="email"&gt;Email address&lt;/label&gt;
+&lt;input type="email" id="email" aria-invalid="true"
+       aria-describedby="email-error"&gt;
+&lt;p id="email-error" style="color: red;"&gt;
+  Error: Email address is required.
+&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-331-2"
+           data-announce-fail="Showing fail example. Multiple fields have errors but only a generic message is shown, not identifying which fields are wrong."
+           data-announce-pass="Showing pass example. Each field that has an error displays its own specific error message.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-331-2">Error location identification demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Form submission shows a generic error message but does not identify which fields caused the errors.</p>
+            <div style="margin-top:0.75rem;padding:0.75rem;background-color:#fee;border:1px solid #c0392b;border-radius:4px;margin-bottom:1rem;">
+              <strong style="color:#c0392b;">There was a problem with your submission.</strong>
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <label for="user-fail" style="display:block;margin-bottom:0.25rem;font-weight:600;">Username</label>
+              <input type="text" id="user-fail" aria-invalid="true"
+                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <label for="password-fail" style="display:block;margin-bottom:0.25rem;font-weight:600;">Password (min. 8 characters)</label>
+              <input type="password" id="password-fail" aria-invalid="true"
+                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Each field that has an error displays its own specific error message.</p>
+            <div style="margin-bottom:1rem;">
+              <label for="user-pass" style="display:block;margin-bottom:0.25rem;font-weight:600;">Username</label>
+              <input type="text" id="user-pass" aria-invalid="true" aria-describedby="user-pass-error"
+                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+              <p id="user-pass-error" style="margin:0.35rem 0 0;color:#c0392b;font-size:0.9rem;">
+                Error: Username is required.
+              </p>
+            </div>
+            <div>
+              <label for="password-pass" style="display:block;margin-bottom:0.25rem;font-weight:600;">Password (min. 8 characters)</label>
+              <input type="password" id="password-pass" aria-invalid="true" aria-describedby="password-pass-error"
+                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+              <p id="password-pass-error" style="margin:0.35rem 0 0;color:#c0392b;font-size:0.9rem;">
+                Error: Password must be at least 8 characters long.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;!-- Generic error message; doesn't identify which fields --&gt;
+&lt;div role="alert"&gt;
+  There was a problem with your submission.
+&lt;/div&gt;
+
+&lt;label for="username"&gt;Username&lt;/label&gt;
+&lt;input type="text" id="username" aria-invalid="true"&gt;
+
+&lt;label for="password"&gt;Password&lt;/label&gt;
+&lt;input type="password" id="password" aria-invalid="true"&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;!-- Field-specific error messages --&gt;
+&lt;label for="username"&gt;Username&lt;/label&gt;
+&lt;input type="text" id="username" aria-invalid="true"
+       aria-describedby="username-error"&gt;
+&lt;p id="username-error" role="alert"&gt;
+  Error: Username is required.
+&lt;/p&gt;
+
+&lt;label for="password"&gt;Password&lt;/label&gt;
+&lt;input type="password" id="password" aria-invalid="true"
+       aria-describedby="password-error"&gt;
+&lt;p id="password-error" role="alert"&gt;
+  Error: Password must be at least 8 characters long.
+&lt;/p&gt;</code></pre>
+        </div>
       </div>
     </section>
 
@@ -120,6 +227,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion requires error identification in text but does not mandate how errors are surfaced (inline, summary list, or both). For complex forms, providing both an error summary at the top of the page and inline messages next to each field is considered best practice and helps all users, especially those using screen readers.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F82 (failure to identify a form control when a label cannot be properly associated)</li>
+        <li><strong>Success Techniques:</strong> G83 (providing text descriptions to identify required fields), H44 (using label elements to associate text labels with form inputs), ARIA21 (using aria-invalid to indicate an error field)</li>
+      </ul>
     </section>
 
   </main>

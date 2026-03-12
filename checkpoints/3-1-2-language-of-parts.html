@@ -64,12 +64,12 @@
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-312"
-           data-announce-fail="Showing fail example. A French phrase is embedded without a lang attribute - screen readers will mispronounce it using English rules."
-           data-announce-pass="Showing pass example. The French phrase is wrapped in a span with lang equals fr - screen readers switch to French pronunciation.">
+           aria-labelledby="demo-label-312-french"
+           data-announce-fail="Screen reader applies English pronunciation rules to French phrase, causing mispronunciation and reduced comprehension"
+           data-announce-pass="Screen reader switches to French pronunciation rules for French phrase, enabling clear understanding">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-312">Language of parts demo</span>
+          <span class="demo-container__label" id="demo-label-312-french">Foreign phrase without lang attribute</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -85,19 +85,68 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>The French phrase below has no <code>lang</code> attribute. A screen reader will attempt to pronounce it using the page language (English), producing incorrect output.</p>
-            <blockquote style="border-left:3px solid #d0d0d0;margin:0.75rem 0;padding:0.5rem 1rem;background:#f5f5f5;border-radius:0 4px 4px 0;">
-              <p style="margin:0;">The committee noted the proverb: <em>"Vouloir c&apos;est pouvoir."</em></p>
-            </blockquote>
-            <p style="font-size:0.875rem;color:#5a5a5a;">No <code>lang</code> attribute on the French text.</p>
+            <p>The English page contains a French phrase without language markup</p>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>The French phrase is wrapped in <code>&lt;span lang="fr"&gt;</code>. A screen reader will switch to French pronunciation rules for that phrase.</p>
-            <blockquote style="border-left:3px solid #d0d0d0;margin:0.75rem 0;padding:0.5rem 1rem;background:#f5f5f5;border-radius:0 4px 4px 0;">
-              <p style="margin:0;">The committee noted the proverb: <em lang="fr">"Vouloir c&apos;est pouvoir."</em></p>
-            </blockquote>
-            <p style="font-size:0.875rem;color:#5a5a5a;"><code>&lt;em lang="fr"&gt;</code> signals the language change to assistive technology.</p>
+            <p>The English page contains a French phrase with proper language markup</p>
           </div>
+        </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;p&gt;The French motto "Liberté, Égalité,
+Fraternité" is often cited.&lt;/p&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;p&gt;The French motto &lt;span lang="fr"&gt;"Liberté,
+Égalité, Fraternité"&lt;/span&gt; is often
+cited.&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-312-german"
+           data-announce-fail="Screen reader applies English pronunciation rules to German quotation, causing mispronunciation and reduced comprehension"
+           data-announce-pass="Screen reader switches to German pronunciation rules for German quotation, enabling clear understanding">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-312-german">Foreign quotation without lang attribute</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The English page contains a German quotation without language markup</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The English page contains a German quotation with proper language markup</p>
+          </div>
+        </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;blockquote&gt;
+  &lt;p&gt;Ganz schön verrückt, wie alles so
+  schnell gehen kann.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;blockquote lang="de"&gt;
+  &lt;p&gt;Ganz schön verrückt, wie alles so
+  schnell gehen kann.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
         </div>
       </div>
     </section>
@@ -115,6 +164,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion does not apply to proper names, technical terms, words of indeterminate language, or words that have been assimilated into the surrounding language. The key scope is extended passages of human-readable text where pronunciation would meaningfully differ between languages.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Success Techniques:</strong> H58 (Using language attributes to identify changes in the human language)</li>
+        <li><strong>Failure Techniques:</strong> F71 (Failure due to incorrect language tag)</li>
+      </ul>
     </section>
 
   </main>
