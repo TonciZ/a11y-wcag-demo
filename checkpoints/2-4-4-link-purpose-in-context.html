@@ -124,6 +124,27 @@
             </ul>
           </div>
         </div>
+
+        <!-- Code blocks for fail/pass states -->
+        <div data-demo-code="fail">
+          <p><strong>Fail:</strong> Generic link text without additional context</p>
+          <pre><code>&lt;a href="keyboard-guide.html"&gt;Read more&lt;/a&gt;
+&lt;a href="testing-guide.html"&gt;Read more&lt;/a&gt;
+&lt;a href="aria-practices.html"&gt;Read more&lt;/a&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <p><strong>Pass:</strong> Visually hidden text extends the accessible name</p>
+          <pre><code>&lt;a href="keyboard-guide.html"&gt;
+  Read more&lt;span class="visually-hidden"&gt; about Keyboard Accessibility Basics&lt;/span&gt;
+&lt;/a&gt;
+&lt;a href="testing-guide.html"&gt;
+  Read more&lt;span class="visually-hidden"&gt; about Screen Reader Testing Guide&lt;/span&gt;
+&lt;/a&gt;
+&lt;a href="aria-practices.html"&gt;
+  Read more&lt;span class="visually-hidden"&gt; about ARIA Authoring Practices&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        </div>
       </div>
     </section>
 
@@ -140,6 +161,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>The related but stricter criterion 2.4.9 (Link Purpose - Link Only, Level AAA) requires each link to be understandable from its link text alone, with no reliance on context. At Level A, relying on programmatic context is acceptable, but designing descriptive link text by default is the most robust approach and reduces reliance on context-reading behavior across different assistive technologies.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure Techniques:</strong> F84 (Using a selection list (select) where the selected option does not adequately convey the purpose of the list)</li>
+        <li><strong>Success Techniques:</strong> H77 (Identifying the purpose of a link using link text combined with surrounding text), H78 (Using 'rel' to identify link relationships), H79 (Providing a mechanism to identify and access non-conforming web pages within a set of web pages), H80 (Identifying the purpose of a link using link text combined with surrounding text), H81 (Identifying the purpose of a link in a data table using the link text combined with the enclosing table cell and associated table headings), ARIA7 (Using aria-labelledby for link purpose), ARIA8 (Using aria-label for link purpose)</li>
+      </ul>
     </section>
 
   </main>
