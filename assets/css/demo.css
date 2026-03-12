@@ -175,6 +175,13 @@
   font-size: var(--font-size-sm);
 }
 
+/* Code block visibility synced to demo state */
+[data-demo-code] { display: none; }
+
+.demo-container[data-mode="fail"] [data-demo-code="fail"] { display: block; }
+
+.demo-container[data-mode="pass"] [data-demo-code="pass"] { display: block; }
+
 /* -------------------------------------------------------
    Checkpoint-specific demo styles
    ------------------------------------------------------- */
