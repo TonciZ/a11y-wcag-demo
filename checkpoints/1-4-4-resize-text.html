@@ -99,6 +99,20 @@
             </div>
           </div>
         </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;div style="height: 72px; overflow: hidden;"&gt;
+  &lt;strong&gt;Important notice&lt;/strong&gt;
+  &lt;p&gt;Your subscription renews automatically on the 15th of each month. To cancel at any time, visit Account Settings and select Manage Subscription.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;div style="min-height: 72px; overflow: visible;"&gt;
+  &lt;strong&gt;Important notice&lt;/strong&gt;
+  &lt;p&gt;Your subscription renews automatically on the 15th of each month. To cancel at any time, visit Account Settings and select Manage Subscription.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
       </div>
     </section>
 
@@ -115,6 +129,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion specifically addresses text resize, not full-page zoom. However, in modern browsers, browser zoom also enlarges text, so testing with browser zoom at 200% is a practical and widely accepted testing method. The related criterion 1.4.10 Reflow covers the requirement that content must remain usable at 400% zoom without horizontal scrolling.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Success Techniques:</strong> G179 (Ensuring that there is sufficient contrast between text and its background), C24 (Using percentage values in CSS for container sizes), C28 (Specifying the size of text containers with em units), C80 (Using CSS transform to increase the size of text for visual effect)</li>
+        <li><strong>Failure Techniques:</strong> F69 (Failure of 1.4.4 due to using fixed-height and overflow hidden on text containers), F80 (Failure due to using text-based characters to create a visual style for text)</li>
+      </ul>
     </section>
 
   </main>
