@@ -114,6 +114,130 @@
             </div>
           </div>
         </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;!-- Fail: Help button in different positions --&gt;
+&lt;div&gt;
+  &lt;h3&gt;Step 1&lt;/h3&gt;
+  &lt;p&gt;Enter your details&lt;/p&gt;
+  &lt;a href="#help" style="position: absolute; top: 0.75rem; right: 0.75rem;"&gt;Help&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;h3&gt;Step 2&lt;/h3&gt;
+  &lt;p&gt;Review your order&lt;/p&gt;
+  &lt;a href="#help" style="position: absolute; bottom: 0.75rem; left: 0.75rem;"&gt;Help&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;!-- Pass: Help button in same position on both steps --&gt;
+&lt;div&gt;
+  &lt;h3&gt;Step 1&lt;/h3&gt;
+  &lt;p&gt;Enter your details&lt;/p&gt;
+  &lt;a href="#help" style="position: absolute; top: 0.75rem; right: 0.75rem;"&gt;Help&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;h3&gt;Step 2&lt;/h3&gt;
+  &lt;p&gt;Review your order&lt;/p&gt;
+  &lt;a href="#help" style="position: absolute; top: 0.75rem; right: 0.75rem;"&gt;Help&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-326-2"
+           data-announce-fail="Showing fail example. Contact options appear in different locations on different pages, making them unpredictable."
+           data-announce-pass="Showing pass example. Contact options are consistently placed in the same location across pages.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-326-2">Contact location consistency demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Contact information appears in different locations on different pages:</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
+              <strong style="font-size:0.8rem;color:#5a5a5a;">Product Page</strong>
+              <p style="margin:0.5rem 0 0;font-size:0.875rem;">Contact us via:</p>
+              <div style="margin-top:0.5rem;">
+                <a href="mailto:info@example.com" style="display:block;margin-bottom:0.5rem;font-size:0.875rem;">Email: info@example.com</a>
+              </div>
+            </div>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
+              <strong style="font-size:0.8rem;color:#5a5a5a;">Support Page</strong>
+              <p style="margin:0.5rem 0 0;font-size:0.875rem;">Need help?</p>
+              <div style="margin-top:0.5rem;">
+                <a href="tel:+18005551234" style="display:block;margin-bottom:0.5rem;font-size:0.875rem;">Call: 1-800-555-1234</a>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Contact information appears in the same location on all pages:</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
+              <strong style="font-size:0.8rem;color:#5a5a5a;">Product Page</strong>
+              <p style="margin:0.5rem 0 0;font-size:0.875rem;">Contact us via:</p>
+              <div style="margin-top:0.5rem;">
+                <a href="mailto:info@example.com" style="display:block;margin-bottom:0.5rem;font-size:0.875rem;">Email: info@example.com</a>
+                <a href="tel:+18005551234" style="display:block;font-size:0.875rem;">Call: 1-800-555-1234</a>
+              </div>
+            </div>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
+              <strong style="font-size:0.8rem;color:#5a5a5a;">Support Page</strong>
+              <p style="margin:0.5rem 0 0;font-size:0.875rem;">Contact us via:</p>
+              <div style="margin-top:0.5rem;">
+                <a href="mailto:info@example.com" style="display:block;margin-bottom:0.5rem;font-size:0.875rem;">Email: info@example.com</a>
+                <a href="tel:+18005551234" style="display:block;font-size:0.875rem;">Call: 1-800-555-1234</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;!-- Fail: Contact info in different locations --&gt;
+&lt;!-- Product Page --&gt;
+&lt;section&gt;
+  &lt;p&gt;Contact us via:&lt;/p&gt;
+  &lt;a href="mailto:info@example.com"&gt;Email&lt;/a&gt;
+&lt;/section&gt;
+
+&lt;!-- Support Page --&gt;
+&lt;section&gt;
+  &lt;p&gt;Need help?&lt;/p&gt;
+  &lt;a href="tel:+18005551234"&gt;Call us&lt;/a&gt;
+&lt;/section&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;!-- Pass: Contact info in same location --&gt;
+&lt;!-- Product Page --&gt;
+&lt;section class="contact-block"&gt;
+  &lt;p&gt;Contact us via:&lt;/p&gt;
+  &lt;a href="mailto:info@example.com"&gt;Email&lt;/a&gt;
+  &lt;a href="tel:+18005551234"&gt;Call&lt;/a&gt;
+&lt;/section&gt;
+
+&lt;!-- Support Page --&gt;
+&lt;section class="contact-block"&gt;
+  &lt;p&gt;Contact us via:&lt;/p&gt;
+  &lt;a href="mailto:info@example.com"&gt;Email&lt;/a&gt;
+  &lt;a href="tel:+18005551234"&gt;Call&lt;/a&gt;
+&lt;/section&gt;</code></pre>
+        </div>
       </div>
     </section>
 
@@ -130,6 +254,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion applies only to help mechanisms that are repeated across multiple pages; a help section unique to a single page (such as a dedicated support page) is not in scope. The requirement is about relative order within the page, not pixel-precise positioning, so responsive layout reflows that maintain structural order are acceptable.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F75 (failure to provide consistent and predictable location for repeated web page components)</li>
+        <li><strong>Success Techniques:</strong> G61 (presenting repeated components in the same relative order each time they appear)</li>
+      </ul>
     </section>
 
   </main>
