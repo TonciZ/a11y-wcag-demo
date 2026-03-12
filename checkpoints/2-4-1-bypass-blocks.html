@@ -110,6 +110,159 @@
             <p id="bypass-pass-main" tabindex="-1" style="margin:0.75rem 0 0;padding:0.5em;background:#f0f7ee;border-left:3px solid #27ae60;">Main content area</p>
           </div>
         </div>
+
+        <div class="demo-code-section" data-demo-code="fail">
+          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Fail Code</h3>
+          <pre><code>&lt;!-- No skip link, navigation is first --&gt;
+&lt;nav aria-label="Example site navigation"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;!-- Main content comes after all navigation --&gt;
+&lt;main id="main-content"&gt;
+  ...
+&lt;/main&gt;</code></pre>
+        </div>
+
+        <div class="demo-code-section" data-demo-code="pass" hidden>
+          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Pass Code</h3>
+          <pre><code>&lt;!-- Skip link is the first focusable element --&gt;
+&lt;a href="#main-content" class="skip-link"&gt;
+  Skip to main content
+&lt;/a&gt;
+&lt;nav aria-label="Example site navigation"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;main id="main-content" tabindex="-1"&gt;
+  ...
+&lt;/main&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Demo 2: Repeated blocks across pages -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-241-2"
+           data-announce-fail="Showing fail example. Multi-page site with long sidebar - keyboard users must Tab through all sidebar items on every page."
+           data-announce-pass="Showing pass example. Site has skip links for both main navigation and sidebar - keyboard users can bypass either.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-241-2">Long repeated blocks — multi-page scenario</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Multi-page site with a long sidebar on every page. Keyboard users must Tab through the entire sidebar before reaching the main article.</p>
+            <div style="display:flex;gap:1rem;margin-top:0.75rem;">
+              <aside style="flex:0 0 150px;border:1px solid #ccc;padding:0.75rem;">
+                <nav aria-label="Related articles">
+                  <ul style="list-style:none;padding:0;margin:0;">
+                    <li><a href="#">Related Post 1</a></li>
+                    <li><a href="#">Related Post 2</a></li>
+                    <li><a href="#">Related Post 3</a></li>
+                    <li><a href="#">Related Post 4</a></li>
+                    <li><a href="#">Related Post 5</a></li>
+                  </ul>
+                </nav>
+              </aside>
+              <article style="flex:1;padding:0.75rem;">
+                <h3>Main Article</h3>
+                <p>This is the main content. Readers using keyboard must Tab past all sidebar links first.</p>
+              </article>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Multi-page site with skip links above the sidebar. Keyboard users can jump directly to main content or skip the sidebar.</p>
+            <div style="display:flex;gap:1rem;margin-top:0.75rem;">
+              <div style="flex:0 0 100%;display:flex;gap:0.5rem;flex-direction:column;margin-bottom:0.5rem;">
+                <a href="#article-main" style="display:inline-block;padding:0.4em 0.9em;background:#000;color:#fff;border-radius:4px;font-size:0.9rem;">Skip to main content</a>
+                <a href="#sidebar-end" style="display:inline-block;padding:0.4em 0.9em;background:#333;color:#fff;border-radius:4px;font-size:0.9rem;">Skip sidebar</a>
+              </div>
+              <aside style="flex:0 0 150px;border:1px solid #ccc;padding:0.75rem;" id="sidebar-start">
+                <nav aria-label="Related articles">
+                  <ul style="list-style:none;padding:0;margin:0;">
+                    <li><a href="#">Related Post 1</a></li>
+                    <li><a href="#">Related Post 2</a></li>
+                    <li><a href="#">Related Post 3</a></li>
+                    <li><a href="#">Related Post 4</a></li>
+                    <li><a href="#">Related Post 5</a></li>
+                  </ul>
+                </nav>
+              </aside>
+              <article style="flex:1;padding:0.75rem;">
+                <h3 id="article-main" tabindex="-1">Main Article</h3>
+                <p>Keyboard users can now skip directly here or jump over the sidebar entirely.</p>
+              </article>
+              <span id="sidebar-end"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-code-section" data-demo-code="fail">
+          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Fail Code</h3>
+          <pre><code>&lt;aside id="sidebar"&gt;
+  &lt;nav aria-label="Related articles"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Related Post 1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Related Post 2&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Related Post 3&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Related Post 4&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Related Post 5&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;
+&lt;article&gt;
+  &lt;h1&gt;Main Article&lt;/h1&gt;
+  ...
+&lt;/article&gt;</code></pre>
+        </div>
+
+        <div class="demo-code-section" data-demo-code="pass" hidden>
+          <h3 style="margin-top:1.5rem;margin-bottom:0.5rem;font-size:1rem;">Pass Code</h3>
+          <pre><code>&lt;!-- Skip links allow bypass of navigation blocks --&gt;
+&lt;a href="#main-article"&gt;Skip to main content&lt;/a&gt;
+&lt;a href="#sidebar-end"&gt;Skip sidebar&lt;/a&gt;
+
+&lt;aside id="sidebar"&gt;
+  &lt;nav aria-label="Related articles"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Related Post 1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Related Post 2&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Related Post 3&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Related Post 4&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Related Post 5&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;
+&lt;article&gt;
+  &lt;h1 id="main-article" tabindex="-1"&gt;Main Article&lt;/h1&gt;
+  ...
+&lt;/article&gt;
+&lt;span id="sidebar-end"&gt;&lt;/span&gt;</code></pre>
+        </div>
       </div>
     </section>
 
@@ -126,6 +279,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>The skip link target must be a real focusable element or have <code>tabindex="-1"</code> applied to receive programmatic focus - simply linking to an anchor on a non-focusable element like a <code>&lt;div&gt;</code> or <code>&lt;h1&gt;</code> may not move focus in all browsers. Testing with actual keyboard navigation is essential because automated tools often cannot verify whether a skip link functions correctly.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F92 (The failure of Success Criterion 2.4.1 when a page contains content before the first heading)</li>
+        <li><strong>Success Techniques:</strong> G1 (Adding a link at the top of each page that goes directly to the main content area), H69 (Providing heading elements at the beginning of each section of reformatted content), ARIA11 (Using ARIA landmarks to identify regions of a page)</li>
+      </ul>
     </section>
 
   </main>
