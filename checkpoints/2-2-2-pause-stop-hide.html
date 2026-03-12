@@ -61,15 +61,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Autoplaying carousel -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-222"
-           data-announce-fail="Showing fail example. Moving content plays continuously with no pause control."
-           data-announce-pass="Showing pass example. A pause button lets users stop the moving content.">
+           aria-labelledby="demo-label-222-1"
+           data-announce-fail="Showing fail example. A carousel auto-advances continuously with no pause control."
+           data-announce-pass="Showing pass example. A pause button lets users stop the carousel from auto-advancing.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-222">Pause, stop, hide demo</span>
+          <span class="demo-container__label" id="demo-label-222-1">Demo 1: Autoplaying carousel</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -84,35 +86,201 @@
         <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
 
         <style>
-          @keyframes marquee-222 {
-            from { transform: translateX(100%); }
-            to   { transform: translateX(-100%); }
+          @keyframes carousel-slide {
+            0% { transform: translateX(0); }
+            33% { transform: translateX(0); }
+            34% { transform: translateX(-100%); }
+            66% { transform: translateX(-100%); }
+            67% { transform: translateX(-200%); }
+            100% { transform: translateX(-200%); }
           }
-          .marquee-222 { overflow: hidden; white-space: nowrap; background: #f5f5f5; border-radius: 4px; padding: 0.5rem; }
-          .marquee-222 span { display: inline-block; animation: marquee-222 8s linear infinite; }
+          .carousel-222 {
+            overflow: hidden;
+            border-radius: 4px;
+            background: #f5f5f5;
+            padding: 1rem;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+          }
+          .carousel-222__slides {
+            display: flex;
+            width: 300%;
+            animation: carousel-slide 9s infinite;
+          }
+          .carousel-222__slide {
+            width: 33.33%;
+            flex-shrink: 0;
+            text-align: center;
+            font-size: 1rem;
+            color: #333;
+          }
+          .carousel-222.paused .carousel-222__slides {
+            animation-play-state: paused;
+          }
         </style>
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Moving content plays continuously. Users cannot pause it - disorienting for users with attention or cognitive disabilities, and interferes with screen readers.</p>
+            <p>A carousel auto-advances every 3 slides with no pause button. Users with vestibular disorders or attention difficulties cannot read the slides - too distracting.</p>
             <div style="margin-top:0.75rem;">
-              <div class="marquee-222" aria-label="Scrolling announcement: New accessibility guidelines published - WCAG 2.2 is now the recommended standard for all web content.">
-                <span aria-hidden="true">&#128226; New accessibility guidelines published &mdash; WCAG 2.2 is now the recommended standard for all web content.</span>
+              <div class="carousel-222">
+                <div class="carousel-222__slides">
+                  <div class="carousel-222__slide">Slide 1</div>
+                  <div class="carousel-222__slide">Slide 2</div>
+                  <div class="carousel-222__slide">Slide 3</div>
+                </div>
               </div>
             </div>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>A Pause / Resume button gives users control over moving content. The announcement is also available as static text.</p>
+            <p>A visible Pause / Resume button lets users control the carousel auto-play:</p>
             <div style="margin-top:0.75rem;">
-              <div class="marquee-222" id="marquee-pass-222" aria-label="Scrolling announcement: New accessibility guidelines published - WCAG 2.2 is now the recommended standard for all web content.">
-                <span aria-hidden="true">&#128226; New accessibility guidelines published &mdash; WCAG 2.2 is now the recommended standard for all web content.</span>
+              <div class="carousel-222" id="carousel-pass-222">
+                <div class="carousel-222__slides">
+                  <div class="carousel-222__slide">Slide 1</div>
+                  <div class="carousel-222__slide">Slide 2</div>
+                  <div class="carousel-222__slide">Slide 3</div>
+                </div>
               </div>
               <button type="button" style="margin-top:0.5rem;"
-                      onclick="var s=this.previousElementSibling.querySelector('span');s.style.animationPlayState=(s.style.animationPlayState==='paused'?'running':'paused');this.textContent=(s.style.animationPlayState==='paused'?'Resume':'Pause');">
+                      onclick="const c=document.getElementById('carousel-pass-222');c.classList.toggle('paused');this.textContent=c.classList.contains('paused')?'Resume':'Pause';">
                 Pause
               </button>
             </div>
           </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;style&gt;
+  @keyframes slide { ... }
+  .carousel { animation: slide 9s infinite; }
+&lt;/style&gt;
+
+&lt;div class="carousel"&gt;
+  &lt;div class="slides"&gt;
+    &lt;div&gt;Slide 1&lt;/div&gt;
+    &lt;div&gt;Slide 2&lt;/div&gt;
+    &lt;div&gt;Slide 3&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+/* No pause button - animation plays forever */</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;div class="carousel" id="carousel"&gt;
+  &lt;div class="slides"&gt;
+    &lt;div&gt;Slide 1&lt;/div&gt;
+    &lt;div&gt;Slide 2&lt;/div&gt;
+    &lt;div&gt;Slide 3&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button onclick="carousel.classList.toggle('paused')"&gt;
+  Pause
+&lt;/button&gt;
+
+.carousel.paused .slides {
+  animation-play-state: paused;
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Demo 2: Blinking content -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-222-2"
+           data-announce-fail="Showing fail example. Content blinks continuously with no way to stop it."
+           data-announce-pass="Showing pass example. A toggle button allows users to stop the blinking animation.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-222-2">Demo 2: Blinking content</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <style>
+          @keyframes blink-222 {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+          }
+          .alert-blink {
+            animation: blink-222 0.8s infinite;
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 4px;
+            padding: 1rem;
+            color: #333;
+          }
+          .alert-blink.disabled {
+            animation: none;
+            opacity: 1;
+          }
+        </style>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A warning banner blinks continuously. Users with vestibular disorders, epilepsy, or attention difficulties cannot focus on any content while this is active.</p>
+            <div style="margin-top:0.75rem;">
+              <div class="alert-blink">
+                <strong>Warning:</strong> System update in progress. Do not close this window.
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The content still conveys urgency with visual styling, but the blinking animation can be disabled:</p>
+            <div style="margin-top:0.75rem;">
+              <div class="alert-blink" id="alert-pass-222">
+                <strong>Warning:</strong> System update in progress. Do not close this window.
+              </div>
+              <label style="margin-top:0.75rem;display:flex;align-items:center;gap:0.5rem;">
+                <input type="checkbox"
+                       onchange="const a=document.getElementById('alert-pass-222');a.classList.toggle('disabled',this.checked);">
+                <span>Stop blinking animation</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;style&gt;
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  .alert { animation: blink 0.8s infinite; }
+&lt;/style&gt;
+
+&lt;div class="alert"&gt;
+  Warning: update in progress
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;style&gt;
+  .alert { animation: blink 0.8s infinite; }
+  .alert.disabled {
+    animation: none;
+    opacity: 1;
+  }
+&lt;/style&gt;
+
+&lt;div class="alert" id="alert"&gt;Warning&lt;/div&gt;
+&lt;input type="checkbox"
+       onchange="alert.classList.toggle('disabled')"&gt;
+Stop animation</code></pre>
         </div>
       </div>
     </section>
@@ -130,6 +298,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion does not apply to animations that are essential to the content - for example, a progress indicator that must move to convey status, or an animation that is the only means of conveying information. Prefers-reduced-motion CSS support is a good complementary technique but does not on its own satisfy this criterion.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F16, F4</li>
+        <li><strong>Success Techniques:</strong> G187, H67, SCR33</li>
+      </ul>
     </section>
 
   </main>

@@ -60,15 +60,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Character key shortcut with modifier -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-214"
-           data-announce-fail="Showing fail example. A global single-character shortcut fires regardless of focus."
-           data-announce-pass="Showing pass example. The shortcut is scoped to a focused component and a modifier key alternative is provided.">
+           aria-labelledby="demo-label-214-1"
+           data-announce-fail="Showing fail example. Pressing a single character triggers an action globally, interfering with assistive technology navigation."
+           data-announce-pass="Showing pass example. A modifier key is required with the character, preventing conflicts with assistive technology.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-214">Character Key Shortcuts demo</span>
+          <span class="demo-container__label" id="demo-label-214-1">Demo 1: Character key shortcut with modifier</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -84,47 +86,150 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Pressing "S" anywhere on the page triggers a search action - even while a screen reader user is dictating or navigating by letter.</p>
-            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>// Fail: global single-character shortcut, no way to disable
+            <p>Pressing "S" anywhere on the page triggers a search action - even while a screen reader user is navigating or composing text.</p>
+            <div style="margin-top:0.75rem;">
+              <p style="font-size:0.9rem;margin:0.5rem 0;"><strong>Try it:</strong> Focus below and press the "S" key:</p>
+              <textarea style="width:100%;padding:0.5rem;border:1px solid #ccc;border-radius:4px;font-family:monospace;font-size:0.85rem;" placeholder="Type here... any 'S' key press will trigger search" rows="3"></textarea>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>A modifier key (Ctrl) is now required: press Ctrl+S to trigger search. Single "S" key presses no longer interfere with content entry or assistive technology navigation.</p>
+            <div style="margin-top:0.75rem;">
+              <p style="font-size:0.9rem;margin:0.5rem 0;"><strong>Try it:</strong> Focus below and press Ctrl+S:</p>
+              <textarea style="width:100%;padding:0.5rem;border:1px solid #ccc;border-radius:4px;font-family:monospace;font-size:0.85rem;" placeholder="Type here... Ctrl+S will trigger search (S alone does nothing)" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <div data-demo-code="fail">
+          <pre><code>// Fail: global single-character shortcut
 document.addEventListener('keydown', e =&gt; {
-  if (e.key === 's') {
+  if (e.key === 's' || e.key === 'S') {
     openSearch(); // fires for all users, always
   }
 });</code></pre>
-          </div>
-          <div data-demo-state="pass" hidden>
-            <p>Two accessible alternatives: scope the shortcut to a focused widget, or require a modifier key so it never conflicts with assistive technology commands.</p>
-            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>// Pass option 1: shortcut only fires when widget has focus
-searchWidget.addEventListener('keydown', e =&gt; {
-  if (e.key === 's') {
-    openSearch();
-  }
-});
+        </div>
 
-// Pass option 2: require a modifier key
+        <div data-demo-code="pass" hidden>
+          <pre><code>// Pass: require a modifier key
 document.addEventListener('keydown', e =&gt; {
-  if (e.ctrlKey &amp;&amp; e.key === 's') {
-    openSearch(); // Ctrl+S - no conflict with AT
+  if (e.ctrlKey &amp;&amp; (e.key === 's' || e.key === 'S')) {
+    openSearch(); // Ctrl+S only
   }
 });</code></pre>
+        </div>
+      </div>
+
+      <!-- Demo 2: Undocumented vs documented shortcuts -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-214-2"
+           data-announce-fail="Showing fail example. Shortcuts are not documented, and users cannot disable or reconfigure them."
+           data-announce-pass="Showing pass example. Shortcuts are documented, and users can disable them via a preferences menu.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-214-2">Demo 2: Undocumented vs documented shortcuts</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The application uses single-character shortcuts (D for delete, A for archive, R for reply) with no documentation or user control. Users cannot discover or disable them.</p>
+            <div style="margin-top:0.75rem;padding:1rem;background:#fff3cd;border:1px solid #ffc107;border-radius:4px;">
+              <p style="margin:0;font-size:0.9rem;">Keyboard shortcuts exist but are not listed anywhere. Pressing "D" deletes, "A" archives, "R" replies - all without warning and with no way to turn them off.</p>
+            </div>
           </div>
+          <div data-demo-state="pass" hidden>
+            <p>Shortcuts are documented in a preferences panel where users can review them and disable any that conflict with their assistive technology or workflow.</p>
+            <div style="margin-top:0.75rem;padding:1rem;background:#f0fdf4;border:1px solid #16a34a;border-radius:4px;">
+              <details style="cursor:pointer;">
+                <summary style="font-weight:600;">Preferences - Keyboard Shortcuts (click to expand)</summary>
+                <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid #16a34a;">
+                  <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+                    <input type="checkbox" checked>
+                    <span>D - Delete message</span>
+                  </label>
+                  <label style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+                    <input type="checkbox" checked>
+                    <span>A - Archive message</span>
+                  </label>
+                  <label style="display:flex;align-items:center;gap:0.5rem;">
+                    <input type="checkbox" checked>
+                    <span>R - Reply to message</span>
+                  </label>
+                  <p style="margin:0.75rem 0 0 0;font-size:0.85rem;color:#555;">Uncheck any shortcut to disable it. Changes save automatically.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <div data-demo-code="fail">
+          <pre><code>// Fail: shortcuts exist but are undocumented
+// Users cannot disable them
+document.addEventListener('keydown', e =&gt; {
+  if (e.key === 'd') deleteMessage();
+  if (e.key === 'a') archiveMessage();
+  if (e.key === 'r') replyMessage();
+});</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>// Pass: shortcuts are documented and configurable
+const shortcuts = {
+  'd': { label: 'Delete', enabled: true },
+  'a': { label: 'Archive', enabled: true },
+  'r': { label: 'Reply', enabled: true }
+};
+
+document.addEventListener('keydown', e =&gt; {
+  if (shortcuts[e.key]?.enabled) {
+    // Execute shortcut
+  }
+});</code></pre>
         </div>
       </div>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when a web application binds functionality to a single character key globally - for example, pressing "S" to search or "D" to delete - with no way for the user to disable or remap that shortcut. Screen reader users often speak commands letter-by-letter or use single-key navigation shortcuts, and these will accidentally trigger the application's shortcut instead, causing unintended actions such as deleting content, submitting forms, or navigating away from the current view.</p>
+      <p>A failure occurs when a web application binds functionality to a single character key globally - for example, pressing "S" to search or "D" to delete - with no way for the user to disable or remap that shortcut. Screen reader users often speak commands letter-by-letter or use single-key navigation shortcuts, and these will accidentally trigger the application's shortcut instead, causing unintended actions such as deleting content, submitting forms, or navigating away from the current view. Additionally, users of voice control software (like Dragon NaturallySpeaking) may trigger shortcuts while dictating.</p>
     </section>
 
     <section class="content-section" aria-labelledby="pass-heading">
       <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation either avoids single-character shortcuts altogether, or provides an accessible setting within the application to turn them off or reassign them to include a modifier key (such as Ctrl+S). Alternatively, a shortcut is acceptable if it only activates while a specific component - such as a search input - has keyboard focus, rather than firing globally across the entire page.</p>
+      <p>A passing implementation either avoids single-character shortcuts altogether, or provides one of these three approaches:</p>
+      <ol>
+        <li><strong>Add a modifier key:</strong> Require Ctrl, Alt, or Shift to be held with the character (e.g., Ctrl+S instead of S).</li>
+        <li><strong>Scope to focus:</strong> Activate the shortcut only when a specific component (like a search input) has keyboard focus.</li>
+        <li><strong>Document and control:</strong> List all shortcuts in a visible, accessible preferences menu where users can disable any that conflict with their assistive technology or workflow.</li>
+      </ol>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
-      <p>This criterion is particularly relevant for single-page applications and productivity tools (email clients, document editors, project management apps) that implement rich keyboard shortcut schemes. Shortcuts that already require a modifier key (e.g., Ctrl+S) are not subject to this criterion.</p>
+      <p>This criterion is particularly relevant for single-page applications and productivity tools (email clients, document editors, project management apps) that implement rich keyboard shortcut schemes. Shortcuts that already require a modifier key (e.g., Ctrl+S) are not subject to this criterion. Testing this criterion requires understanding the assistive technology being used - what shortcuts does NVDA use? What does Dragon NaturallySpeaking rely on? The best approach is often to support modifier keys or provide detailed, user-configurable shortcut settings.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F99</li>
+        <li><strong>Success Techniques:</strong> G202, SCR35</li>
+      </ul>
     </section>
 
   </main>
