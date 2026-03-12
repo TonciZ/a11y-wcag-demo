@@ -58,16 +58,17 @@
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+      <h2 id="demo-heading">Demo 1: Form Submission on Focus</h2>
+
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-321"
-           data-announce-fail="Showing fail example. Changing the select value triggers automatic navigation."
-           data-announce-pass="Showing pass example. Navigation only occurs when the user explicitly submits.">
+           aria-labelledby="demo-label-321-1"
+           data-announce-fail="Fail example: Focusing on the dropdown immediately submits the form without user interaction"
+           data-announce-pass="Pass example: Users can focus and navigate the dropdown; form submission requires an explicit button click">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-321">On Focus demo</span>
+          <span class="demo-container__label" id="demo-label-321-1">Demo 1: Auto-submit on focus</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -83,30 +84,108 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>This markup auto-navigates the moment the user changes the <code>&lt;select&gt;</code> value - including when keyboard users press arrow keys to browse options, before they have made a choice.</p>
-            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Fail: context change triggered by input, not explicit action --&gt;
-&lt;label for="country-fail"&gt;Choose a country:&lt;/label&gt;
-&lt;select id="country-fail"
-        onchange="window.location = this.value"&gt;
-  &lt;option value="/en/"&gt;English&lt;/option&gt;
-  &lt;option value="/fr/"&gt;Français&lt;/option&gt;
-  &lt;option value="/de/"&gt;Deutsch&lt;/option&gt;
-&lt;/select&gt;</code></pre>
+            <p>This form submits automatically when the dropdown receives focus:</p>
+            <form style="margin-top: 0.75rem;" onsubmit="alert('Form submitted! Users will be surprised.'); return false;">
+              <label for="select-321-fail" style="display: block; margin-bottom: 0.5rem;">Choose an option:</label>
+              <select id="select-321-fail" onfocus="this.form.submit();" style="padding: 0.5rem; font-size: 1rem;">
+                <option value="">-- Select --</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </select>
+              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Try tabbing into this dropdown - it will submit before you can select anything!</p>
+            </form>
           </div>
+
           <div data-demo-state="pass" hidden>
-            <p>The same select requires an explicit "Go" button press to navigate. Focus alone - or arrow key browsing - causes no context change.</p>
-            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Pass: navigation requires explicit activation --&gt;
-&lt;label for="country-pass"&gt;Choose a country:&lt;/label&gt;
-&lt;select id="country-pass"&gt;
-  &lt;option value="/en/"&gt;English&lt;/option&gt;
-  &lt;option value="/fr/"&gt;Français&lt;/option&gt;
-  &lt;option value="/de/"&gt;Deutsch&lt;/option&gt;
-&lt;/select&gt;
-&lt;button type="button"
-        onclick="window.location = document.getElementById('country-pass').value"&gt;
-  Go
-&lt;/button&gt;</code></pre>
+            <p>This form allows the user to focus and interact with the dropdown. Submission requires clicking the submit button:</p>
+            <form style="margin-top: 0.75rem;" onsubmit="alert('Form submitted! Users made an explicit choice.'); return false;">
+              <label for="select-321-pass" style="display: block; margin-bottom: 0.5rem;">Choose an option:</label>
+              <select id="select-321-pass" style="padding: 0.5rem; font-size: 1rem;">
+                <option value="">-- Select --</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </select>
+              <button type="submit" style="margin-top: 0.75rem; padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer;">Submit</button>
+              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Users retain full control over when the form is submitted.</p>
+            </form>
           </div>
+        </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;select id="select-321-fail" onfocus="this.form.submit();"&gt;
+  &lt;option value=""&gt;-- Select --&lt;/option&gt;
+  &lt;option value="option1"&gt;Option 1&lt;/option&gt;
+  &lt;option value="option2"&gt;Option 2&lt;/option&gt;
+  &lt;option value="option3"&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;select id="select-321-pass"&gt;
+  &lt;option value=""&gt;-- Select --&lt;/option&gt;
+  &lt;option value="option1"&gt;Option 1&lt;/option&gt;
+  &lt;option value="option2"&gt;Option 2&lt;/option&gt;
+  &lt;option value="option3"&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;
+&lt;button type="submit"&gt;Submit&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo2-heading">
+      <h2 id="demo2-heading">Demo 2: New Window on Focus</h2>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-321-2"
+           data-announce-fail="Fail example: Focusing on the link opens a new window unexpectedly"
+           data-announce-pass="Pass example: The link works normally; new window opens only when clicked">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-321-2">Demo 2: New window on focus</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This link opens a new window when it receives focus:</p>
+            <a href="javascript:void(0)" onfocus="window.open('about:blank', 'demo', 'width=400,height=300'); return false;" style="display: inline-block; margin-top: 0.75rem; padding: 0.5rem 1rem; color: var(--color-accent); text-decoration: underline; cursor: pointer;">External documentation</a>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Tab to this link - a new window will open unexpectedly!</p>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p>This link opens normally when clicked, optionally in a new window:</p>
+            <a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 0.75rem; padding: 0.5rem 1rem; color: var(--color-accent); text-decoration: underline; cursor: pointer;">External documentation (opens in new window)</a>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Users have full control - the link works when they click or press Enter.</p>
+          </div>
+        </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;a href="javascript:void(0)"
+   onfocus="window.open('about:blank', 'demo', 'width=400,height=300');"&gt;
+  External documentation
+&lt;/a&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;a href="https://www.w3.org/WAI/WCAG22/..."
+   target="_blank"
+   rel="noopener noreferrer"&gt;
+  External documentation (opens in new window)
+&lt;/a&gt;</code></pre>
         </div>
       </div>
     </section>
@@ -124,6 +203,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>There is an important distinction between a context change and a simple content update: appearing inline hints, expanding tooltips, or highlighting are generally not context changes and do not fail this criterion. The focus is on major, disorienting changes that interfere with the user's ability to predict the result of their navigation.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F55</li>
+        <li><strong>Success Techniques:</strong> H32, SCR24</li>
+      </ul>
     </section>
 
   </main>
