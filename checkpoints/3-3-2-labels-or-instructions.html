@@ -61,15 +61,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Missing field labels -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-332"
+           aria-labelledby="demo-label-332-1"
            data-announce-fail="Showing fail example. Input uses only placeholder text - no persistent label."
            data-announce-pass="Showing pass example. Input has a persistent visible label associated programmatically.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-332">Labels or Instructions demo</span>
+          <span class="demo-container__label" id="demo-label-332-1">Demo 1: Missing field labels</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -98,7 +100,84 @@
             </div>
           </div>
         </div>
+
+        <!-- Code blocks for Demo 1 -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;input type="email" placeholder="Email address"&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;label for="email-332-pass"&gt;Email address&lt;/label&gt;
+&lt;input type="email" id="email-332-pass"
+       placeholder="name@example.com"&gt;</code></pre>
+        </div>
       </div>
+
+      <!-- Demo 2: Unclear input format -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-332-2"
+           data-announce-fail="Showing fail example. Date field has no format instruction - user cannot know what format is expected."
+           data-announce-pass="Showing pass example. Date field has a visible format instruction below the label.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-332-2">Demo 2: Unclear input format</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This date field has a label but no visible instruction about the expected format. Users must guess or wait for an error.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="date-fail-332" style="display:block;margin-bottom:0.25rem;font-weight:600;">Date of birth</label>
+              <input type="text" id="date-fail-332" placeholder="Date" style="padding:0.5em 0.75em;border:1px solid #aaa;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The field now includes visible format instructions below the label, so users understand what is expected before typing.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="date-pass-332" style="display:block;margin-bottom:0.25rem;font-weight:600;">Date of birth</label>
+              <input type="text" id="date-pass-332" placeholder="DD/MM/YYYY" style="padding:0.5em 0.75em;border:1px solid #aaa;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+              <span style="font-size:0.875rem;color:#555;display:block;margin-top:0.25rem;">Format: DD/MM/YYYY (e.g., 15/03/1990)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code blocks for Demo 2 -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;label for="date-fail-332"&gt;Date of birth&lt;/label&gt;
+&lt;input type="text" id="date-fail-332"
+       placeholder="Date"&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;label for="date-pass-332"&gt;Date of birth&lt;/label&gt;
+&lt;input type="text" id="date-pass-332"
+       placeholder="DD/MM/YYYY"&gt;
+&lt;span&gt;Format: DD/MM/YYYY
+(e.g., 15/03/1990)&lt;/span&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- WCAG Techniques -->
+      <section class="content-section" aria-labelledby="techniques-heading">
+        <h3 id="techniques-heading">WCAG Techniques</h3>
+        <ul>
+          <li><strong>Failures:</strong> F82 (lack of visual and programmatic indication of input requirements), F86 (placeholder as sole label)</li>
+          <li><strong>Success Techniques:</strong> H44 (using label elements), H71 (providing description for form controls), ARIA14 (using aria-label to provide an invisible label)</li>
+        </ul>
+      </section>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">

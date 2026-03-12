@@ -61,15 +61,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Generic vs. specific error messages -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-333"
+           aria-labelledby="demo-label-333-1"
            data-announce-fail="Showing fail example. The error message only says Invalid input with no correction guidance."
            data-announce-pass="Showing pass example. The error message explains the required format and gives an example.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-333">Error suggestion demo</span>
+          <span class="demo-container__label" id="demo-label-333-1">Demo 1: Generic vs. specific error messages</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -106,7 +108,98 @@
             </div>
           </div>
         </div>
+
+        <!-- Code blocks for Demo 1 -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;input type="text" id="date-fail-333"
+       value="15/01/90" aria-invalid="true"&gt;
+&lt;span&gt;&#9888; Invalid input&lt;/span&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;input type="text" id="date-pass-333"
+       value="15/01/90" aria-invalid="true"
+       aria-describedby="date-err-333"&gt;
+&lt;span id="date-err-333"&gt;
+  &#9888; Please enter your date of birth
+  in DD/MM/YYYY format - for example,
+  &lt;strong&gt;15/01/1990&lt;/strong&gt;.
+&lt;/span&gt;</code></pre>
+        </div>
       </div>
+
+      <!-- Demo 2: Error with recovery suggestion -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-333-2"
+           data-announce-fail="Showing fail example. Authentication error provides no recovery path."
+           data-announce-pass="Showing pass example. Error message suggests a recovery action like password reset.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-333-2">Demo 2: Error with recovery suggestion</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>After password entry fails, the message provides no guidance on what to try next:</p>
+            <div style="margin-top:0.75rem;">
+              <label for="pwd-fail-333" style="display:block;margin-bottom:0.25rem;">Password</label>
+              <input type="password" id="pwd-fail-333" aria-invalid="true" style="border:2px solid #b91c1c;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:22rem;">
+              <span style="color:#b91c1c;font-size:0.875rem;display:block;margin-top:0.25rem;">&#9888; Authentication failed</span>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The error message includes a helpful recovery suggestion:</p>
+            <div style="margin-top:0.75rem;">
+              <label for="pwd-pass-333" style="display:block;margin-bottom:0.25rem;">Password</label>
+              <input type="password" id="pwd-pass-333" aria-invalid="true" aria-describedby="pwd-err-333" style="border:2px solid #b91c1c;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:22rem;">
+              <span id="pwd-err-333" style="color:#b91c1c;font-size:0.875rem;display:block;margin-top:0.25rem;">
+                &#9888; Password incorrect. <a href="#" style="color:#b91c1c;text-decoration:underline;">Forgot your password?</a> Use the password reset link to recover your account.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code blocks for Demo 2 -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;input type="password" id="pwd-fail-333"
+       aria-invalid="true"&gt;
+&lt;span&gt;&#9888; Authentication failed&lt;/span&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;input type="password" id="pwd-pass-333"
+       aria-invalid="true"
+       aria-describedby="pwd-err-333"&gt;
+&lt;span id="pwd-err-333"&gt;
+  &#9888; Password incorrect.
+  &lt;a href="#"&gt;Forgot your password?&lt;/a&gt;
+  Use the password reset link to recover
+  your account.
+&lt;/span&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- WCAG Techniques -->
+      <section class="content-section" aria-labelledby="techniques-heading">
+        <h3 id="techniques-heading">WCAG Techniques</h3>
+        <ul>
+          <li><strong>Failures:</strong> F89 (not providing error feedback), F70 (using generic error messages only)</li>
+          <li><strong>Success Techniques:</strong> G199 (providing error suggestions), H90 (using aria-describedby), G184 (including descriptive error messages)</li>
+        </ul>
+      </section>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
