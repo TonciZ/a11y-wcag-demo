@@ -99,6 +99,34 @@
             <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">All text visible - <code>min-height: 80px; overflow: visible</code></p>
           </div>
         </div>
+
+        <div data-demo-code="fail">
+          <pre><code>&lt;div style="height: 80px; overflow: hidden;"&gt;
+  &lt;p style="line-height: 1.5; letter-spacing: 0.12em;
+              word-spacing: 0.16em;"&gt;
+    User-controlled text spacing can increase the space
+    between lines, letters, and words. Content in
+    fixed-height containers will be cut off when these
+    overrides are applied.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Problem: Fixed height with overflow: hidden clips expanded text --&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;div style="min-height: 80px; overflow: visible;"&gt;
+  &lt;p style="line-height: 1.5; letter-spacing: 0.12em;
+              word-spacing: 0.16em;"&gt;
+    User-controlled text spacing can increase the space
+    between lines, letters, and words. Content in flexible
+    containers expands naturally when these overrides are
+    applied.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Solution: min-height with overflow: visible allows natural expansion --&gt;</code></pre>
+        </div>
       </div>
     </section>
 
@@ -115,6 +143,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion tests resilience to user overrides, not the default text spacing of the page itself. The WCAG Understanding document provides a test bookmarklet that applies all four spacing values simultaneously. Authors should note that this criterion was added in WCAG 2.1 and is commonly overlooked in design systems where card and tooltip heights are defined in pixels.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F80 (Failure of Success Criterion 1.4.4 due to text sized in units that are not relative to the user's default browser settings), F94 (Failure of Success Criterion 1.4.4 due to incorrect use of viewport units to resize text)</li>
+        <li><strong>Success Techniques:</strong> C36 (Allowing for text spacing override), C28 (Specifying the size of text containers using em units), C12 (Using percent for font sizes), C13 (Using named font sizes), C14 (Using em units for font sizes)</li>
+      </ul>
     </section>
 
   </main>
