@@ -98,6 +98,21 @@
             </div>
           </div>
         </div>
+
+        <!-- Code display blocks -->
+        <div data-demo-code="fail">
+          <pre><code>.btn-fail-2413:focus-visible {
+  outline: 1px solid #cccccc;
+  outline-offset: 1px;
+}</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>.btn-pass-2413:focus-visible {
+  outline: 3px solid #0055cc;
+  outline-offset: 2px;
+}</code></pre>
+        </div>
       </div>
     </section>
 
@@ -114,6 +129,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion is new in WCAG 2.2 and is one of the most technically specific criteria in the standard, providing concrete measurable thresholds. It applies to focus indicators that are author-created - the browser's default focus ring is generally acceptable if it meets the thresholds, but browser defaults vary significantly. Designers should explicitly specify focus styles rather than relying on browser defaults to ensure compliance.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F78, F85</li>
+        <li><strong>Success Techniques:</strong> C40, G195, G196</li>
+      </ul>
     </section>
 
   </main>
