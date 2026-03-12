@@ -61,15 +61,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Native button vs styled div -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-211"
-           data-announce-fail="Showing fail example. The custom div element cannot receive keyboard focus."
-           data-announce-pass="Showing pass example. The native button is keyboard focusable and operable.">
+           aria-labelledby="demo-label-211-1"
+           data-announce-fail="Showing fail example. Custom div styled as a button cannot receive keyboard focus."
+           data-announce-pass="Showing pass example. Native button element is keyboard focusable and operable by pressing Enter or Space.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-211">Keyboard demo</span>
+          <span class="demo-container__label" id="demo-label-211-1">Demo 1: Native button vs styled div</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -85,19 +87,192 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Press Tab to try reaching the control below. The <code>&lt;div&gt;</code> is styled to look like a button but has no <code>tabindex</code> - it cannot receive keyboard focus and cannot be activated without a mouse.</p>
-            <div style="margin-top:0.75rem;display:inline-block;padding:0.5em 1.25em;background:#555;color:#fff;border-radius:4px;cursor:pointer;">
+            <p>Press Tab to try reaching the control below. The <code>&lt;div&gt;</code> is styled to look like a button but cannot receive keyboard focus:</p>
+            <div style="margin-top:0.75rem;display:inline-block;padding:0.5em 1.25em;background:#555;color:#fff;border-radius:4px;cursor:pointer;" onclick="alert('Clicked!')">
               Delete account
             </div>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>The native <code>&lt;button&gt;</code> is keyboard focusable by default. Press Tab to reach it, then Enter or Space to activate.</p>
+            <p>The native <code>&lt;button&gt;</code> is keyboard focusable by default. Press Tab to reach it, then Enter or Space to activate:</p>
             <div style="margin-top:0.75rem;">
-              <button type="button">Delete account</button>
+              <button type="button" onclick="alert('Clicked!')">Delete account</button>
             </div>
           </div>
         </div>
+
+        <!-- Code blocks synced to demo state -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;div style="display:inline-block;padding:0.5em 1.25em;background:#555;color:#fff;border-radius:4px;cursor:pointer;"
+   onclick="alert('Clicked!')"&gt;
+  Delete account
+&lt;/div&gt;
+&lt;!-- Problem: Not keyboard focusable, no tabindex --&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;button type="button" onclick="alert('Clicked!')"&gt;
+  Delete account
+&lt;/button&gt;
+&lt;!-- Solution: Native button element handles keyboard focus and activation --&gt;</code></pre>
+        </div>
       </div>
+
+      <!-- Demo 2: Custom widget with keyboard support -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-211-2"
+           data-announce-fail="Showing fail example. Custom slider only responds to mouse clicks."
+           data-announce-pass="Showing pass example. Custom slider responds to mouse clicks, keyboard Enter, Space, and arrow keys.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-211-2">Demo 2: Custom widget keyboard support</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Try clicking and using arrow keys on the slider below. Only mouse clicks work:</p>
+            <div style="margin-top:0.75rem;">
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <span style="min-width:50px;">Volume:</span>
+                <div id="slider-fail"
+                     role="slider"
+                     tabindex="0"
+                     aria-label="Volume control"
+                     aria-valuenow="50"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width:200px;height:8px;background:#ccc;border-radius:4px;position:relative;cursor:pointer;"
+                     onclick="event.target.parentElement.setAttribute('data-value', Math.round((event.offsetX / event.target.offsetWidth) * 100))">
+                  <div style="position:absolute;height:100%;width:50%;background:#0055cc;border-radius:4px;"></div>
+                </div>
+                <span id="slider-fail-value" style="min-width:30px;">50%</span>
+              </div>
+            </div>
+            <p style="font-size:0.875rem;color:#666;margin-top:0.5rem;">Keyboard keys do not work here.</p>
+            <script>
+              const sliderFail = document.getElementById('slider-fail');
+              if (sliderFail) {
+                sliderFail.addEventListener('click', (e) => {
+                  const percent = Math.round((e.offsetX / e.target.offsetWidth) * 100);
+                  e.target.parentElement.setAttribute('data-value', percent);
+                  document.getElementById('slider-fail-value').textContent = percent + '%';
+                  const fill = e.target.querySelector('div');
+                  if (fill) fill.style.width = percent + '%';
+                });
+              }
+            </script>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Try clicking and using arrow keys on the slider below. Both mouse and keyboard work:</p>
+            <div style="margin-top:0.75rem;">
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <span style="min-width:50px;">Volume:</span>
+                <div id="slider-pass"
+                     role="slider"
+                     tabindex="0"
+                     aria-label="Volume control"
+                     aria-valuenow="50"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width:200px;height:8px;background:#ccc;border-radius:4px;position:relative;cursor:pointer;"
+                     onclick="updateSliderPass(event);"
+                     onkeydown="handleSliderKeydown(event)">
+                  <div style="position:absolute;height:100%;width:50%;background:#0055cc;border-radius:4px;"></div>
+                </div>
+                <span id="slider-pass-value" style="min-width:30px;">50%</span>
+              </div>
+            </div>
+            <p style="font-size:0.875rem;color:#666;margin-top:0.5rem;">Use arrow keys ← → to adjust the slider.</p>
+            <script>
+              function updateSliderPass(e) {
+                const slider = e.currentTarget;
+                const percent = Math.round((e.offsetX / e.currentTarget.offsetWidth) * 100);
+                slider.setAttribute('aria-valuenow', percent);
+                document.getElementById('slider-pass-value').textContent = percent + '%';
+                const fill = slider.querySelector('div');
+                if (fill) fill.style.width = percent + '%';
+              }
+              function handleSliderKeydown(e) {
+                const slider = e.currentTarget;
+                let value = parseInt(slider.getAttribute('aria-valuenow'), 10);
+                if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+                  value = Math.min(value + 5, 100);
+                  e.preventDefault();
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+                  value = Math.max(value - 5, 0);
+                  e.preventDefault();
+                }
+                slider.setAttribute('aria-valuenow', value);
+                document.getElementById('slider-pass-value').textContent = value + '%';
+                const fill = slider.querySelector('div');
+                if (fill) fill.style.width = value + '%';
+              }
+              const sliderPass = document.getElementById('slider-pass');
+              if (sliderPass) {
+                sliderPass.addEventListener('click', updateSliderPass);
+                sliderPass.addEventListener('keydown', handleSliderKeydown);
+              }
+            </script>
+          </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;div role="slider" tabindex="0" aria-label="Volume control"
+   aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+   onclick="handleClick(event)"&gt;
+  &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Problem: Only click handler; no keyboard support --&gt;
+&lt;script&gt;
+function handleClick(e) {
+  const percent = Math.round((e.offsetX / e.target.offsetWidth) * 100);
+  e.target.setAttribute('aria-valuenow', percent);
+}
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;div role="slider" tabindex="0" aria-label="Volume control"
+   aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+   onclick="updateSlider(event);"
+   onkeydown="handleKeydown(event)"&gt;
+  &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Solution: Both click and keyboard handlers --&gt;
+&lt;script&gt;
+function handleKeydown(e) {
+  let value = parseInt(e.target.getAttribute('aria-valuenow'), 10);
+  if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+    value = Math.min(value + 5, 100);
+    e.preventDefault();
+  }
+  e.target.setAttribute('aria-valuenow', value);
+}
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- WCAG Techniques -->
+      <section class="content-section" aria-labelledby="techniques-heading">
+        <h2 id="techniques-heading">WCAG Techniques</h2>
+        <ul>
+          <li><strong>Failures:</strong> F54 (Using only pointing-device-specific event handlers), F59 (Using script to make div or span a user interface control without role)</li>
+          <li><strong>Success Techniques:</strong> H91 (Using HTML form controls and links), G202 (Ensuring keyboard control for all functionality), ARIA6 (Using aria-label to provide labels for objects), ARIA9 (Using aria-labelledby to concatenate a label from several text nodes)</li>
+        </ul>
+      </section>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
