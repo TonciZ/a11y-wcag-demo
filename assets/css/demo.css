@@ -223,6 +223,11 @@
   padding: 0;
 }
 
+/* Syntax highlight tokens (VS Code dark theme palette) */
+.demo-code-section .hl-tag    { color: #569cd6; }
+.demo-code-section .hl-value  { color: #ce9178; }
+.demo-code-section .hl-comment { color: #6a9955; font-style: italic; }
+
 /* -------------------------------------------------------
    Checkpoint-specific demo styles
    ------------------------------------------------------- */
