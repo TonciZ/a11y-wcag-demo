@@ -100,6 +100,19 @@
             </div>
           </div>
         </div>
+
+        <!-- Code blocks synced to demo state -->
+        <div data-demo-code="fail">
+          <pre><code>&lt;div onclick="..."&gt;
+  &lt;span aria-hidden="true"&gt;☐&lt;/span&gt;
+  &lt;span&gt;Accept terms and conditions&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div data-demo-code="pass" hidden>
+          <pre><code>&lt;input type="checkbox" id="terms-412-pass"&gt;
+&lt;label for="terms-412-pass"&gt;Accept terms and conditions&lt;/label&gt;</code></pre>
+        </div>
       </div>
     </section>
 
@@ -116,6 +129,14 @@
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
       <p>This criterion specifically covers author-created UI components and does not apply to platform-level user agent controls that the author cannot modify. The easiest way to satisfy this criterion is to use native, semantic HTML elements (which have built-in name, role, and value semantics) rather than building custom widgets from generic elements, which require additional ARIA and scripting to achieve the same accessibility outcome.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F59, F68</li>
+        <li><strong>Success Techniques:</strong> ARIA14, ARIA16, H44, H91</li>
+      </ul>
     </section>
 
   </main>
