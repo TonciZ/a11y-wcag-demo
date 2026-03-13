@@ -69,7 +69,7 @@
            data-announce-pass="Showing pass example. Cart count is in a role status element - screen readers announce the update without moving focus.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-413">Status messages demo</span>
+          <span class="demo-container__label" id="demo-label-413">Demo 1: Cart count update</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -88,11 +88,11 @@
             <p>Click <strong>Add to cart</strong>. The cart count updates visually but has no <code>role="status"</code> or live region - screen reader users receive no announcement.</p>
             <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:0.75rem;">
               <button type="button"
-                      onclick="var c=document.getElementById('cart-fail-413');c.textContent=parseInt(c.textContent)+1;">
+                      onclick="var c=document.getElementById('cart-fail-413'),n=parseInt(c.textContent)+1;c.textContent=n;document.getElementById('cart-fail-unit').textContent=n===1?'item':'items';">
                 Add to cart
               </button>
               <div style="font-size:0.9rem;">
-                Cart: <span id="cart-fail-413" style="font-weight:700;">0</span> item(s)
+                Cart: <span id="cart-fail-413" style="font-weight:700;">0</span> <span id="cart-fail-unit">items</span>
               </div>
             </div>
             <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Screen readers will not announce the cart update. No <code>role</code> or <code>aria-live</code> on the count.</p>
@@ -101,34 +101,41 @@
             <p>Click <strong>Add to cart</strong>. The cart count is in a <code>role="status"</code> container - screen readers announce the change politely without moving focus.</p>
             <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:0.75rem;">
               <button type="button"
-                      onclick="var c=document.getElementById('cart-pass-413');c.textContent=parseInt(c.textContent)+1;">
+                      onclick="var c=document.getElementById('cart-pass-413'),n=parseInt(c.textContent)+1;c.textContent=n;document.getElementById('cart-pass-unit').textContent=n===1?'item':'items';">
                 Add to cart
               </button>
               <div style="font-size:0.9rem;" role="status" aria-live="polite" aria-atomic="true">
-                Cart: <span id="cart-pass-413" style="font-weight:700;">0</span> item(s)
+                Cart: <span id="cart-pass-413" style="font-weight:700;">0</span> <span id="cart-pass-unit">items</span>
               </div>
             </div>
             <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;"><code>role="status"</code> (equivalent to <code>aria-live="polite"</code>) announces the update automatically.</p>
           </div>
         </div>
 
-        <!-- Code blocks synced to demo state -->
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Cart count has no live region — screen readers never announce the change --&gt;</span>
+&lt;<span class="hl-tag">button</span> <span class="hl-tag">type</span>=<span class="hl-value">"button"</span> <span class="hl-tag">onclick</span>=<span class="hl-value">"updateCart()"</span>&gt;Add to cart&lt;/<span class="hl-tag">button</span>&gt;
+<span class="hl-line-fail">&lt;<span class="hl-tag">span</span> <span class="hl-tag">id</span>=<span class="hl-value">"cart-count"</span>&gt;0&lt;/<span class="hl-tag">span</span>&gt; item(s)</span>
+<span class="hl-comment">&lt;!-- No role or aria-live — update is invisible to assistive technology --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ role="status" announces the cart update politely without moving focus --&gt;</span>
+&lt;<span class="hl-tag">button</span> <span class="hl-tag">type</span>=<span class="hl-value">"button"</span> <span class="hl-tag">onclick</span>=<span class="hl-value">"updateCart()"</span>&gt;Add to cart&lt;/<span class="hl-tag">button</span>&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">div</span> <span class="hl-tag">role</span>=<span class="hl-value">"status"</span> <span class="hl-tag">aria-live</span>=<span class="hl-value">"polite"</span> <span class="hl-tag">aria-atomic</span>=<span class="hl-value">"true"</span>&gt;
+  Cart: &lt;<span class="hl-tag">span</span> <span class="hl-tag">id</span>=<span class="hl-value">"cart-count"</span>&gt;0&lt;/<span class="hl-tag">span</span>&gt; item(s)
+&lt;/<span class="hl-tag">div</span>&gt;</span></code></pre>
         </details>
       </div>
 
-      <!-- Demo 2: Search Results Without Live Region -->
+      <!-- Demo 2: Search autocomplete with/without combobox pattern -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-search"
-           data-announce-fail="Search results appear on the page but screen readers are not notified of the change"
-           data-announce-pass="Search results are announced by the live region; screen readers notify the user immediately">
+           data-announce-fail="Showing fail example. Search dropdown has no ARIA roles — keyboard navigation and screen reader announcements are missing."
+           data-announce-pass="Showing pass example. Search uses the combobox pattern — results are announced and navigable with arrow keys.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-search">Demo 2: Search results notification</span>
+          <span class="demo-container__label" id="demo-label-search">Demo 2: Search autocomplete</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -144,30 +151,63 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Type in the search field. Results appear visually but are not announced:</p>
-            <div style="margin-top:0.75rem;margin-bottom:0.75rem;">
-              <input type="text" placeholder="Search for products..."
-                     onkeyup="var val=this.value; if(val.length > 0) { document.getElementById('fail-results').innerHTML = '&lt;strong&gt;5 results found&lt;/strong&gt;&lt;ul style=&quot;margin-top:0.5rem;&quot;&gt;&lt;li&gt;Product matching &quot;' + val + '&quot;&lt;/li&gt;&lt;li&gt;Another match&lt;/li&gt;&lt;li&gt;Third match&lt;/li&gt;&lt;li&gt;Fourth match&lt;/li&gt;&lt;li&gt;Fifth match&lt;/li&gt;&lt;/ul&gt;'; } else { document.getElementById('fail-results').innerHTML = ''; }">
+            <p>Type to search. Results appear visually but the dropdown has no ARIA roles — keyboard users cannot navigate the list and screen readers announce nothing.</p>
+            <div style="position:relative;max-width:320px;margin-top:0.75rem;">
+              <label for="fail-413-search" style="display:block;margin-bottom:0.25rem;">Search products</label>
+              <input type="text" id="fail-413-search"
+                     placeholder="e.g. keyboard"
+                     autocomplete="off"
+                     oninput="search413Fail(this.value)"
+                     onblur="setTimeout(function(){var d=document.getElementById('fail-413-drop');if(d)d.hidden=true;},150)"
+                     style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+              <div id="fail-413-drop" hidden
+                   style="position:absolute;z-index:10;width:100%;background:var(--color-surface);border:1px solid var(--color-border);border-top:none;border-radius:0 0 4px 4px;box-shadow:0 4px 8px rgba(0,0,0,0.12);max-height:200px;overflow-y:auto;">
+              </div>
             </div>
-            <div id="fail-results"></div>
-            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Screen readers will not announce the results. The container has no live region role.</p>
+            <span class="demo-mock-label">No role="combobox", no role="listbox", no keyboard navigation, no SR announcement</span>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>Type in the search field. Results appear in a live region and are announced:</p>
-            <div style="margin-top:0.75rem;margin-bottom:0.75rem;">
-              <input type="text" placeholder="Search for products..."
-                     onkeyup="var val=this.value; if(val.length > 0) { document.getElementById('pass-results-status').textContent = '5 results found'; document.getElementById('pass-results-list').innerHTML = '&lt;ul style=&quot;margin-top:0.5rem;&quot;&gt;&lt;li&gt;Product matching &quot;' + val + '&quot;&lt;/li&gt;&lt;li&gt;Another match&lt;/li&gt;&lt;li&gt;Third match&lt;/li&gt;&lt;li&gt;Fourth match&lt;/li&gt;&lt;li&gt;Fifth match&lt;/li&gt;&lt;/ul&gt;'; } else { document.getElementById('pass-results-status').textContent = ''; document.getElementById('pass-results-list').innerHTML = ''; }">
+            <p>The input uses <code>role="combobox"</code>. Results are announced via <code>role="status"</code>, and navigable with <kbd>↑</kbd> <kbd>↓</kbd> arrow keys, <kbd>Enter</kbd> to select, <kbd>Esc</kbd> to close.</p>
+            <div style="position:relative;max-width:320px;margin-top:0.75rem;">
+              <label for="pass-413-search" style="display:block;margin-bottom:0.25rem;">Search products</label>
+              <input type="text" id="pass-413-search"
+                     role="combobox"
+                     aria-expanded="false"
+                     aria-haspopup="listbox"
+                     aria-controls="pass-413-listbox"
+                     aria-autocomplete="list"
+                     aria-activedescendant=""
+                     placeholder="e.g. keyboard"
+                     autocomplete="off"
+                     oninput="search413Pass(this.value)"
+                     onkeydown="nav413Pass(event)"
+                     onblur="setTimeout(function(){close413Pass();},150)"
+                     style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+              <ul id="pass-413-listbox"
+                  role="listbox"
+                  aria-label="Product suggestions"
+                  hidden
+                  style="position:absolute;z-index:10;width:100%;background:var(--color-surface);border:1px solid var(--color-border);border-top:none;border-radius:0 0 4px 4px;box-shadow:0 4px 8px rgba(0,0,0,0.12);max-height:200px;overflow-y:auto;margin:0;padding:0;">
+              </ul>
             </div>
-            <div id="pass-results-status" role="status" aria-live="polite" aria-atomic="true" style="font-weight:700;"></div>
-            <div id="pass-results-list"></div>
-            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;"><code>role="status"</code> announces the result count automatically.</p>
+            <div id="pass-413-status" role="status" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
+            <span class="demo-mock-label">Type to search, then use arrow keys to navigate results</span>
           </div>
         </div>
 
-        <!-- Code blocks synced to demo state -->
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Plain input + div — no ARIA roles, no keyboard navigation, no announcements --&gt;</span>
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">id</span>=<span class="hl-value">"search"</span> <span class="hl-tag">oninput</span>=<span class="hl-value">"showResults(this.value)"</span>&gt;
+<span class="hl-line-fail">&lt;<span class="hl-tag">div</span> <span class="hl-tag">id</span>=<span class="hl-value">"results"</span>&gt;&lt;!-- options injected, no role --&gt;&lt;/<span class="hl-tag">div</span>&gt;</span>
+<span class="hl-comment">&lt;!-- Mouse users see results; keyboard and SR users are excluded --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Combobox pattern: announces results, supports arrow-key navigation --&gt;</span>
+<span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">role</span>=<span class="hl-value">"combobox"</span> <span class="hl-tag">aria-expanded</span>=<span class="hl-value">"false"</span> <span class="hl-tag">aria-haspopup</span>=<span class="hl-value">"listbox"</span>
+       <span class="hl-tag">aria-controls</span>=<span class="hl-value">"listbox"</span> <span class="hl-tag">aria-activedescendant</span>=<span class="hl-value">""</span>&gt;
+&lt;<span class="hl-tag">ul</span> <span class="hl-tag">id</span>=<span class="hl-value">"listbox"</span> <span class="hl-tag">role</span>=<span class="hl-value">"listbox"</span>&gt;
+  &lt;<span class="hl-tag">li</span> <span class="hl-tag">role</span>=<span class="hl-value">"option"</span> <span class="hl-tag">id</span>=<span class="hl-value">"opt-0"</span> <span class="hl-tag">aria-selected</span>=<span class="hl-value">"false"</span>&gt;Mechanical Keyboard&lt;/<span class="hl-tag">li</span>&gt;
+&lt;/<span class="hl-tag">ul</span>&gt;
+&lt;<span class="hl-tag">div</span> <span class="hl-tag">role</span>=<span class="hl-value">"status"</span> <span class="hl-tag">aria-live</span>=<span class="hl-value">"polite"</span>&gt;2 results for &ldquo;key&rdquo;&lt;/<span class="hl-tag">div</span>&gt;</span></code></pre>
         </details>
       </div>
     </section>
@@ -209,5 +249,111 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script>
+    var products413 = [
+      'Wireless Headphones','Bluetooth Speaker','Mechanical Keyboard',
+      'Webcam HD 1080p','USB-C Hub','Laptop Stand','Mouse Pad XL',
+      'Monitor Light Bar','Ergonomic Chair','Desk Cable Organiser'
+    ];
+    var pass413Active = -1;
+    var pass413Filtered = [];
+
+    function search413Fail(val) {
+      var drop = document.getElementById('fail-413-drop');
+      var q = val.trim().toLowerCase();
+      if (!q) { drop.hidden = true; drop.innerHTML = ''; return; }
+      var matches = products413.filter(function(p){ return p.toLowerCase().indexOf(q) !== -1; }).slice(0,3);
+      if (!matches.length) { drop.hidden = true; drop.innerHTML = ''; return; }
+      drop.innerHTML = matches.map(function(m){
+        return '<div style="padding:0.4rem 0.6rem;cursor:pointer;" onmousedown="document.getElementById(\'fail-413-search\').value=\'' + m.replace(/'/g,"\\'") + '\';document.getElementById(\'fail-413-drop\').hidden=true;">' + m + '</div>';
+      }).join('');
+      drop.hidden = false;
+    }
+
+    function search413Pass(val) {
+      var input = document.getElementById('pass-413-search');
+      var lb = document.getElementById('pass-413-listbox');
+      var status = document.getElementById('pass-413-status');
+      var q = val.trim().toLowerCase();
+      pass413Active = -1;
+      input.setAttribute('aria-activedescendant', '');
+      if (!q) {
+        lb.innerHTML = '';
+        lb.hidden = true;
+        input.setAttribute('aria-expanded', 'false');
+        status.textContent = '';
+        pass413Filtered = [];
+        return;
+      }
+      pass413Filtered = products413.filter(function(p){ return p.toLowerCase().indexOf(q) !== -1; }).slice(0,3);
+      lb.innerHTML = pass413Filtered.map(function(m, i){
+        return '<li role="option" id="pass-413-opt-' + i + '" aria-selected="false" ' +
+          'style="padding:0.4rem 0.6rem;cursor:pointer;list-style:none;" ' +
+          'onmousedown="select413Pass(\'' + m.replace(/'/g,"\\'") + '\')">' + m + '</li>';
+      }).join('');
+      if (pass413Filtered.length) {
+        lb.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
+        var n = pass413Filtered.length;
+        status.textContent = n + (n === 1 ? ' result' : ' results') + ' for \u201c' + val.trim() + '\u201d';
+      } else {
+        lb.hidden = true;
+        input.setAttribute('aria-expanded', 'false');
+        status.textContent = 'No results for \u201c' + val.trim() + '\u201d';
+      }
+    }
+
+    function nav413Pass(event) {
+      var input = document.getElementById('pass-413-search');
+      var lb = document.getElementById('pass-413-listbox');
+      if (lb.hidden && event.key !== 'ArrowDown') return;
+      var options = lb.querySelectorAll('[role="option"]');
+      if (!options.length) return;
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        pass413Active = Math.min(pass413Active + 1, options.length - 1);
+        updateActive413(options, input);
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        pass413Active = Math.max(pass413Active - 1, -1);
+        updateActive413(options, input);
+      } else if (event.key === 'Enter') {
+        if (pass413Active >= 0 && options[pass413Active]) {
+          event.preventDefault();
+          select413Pass(options[pass413Active].textContent);
+        }
+      } else if (event.key === 'Escape') {
+        close413Pass();
+      }
+    }
+
+    function updateActive413(options, input) {
+      options.forEach(function(opt, i) {
+        var active = i === pass413Active;
+        opt.setAttribute('aria-selected', active ? 'true' : 'false');
+        opt.style.background = active ? 'var(--color-accent, #0057b3)' : '';
+        opt.style.color = active ? '#fff' : '';
+      });
+      input.setAttribute('aria-activedescendant', pass413Active >= 0 ? 'pass-413-opt-' + pass413Active : '');
+    }
+
+    function select413Pass(value) {
+      var input = document.getElementById('pass-413-search');
+      var status = document.getElementById('pass-413-status');
+      input.value = value;
+      status.textContent = value + ' selected';
+      close413Pass();
+      input.focus();
+    }
+
+    function close413Pass() {
+      var input = document.getElementById('pass-413-search');
+      var lb = document.getElementById('pass-413-listbox');
+      lb.hidden = true;
+      input.setAttribute('aria-expanded', 'false');
+      input.setAttribute('aria-activedescendant', '');
+      pass413Active = -1;
+    }
+  </script>
 </body>
 </html>
