@@ -49,7 +49,12 @@ Plans:
   2. Each flagged issue has been triaged: confirmed real issue OR documented as intentional demo violation
   3. All confirmed real issues across site chrome and checkpoint pages have been fixed
   4. A triage document (`.planning/AUDIT-TRIAGE.md`) exists documenting which violations are intentional (teaching examples) vs. real bugs
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 06-01-PLAN.md — Install @axe-core/cli and pa11y; create audit-light.js and audit-dark.js scripts; scan all 44 pages in both modes; generate JSON results
+- [ ] 06-02-PLAN.md — Parse audit JSON; pre-classify violations as intentional (in [data-mode="fail"]) or real (chrome/structure/outside demo); create AUDIT-TRIAGE.md; fix 39 remaining functional-language announcements
+- [ ] 06-03-PLAN.md — Fix all confirmed real issues in site chrome and page structure; re-audit to verify fixes; exclude [data-mode="pass"] violations (defer to Phase 7)
 
 ---
 
@@ -112,15 +117,15 @@ Phases execute in numeric order: 5 → 6 → 7 (merge gate) → 8 → 9 → 10
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 5. Component Playground | 1/1 | Planned | — |
-| 6. Axe Audit | 0/TBD | Not started | — |
+| 5. Component Playground | 1/1 | Complete | 2026-03-13 |
+| 6. Axe Audit | 0/3 | Planning | — |
 | 7. Manual UAT | 0/TBD | Not started | — |
 | 8. Search & Filtering | 0/TBD | Not started | — |
 | 9. Mobile Chrome | 0/TBD | Not started | — |
 | 10. Tool Links | 0/TBD | Not started | — |
 
 **Next:**
-Execute Phase 5 (Component Playground). Plan 05-01 creates /components.html with all components and variants.
+Execute Phase 6 (Axe Accessibility Audit). Plans 06-01 through 06-03 establish audit infrastructure, triage violations, and fix real issues.
 
 ---
 
@@ -142,3 +147,4 @@ See `.planning/ROADMAP.md` (v1.0) in git history for detailed phase breakdowns.
 *Roadmap created: 2026-03-13*
 *v2.0 feature set defined: 6 phases, 23 requirements, all with phase assignments*
 *Phase 5 planning complete: 1 plan covering all 4 requirements*
+*Phase 6 planning complete: 3 plans covering all 4 requirements, wave structure defined*
