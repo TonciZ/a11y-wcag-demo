@@ -58,17 +58,144 @@
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo 1: Form Submission on Focus</h2>
+      <h2 id="demo-heading">Demo</h2>
 
+      <style>
+        /* Autocomplete widget */
+        .ac-wrap { position: relative; display: inline-block; width: 260px; margin-top: 0.5rem; }
+        .ac-input { width: 100%; padding: 0.5rem 0.75rem; font-size: 1rem; font-family: inherit; box-sizing: border-box; border: 2px solid #aaa; border-radius: 4px; }
+        .ac-list { position: absolute; top: calc(100% + 2px); left: 0; right: 0; margin: 0; padding: 0; list-style: none; border: 1px solid #aaa; border-radius: 4px; background: var(--color-surface, #fff); z-index: 10; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+        .ac-list[hidden] { display: none; }
+        .ac-option { padding: 0.45rem 0.75rem; cursor: pointer; font-size: 0.95rem; }
+        .ac-option:hover, .ac-option:focus { background: #e8f0fe; outline: 2px solid #005fcc; outline-offset: -2px; }
+        .ac-clear-btn { position: absolute; right: 0.4rem; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer; padding: 0.2rem 0.3rem; font-size: 0.85rem; color: #666; line-height: 1; border-radius: 2px; }
+        .ac-clear-btn:focus { outline: 2px solid #005fcc; }
+        .ac-clear-btn[hidden] { display: none; }
+        #ac-pass::-webkit-search-cancel-button { display: none; }
+        /* Tab panel widget */
+        .tab-list { display: flex; gap: 0; border-bottom: 2px solid #ccc; }
+        .tab-btn { padding: 0.5rem 1.25rem; border: 2px solid transparent; border-bottom: none; background: none; cursor: pointer; font-size: 0.9rem; font-family: inherit; margin-bottom: -2px; border-radius: 4px 4px 0 0; }
+        .tab-btn[aria-selected="true"] { border-color: #ccc; border-bottom-color: var(--color-surface, #fff); background: var(--color-surface, #fff); font-weight: bold; }
+        .tab-btn:focus { outline: 2px solid #005fcc; outline-offset: 2px; }
+        .tab-panel-body { padding: 0.75rem; border: 1px solid #ccc; border-top: none; font-size: 0.9rem; min-height: 3rem; }
+        .tab-panel-body[hidden] { display: none; }
+      </style>
+
+      <script>
+        /* ── Demo 1: Autocomplete ── */
+        var _acFailEscaping = false;
+
+        function acInputKeydown(event, listId) {
+          var list = document.getElementById(listId);
+          if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            var first = list.querySelector('[role=option]');
+            if (first) { list.removeAttribute('hidden'); first.focus(); }
+          } else if (event.key === 'Escape') {
+            list.setAttribute('hidden', '');
+          }
+        }
+
+        /* returnToInput=false for fail demo (prevents onfocus loop), true for pass */
+        function acOptionKeydown(event, listId, inputId, returnToInput) {
+          var list = document.getElementById(listId);
+          var input = document.getElementById(inputId);
+          var items = Array.from(list.querySelectorAll('[role=option]'));
+          var idx = items.indexOf(event.currentTarget);
+          if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            (items[idx + 1] || items[0]).focus();
+          } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            if (idx <= 0) {
+              list.setAttribute('hidden', '');
+              if (returnToInput) { input.focus(); } else { _acFailEscaping = true; input.focus(); }
+            } else { items[idx - 1].focus(); }
+          } else if (event.key === 'Escape') {
+            list.setAttribute('hidden', '');
+            if (returnToInput) { input.focus(); } else { _acFailEscaping = true; input.focus(); }
+          } else if (event.key === 'Tab' && event.shiftKey) {
+            event.preventDefault();
+            list.setAttribute('hidden', '');
+            _acFailEscaping = true;
+            input.focus();
+          } else if (event.key === 'Enter') {
+            event.preventDefault();
+            input.value = event.currentTarget.textContent.trim();
+            input.dispatchEvent(new Event('input'));
+            list.setAttribute('hidden', '');
+            if (returnToInput) { input.focus(); } else { _acFailEscaping = true; input.focus(); }
+          }
+        }
+
+        /* ── Demo 2: Tab Panel ── */
+        function tabActivate(tabEl, prefix) {
+          var tablist = document.getElementById(prefix + '-tablist');
+          var tabs = Array.from(tablist.querySelectorAll('[role=tab]'));
+          var idx = tabs.indexOf(tabEl);
+          tabs.forEach(function(t, i) {
+            t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+            t.setAttribute('tabindex', i === idx ? '0' : '-1');
+          });
+          var panels = Array.from(tablist.parentElement.querySelectorAll('[role=tabpanel]'));
+          panels.forEach(function(p, i) {
+            if (i === idx) p.removeAttribute('hidden'); else p.setAttribute('hidden', '');
+          });
+        }
+
+        /* Fail: arrow keys move focus, onfocus activates — context change on focus */
+        function tabKeydownFail(event, prefix) {
+          var tablist = document.getElementById(prefix + '-tablist');
+          var tabs = Array.from(tablist.querySelectorAll('[role=tab]'));
+          var idx = tabs.indexOf(event.currentTarget);
+          if (event.key === 'ArrowRight') { event.preventDefault(); tabs[(idx + 1) % tabs.length].focus(); }
+          else if (event.key === 'ArrowLeft') { event.preventDefault(); tabs[(idx - 1 + tabs.length) % tabs.length].focus(); }
+        }
+
+        /* Pass: arrow keys move focus only; Enter/Space/click activates */
+        function tabKeydownPass(event, prefix) {
+          var tablist = document.getElementById(prefix + '-tablist');
+          var tabs = Array.from(tablist.querySelectorAll('[role=tab]'));
+          var idx = tabs.indexOf(event.currentTarget);
+          if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+            event.preventDefault();
+            var next = event.key === 'ArrowRight' ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
+            tabs.forEach(function(t, i) { t.setAttribute('tabindex', i === next ? '0' : '-1'); });
+            tabs[next].focus();
+          } else if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            tabActivate(event.currentTarget, prefix);
+          }
+        }
+
+        /* Reset demo state when toggle is clicked */
+        document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('.demo-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              var container = btn.closest('.demo-container');
+              container.querySelectorAll('.ac-list').forEach(function(l) { l.setAttribute('hidden', ''); });
+              container.querySelectorAll('.ac-input').forEach(function(i) { i.value = ''; });
+              container.querySelectorAll('.ac-clear-btn').forEach(function(b) { b.setAttribute('hidden', ''); });
+              container.querySelectorAll('[id$="-tablist"]').forEach(function(tablist) {
+                var prefix = tablist.id.replace('-tablist', '');
+                var tabs = Array.from(tablist.querySelectorAll('[role=tab]'));
+                if (tabs.length) tabActivate(tabs[0], prefix);
+              });
+            });
+          });
+        });
+      </script>
+
+      <!-- Demo 1: Autocomplete focus hijack -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-321-1"
-           data-announce-fail="Fail example: Focusing on the dropdown immediately submits the form without user interaction"
-           data-announce-pass="Pass example: Users can focus and navigate the dropdown; form submission requires an explicit button click">
+           data-announce-fail="Fail example: Focusing the search input immediately moves keyboard focus to the first suggestion, bypassing the input"
+           data-announce-pass="Pass example: Focus stays on the input; suggestions appear but keyboard users navigate into them manually with Arrow Down">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-321-1">Demo 1: Auto-submit on focus</span>
+          <span class="demo-container__label" id="demo-label-321-1">Demo 1: Autocomplete focus hijack</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -84,54 +211,70 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>This form submits automatically when the dropdown receives focus:</p>
-            <form style="margin-top: 0.75rem;" onsubmit="alert('Form submitted! Users will be surprised.'); return false;">
-              <label for="select-321-fail" style="display: block; margin-bottom: 0.5rem;">Choose an option:</label>
-              <select id="select-321-fail" onfocus="this.form.submit();" style="padding: 0.5rem; font-size: 1rem;">
-                <option value="">-- Select --</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-              </select>
-              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Try tabbing into this dropdown - it will submit before you can select anything!</p>
-            </form>
+            <p>The developer shows suggestions on focus — but <code>onfocus</code> also calls <code>.focus()</code> on the first option. Keyboard users land on a list item before they can type anything:</p>
+            <div class="ac-wrap">
+              <label for="ac-fail" style="display:block;margin-bottom:0.4rem;font-size:0.9rem;">Search articles</label>
+              <input id="ac-fail" class="ac-input" type="search" autocomplete="off" placeholder="e.g. accessibility…"
+                onfocus="if(!_acFailEscaping){var l=document.getElementById('ac-fail-list');l.removeAttribute('hidden');var f=l.querySelector('[role=option]');if(f)f.focus();} _acFailEscaping=false;"
+                onkeydown="acInputKeydown(event,'ac-fail-list')" aria-autocomplete="list" aria-controls="ac-fail-list">
+              <ul id="ac-fail-list" class="ac-list" role="listbox" hidden>
+                <li class="ac-option" role="option" tabindex="-1" onkeydown="acOptionKeydown(event,'ac-fail-list','ac-fail',false)">Accessibility basics</li>
+                <li class="ac-option" role="option" tabindex="-1" onkeydown="acOptionKeydown(event,'ac-fail-list','ac-fail',false)">ARIA landmarks</li>
+                <li class="ac-option" role="option" tabindex="-1" onkeydown="acOptionKeydown(event,'ac-fail-list','ac-fail',false)">Keyboard navigation</li>
+              </ul>
+            </div>
+            <p style="font-size:0.85rem;color:var(--color-text-muted);margin-top:0.5rem;">Tab into the field — focus immediately jumps to the first suggestion. Press <kbd>Escape</kbd> to return to the input.</p>
+            <p style="font-size:0.85rem;margin-top:0.5rem;padding:0.4rem 0.6rem;border-left:3px solid #e67e22;">Type something — a ✕ button appears but cannot be reached by Tab or activated by keyboard. This is a separate failure of <strong>WCAG 2.1.1 Keyboard</strong>.</p>
           </div>
 
           <div data-demo-state="pass" hidden>
-            <p>This form allows the user to focus and interact with the dropdown. Submission requires clicking the submit button:</p>
-            <form style="margin-top: 0.75rem;" onsubmit="alert('Form submitted! Users made an explicit choice.'); return false;">
-              <label for="select-321-pass" style="display: block; margin-bottom: 0.5rem;">Choose an option:</label>
-              <select id="select-321-pass" style="padding: 0.5rem; font-size: 1rem;">
-                <option value="">-- Select --</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-              </select>
-              <button type="submit" style="margin-top: 0.75rem; padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer;">Submit</button>
-              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Users retain full control over when the form is submitted.</p>
-            </form>
+            <p>Suggestions appear on focus, but focus <em>stays on the input</em>. Press <kbd>↓</kbd> to navigate into the list when ready:</p>
+            <div class="ac-wrap">
+              <label for="ac-pass" style="display:block;margin-bottom:0.4rem;font-size:0.9rem;">Search articles</label>
+              <div style="position:relative;">
+                <input id="ac-pass" class="ac-input" type="search" autocomplete="off" placeholder="e.g. accessibility…" style="padding-right:2rem;"
+                  onfocus="document.getElementById('ac-pass-list').removeAttribute('hidden');"
+                  onblur="var r=event.relatedTarget;if(!r||!document.getElementById('ac-pass-list').contains(r)){document.getElementById('ac-pass-list').setAttribute('hidden','');}"
+                  oninput="document.getElementById('ac-pass-clear').toggleAttribute('hidden',!this.value);"
+                  onkeydown="acInputKeydown(event,'ac-pass-list')" aria-autocomplete="list" aria-controls="ac-pass-list">
+                <button type="button" class="ac-clear-btn" id="ac-pass-clear" aria-label="Clear search" hidden
+                  onclick="var i=document.getElementById('ac-pass');i.value='';i.dispatchEvent(new Event('input'));i.focus();">✕</button>
+              </div>
+              <ul id="ac-pass-list" class="ac-list" role="listbox" hidden>
+                <li class="ac-option" role="option" tabindex="-1" onkeydown="acOptionKeydown(event,'ac-pass-list','ac-pass',true)">Accessibility basics</li>
+                <li class="ac-option" role="option" tabindex="-1" onkeydown="acOptionKeydown(event,'ac-pass-list','ac-pass',true)">ARIA landmarks</li>
+                <li class="ac-option" role="option" tabindex="-1" onkeydown="acOptionKeydown(event,'ac-pass-list','ac-pass',true)">Keyboard navigation</li>
+              </ul>
+            </div>
+            <p style="font-size:0.85rem;color:var(--color-text-muted);margin-top:0.5rem;">Tab into the field — focus stays here. Press <kbd>↓</kbd> to navigate suggestions, <kbd>Enter</kbd> to select, <kbd>Escape</kbd> to close.</p>
           </div>
         </div>
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail">/* ❌ onfocus moves focus to first suggestion — context change */
+&lt;input onfocus="
+  list.removeAttribute('hidden');
+  list.querySelector('[role=option]').focus();
+"&gt;</code></pre>
+          <pre><code data-demo-code="pass">/* ✓ onfocus only reveals the list — focus stays on input */
+&lt;input
+  onfocus="list.removeAttribute('hidden');"
+  onkeydown="if (e.key === 'ArrowDown') firstOption.focus();"
+&gt;</code></pre>
         </details>
       </div>
-    </section>
 
-    <section class="content-section" aria-labelledby="demo2-heading">
-      <h2 id="demo2-heading">Demo 2: New Window on Focus</h2>
-
+      <!-- Demo 2: Tab panel activates on focus -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-321-2"
-           data-announce-fail="Fail example: Focusing on the link opens a new window unexpectedly"
-           data-announce-pass="Pass example: The link works normally; new window opens only when clicked">
+           data-announce-fail="Fail example: Arrow keys move focus to a tab and immediately switch the panel content — a context change the user did not initiate"
+           data-announce-pass="Pass example: Arrow keys move focus between tabs without changing the panel; only Enter, Space, or click activates a new tab">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-321-2">Demo 2: New window on focus</span>
+          <span class="demo-container__label" id="demo-label-321-2">Demo 2: Tab panel activates on focus</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -147,33 +290,79 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>This link opens a new window when it receives focus:</p>
-            <a href="javascript:void(0)" onfocus="window.open('about:blank', 'demo', 'width=400,height=300'); return false;" style="display: inline-block; margin-top: 0.75rem; padding: 0.5rem 1rem; color: var(--color-accent); text-decoration: underline; cursor: pointer;">External documentation</a>
-            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Tab to this link - a new window will open unexpectedly!</p>
+            <p>Each tab has <code>onfocus</code> wired to switch the panel. Arrow keys move focus, which fires <code>onfocus</code>, which changes visible content — a context change without explicit activation:</p>
+            <div style="margin-top:0.75rem;">
+              <div class="tab-list" role="tablist" id="tp-fail-tablist" aria-label="Article sections">
+                <button class="tab-btn" role="tab" id="tp-fail-tab-0" aria-selected="true" tabindex="0"
+                  aria-controls="tp-fail-panel-0"
+                  onfocus="tabActivate(this,'tp-fail')"
+                  onkeydown="tabKeydownFail(event,'tp-fail')">Overview</button>
+                <button class="tab-btn" role="tab" id="tp-fail-tab-1" aria-selected="false" tabindex="-1"
+                  aria-controls="tp-fail-panel-1"
+                  onfocus="tabActivate(this,'tp-fail')"
+                  onkeydown="tabKeydownFail(event,'tp-fail')">Details</button>
+                <button class="tab-btn" role="tab" id="tp-fail-tab-2" aria-selected="false" tabindex="-1"
+                  aria-controls="tp-fail-panel-2"
+                  onfocus="tabActivate(this,'tp-fail')"
+                  onkeydown="tabKeydownFail(event,'tp-fail')">Resources</button>
+              </div>
+              <div role="tabpanel" id="tp-fail-panel-0" class="tab-panel-body" aria-labelledby="tp-fail-tab-0">Overview content: Introduction to the topic.</div>
+              <div role="tabpanel" id="tp-fail-panel-1" class="tab-panel-body" aria-labelledby="tp-fail-tab-1" hidden>Details content: In-depth technical information.</div>
+              <div role="tabpanel" id="tp-fail-panel-2" class="tab-panel-body" aria-labelledby="tp-fail-tab-2" hidden>Resources content: Links and further reading.</div>
+            </div>
+            <p style="font-size:0.85rem;color:var(--color-text-muted);margin-top:0.5rem;">Tab to the tab list, then press <kbd>←</kbd> <kbd>→</kbd> — the panel content changes as focus moves.</p>
           </div>
 
           <div data-demo-state="pass" hidden>
-            <p>This link opens normally when clicked, optionally in a new window:</p>
-            <a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 0.75rem; padding: 0.5rem 1rem; color: var(--color-accent); text-decoration: underline; cursor: pointer;">External documentation (opens in new window)</a>
-            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Users have full control - the link works when they click or press Enter.</p>
+            <p>Arrow keys move focus between tabs but do <em>not</em> switch the panel. Only pressing <kbd>Enter</kbd>, <kbd>Space</kbd>, or clicking activates a tab:</p>
+            <div style="margin-top:0.75rem;">
+              <div class="tab-list" role="tablist" id="tp-pass-tablist" aria-label="Article sections">
+                <button class="tab-btn" role="tab" id="tp-pass-tab-0" aria-selected="true" tabindex="0"
+                  aria-controls="tp-pass-panel-0"
+                  onclick="tabActivate(this,'tp-pass')"
+                  onkeydown="tabKeydownPass(event,'tp-pass')">Overview</button>
+                <button class="tab-btn" role="tab" id="tp-pass-tab-1" aria-selected="false" tabindex="-1"
+                  aria-controls="tp-pass-panel-1"
+                  onclick="tabActivate(this,'tp-pass')"
+                  onkeydown="tabKeydownPass(event,'tp-pass')">Details</button>
+                <button class="tab-btn" role="tab" id="tp-pass-tab-2" aria-selected="false" tabindex="-1"
+                  aria-controls="tp-pass-panel-2"
+                  onclick="tabActivate(this,'tp-pass')"
+                  onkeydown="tabKeydownPass(event,'tp-pass')">Resources</button>
+              </div>
+              <div role="tabpanel" id="tp-pass-panel-0" class="tab-panel-body" aria-labelledby="tp-pass-tab-0">Overview content: Introduction to the topic.</div>
+              <div role="tabpanel" id="tp-pass-panel-1" class="tab-panel-body" aria-labelledby="tp-pass-tab-1" hidden>Details content: In-depth technical information.</div>
+              <div role="tabpanel" id="tp-pass-panel-2" class="tab-panel-body" aria-labelledby="tp-pass-tab-2" hidden>Resources content: Links and further reading.</div>
+            </div>
+            <p style="font-size:0.85rem;color:var(--color-text-muted);margin-top:0.5rem;">Tab to the tab list, then press <kbd>←</kbd> <kbd>→</kbd> to move focus — panel stays the same. Press <kbd>Enter</kbd> or <kbd>Space</kbd> to activate.</p>
           </div>
         </div>
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail">/* ❌ onfocus activates the tab — context change on focus */
+&lt;button role="tab"
+  onfocus="activateTab(this)"
+  onkeydown="moveToAdjacentTab(event)"&gt;Details&lt;/button&gt;</code></pre>
+          <pre><code data-demo-code="pass">/* ✓ onfocus does nothing; activation requires user intent */
+&lt;button role="tab"
+  onclick="activateTab(this)"
+  onkeydown="
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') moveFocusOnly(e);
+    else if (e.key === 'Enter' || e.key === ' ') activateTab(this);
+  "&gt;Details&lt;/button&gt;</code></pre>
         </details>
       </div>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A common failure occurs when a <code>&lt;select&gt;</code> element or a custom dropdown automatically submits a form or navigates to a new URL as soon as a user tabs into it. Another failure is a pop-up dialog or new browser window that launches the moment a component receives keyboard focus. These behaviors are especially harmful for keyboard-only users and screen reader users, who cannot predict or prevent focus from triggering consequential actions and may become confused about where they are in the page or workflow.</p>
+      <p>A common failure is a well-intentioned UI pattern that moves keyboard focus as a side effect of receiving it. For example, an autocomplete input that immediately shifts focus to the first suggestion, or a notification button that opens its panel and moves focus into it on <code>onfocus</code>. The user hasn't activated anything — they simply tabbed to the element — yet their location in the page has changed without warning. This is disorienting for keyboard and screen reader users who lose their place and cannot predict the effect of pressing Tab.</p>
     </section>
 
     <section class="content-section" aria-labelledby="pass-heading">
       <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A page passes when receiving keyboard focus on any interactive component merely highlights or visually indicates that component without triggering navigation, form submissions, new windows, or other context-shifting events. Any meaningful action should require an explicit activation step - such as pressing Enter, Space, or clicking - so that users retain full control over when changes occur.</p>
+      <p>A page passes when receiving keyboard focus on a component only visually indicates that component — it does not move focus elsewhere, open panels and redirect attention, or trigger any other context-shifting event. Meaningful actions (opening a panel, loading suggestions, submitting) must require an explicit activation: pressing Enter, Space, or clicking. Users must remain in control of when and where focus travels.</p>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">

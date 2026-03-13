@@ -85,30 +85,79 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>The user already entered their email in step 1, but step 2 asks them to type it again - unnecessary effort for all users, especially those using switch access or voice input.</p>
-            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
-              <p style="font-size:0.8rem;color:#5a5a5a;margin-bottom:0.75rem;">Step 2 of 3 &mdash; Confirm contact details</p>
-              <div style="margin-bottom:0.75rem;">
-                <label for="fail-337-email" style="display:block;margin-bottom:0.25rem;">Email address</label>
-                <input type="email" id="fail-337-email" placeholder="Enter your email again" style="width:100%;max-width:300px;">
+            <p>Enter your email in step 1 then proceed — step 2 asks you to type it again.</p>
+            <div style="border:1px solid var(--color-border);border-radius:6px;padding:1rem;margin-top:0.75rem;max-width:380px;">
+              <!-- Step 1 -->
+              <div id="fail-337-step1">
+                <p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Step 1 of 3 &mdash; Create account</p>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="fail-337-name" style="display:block;margin-bottom:0.25rem;">Full name</label>
+                  <input type="text" id="fail-337-name" placeholder="e.g. Jane Smith" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="fail-337-email1" style="display:block;margin-bottom:0.25rem;">Email address</label>
+                  <input type="email" id="fail-337-email1" placeholder="e.g. jane@example.com" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <button type="button" onclick="fail337Next()" style="padding:0.4rem 1.2rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Next &rarr;</button>
+                <p id="fail-337-step1-err" role="alert" style="color:#b91c1c;font-size:0.875rem;display:none;margin-top:0.5rem;">Please fill in all fields before continuing.</p>
+              </div>
+              <!-- Step 2 -->
+              <div id="fail-337-step2" hidden>
+                <p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Step 2 of 3 &mdash; Confirm contact details</p>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="fail-337-email2" style="display:block;margin-bottom:0.25rem;">Email address</label>
+                  <input type="email" id="fail-337-email2" placeholder="Enter your email again" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                  <button type="button" onclick="fail337Back()" style="padding:0.4rem 1rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">&larr; Back</button>
+                  <button type="button" style="padding:0.4rem 1.2rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Next &rarr;</button>
+                </div>
               </div>
             </div>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>Step 2 pre-populates the email provided in step 1. The user can change it if needed, but is not required to type it again.</p>
-            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
-              <p style="font-size:0.8rem;color:#5a5a5a;margin-bottom:0.75rem;">Step 2 of 3 &mdash; Confirm contact details</p>
-              <div style="margin-bottom:0.75rem;">
-                <label for="pass-337-email" style="display:block;margin-bottom:0.25rem;">Email address</label>
-                <input type="email" id="pass-337-email" value="user@example.com" style="width:100%;max-width:300px;">
+            <p>Enter your email in step 1 then proceed — step 2 pre-fills it automatically.</p>
+            <div style="border:1px solid var(--color-border);border-radius:6px;padding:1rem;margin-top:0.75rem;max-width:380px;">
+              <!-- Step 1 -->
+              <div id="pass-337-step1">
+                <p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Step 1 of 3 &mdash; Create account</p>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="pass-337-name" style="display:block;margin-bottom:0.25rem;">Full name</label>
+                  <input type="text" id="pass-337-name" placeholder="e.g. Jane Smith" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="pass-337-email1" style="display:block;margin-bottom:0.25rem;">Email address</label>
+                  <input type="email" id="pass-337-email1" placeholder="e.g. jane@example.com" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <button type="button" onclick="pass337Next()" style="padding:0.4rem 1.2rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Next &rarr;</button>
+                <p id="pass-337-step1-err" role="alert" style="color:#b91c1c;font-size:0.875rem;display:none;margin-top:0.5rem;">Please fill in all fields before continuing.</p>
               </div>
-              <p style="font-size:0.8rem;color:#5a5a5a;margin:0;">Pre-filled from step 1. <a href="#" onclick="return false;">Change</a></p>
+              <!-- Step 2 -->
+              <div id="pass-337-step2" hidden>
+                <p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Step 2 of 3 &mdash; Confirm contact details</p>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="pass-337-email2" style="display:block;margin-bottom:0.25rem;">Email address</label>
+                  <input type="email" id="pass-337-email2" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                  <span class="demo-mock-label">Pre-filled from step 1 &mdash; edit if needed</span>
+                </div>
+                <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                  <button type="button" onclick="pass337Back()" style="padding:0.4rem 1rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">&larr; Back</button>
+                  <button type="button" style="padding:0.4rem 1.2rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Next &rarr;</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Step 2 asks for email that was already entered in step 1 --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"email"</span>&gt;Email address&lt;/<span class="hl-tag">label</span>&gt;
+<span class="hl-line-fail">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"email"</span> <span class="hl-tag">id</span>=<span class="hl-value">"email"</span> <span class="hl-tag">placeholder</span>=<span class="hl-value">"Enter your email again"</span>&gt;</span>
+<span class="hl-comment">&lt;!-- User must recall and retype data they already provided --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Step 2 pre-fills email from the previous step --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"email"</span>&gt;Email address&lt;/<span class="hl-tag">label</span>&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"email"</span> <span class="hl-tag">id</span>=<span class="hl-value">"email"</span> <span class="hl-tag">value</span>=<span class="hl-value">"jane@example.com"</span>&gt;</span>
+<span class="hl-comment">&lt;!-- Value carried from step 1 — user can edit but need not retype --&gt;</span></code></pre>
         </details>
       </div>
     </section>
@@ -142,5 +191,38 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script>
+    function fail337Next() {
+      var name  = document.getElementById('fail-337-name').value.trim();
+      var email = document.getElementById('fail-337-email1').value.trim();
+      var err   = document.getElementById('fail-337-step1-err');
+      if (!name || !email) { err.style.display = 'block'; return; }
+      err.style.display = 'none';
+      document.getElementById('fail-337-step1').hidden = true;
+      document.getElementById('fail-337-step2').hidden = false;
+      document.getElementById('fail-337-email2').value = '';
+      document.getElementById('fail-337-email2').focus();
+    }
+    function fail337Back() {
+      document.getElementById('fail-337-step2').hidden = true;
+      document.getElementById('fail-337-step1').hidden = false;
+    }
+
+    function pass337Next() {
+      var name  = document.getElementById('pass-337-name').value.trim();
+      var email = document.getElementById('pass-337-email1').value.trim();
+      var err   = document.getElementById('pass-337-step1-err');
+      if (!name || !email) { err.style.display = 'block'; return; }
+      err.style.display = 'none';
+      document.getElementById('pass-337-step1').hidden = true;
+      document.getElementById('pass-337-step2').hidden = false;
+      document.getElementById('pass-337-email2').value = email;
+      document.getElementById('pass-337-email2').focus();
+    }
+    function pass337Back() {
+      document.getElementById('pass-337-step2').hidden = true;
+      document.getElementById('pass-337-step1').hidden = false;
+    }
+  </script>
 </body>
 </html>

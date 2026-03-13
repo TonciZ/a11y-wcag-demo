@@ -85,16 +85,33 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>The English page contains a French phrase without language markup</p>
+            <p class="demo-mock-label">English page — French phrase has no <code>lang</code> attribute</p>
+            <article class="demo-mock-page">
+              <p>Our company motto is <span>"Liberté, égalité, fraternité"</span> — a guiding principle since our founding.</p>
+            </article>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>The English page contains a French phrase with proper language markup</p>
+            <p class="demo-mock-label">English page — French phrase wrapped with <code>lang="fr"</code></p>
+            <article class="demo-mock-page">
+              <p>Our company motto is <span lang="fr">"Liberté, égalité, fraternité"</span> — a guiding principle since our founding.</p>
+            </article>
           </div>
         </div>
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ French phrase has no lang attribute — screen reader reads it as English --&gt;</span>
+&lt;<span class="hl-tag">p</span>&gt;
+  Our company motto is
+<span class="hl-line-fail">  &lt;<span class="hl-tag">span</span>&gt;&quot;Liberté, égalité, fraternité&quot;&lt;/<span class="hl-tag">span</span>&gt;</span>
+  — a guiding principle since our founding.
+&lt;/<span class="hl-tag">p</span>&gt;</code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ French phrase identified with lang="fr" --&gt;</span>
+&lt;<span class="hl-tag">p</span>&gt;
+  Our company motto is
+<span class="hl-line-pass">  &lt;<span class="hl-tag">span</span> <span class="hl-tag">lang</span>=<span class="hl-value">"fr"</span>&gt;&quot;Liberté, égalité, fraternité&quot;&lt;/<span class="hl-tag">span</span>&gt;</span>
+  — a guiding principle since our founding.
+&lt;/<span class="hl-tag">p</span>&gt;</code></pre>
         </details>
       </div>
 
@@ -122,16 +139,39 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>The English page contains a German quotation without language markup</p>
+            <p class="demo-mock-label">English page — German quote has no <code>lang</code> attribute</p>
+            <article class="demo-mock-page">
+              <blockquote>
+                <p>"Wer kämpft, kann verlieren. Wer nicht kämpft, hat schon verloren."</p>
+                <cite>— Bertolt Brecht</cite>
+              </blockquote>
+            </article>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>The English page contains a German quotation with proper language markup</p>
+            <p class="demo-mock-label">English page — German quote wrapped with <code>lang="de"</code></p>
+            <article class="demo-mock-page">
+              <blockquote lang="de">
+                <p>"Wer kämpft, kann verlieren. Wer nicht kämpft, hat schon verloren."</p>
+                <cite>— Bertolt Brecht</cite>
+              </blockquote>
+            </article>
           </div>
         </div>
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ German quote has no lang attribute — screen reader reads it as English --&gt;</span>
+<span class="hl-line-fail">&lt;<span class="hl-tag">blockquote</span>&gt;</span>
+  &lt;<span class="hl-tag">p</span>&gt;&quot;Wer kämpft, kann verlieren.
+     Wer nicht kämpft, hat schon verloren.&quot;&lt;/<span class="hl-tag">p</span>&gt;
+  &lt;<span class="hl-tag">cite</span>&gt;— Bertolt Brecht&lt;/<span class="hl-tag">cite</span>&gt;
+&lt;/<span class="hl-tag">blockquote</span>&gt;</code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ German quote identified with lang="de" --&gt;</span>
+<span class="hl-line-pass">&lt;<span class="hl-tag">blockquote</span> <span class="hl-tag">lang</span>=<span class="hl-value">"de"</span>&gt;</span>
+  &lt;<span class="hl-tag">p</span>&gt;&quot;Wer kämpft, kann verlieren.
+     Wer nicht kämpft, hat schon verloren.&quot;&lt;/<span class="hl-tag">p</span>&gt;
+  &lt;<span class="hl-tag">cite</span>&gt;— Bertolt Brecht&lt;/<span class="hl-tag">cite</span>&gt;
+&lt;/<span class="hl-tag">blockquote</span>&gt;</code></pre>
         </details>
       </div>
     </section>

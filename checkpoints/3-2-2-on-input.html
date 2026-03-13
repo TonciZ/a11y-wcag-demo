@@ -58,17 +58,44 @@
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo 1: Form Submission on Select Change</h2>
+      <h2 id="demo-heading">Demo 1: Sort order changes on select change</h2>
+
+      <script>
+        var _sortItems = [
+          { name: 'Microphone',      price: 65  },
+          { name: 'Keyboard Stand',  price: 89  },
+          { name: 'Audio Interface', price: 149 },
+          { name: 'Monitor Speakers',price: 220 }
+        ];
+
+        function _applySort(listId, value) {
+          var list = document.getElementById(listId);
+          var sorted = _sortItems.slice();
+          if (value === 'name')        sorted.sort(function(a,b){ return a.name.localeCompare(b.name); });
+          else if (value === 'price-asc')  sorted.sort(function(a,b){ return a.price - b.price; });
+          else if (value === 'price-desc') sorted.sort(function(a,b){ return b.price - a.price; });
+          list.innerHTML = sorted.map(function(i){
+            return '<li>' + i.name + ' <span style="color:var(--color-text-muted)">— €' + i.price + '</span></li>';
+          }).join('');
+        }
+
+        function sortFail(select) { _applySort('sort-fail-list', select.value); }
+
+        function sortPassApply() {
+          var val = document.getElementById('sort-pass-select').value;
+          _applySort('sort-pass-list', val);
+        }
+      </script>
 
       <div class="demo-container"
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-322-1"
-           data-announce-fail="Fail example: Changing the select value immediately submits the form without a submit button"
-           data-announce-pass="Pass example: Users can change the select value and review their choice; submission requires an explicit button click">
+           data-announce-fail="Fail example: Changing the sort select immediately reorders the results — a context change without explicit activation"
+           data-announce-pass="Pass example: Changing the sort select does nothing until Apply is clicked — user stays in control">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-322-1">Demo 1: Auto-submit on input change</span>
+          <span class="demo-container__label" id="demo-label-322-1">Demo 1: Sort order applied on select change</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -84,60 +111,90 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>This form submits automatically when the user changes the select value:</p>
-            <form style="margin-top: 0.75rem;" onsubmit="alert('Form submitted with: ' + document.getElementById('select-322-fail').value); return false;">
-              <fieldset style="border: none; padding: 0; margin: 0;">
-                <legend style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Select your preferred language:</legend>
-                <select id="select-322-fail" onchange="this.form.submit();" style="padding: 0.5rem; font-size: 1rem;">
-                  <option value="">-- Choose one --</option>
-                  <option value="English">English</option>
-                  <option value="Español">Español</option>
-                  <option value="Français">Français</option>
-                  <option value="Deutsch">Deutsch</option>
-                </select>
-              </fieldset>
-              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Select an option - it will submit immediately, even if you meant to explore other options!</p>
-            </form>
+            <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem; flex-wrap:wrap;">
+              <label for="sort-fail-select" style="font-weight:600; white-space:nowrap;">Sort by:</label>
+              <select id="sort-fail-select" onchange="sortFail(this)" style="padding:0.4rem 0.6rem; font-size:0.95rem;">
+                <option value="default">Default</option>
+                <option value="name">Name (A–Z)</option>
+                <option value="price-asc">Price (low–high)</option>
+                <option value="price-desc">Price (high–low)</option>
+              </select>
+            </div>
+            <ul id="sort-fail-list" style="list-style:none; padding:0; margin:0; font-size:0.95rem;">
+              <li>Microphone <span style="color:var(--color-text-muted)">— €65</span></li>
+              <li>Keyboard Stand <span style="color:var(--color-text-muted)">— €89</span></li>
+              <li>Audio Interface <span style="color:var(--color-text-muted)">— €149</span></li>
+              <li>Monitor Speakers <span style="color:var(--color-text-muted)">— €220</span></li>
+            </ul>
+            <p style="font-size:0.85rem; color:var(--color-text-muted); margin-top:0.75rem;">Change the sort order — the list reorders immediately without any confirmation.</p>
           </div>
 
           <div data-demo-state="pass" hidden>
-            <p>This form lets the user change the select value and review it before submitting:</p>
-            <form style="margin-top: 0.75rem;" onsubmit="alert('Form submitted with: ' + document.getElementById('select-322-pass').value); return false;">
-              <fieldset style="border: none; padding: 0; margin: 0;">
-                <legend style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Select your preferred language:</legend>
-                <select id="select-322-pass" style="padding: 0.5rem; font-size: 1rem;">
-                  <option value="">-- Choose one --</option>
-                  <option value="English">English</option>
-                  <option value="Español">Español</option>
-                  <option value="Français">Français</option>
-                  <option value="Deutsch">Deutsch</option>
-                </select>
-              </fieldset>
-              <button type="submit" style="margin-top: 0.75rem; padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer;">Apply Language</button>
-              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Users can change their selection multiple times before submitting.</p>
-            </form>
+            <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem; flex-wrap:wrap;">
+              <label for="sort-pass-select" style="font-weight:600; white-space:nowrap;">Sort by:</label>
+              <select id="sort-pass-select" style="padding:0.4rem 0.6rem; font-size:0.95rem;">
+                <option value="default">Default</option>
+                <option value="name">Name (A–Z)</option>
+                <option value="price-asc">Price (low–high)</option>
+                <option value="price-desc">Price (high–low)</option>
+              </select>
+              <button type="button" onclick="sortPassApply()" style="padding:0.4rem 0.9rem; font-size:0.95rem; cursor:pointer;">Apply</button>
+            </div>
+            <ul id="sort-pass-list" style="list-style:none; padding:0; margin:0; font-size:0.95rem;">
+              <li>Microphone <span style="color:var(--color-text-muted)">— €65</span></li>
+              <li>Keyboard Stand <span style="color:var(--color-text-muted)">— €89</span></li>
+              <li>Audio Interface <span style="color:var(--color-text-muted)">— €149</span></li>
+              <li>Monitor Speakers <span style="color:var(--color-text-muted)">— €220</span></li>
+            </ul>
+            <p style="font-size:0.85rem; color:var(--color-text-muted); margin-top:0.75rem;">Change the sort order — the list stays the same until you click Apply.</p>
           </div>
         </div>
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ onchange immediately reorders — user loses their place --&gt;</span>
+&lt;<span class="hl-tag">select</span>
+<span class="hl-line-fail">  <span class="hl-tag">onchange</span>=<span class="hl-value">"sortResults(this.value)"</span></span>
+&gt;
+  &lt;<span class="hl-tag">option</span>&gt;Price (low–high)&lt;/<span class="hl-tag">option</span>&gt;
+  &lt;<span class="hl-tag">option</span>&gt;Price (high–low)&lt;/<span class="hl-tag">option</span>&gt;
+&lt;/<span class="hl-tag">select</span>&gt;
+<span class="hl-comment">&lt;!-- No Apply button — selection change IS the action --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Select stores the choice; Apply button triggers the sort --&gt;</span>
+&lt;<span class="hl-tag">select</span> <span class="hl-tag">id</span>=<span class="hl-value">"sort-select"</span>&gt;
+  &lt;<span class="hl-tag">option</span>&gt;Price (low–high)&lt;/<span class="hl-tag">option</span>&gt;
+  &lt;<span class="hl-tag">option</span>&gt;Price (high–low)&lt;/<span class="hl-tag">option</span>&gt;
+&lt;/<span class="hl-tag">select</span>&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">button</span> <span class="hl-tag">onclick</span>=<span class="hl-value">"sortResults(select.value)"</span>&gt;Apply&lt;/<span class="hl-tag">button</span>&gt;</span></code></pre>
         </details>
       </div>
     </section>
 
     <section class="content-section" aria-labelledby="demo2-heading">
-      <h2 id="demo2-heading">Demo 2: Autocorrect Overwriting User Input</h2>
+      <h2 id="demo2-heading">Demo 2: OTP field auto-advancing focus</h2>
+
+      <script>
+        function otpAdvance(el, nextId) {
+          if (el.value.length === 1 && nextId) {
+            document.getElementById(nextId).focus();
+          }
+        }
+        function otpKeydown(el, prevId, event) {
+          if (event.key === 'Backspace' && el.value === '' && prevId) {
+            document.getElementById(prevId).focus();
+          }
+        }
+      </script>
 
       <div class="demo-container"
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-322-2"
-           data-announce-fail="Fail example: Text input automatically corrects or overwrites what the user typed"
-           data-announce-pass="Pass example: User input is preserved; suggestions appear without changing the field value">
+           data-announce-fail="Fail example: Typing a digit in each OTP box immediately moves focus to the next box — a context change on input"
+           data-announce-pass="Pass example: A single input field for the full code — user controls their own cursor position">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-322-2">Demo 2: Autocorrect changing user input</span>
+          <span class="demo-container__label" id="demo-label-322-2">Demo 2: OTP field auto-advancing focus</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -153,27 +210,46 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>This input field automatically "corrects" what the user types:</p>
-            <div style="margin-top: 0.75rem;">
-              <label for="input-322-fail" style="display: block; margin-bottom: 0.5rem;">Enter your name:</label>
-              <input type="text" id="input-322-fail" placeholder="Type your name..." style="padding: 0.5rem; font-size: 1rem; width: 100%; max-width: 300px;" oninput="if (this.value.length > 0) { this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1).toLowerCase(); }">
-              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Try typing "john smith" - it will be corrected to "John smith" without your permission!</p>
+            <p id="otp-fail-label" style="font-weight:600; margin-bottom:0.75rem;">Enter verification code</p>
+            <div style="display:flex; gap:0.5rem; align-items:center;" role="group" aria-labelledby="otp-fail-label">
+              <input id="otp-f1" type="text" inputmode="numeric" maxlength="1" pattern="\d"
+                style="width:2.8rem; height:2.8rem; text-align:center; font-size:1.4rem; border:2px solid var(--color-border); border-radius:4px;"
+                oninput="otpAdvance(this,'otp-f2')" aria-label="Digit 1">
+              <input id="otp-f2" type="text" inputmode="numeric" maxlength="1" pattern="\d"
+                style="width:2.8rem; height:2.8rem; text-align:center; font-size:1.4rem; border:2px solid var(--color-border); border-radius:4px;"
+                oninput="otpAdvance(this,'otp-f3')" onkeydown="otpKeydown(this,'otp-f1',event)" aria-label="Digit 2">
+              <input id="otp-f3" type="text" inputmode="numeric" maxlength="1" pattern="\d"
+                style="width:2.8rem; height:2.8rem; text-align:center; font-size:1.4rem; border:2px solid var(--color-border); border-radius:4px;"
+                oninput="otpAdvance(this,'otp-f4')" onkeydown="otpKeydown(this,'otp-f2',event)" aria-label="Digit 3">
+              <input id="otp-f4" type="text" inputmode="numeric" maxlength="1" pattern="\d"
+                style="width:2.8rem; height:2.8rem; text-align:center; font-size:1.4rem; border:2px solid var(--color-border); border-radius:4px;"
+                onkeydown="otpKeydown(this,'otp-f3',event)" aria-label="Digit 4">
             </div>
+            <p style="font-size:0.85rem; color:var(--color-text-muted); margin-top:0.75rem;">Type a digit — focus jumps to the next box automatically, bypassing your control.</p>
           </div>
 
           <div data-demo-state="pass" hidden>
-            <p>This input preserves the user's input exactly as typed:</p>
-            <div style="margin-top: 0.75rem;">
-              <label for="input-322-pass" style="display: block; margin-bottom: 0.5rem;">Enter your name:</label>
-              <input type="text" id="input-322-pass" placeholder="Type your name..." style="padding: 0.5rem; font-size: 1rem; width: 100%; max-width: 300px;">
-              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.5rem;">Users maintain full control over their input. Suggestions can appear separately without modifying the field.</p>
-            </div>
+            <label for="otp-pass" style="display:block; font-weight:600; margin-bottom:0.75rem;">Enter verification code</label>
+            <input id="otp-pass" type="text" inputmode="numeric" maxlength="4" pattern="\d{4}"
+              placeholder="e.g. 1234"
+              style="width:9rem; height:2.8rem; text-align:center; font-size:1.4rem; letter-spacing:0.4em; border:2px solid var(--color-border); border-radius:4px; padding:0 0.5rem;">
+            <p style="font-size:0.85rem; color:var(--color-text-muted); margin-top:0.75rem;">Single input — user types all 4 digits without focus being moved by the page.</p>
           </div>
         </div>
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ oninput moves focus to next field — context change on input --&gt;</span>
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">maxlength</span>=<span class="hl-value">"1"</span>
+<span class="hl-line-fail">  <span class="hl-tag">oninput</span>=<span class="hl-value">"if (this.value) nextField.focus();"</span></span>
+&gt;
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">maxlength</span>=<span class="hl-value">"1"</span>
+<span class="hl-line-fail">  <span class="hl-tag">oninput</span>=<span class="hl-value">"if (this.value) nextField.focus();"</span></span>
+&gt;
+<span class="hl-comment">&lt;!-- Repeated for each digit — user never controls focus --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Single input — user types freely, no forced focus movement --&gt;</span>
+<span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">inputmode</span>=<span class="hl-value">"numeric"</span></span>
+<span class="hl-line-pass">  <span class="hl-tag">maxlength</span>=<span class="hl-value">"4"</span> <span class="hl-tag">pattern</span>=<span class="hl-value">"\d{4}"</span>&gt;</span></code></pre>
         </details>
       </div>
     </section>

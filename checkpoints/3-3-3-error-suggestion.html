@@ -90,29 +90,45 @@
             <p>The error message identifies that something is wrong but offers no guidance on how to fix it:</p>
             <div style="margin-top:0.75rem;">
               <label for="date-fail-333" style="display:block;margin-bottom:0.25rem;">Date of birth</label>
-              <input type="text" id="date-fail-333" value="15/01/90" aria-invalid="true"
-                     style="border:2px solid #b91c1c;border-radius:4px;padding:0.4rem 0.6rem;">
-              <span style="color:#b91c1c;font-size:0.875rem;display:block;margin-top:0.25rem;">&#9888; Invalid input</span>
+              <input type="text" id="date-fail-333" inputmode="numeric" maxlength="10"
+                     placeholder="DD/MM/YYYY"
+                     oninput="maskDate333(this); reset333Field(this, 'date-fail-err-333')"
+                     aria-invalid="false"
+                     style="border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+              <span id="date-fail-err-333" role="alert" style="color:#b91c1c;font-size:0.875rem;display:none;margin-top:0.25rem;"></span>
+              <span class="demo-mock-label">Enter any date and submit to see the error</span>
             </div>
+            <button type="button" onclick="validate333Fail1()" style="margin-top:0.75rem;padding:0.4rem 1rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Submit</button>
           </div>
           <div data-demo-state="pass" hidden>
             <p>The error message describes the expected format and includes a concrete example:</p>
             <div style="margin-top:0.75rem;">
               <label for="date-pass-333" style="display:block;margin-bottom:0.25rem;">Date of birth</label>
-              <input type="text" id="date-pass-333" value="15/01/90" aria-invalid="true"
+              <input type="text" id="date-pass-333" inputmode="numeric" maxlength="10"
+                     placeholder="DD/MM/YYYY"
                      aria-describedby="date-err-333"
-                     style="border:2px solid #b91c1c;border-radius:4px;padding:0.4rem 0.6rem;">
-              <span id="date-err-333" style="color:#b91c1c;font-size:0.875rem;display:block;margin-top:0.25rem;">
-                &#9888; Please enter your date of birth in DD/MM/YYYY format - for example, <strong>15/01/1990</strong>.
-              </span>
+                     oninput="maskDate333(this); reset333Field(this, 'date-err-333')"
+                     aria-invalid="false"
+                     style="border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+              <span id="date-err-333" role="alert" style="color:#b91c1c;font-size:0.875rem;display:none;margin-top:0.25rem;"></span>
+              <span class="demo-mock-label">Enter any date and submit to see the error</span>
             </div>
+            <button type="button" onclick="validate333Pass1()" style="margin-top:0.75rem;padding:0.4rem 1rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Submit</button>
           </div>
         </div>
 
-        <!-- Code blocks for Demo 1 -->
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Error identifies the problem but gives no guidance --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"dob"</span>&gt;Date of birth&lt;/<span class="hl-tag">label</span>&gt;
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">id</span>=<span class="hl-value">"dob"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span> <span class="hl-tag">value</span>=<span class="hl-value">"15/01/90"</span>&gt;
+<span class="hl-line-fail">&lt;<span class="hl-tag">span</span>&gt;⚠ Invalid input&lt;/<span class="hl-tag">span</span>&gt;</span>
+<span class="hl-comment">&lt;!-- User knows something is wrong but not how to fix it --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Error describes the fix with format and example --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"dob"</span>&gt;Date of birth&lt;/<span class="hl-tag">label</span>&gt;
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">id</span>=<span class="hl-value">"dob"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span> <span class="hl-tag">value</span>=<span class="hl-value">"15/01/90"</span>
+       <span class="hl-tag">aria-describedby</span>=<span class="hl-value">"dob-err"</span>&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">span</span> <span class="hl-tag">id</span>=<span class="hl-value">"dob-err"</span>&gt;⚠ Enter date in DD/MM/YYYY format — e.g. 15/01/1990&lt;/<span class="hl-tag">span</span>&gt;</span></code></pre>
         </details>
       </div>
 
@@ -144,26 +160,42 @@
             <p>After password entry fails, the message provides no guidance on what to try next:</p>
             <div style="margin-top:0.75rem;">
               <label for="pwd-fail-333" style="display:block;margin-bottom:0.25rem;">Password</label>
-              <input type="password" id="pwd-fail-333" aria-invalid="true" style="border:2px solid #b91c1c;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:22rem;">
-              <span style="color:#b91c1c;font-size:0.875rem;display:block;margin-top:0.25rem;">&#9888; Authentication failed</span>
+              <input type="password" id="pwd-fail-333" aria-invalid="false"
+                     oninput="reset333Field(this, 'pwd-fail-err-333')"
+                     style="border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:22rem;">
+              <span id="pwd-fail-err-333" role="alert" style="color:#b91c1c;font-size:0.875rem;display:none;margin-top:0.25rem;"></span>
+              <span class="demo-mock-label">Enter any password and submit to trigger the error</span>
             </div>
+            <button type="button" onclick="validate333Fail2()" style="margin-top:0.75rem;padding:0.4rem 1rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Sign in</button>
           </div>
           <div data-demo-state="pass" hidden>
             <p>The error message includes a helpful recovery suggestion:</p>
             <div style="margin-top:0.75rem;">
               <label for="pwd-pass-333" style="display:block;margin-bottom:0.25rem;">Password</label>
-              <input type="password" id="pwd-pass-333" aria-invalid="true" aria-describedby="pwd-err-333" style="border:2px solid #b91c1c;border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:22rem;">
-              <span id="pwd-err-333" style="color:#b91c1c;font-size:0.875rem;display:block;margin-top:0.25rem;">
-                &#9888; Password incorrect. <a href="#" style="color:#b91c1c;text-decoration:underline;">Forgot your password?</a> Use the password reset link to recover your account.
-              </span>
+              <input type="password" id="pwd-pass-333" aria-invalid="false"
+                     aria-describedby="pwd-err-333"
+                     oninput="reset333Field(this, 'pwd-err-333')"
+                     style="border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;width:100%;max-width:22rem;">
+              <span id="pwd-err-333" role="alert" style="color:#b91c1c;font-size:0.875rem;display:none;margin-top:0.25rem;"></span>
+              <span class="demo-mock-label">Enter any password and submit to trigger the error</span>
             </div>
+            <button type="button" onclick="validate333Pass2()" style="margin-top:0.75rem;padding:0.4rem 1rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Sign in</button>
           </div>
         </div>
 
         <!-- Code blocks for Demo 2 -->
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Error gives no recovery path --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"pwd"</span>&gt;Password&lt;/<span class="hl-tag">label</span>&gt;
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"password"</span> <span class="hl-tag">id</span>=<span class="hl-value">"pwd"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span>&gt;
+<span class="hl-line-fail">&lt;<span class="hl-tag">span</span>&gt;⚠ Authentication failed&lt;/<span class="hl-tag">span</span>&gt;</span>
+<span class="hl-comment">&lt;!-- User is stuck — no suggestion on how to proceed --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Error includes a recovery action --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"pwd"</span>&gt;Password&lt;/<span class="hl-tag">label</span>&gt;
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"password"</span> <span class="hl-tag">id</span>=<span class="hl-value">"pwd"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span>
+       <span class="hl-tag">aria-describedby</span>=<span class="hl-value">"pwd-err"</span>&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">span</span> <span class="hl-tag">id</span>=<span class="hl-value">"pwd-err"</span>&gt;⚠ Password incorrect. &lt;<span class="hl-tag">a</span> <span class="hl-tag">href</span>=<span class="hl-value">"#"</span>&gt;Forgot your password?&lt;/<span class="hl-tag">a</span>&gt;&lt;/<span class="hl-tag">span</span>&gt;</span></code></pre>
         </details>
       </div>
 
@@ -206,5 +238,86 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script>
+    var BORDER_DEFAULT_333 = '2px solid var(--color-border)';
+    var BORDER_ERROR_333   = '2px solid #b91c1c';
+
+    function maskDate333(input) {
+      var digits = input.value.replace(/\D/g, '').slice(0, 8);
+      var out = digits;
+      if (digits.length > 4) {
+        out = digits.slice(0,2) + '/' + digits.slice(2,4) + '/' + digits.slice(4);
+      } else if (digits.length > 2) {
+        out = digits.slice(0,2) + '/' + digits.slice(2);
+      }
+      input.value = out;
+    }
+
+    function reset333Field(input, errorId) {
+      input.style.border = BORDER_DEFAULT_333;
+      input.setAttribute('aria-invalid', 'false');
+      var err = document.getElementById(errorId);
+      if (err) { err.style.display = 'none'; err.textContent = ''; }
+    }
+
+    function showError333(inputId, errorId, message) {
+      var input = document.getElementById(inputId);
+      var err   = document.getElementById(errorId);
+      input.style.border = BORDER_ERROR_333;
+      input.setAttribute('aria-invalid', 'true');
+      err.textContent = '\u26a0 ' + message;
+      err.style.display = 'block';
+    }
+
+    var MONTH_NAMES_333 = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    function daysInMonth333(mm, yyyy) {
+      var days = [31,28,31,30,31,30,31,31,30,31,30,31];
+      if (mm === 2 && ((yyyy % 4 === 0 && yyyy % 100 !== 0) || yyyy % 400 === 0)) return 29;
+      return days[mm - 1];
+    }
+
+    function checkDate333(val) {
+      if (!/^\d{2}\/\d{2}\/\d{4}$/.test(val)) return { ok: false, msg: 'Please enter a date in DD/MM/YYYY format \u2014 for example, 15/01/1990.' };
+      var p    = val.split('/');
+      var dd   = parseInt(p[0], 10);
+      var mm   = parseInt(p[1], 10);
+      var yyyy = parseInt(p[2], 10);
+      if (mm < 1 || mm > 12)  return { ok: false, msg: 'Month must be between 01 and 12.' };
+      if (yyyy < 1900)        return { ok: false, msg: 'Year must be 1900 or later.' };
+      if (yyyy > 2026)        return { ok: false, msg: 'A fellow time traveller? ' + yyyy + ' hasn\u2019t happened yet \u2014 please enter a year up to 2026.' };
+      var max = daysInMonth333(mm, yyyy);
+      if (dd < 1 || dd > max) return { ok: false, msg: 'There are only ' + max + ' days in ' + MONTH_NAMES_333[mm - 1] + '. Please check the day.' };
+      return { ok: true };
+    }
+
+    function validate333Fail1() {
+      var input = document.getElementById('date-fail-333');
+      var result = checkDate333(input.value);
+      if (!result.ok) showError333('date-fail-333', 'date-fail-err-333', 'Invalid input');
+    }
+
+    function validate333Pass1() {
+      var input = document.getElementById('date-pass-333');
+      var result = checkDate333(input.value);
+      if (!result.ok) showError333('date-pass-333', 'date-err-333', result.msg);
+    }
+
+    function validate333Fail2() {
+      var input = document.getElementById('pwd-fail-333');
+      if (input.value.length === 0) { input.focus(); return; }
+      showError333('pwd-fail-333', 'pwd-fail-err-333', 'Authentication failed');
+    }
+
+    function validate333Pass2() {
+      var input = document.getElementById('pwd-pass-333');
+      if (input.value.length === 0) { input.focus(); return; }
+      var err = document.getElementById('pwd-err-333');
+      input.style.border = BORDER_ERROR_333;
+      input.setAttribute('aria-invalid', 'true');
+      err.innerHTML = '\u26a0 Password incorrect. <a href="#" style="color:#b91c1c;text-decoration:underline;">Forgot your password?</a> Use the password reset link to recover your account.';
+      err.style.display = 'block';
+    }
+  </script>
 </body>
 </html>

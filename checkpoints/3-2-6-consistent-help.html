@@ -84,30 +84,30 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>The help link appears in a different position on each step - users who rely on consistent layout cannot predict where to find it.</p>
-            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
-              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
-                <strong style="font-size:0.8rem;color:#5a5a5a;">Step 1 of 3</strong>
+            <p class="demo-mock-label">Help link jumps between top-right and bottom-left across checkout steps</p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <div style="flex:1;min-width:160px;border:1px solid var(--color-border);border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
+                <strong style="font-size:0.8rem;color:var(--color-text-muted);">Step 1 of 3</strong>
                 <p style="font-size:0.875rem;margin:0.5rem 0 0;">Enter your details</p>
                 <a href="#" onclick="return false;" style="position:absolute;top:0.75rem;right:0.75rem;font-size:0.8rem;">Help</a>
               </div>
-              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
-                <strong style="font-size:0.8rem;color:#5a5a5a;">Step 2 of 3</strong>
+              <div style="flex:1;min-width:160px;border:1px solid var(--color-border);border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
+                <strong style="font-size:0.8rem;color:var(--color-text-muted);">Step 2 of 3</strong>
                 <p style="font-size:0.875rem;margin:0.5rem 0 0;">Review your order</p>
                 <a href="#" onclick="return false;" style="position:absolute;bottom:0.75rem;left:0.75rem;font-size:0.8rem;">Help</a>
               </div>
             </div>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>The help link appears in the same position (top-right) on every step - users can reliably find it.</p>
-            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
-              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
-                <strong style="font-size:0.8rem;color:#5a5a5a;">Step 1 of 3</strong>
+            <p class="demo-mock-label">Help link always appears top-right on every step</p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <div style="flex:1;min-width:160px;border:1px solid var(--color-border);border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
+                <strong style="font-size:0.8rem;color:var(--color-text-muted);">Step 1 of 3</strong>
                 <p style="font-size:0.875rem;margin:0.5rem 0 0;">Enter your details</p>
                 <a href="#" onclick="return false;" style="position:absolute;top:0.75rem;right:0.75rem;font-size:0.8rem;">Help</a>
               </div>
-              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
-                <strong style="font-size:0.8rem;color:#5a5a5a;">Step 2 of 3</strong>
+              <div style="flex:1;min-width:160px;border:1px solid var(--color-border);border-radius:4px;padding:0.75rem;position:relative;min-height:100px;">
+                <strong style="font-size:0.8rem;color:var(--color-text-muted);">Step 2 of 3</strong>
                 <p style="font-size:0.875rem;margin:0.5rem 0 0;">Review your order</p>
                 <a href="#" onclick="return false;" style="position:absolute;top:0.75rem;right:0.75rem;font-size:0.8rem;">Help</a>
               </div>
@@ -117,7 +117,24 @@
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Help link position changes between steps --&gt;</span>
+&lt;<span class="hl-tag">div</span> <span class="hl-tag">class</span>=<span class="hl-value">"step"</span>&gt;
+  &lt;<span class="hl-tag">h2</span>&gt;Step 1 of 3&lt;/<span class="hl-tag">h2</span>&gt;
+<span class="hl-line-fail">  &lt;<span class="hl-tag">a</span> <span class="hl-tag">href</span>=<span class="hl-value">"/help"</span> <span class="hl-tag">style</span>=<span class="hl-value">"position:absolute;top:0;right:0"</span>&gt;Help&lt;/<span class="hl-tag">a</span>&gt;</span>
+&lt;/<span class="hl-tag">div</span>&gt;
+&lt;<span class="hl-tag">div</span> <span class="hl-tag">class</span>=<span class="hl-value">"step"</span>&gt;
+  &lt;<span class="hl-tag">h2</span>&gt;Step 2 of 3&lt;/<span class="hl-tag">h2</span>&gt;
+<span class="hl-line-fail">  &lt;<span class="hl-tag">a</span> <span class="hl-tag">href</span>=<span class="hl-value">"/help"</span> <span class="hl-tag">style</span>=<span class="hl-value">"position:absolute;bottom:0;left:0"</span>&gt;Help&lt;/<span class="hl-tag">a</span>&gt;</span>
+&lt;/<span class="hl-tag">div</span>&gt;</code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Help link always appears in the same position --&gt;</span>
+&lt;<span class="hl-tag">div</span> <span class="hl-tag">class</span>=<span class="hl-value">"step"</span>&gt;
+  &lt;<span class="hl-tag">h2</span>&gt;Step 1 of 3&lt;/<span class="hl-tag">h2</span>&gt;
+<span class="hl-line-pass">  &lt;<span class="hl-tag">a</span> <span class="hl-tag">href</span>=<span class="hl-value">"/help"</span> <span class="hl-tag">style</span>=<span class="hl-value">"position:absolute;top:0;right:0"</span>&gt;Help&lt;/<span class="hl-tag">a</span>&gt;</span>
+&lt;/<span class="hl-tag">div</span>&gt;
+&lt;<span class="hl-tag">div</span> <span class="hl-tag">class</span>=<span class="hl-value">"step"</span>&gt;
+  &lt;<span class="hl-tag">h2</span>&gt;Step 2 of 3&lt;/<span class="hl-tag">h2</span>&gt;
+<span class="hl-line-pass">  &lt;<span class="hl-tag">a</span> <span class="hl-tag">href</span>=<span class="hl-value">"/help"</span> <span class="hl-tag">style</span>=<span class="hl-value">"position:absolute;top:0;right:0"</span>&gt;Help&lt;/<span class="hl-tag">a</span>&gt;</span>
+&lt;/<span class="hl-tag">div</span>&gt;</code></pre>
         </details>
       </div>
 
@@ -145,46 +162,84 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Contact information appears in different locations on different pages:</p>
-            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
-              <strong style="font-size:0.8rem;color:#5a5a5a;">Product Page</strong>
-              <p style="margin:0.5rem 0 0;font-size:0.875rem;">Contact us via:</p>
-              <div style="margin-top:0.5rem;">
-                <a href="mailto:info@example.com" style="display:block;margin-bottom:0.5rem;font-size:0.875rem;">Email: info@example.com</a>
-              </div>
-            </div>
-            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
-              <strong style="font-size:0.8rem;color:#5a5a5a;">Support Page</strong>
-              <p style="margin:0.5rem 0 0;font-size:0.875rem;">Need help?</p>
-              <div style="margin-top:0.5rem;">
-                <a href="tel:+18005551234" style="display:block;margin-bottom:0.5rem;font-size:0.875rem;">Call: 1-800-555-1234</a>
-              </div>
+            <p class="demo-mock-label">Live chat widget appears in header on Home, but in footer on Checkout</p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <article class="demo-mock-page" style="flex:1;min-width:180px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                  <strong style="font-size:0.8rem;">Home</strong>
+                  <a href="#" onclick="return false;" style="font-size:0.75rem;padding:0.2em 0.5em;border:1px solid var(--color-border);border-radius:3px;">💬 Chat</a>
+                </div>
+                <p style="margin:0;font-size:0.8rem;color:var(--color-text-muted);">Welcome to our store…</p>
+              </article>
+              <article class="demo-mock-page" style="flex:1;min-width:180px;">
+                <div style="margin-bottom:0.5rem;">
+                  <strong style="font-size:0.8rem;">Checkout</strong>
+                </div>
+                <p style="margin:0 0 0.5rem;font-size:0.8rem;color:var(--color-text-muted);">Enter payment details…</p>
+                <div style="border-top:1px solid var(--color-border);padding-top:0.5rem;text-align:center;">
+                  <a href="#" onclick="return false;" style="font-size:0.75rem;padding:0.2em 0.5em;border:1px solid var(--color-border);border-radius:3px;">💬 Chat</a>
+                </div>
+              </article>
             </div>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>Contact information appears in the same location on all pages:</p>
-            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
-              <strong style="font-size:0.8rem;color:#5a5a5a;">Product Page</strong>
-              <p style="margin:0.5rem 0 0;font-size:0.875rem;">Contact us via:</p>
-              <div style="margin-top:0.5rem;">
-                <a href="mailto:info@example.com" style="display:block;margin-bottom:0.5rem;font-size:0.875rem;">Email: info@example.com</a>
-                <a href="tel:+18005551234" style="display:block;font-size:0.875rem;">Call: 1-800-555-1234</a>
-              </div>
-            </div>
-            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
-              <strong style="font-size:0.8rem;color:#5a5a5a;">Support Page</strong>
-              <p style="margin:0.5rem 0 0;font-size:0.875rem;">Contact us via:</p>
-              <div style="margin-top:0.5rem;">
-                <a href="mailto:info@example.com" style="display:block;margin-bottom:0.5rem;font-size:0.875rem;">Email: info@example.com</a>
-                <a href="tel:+18005551234" style="display:block;font-size:0.875rem;">Call: 1-800-555-1234</a>
-              </div>
+            <p class="demo-mock-label">Live chat widget always appears in the footer on every page</p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <article class="demo-mock-page" style="flex:1;min-width:180px;">
+                <div style="margin-bottom:0.5rem;">
+                  <strong style="font-size:0.8rem;">Home</strong>
+                </div>
+                <p style="margin:0 0 0.5rem;font-size:0.8rem;color:var(--color-text-muted);">Welcome to our store…</p>
+                <div style="border-top:1px solid var(--color-border);padding-top:0.5rem;text-align:center;">
+                  <a href="#" onclick="return false;" style="font-size:0.75rem;padding:0.2em 0.5em;border:1px solid var(--color-border);border-radius:3px;">💬 Chat</a>
+                </div>
+              </article>
+              <article class="demo-mock-page" style="flex:1;min-width:180px;">
+                <div style="margin-bottom:0.5rem;">
+                  <strong style="font-size:0.8rem;">Checkout</strong>
+                </div>
+                <p style="margin:0 0 0.5rem;font-size:0.8rem;color:var(--color-text-muted);">Enter payment details…</p>
+                <div style="border-top:1px solid var(--color-border);padding-top:0.5rem;text-align:center;">
+                  <a href="#" onclick="return false;" style="font-size:0.75rem;padding:0.2em 0.5em;border:1px solid var(--color-border);border-radius:3px;">💬 Chat</a>
+                </div>
+              </article>
             </div>
           </div>
         </div>
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Chat widget in different structural positions per page --&gt;</span>
+&lt;<span class="hl-tag">body</span>&gt; <span class="hl-comment">&lt;!-- Home --&gt;</span>
+  &lt;<span class="hl-tag">header</span>&gt;
+<span class="hl-line-fail">    &lt;<span class="hl-tag">a</span> <span class="hl-tag">href</span>=<span class="hl-value">"/chat"</span>&gt;💬 Chat&lt;/<span class="hl-tag">a</span>&gt; <span class="hl-comment">&lt;!-- in header --&gt;</span></span>
+  &lt;/<span class="hl-tag">header</span>&gt;
+  &lt;<span class="hl-tag">main</span>&gt;…&lt;/<span class="hl-tag">main</span>&gt;
+&lt;/<span class="hl-tag">body</span>&gt;
+
+&lt;<span class="hl-tag">body</span>&gt; <span class="hl-comment">&lt;!-- Checkout --&gt;</span>
+  &lt;<span class="hl-tag">header</span>&gt;…&lt;/<span class="hl-tag">header</span>&gt;
+  &lt;<span class="hl-tag">main</span>&gt;…&lt;/<span class="hl-tag">main</span>&gt;
+  &lt;<span class="hl-tag">footer</span>&gt;
+<span class="hl-line-fail">    &lt;<span class="hl-tag">a</span> <span class="hl-tag">href</span>=<span class="hl-value">"/chat"</span>&gt;💬 Chat&lt;/<span class="hl-tag">a</span>&gt; <span class="hl-comment">&lt;!-- moved to footer --&gt;</span></span>
+  &lt;/<span class="hl-tag">footer</span>&gt;
+&lt;/<span class="hl-tag">body</span>&gt;</code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Chat widget in the same position on every page --&gt;</span>
+&lt;<span class="hl-tag">body</span>&gt; <span class="hl-comment">&lt;!-- Home --&gt;</span>
+  &lt;<span class="hl-tag">header</span>&gt;…&lt;/<span class="hl-tag">header</span>&gt;
+  &lt;<span class="hl-tag">main</span>&gt;…&lt;/<span class="hl-tag">main</span>&gt;
+  &lt;<span class="hl-tag">footer</span>&gt;
+<span class="hl-line-pass">    &lt;<span class="hl-tag">a</span> <span class="hl-tag">href</span>=<span class="hl-value">"/chat"</span>&gt;💬 Chat&lt;/<span class="hl-tag">a</span>&gt;</span>
+  &lt;/<span class="hl-tag">footer</span>&gt;
+&lt;/<span class="hl-tag">body</span>&gt;
+
+&lt;<span class="hl-tag">body</span>&gt; <span class="hl-comment">&lt;!-- Checkout --&gt;</span>
+  &lt;<span class="hl-tag">header</span>&gt;…&lt;/<span class="hl-tag">header</span>&gt;
+  &lt;<span class="hl-tag">main</span>&gt;…&lt;/<span class="hl-tag">main</span>&gt;
+  &lt;<span class="hl-tag">footer</span>&gt;
+<span class="hl-line-pass">    &lt;<span class="hl-tag">a</span> <span class="hl-tag">href</span>=<span class="hl-value">"/chat"</span>&gt;💬 Chat&lt;/<span class="hl-tag">a</span>&gt;</span>
+  &lt;/<span class="hl-tag">footer</span>&gt;
+&lt;/<span class="hl-tag">body</span>&gt;</code></pre>
         </details>
       </div>
     </section>

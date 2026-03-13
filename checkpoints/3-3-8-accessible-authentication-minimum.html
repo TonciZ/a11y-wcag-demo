@@ -89,11 +89,11 @@
             <form style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;max-width:320px;" onsubmit="return false;">
               <div>
                 <label for="fail-338-user" style="display:block;margin-bottom:0.25rem;">Username</label>
-                <input type="text" id="fail-338-user" autocomplete="username">
+                <input type="text" id="fail-338-user" name="username" autocomplete="username">
               </div>
               <div>
                 <label for="fail-338-pass" style="display:block;margin-bottom:0.25rem;">Password</label>
-                <input type="password" id="fail-338-pass" autocomplete="current-password">
+                <input type="password" id="fail-338-pass" name="password" autocomplete="current-password">
               </div>
               <fieldset style="border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;">
                 <legend style="font-size:0.875rem;padding:0 0.25rem;">Security check (required)</legend>
@@ -110,14 +110,14 @@
             <form style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;max-width:320px;" onsubmit="return false;">
               <div>
                 <label for="pass-338-user" style="display:block;margin-bottom:0.25rem;">Username</label>
-                <input type="text" id="pass-338-user" autocomplete="username">
+                <input type="text" id="pass-338-user" name="username" autocomplete="username">
               </div>
               <div>
                 <label for="pass-338-pw" style="display:block;margin-bottom:0.25rem;">Password</label>
                 <div style="display:flex;gap:0.5rem;align-items:center;">
-                  <input type="password" id="pass-338-pw" autocomplete="current-password" style="flex:1;">
-                  <button type="button" aria-controls="pass-338-pw"
-                          onclick="var i=document.getElementById('pass-338-pw');i.type=(i.type==='password'?'text':'password');this.textContent=(i.type==='password'?'Show':'Hide');">
+                  <input type="password" id="pass-338-pw" name="password" autocomplete="current-password" style="flex:1;">
+                  <button type="button" id="pass-338-toggle" aria-controls="pass-338-pw" aria-pressed="false"
+                          onclick="var i=document.getElementById('pass-338-pw'),p=i.type==='password';i.type=p?'text':'password';this.setAttribute('aria-pressed',p);this.textContent=p?'Hide':'Show';">
                     Show
                   </button>
                 </div>
@@ -128,7 +128,17 @@
         </div>
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Login requires a cognitive function test (maths puzzle) with no alternative --&gt;</span>
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">id</span>=<span class="hl-value">"username"</span> <span class="hl-tag">autocomplete</span>=<span class="hl-value">"username"</span>&gt;
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"password"</span> <span class="hl-tag">id</span>=<span class="hl-value">"password"</span> <span class="hl-tag">autocomplete</span>=<span class="hl-value">"current-password"</span>&gt;
+<span class="hl-line-fail">&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"captcha"</span>&gt;What is 7 + 4?&lt;/<span class="hl-tag">label</span>&gt;
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">id</span>=<span class="hl-value">"captcha"</span> <span class="hl-tag">required</span>&gt;</span>
+<span class="hl-comment">&lt;!-- No alternative — users with dyscalculia or cognitive disabilities are blocked --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Standard password field — supports paste, autofill, and password managers --&gt;</span>
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">id</span>=<span class="hl-value">"username"</span> <span class="hl-tag">autocomplete</span>=<span class="hl-value">"username"</span>&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"password"</span> <span class="hl-tag">id</span>=<span class="hl-value">"password"</span> <span class="hl-tag">autocomplete</span>=<span class="hl-value">"current-password"</span>&gt;
+&lt;<span class="hl-tag">button</span> <span class="hl-tag">type</span>=<span class="hl-value">"button"</span> <span class="hl-tag">aria-controls</span>=<span class="hl-value">"password"</span> <span class="hl-tag">aria-pressed</span>=<span class="hl-value">"false"</span>&gt;Show&lt;/<span class="hl-tag">button</span>&gt;</span>
+<span class="hl-comment">&lt;!-- No cognitive test — password manager handles recall for the user --&gt;</span></code></pre>
         </details>
       </div>
     </section>

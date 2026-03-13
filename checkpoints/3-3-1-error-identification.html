@@ -85,29 +85,48 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>A form was submitted with an empty required field. The error is indicated only by a red border - no text message. Screen reader users receive no information about what went wrong.</p>
+            <p>Submit the form to trigger validation. The error is shown only with a red border — no text message. Screen reader users receive no information about what went wrong.</p>
+            <p class="demo-mock-label">Try: leave empty, enter <code>notanemail</code>, or <code>user@nodomain</code></p>
             <div style="margin-top:0.75rem;">
               <label for="email-331-fail" style="display:block;margin-bottom:0.25rem;font-weight:600;">Email address</label>
-              <input type="email" id="email-331-fail" aria-invalid="true"
-                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+              <input type="email" id="email-331-fail" aria-invalid="false"
+                     style="padding:0.5em 0.75em;border:2px solid var(--color-border);border-radius:4px;font-size:1rem;width:100%;max-width:22rem;"
+                     oninput="reset331FailInput(this)">
+              <button type="button" onclick="validate331Fail()"
+                      style="display:inline-block;margin-top:0.75rem;padding:0.45em 1.1em;background:var(--color-primary,#0055cc);color:#fff;border:none;border-radius:4px;font-size:0.9rem;cursor:pointer;">
+                Submit
+              </button>
             </div>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>The same error state includes a descriptive text message linked to the field via <code>aria-describedby</code>. Screen readers announce the error when the field is focused.</p>
+            <p>Submit the form to trigger validation. Each error is described in text and linked to the field via <code>aria-describedby</code> so screen readers announce it on focus.</p>
+            <p class="demo-mock-label">Try: leave empty, enter <code>notanemail</code>, or <code>user@nodomain</code> — then fix it to see errors clear</p>
             <div style="margin-top:0.75rem;">
               <label for="email-331-pass" style="display:block;margin-bottom:0.25rem;font-weight:600;">Email address</label>
-              <input type="email" id="email-331-pass" aria-invalid="true" aria-describedby="email-331-error"
-                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
-              <p id="email-331-error" style="margin:0.35rem 0 0;color:#c0392b;font-size:0.9rem;">
-                Error: Email address is required.
-              </p>
+              <input type="email" id="email-331-pass" aria-invalid="false" aria-describedby="email-331-error"
+                     style="padding:0.5em 0.75em;border:2px solid var(--color-border);border-radius:4px;font-size:1rem;width:100%;max-width:22rem;"
+                     oninput="reset331PassInput(this, 'email-331-error')">
+              <p id="email-331-error" role="alert" style="margin:0.35rem 0 0;color:#c0392b;font-size:0.9rem;display:none;"></p>
+              <button type="button" onclick="validate331Pass()"
+                      style="display:inline-block;margin-top:0.75rem;padding:0.45em 1.1em;background:var(--color-primary,#0055cc);color:#fff;border:none;border-radius:4px;font-size:0.9rem;cursor:pointer;">
+                Submit
+              </button>
             </div>
           </div>
         </div>
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Error shown only by red border — no text description --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"email"</span>&gt;Email address&lt;/<span class="hl-tag">label</span>&gt;
+<span class="hl-line-fail">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"email"</span> <span class="hl-tag">id</span>=<span class="hl-value">"email"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span>
+       <span class="hl-tag">style</span>=<span class="hl-value">"border:2px solid red"</span>&gt;</span>
+<span class="hl-comment">&lt;!-- No error text — screen readers get no feedback --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Error described in text, linked via aria-describedby --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"email"</span>&gt;Email address&lt;/<span class="hl-tag">label</span>&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"email"</span> <span class="hl-tag">id</span>=<span class="hl-value">"email"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span>
+       <span class="hl-tag">aria-describedby</span>=<span class="hl-value">"email-error"</span>&gt;</span>
+&lt;<span class="hl-tag">p</span> <span class="hl-tag">id</span>=<span class="hl-value">"email-error"</span>&gt;Error: Email address is required.&lt;/<span class="hl-tag">p</span>&gt;</code></pre>
         </details>
       </div>
 
@@ -135,45 +154,67 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Form submission shows a generic error message but does not identify which fields caused the errors.</p>
-            <div style="margin-top:0.75rem;padding:0.75rem;background-color:#fee;border:1px solid #c0392b;border-radius:4px;margin-bottom:1rem;">
+            <p>Submit the form to trigger validation. A generic banner appears but nothing identifies which specific fields are wrong.</p>
+            <p class="demo-mock-label">Try: leave fields empty, or use a password shorter than 8 characters</p>
+            <div id="error-banner-fail" role="alert" style="display:none;margin-top:0.75rem;padding:0.75rem;background-color:#fee;border:1px solid #c0392b;border-radius:4px;margin-bottom:1rem;">
               <strong style="color:#c0392b;">There was a problem with your submission.</strong>
             </div>
-            <div style="margin-bottom:0.75rem;">
+            <div style="margin-top:0.75rem;margin-bottom:0.75rem;">
               <label for="user-fail" style="display:block;margin-bottom:0.25rem;font-weight:600;">Username</label>
-              <input type="text" id="user-fail" aria-invalid="true"
-                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+              <input type="text" id="user-fail" aria-invalid="false"
+                     style="padding:0.5em 0.75em;border:2px solid var(--color-border);border-radius:4px;font-size:1rem;width:100%;max-width:22rem;"
+                     oninput="reset331FailInput(this)">
             </div>
             <div style="margin-bottom:0.75rem;">
               <label for="password-fail" style="display:block;margin-bottom:0.25rem;font-weight:600;">Password (min. 8 characters)</label>
-              <input type="password" id="password-fail" aria-invalid="true"
-                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+              <input type="password" id="password-fail" aria-invalid="false"
+                     style="padding:0.5em 0.75em;border:2px solid var(--color-border);border-radius:4px;font-size:1rem;width:100%;max-width:22rem;"
+                     oninput="reset331FailInput(this)">
             </div>
+            <button type="button" onclick="validate331Fail2()"
+                    style="display:inline-block;padding:0.45em 1.1em;background:var(--color-primary,#0055cc);color:#fff;border:none;border-radius:4px;font-size:0.9rem;cursor:pointer;">
+              Submit
+            </button>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>Each field that has an error displays its own specific error message.</p>
-            <div style="margin-bottom:1rem;">
+            <p>Submit the form to trigger validation. Each field in error gets its own specific message.</p>
+            <p class="demo-mock-label">Try empty fields or a short password — or use <strong>admin</strong> / <strong>password123</strong> to submit successfully</p>
+            <div style="margin-top:0.75rem;margin-bottom:0.75rem;">
               <label for="user-pass" style="display:block;margin-bottom:0.25rem;font-weight:600;">Username</label>
-              <input type="text" id="user-pass" aria-invalid="true" aria-describedby="user-pass-error"
-                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
-              <p id="user-pass-error" style="margin:0.35rem 0 0;color:#c0392b;font-size:0.9rem;">
-                Error: Username is required.
-              </p>
+              <input type="text" id="user-pass" aria-invalid="false" aria-describedby="user-pass-error"
+                     style="padding:0.5em 0.75em;border:2px solid var(--color-border);border-radius:4px;font-size:1rem;width:100%;max-width:22rem;"
+                     oninput="reset331PassInput(this, 'user-pass-error')">
+              <p id="user-pass-error" role="alert" style="margin:0.35rem 0 0;color:#c0392b;font-size:0.9rem;display:none;"></p>
             </div>
-            <div>
+            <div style="margin-bottom:0.75rem;">
               <label for="password-pass" style="display:block;margin-bottom:0.25rem;font-weight:600;">Password (min. 8 characters)</label>
-              <input type="password" id="password-pass" aria-invalid="true" aria-describedby="password-pass-error"
-                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
-              <p id="password-pass-error" style="margin:0.35rem 0 0;color:#c0392b;font-size:0.9rem;">
-                Error: Password must be at least 8 characters long.
-              </p>
+              <input type="password" id="password-pass" aria-invalid="false" aria-describedby="password-pass-error"
+                     style="padding:0.5em 0.75em;border:2px solid var(--color-border);border-radius:4px;font-size:1rem;width:100%;max-width:22rem;"
+                     oninput="reset331PassInput(this, 'password-pass-error')">
+              <p id="password-pass-error" role="alert" style="margin:0.35rem 0 0;color:#c0392b;font-size:0.9rem;display:none;"></p>
             </div>
+            <button type="button" onclick="validate331Pass2()"
+                    style="display:inline-block;padding:0.45em 1.1em;background:var(--color-primary,#0055cc);color:#fff;border:none;border-radius:4px;font-size:0.9rem;cursor:pointer;">
+              Submit
+            </button>
           </div>
         </div>
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Generic error — doesn't say which fields failed --&gt;</span>
+<span class="hl-line-fail">&lt;<span class="hl-tag">p</span>&gt;There was a problem with your submission.&lt;/<span class="hl-tag">p</span>&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"username"</span>&gt;Username&lt;/<span class="hl-tag">label</span>&gt;
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">id</span>=<span class="hl-value">"username"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span>&gt;
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"password"</span>&gt;Password&lt;/<span class="hl-tag">label</span>&gt;
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">id</span>=<span class="hl-value">"password"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span>&gt;</code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Each field has its own specific error message --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"username"</span>&gt;Username&lt;/<span class="hl-tag">label</span>&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">id</span>=<span class="hl-value">"username"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span> <span class="hl-tag">aria-describedby</span>=<span class="hl-value">"user-err"</span>&gt;
+&lt;<span class="hl-tag">p</span> <span class="hl-tag">id</span>=<span class="hl-value">"user-err"</span>&gt;Error: Username is required.&lt;/<span class="hl-tag">p</span>&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"password"</span>&gt;Password&lt;/<span class="hl-tag">label</span>&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">id</span>=<span class="hl-value">"password"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span> <span class="hl-tag">aria-describedby</span>=<span class="hl-value">"pw-err"</span>&gt;
+&lt;<span class="hl-tag">p</span> <span class="hl-tag">id</span>=<span class="hl-value">"pw-err"</span>&gt;Error: Password must be at least 8 characters.&lt;/<span class="hl-tag">p</span>&gt;</span></code></pre>
         </details>
       </div>
     </section>
@@ -215,5 +256,137 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script>
+    var BORDER_DEFAULT = '2px solid var(--color-border)';
+    var BORDER_ERROR   = '2px solid #c0392b';
+
+    function reset331FailInput(el) {
+      el.style.border = BORDER_DEFAULT;
+      el.setAttribute('aria-invalid', 'false');
+    }
+
+    function reset331PassInput(el, errorId) {
+      el.style.border = BORDER_DEFAULT;
+      el.setAttribute('aria-invalid', 'false');
+      var err = document.getElementById(errorId);
+      if (err) { err.style.display = 'none'; err.textContent = ''; }
+    }
+
+    function isValidEmail(val) {
+      // Require: something @ something . something
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim());
+    }
+
+    // Demo 1 — fail: red border only
+    function validate331Fail() {
+      var input = document.getElementById('email-331-fail');
+      var val   = input.value.trim();
+      if (val === '' || !isValidEmail(val)) {
+        input.style.border = BORDER_ERROR;
+        input.setAttribute('aria-invalid', 'true');
+      } else {
+        input.style.border = BORDER_DEFAULT;
+        input.setAttribute('aria-invalid', 'false');
+      }
+    }
+
+    // Demo 1 — pass: red border + error text
+    function validate331Pass() {
+      var input = document.getElementById('email-331-pass');
+      var error = document.getElementById('email-331-error');
+      var val   = input.value.trim();
+      if (val === '') {
+        input.style.border = BORDER_ERROR;
+        input.setAttribute('aria-invalid', 'true');
+        error.textContent = 'Error: Email address is required.';
+        error.style.display = 'block';
+      } else if (!isValidEmail(val)) {
+        input.style.border = BORDER_ERROR;
+        input.setAttribute('aria-invalid', 'true');
+        error.textContent = 'Error: Enter a valid email address (e.g. user@example.com).';
+        error.style.display = 'block';
+      } else {
+        input.style.border = BORDER_DEFAULT;
+        input.setAttribute('aria-invalid', 'false');
+        error.style.display = 'none';
+        error.textContent = '';
+      }
+    }
+
+    // Demo 2 — fail: red borders + generic banner
+    function validate331Fail2() {
+      var username = document.getElementById('user-fail');
+      var password = document.getElementById('password-fail');
+      var banner   = document.getElementById('error-banner-fail');
+      var hasError = false;
+
+      if (username.value.trim() === '') {
+        username.style.border = BORDER_ERROR;
+        username.setAttribute('aria-invalid', 'true');
+        hasError = true;
+      } else {
+        username.style.border = BORDER_DEFAULT;
+        username.setAttribute('aria-invalid', 'false');
+      }
+
+      if (password.value.trim() === '' || password.value.length < 8) {
+        password.style.border = BORDER_ERROR;
+        password.setAttribute('aria-invalid', 'true');
+        hasError = true;
+      } else {
+        password.style.border = BORDER_DEFAULT;
+        password.setAttribute('aria-invalid', 'false');
+      }
+
+      banner.style.display = hasError ? 'block' : 'none';
+    }
+
+    // Demo 2 — pass: per-field error messages
+    function validate331Pass2() {
+      var username  = document.getElementById('user-pass');
+      var password  = document.getElementById('password-pass');
+      var userErr   = document.getElementById('user-pass-error');
+      var passErr   = document.getElementById('password-pass-error');
+
+      if (username.value.trim() === '') {
+        username.style.border = BORDER_ERROR;
+        username.setAttribute('aria-invalid', 'true');
+        userErr.textContent = 'Error: Username is required.';
+        userErr.style.display = 'block';
+      } else if (username.value.trim() !== 'admin') {
+        username.style.border = BORDER_ERROR;
+        username.setAttribute('aria-invalid', 'true');
+        userErr.textContent = 'Error: Username not recognised.';
+        userErr.style.display = 'block';
+      } else {
+        username.style.border = BORDER_DEFAULT;
+        username.setAttribute('aria-invalid', 'false');
+        userErr.style.display = 'none';
+        userErr.textContent = '';
+      }
+
+      if (password.value === '') {
+        password.style.border = BORDER_ERROR;
+        password.setAttribute('aria-invalid', 'true');
+        passErr.textContent = 'Error: Password is required.';
+        passErr.style.display = 'block';
+      } else if (password.value.length < 8) {
+        password.style.border = BORDER_ERROR;
+        password.setAttribute('aria-invalid', 'true');
+        passErr.textContent = 'Error: Password must be at least 8 characters long.';
+        passErr.style.display = 'block';
+      } else if (password.value !== 'password123') {
+        password.style.border = BORDER_ERROR;
+        password.setAttribute('aria-invalid', 'true');
+        passErr.textContent = 'Error: Incorrect password.';
+        passErr.style.display = 'block';
+      } else {
+        password.style.border = BORDER_DEFAULT;
+        password.setAttribute('aria-invalid', 'false');
+        passErr.style.display = 'none';
+        passErr.textContent = '';
+      }
+    }
+  </script>
 </body>
 </html>

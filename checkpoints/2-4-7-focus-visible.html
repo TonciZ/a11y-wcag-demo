@@ -33,7 +33,6 @@
     /* Demo 1: No focus indicator (fail) */
     .demo-container[data-mode="fail"] .focus-demo-button.no-focus:focus {
       outline: none;
-      border: none;
     }
 
     /* Demo 1: With focus indicator (pass) */
@@ -161,10 +160,17 @@
           </div>
         </div>
 
-        <!-- Code blocks synced to demo state -->
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail">/* ❌ Focus outline removed — keyboard users see nothing */
+button:focus {
+  outline: none;
+}</code></pre>
+          <pre><code data-demo-code="pass">/* ✓ Visible focus outline */
+button:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 2px;
+}</code></pre>
         </details>
       </div>
 
@@ -210,10 +216,18 @@
           </div>
         </div>
 
-        <!-- Code blocks synced to demo state -->
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail">/* ❌ Low-contrast outline — nearly invisible on light backgrounds */
+button:focus-visible {
+  outline: 2px solid #e0e0e0;
+}</code></pre>
+          <pre><code data-demo-code="pass">/* ✓ High-contrast outline with outer glow */
+button:focus-visible {
+  outline: 3px solid #0055cc;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 85, 204, 0.25);
+}</code></pre>
         </details>
       </div>
     </section>

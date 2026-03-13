@@ -93,7 +93,22 @@
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ No lang attribute — screen reader guesses the language --&gt;</span>
+&lt;!DOCTYPE html&gt;
+<span class="hl-line-fail">&lt;<span class="hl-tag">html</span>&gt;</span>
+&lt;<span class="hl-tag">head</span>&gt;
+  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">charset</span>=<span class="hl-value">"UTF-8"</span>&gt;
+  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">name</span>=<span class="hl-value">"viewport"</span> <span class="hl-tag">content</span>=<span class="hl-value">"width=device-width, initial-scale=1.0"</span>&gt;
+  &lt;<span class="hl-tag">title</span>&gt;My Website&lt;/<span class="hl-tag">title</span>&gt;
+&lt;/<span class="hl-tag">head</span>&gt;</code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Language declared explicitly --&gt;</span>
+&lt;!DOCTYPE html&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">html</span> <span class="hl-tag">lang</span>=<span class="hl-value">"en"</span>&gt;</span>
+&lt;<span class="hl-tag">head</span>&gt;
+  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">charset</span>=<span class="hl-value">"UTF-8"</span>&gt;
+  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">name</span>=<span class="hl-value">"viewport"</span> <span class="hl-tag">content</span>=<span class="hl-value">"width=device-width, initial-scale=1.0"</span>&gt;
+  &lt;<span class="hl-tag">title</span>&gt;My Website&lt;/<span class="hl-tag">title</span>&gt;
+&lt;/<span class="hl-tag">head</span>&gt;</code></pre>
         </details>
       </div>
 
@@ -121,16 +136,55 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>This Spanish page incorrectly declares English as its language</p>
+            <p class="demo-mock-label">Mock Spanish-language page — <code>lang="en"</code> declared (wrong)</p>
+            <article class="demo-mock-page">
+              <h2>Bienvenido a nuestra tienda</h2>
+              <p>Ofrecemos productos de alta calidad a precios accesibles.</p>
+              <ul>
+                <li>Envío gratuito en pedidos mayores de 50€</li>
+                <li>Devoluciones sin coste durante 30 días</li>
+              </ul>
+              <button type="button">Comprar ahora</button>
+            </article>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>This Spanish page correctly declares Spanish as its language</p>
+            <p class="demo-mock-label">Mock Spanish-language page — <code>lang="es"</code> declared correctly</p>
+            <article class="demo-mock-page">
+              <h2>Bienvenido a nuestra tienda</h2>
+              <p>Ofrecemos productos de alta calidad a precios accesibles.</p>
+              <ul>
+                <li>Envío gratuito en pedidos mayores de 50€</li>
+                <li>Devoluciones sin coste durante 30 días</li>
+              </ul>
+              <button type="button">Comprar ahora</button>
+            </article>
           </div>
         </div>
 
         <details class="demo-code-section" open>
           <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Wrong lang — Spanish content declared as English --&gt;</span>
+&lt;!DOCTYPE html&gt;
+<span class="hl-line-fail">&lt;<span class="hl-tag">html</span> <span class="hl-tag">lang</span>=<span class="hl-value">"en"</span>&gt;</span>
+&lt;<span class="hl-tag">head</span>&gt;
+  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">charset</span>=<span class="hl-value">"UTF-8"</span>&gt;
+  &lt;<span class="hl-tag">title</span>&gt;Mi Sitio Web&lt;/<span class="hl-tag">title</span>&gt;
+&lt;/<span class="hl-tag">head</span>&gt;
+&lt;<span class="hl-tag">body</span>&gt;
+  &lt;<span class="hl-tag">h1</span>&gt;Bienvenido&lt;/<span class="hl-tag">h1</span>&gt;
+  &lt;<span class="hl-tag">p</span>&gt;Este es mi sitio web.&lt;/<span class="hl-tag">p</span>&gt;
+&lt;/<span class="hl-tag">body</span>&gt;</code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Correct lang for Spanish content --&gt;</span>
+&lt;!DOCTYPE html&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">html</span> <span class="hl-tag">lang</span>=<span class="hl-value">"es"</span>&gt;</span>
+&lt;<span class="hl-tag">head</span>&gt;
+  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">charset</span>=<span class="hl-value">"UTF-8"</span>&gt;
+  &lt;<span class="hl-tag">title</span>&gt;Mi Sitio Web&lt;/<span class="hl-tag">title</span>&gt;
+&lt;/<span class="hl-tag">head</span>&gt;
+&lt;<span class="hl-tag">body</span>&gt;
+  &lt;<span class="hl-tag">h1</span>&gt;Bienvenido&lt;/<span class="hl-tag">h1</span>&gt;
+  &lt;<span class="hl-tag">p</span>&gt;Este es mi sitio web.&lt;/<span class="hl-tag">p</span>&gt;
+&lt;/<span class="hl-tag">body</span>&gt;</code></pre>
         </details>
       </div>
     </section>
