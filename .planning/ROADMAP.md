@@ -15,7 +15,7 @@ v2.0 focuses on quality assurance, discoverability, and mobile usability. This r
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 5: Component Playground** - Build internal-only component showcase for testing reusable UI elements in isolation
-- [ ] **Phase 6: Axe Accessibility Audit** - Establish audit infrastructure, scan all checkpoints, triage violations, fix confirmed issues
+- [·] **Phase 6: Axe Accessibility Audit** - Establish audit infrastructure, scan all checkpoints, triage violations, fix confirmed issues (Plan 2 of 3 complete)
 - [ ] **Phase 7: Manual UAT** - Verify all checkpoints against quality gate, test in browsers/screen readers, fix issues
   - **MERGE GATE** — Phase 7 completion triggers merge to live
 - [ ] **Phase 8: Search & Filtering** - Implement full-text search, pillar/level filtering, keyboard navigation, screen reader announcements
@@ -52,8 +52,8 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — Install @axe-core/cli and pa11y; create audit-light.js and audit-dark.js scripts; scan all 44 pages in both modes; generate JSON results
-- [ ] 06-02-PLAN.md — Parse audit JSON; pre-classify violations as intentional (in [data-mode="fail"]) or real (chrome/structure/outside demo); create AUDIT-TRIAGE.md; fix 39 remaining functional-language announcements
+- [x] 06-01-PLAN.md — Install @axe-core/cli and pa11y; create audit-light.js and audit-dark.js scripts; scan all 44 pages in both modes; generate JSON results (2026-03-12)
+- [x] 06-02-PLAN.md — Parse audit JSON; pre-classify violations as intentional (in [data-mode="fail"]) or real (chrome/structure/outside demo); create AUDIT-TRIAGE.md; update functional-language announcements (2026-03-13)
 - [ ] 06-03-PLAN.md — Fix all confirmed real issues in site chrome and page structure; re-audit to verify fixes; exclude [data-mode="pass"] violations (defer to Phase 7)
 
 ---
