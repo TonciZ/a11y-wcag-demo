@@ -64,8 +64,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-311"
-           data-announce-fail="Screen reader uses default language configuration, causing mispronunciation of page content"
-           data-announce-pass="Screen reader detects language setting and applies correct pronunciation rules">
+           data-announce-fail="Showing fail example. The html element has no lang attribute."
+           data-announce-pass="Showing pass example. The html element declares the correct language.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-311">Language of Page demo</span>
@@ -84,108 +84,25 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>This HTML document has no <code>lang</code> attribute on the <code>&lt;html&gt;</code> element</p>
+            <p>Without a <code>lang</code> attribute, the screen reader uses its default language profile. If that differs from the page language, all text is mispronounced.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Fail: no lang attribute --&gt;
+&lt;html&gt;
+
+&lt;!-- Fail: empty lang --&gt;
+&lt;html lang=""&gt;</code></pre>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>This HTML document declares English with a valid <code>lang</code> attribute</p>
+            <p>A valid BCP 47 language tag on <code>&lt;html&gt;</code> tells screen readers which speech synthesiser voice and pronunciation rules to use.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Pass: English --&gt;
+&lt;html lang="en"&gt;
+
+&lt;!-- Pass: French --&gt;
+&lt;html lang="fr"&gt;
+
+&lt;!-- Pass: region subtag is optional but acceptable --&gt;
+&lt;html lang="en-US"&gt;</code></pre>
           </div>
         </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ No lang attribute — screen reader guesses the language --&gt;</span>
-&lt;!DOCTYPE html&gt;
-<span class="hl-line-fail">&lt;<span class="hl-tag">html</span>&gt;</span>
-&lt;<span class="hl-tag">head</span>&gt;
-  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">charset</span>=<span class="hl-value">"UTF-8"</span>&gt;
-  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">name</span>=<span class="hl-value">"viewport"</span> <span class="hl-tag">content</span>=<span class="hl-value">"width=device-width, initial-scale=1.0"</span>&gt;
-  &lt;<span class="hl-tag">title</span>&gt;My Website&lt;/<span class="hl-tag">title</span>&gt;
-&lt;/<span class="hl-tag">head</span>&gt;</code></pre>
-          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Language declared explicitly --&gt;</span>
-&lt;!DOCTYPE html&gt;
-<span class="hl-line-pass">&lt;<span class="hl-tag">html</span> <span class="hl-tag">lang</span>=<span class="hl-value">"en"</span>&gt;</span>
-&lt;<span class="hl-tag">head</span>&gt;
-  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">charset</span>=<span class="hl-value">"UTF-8"</span>&gt;
-  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">name</span>=<span class="hl-value">"viewport"</span> <span class="hl-tag">content</span>=<span class="hl-value">"width=device-width, initial-scale=1.0"</span>&gt;
-  &lt;<span class="hl-tag">title</span>&gt;My Website&lt;/<span class="hl-tag">title</span>&gt;
-&lt;/<span class="hl-tag">head</span>&gt;</code></pre>
-        </details>
-      </div>
-
-      <div class="demo-container"
-           data-mode="fail"
-           role="region"
-           aria-labelledby="demo-label-311-wrong"
-           data-announce-fail="Screen reader applies English pronunciation rules to Spanish content, causing mispronunciation"
-           data-announce-pass="Screen reader applies Spanish pronunciation rules to Spanish content, enabling correct understanding">
-
-        <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-311-wrong">Wrong lang attribute</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
-            <span class="demo-toggle__label--fail">Show passing example</span>
-            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
-          </button>
-        </div>
-
-        <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
-        </div>
-
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
-
-        <div class="demo-stage">
-          <div data-demo-state="fail">
-            <p class="demo-mock-label">Mock Spanish-language page — <code>lang="en"</code> declared (wrong)</p>
-            <article class="demo-mock-page">
-              <h2>Bienvenido a nuestra tienda</h2>
-              <p>Ofrecemos productos de alta calidad a precios accesibles.</p>
-              <ul>
-                <li>Envío gratuito en pedidos mayores de 50€</li>
-                <li>Devoluciones sin coste durante 30 días</li>
-              </ul>
-              <button type="button">Comprar ahora</button>
-            </article>
-          </div>
-          <div data-demo-state="pass" hidden>
-            <p class="demo-mock-label">Mock Spanish-language page — <code>lang="es"</code> declared correctly</p>
-            <article class="demo-mock-page">
-              <h2>Bienvenido a nuestra tienda</h2>
-              <p>Ofrecemos productos de alta calidad a precios accesibles.</p>
-              <ul>
-                <li>Envío gratuito en pedidos mayores de 50€</li>
-                <li>Devoluciones sin coste durante 30 días</li>
-              </ul>
-              <button type="button">Comprar ahora</button>
-            </article>
-          </div>
-        </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Wrong lang — Spanish content declared as English --&gt;</span>
-&lt;!DOCTYPE html&gt;
-<span class="hl-line-fail">&lt;<span class="hl-tag">html</span> <span class="hl-tag">lang</span>=<span class="hl-value">"en"</span>&gt;</span>
-&lt;<span class="hl-tag">head</span>&gt;
-  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">charset</span>=<span class="hl-value">"UTF-8"</span>&gt;
-  &lt;<span class="hl-tag">title</span>&gt;Mi Sitio Web&lt;/<span class="hl-tag">title</span>&gt;
-&lt;/<span class="hl-tag">head</span>&gt;
-&lt;<span class="hl-tag">body</span>&gt;
-  &lt;<span class="hl-tag">h1</span>&gt;Bienvenido&lt;/<span class="hl-tag">h1</span>&gt;
-  &lt;<span class="hl-tag">p</span>&gt;Este es mi sitio web.&lt;/<span class="hl-tag">p</span>&gt;
-&lt;/<span class="hl-tag">body</span>&gt;</code></pre>
-          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Correct lang for Spanish content --&gt;</span>
-&lt;!DOCTYPE html&gt;
-<span class="hl-line-pass">&lt;<span class="hl-tag">html</span> <span class="hl-tag">lang</span>=<span class="hl-value">"es"</span>&gt;</span>
-&lt;<span class="hl-tag">head</span>&gt;
-  &lt;<span class="hl-tag">meta</span> <span class="hl-tag">charset</span>=<span class="hl-value">"UTF-8"</span>&gt;
-  &lt;<span class="hl-tag">title</span>&gt;Mi Sitio Web&lt;/<span class="hl-tag">title</span>&gt;
-&lt;/<span class="hl-tag">head</span>&gt;
-&lt;<span class="hl-tag">body</span>&gt;
-  &lt;<span class="hl-tag">h1</span>&gt;Bienvenido&lt;/<span class="hl-tag">h1</span>&gt;
-  &lt;<span class="hl-tag">p</span>&gt;Este es mi sitio web.&lt;/<span class="hl-tag">p</span>&gt;
-&lt;/<span class="hl-tag">body</span>&gt;</code></pre>
-        </details>
       </div>
     </section>
 
@@ -205,11 +122,8 @@
     </section>
 
     <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
-      <ul>
-        <li><strong>Success Techniques:</strong> H57 (Using the lang attribute of the html element)</li>
-        <li><strong>Failure Techniques:</strong> F71 (Failure due to incorrect language tag)</li>
-      </ul>
+      <h2 id="techniques-heading">Techniques</h2>
+      <p>WCAG techniques used in this demo: <code>H57</code></p>
     </section>
 
   </main>

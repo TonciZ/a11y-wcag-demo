@@ -97,7 +97,7 @@
           </div>
           <div data-demo-state="pass" hidden>
             <p>A skip link is the first focusable element. Tab to it then press Enter to jump directly to main content, bypassing all navigation.</p>
-            <a href="#bypass-pass-main" class="demo-skip-link" onclick="event.preventDefault();document.getElementById('bypass-pass-main').focus({preventScroll:true});">Skip to main content</a>
+            <a href="#bypass-pass-main" style="display:inline-block;padding:0.4em 0.9em;background:#000;color:#fff;border-radius:4px;margin-bottom:0.5rem;font-size:0.9rem;">Skip to main content</a>
             <nav aria-label="Example site navigation">
               <ul style="list-style:none;padding:0;display:flex;gap:0.75rem;flex-wrap:wrap;margin:0;">
                 <li><a href="#bypass-pass-main">Home</a></li>
@@ -107,106 +107,9 @@
                 <li><a href="#bypass-pass-main">Contact</a></li>
               </ul>
             </nav>
-            <p id="bypass-pass-main" tabindex="-1" style="margin:0.75rem 0 0;padding:0.5em;background:#f0f7ee;border-left:3px solid #27ae60;scroll-margin-top:5rem;">Main content area</p>
+            <p id="bypass-pass-main" tabindex="-1" style="margin:0.75rem 0 0;padding:0.5em;background:#f0f7ee;border-left:3px solid #27ae60;">Main content area</p>
           </div>
         </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
-      </div>
-
-      <!-- Demo 2: Two skip links — skip-to-main vs skip-sidebar -->
-      <div class="demo-container"
-           data-mode="fail"
-           role="region"
-           aria-labelledby="demo-label-241-2"
-           data-announce-fail="Showing fail example. No skip links — keyboard users must Tab through navigation and 7 filter controls before reaching the article."
-           data-announce-pass="Showing pass example. Two skip links: skip to main content bypasses all 11 controls in one press; skip sidebar is positioned after the navigation so users who read the nav can then skip just the filters.">
-
-        <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-241-2">Two bypass mechanisms — skip to main vs skip sidebar</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
-            <span class="demo-toggle__label--fail">Show passing example</span>
-            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
-          </button>
-        </div>
-
-        <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
-        </div>
-
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
-
-        <div class="demo-stage">
-          <div data-demo-state="fail">
-            <p>No skip links. Keyboard users must Tab through the navigation <em>and</em> every filter control — <strong>11 Tab presses</strong> — before reaching the article.</p>
-            <nav aria-label="Site navigation" style="margin-top:0.75rem;padding:0.5rem 0.75rem;background:#f5f5f5;border:1px solid #ccc;border-radius:4px;">
-              <ul style="list-style:none;padding:0;margin:0;display:flex;gap:1rem;font-size:0.9rem;">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Articles</a></li>
-                <li><a href="#">About</a></li>
-              </ul>
-            </nav>
-            <div style="display:flex;gap:1rem;margin-top:0.75rem;">
-              <aside style="flex:0 0 155px;border:1px solid #ccc;padding:0.75rem;font-size:0.85rem;">
-                <p style="margin:0 0 0.5rem;font-weight:bold;">Search</p>
-                <input type="search" placeholder="Search articles…" aria-label="Search articles" style="width:100%;box-sizing:border-box;padding:0.3em;margin-bottom:0.75rem;">
-                <p style="margin:0 0 0.4rem;font-weight:bold;">Filter by topic</p>
-                <label style="display:block;margin-bottom:0.25rem;"><input type="checkbox"> Accessibility</label>
-                <label style="display:block;margin-bottom:0.25rem;"><input type="checkbox"> Design</label>
-                <label style="display:block;margin-bottom:0.25rem;"><input type="checkbox"> Performance</label>
-                <label style="display:block;margin-bottom:0.25rem;"><input type="checkbox"> Security</label>
-                <button type="button" style="margin-top:0.5rem;padding:0.3em 0.6em;font-size:0.85rem;">Apply filters</button>
-              </aside>
-              <article style="flex:1;padding:0.75rem;border:1px solid #ccc;">
-                <h3 style="margin-top:0;">Article Title</h3>
-                <p style="font-size:0.9rem;">Keyboard focus only reaches here after 11 Tab presses: 3 nav + 1 search + 4 checkboxes + 1 button + 2 more.</p>
-              </article>
-            </div>
-          </div>
-          <div data-demo-state="pass" hidden>
-            <p>Two skip links — both hidden until focused. They serve <strong>different positions</strong> in the keyboard journey:</p>
-            <ul style="margin:0.25rem 0 0.75rem;padding-left:1.25rem;font-size:0.85rem;">
-              <li><strong>Skip to main content</strong> — Tab 1 from page top. Bypasses nav <em>and</em> all filters in one press.</li>
-              <li><strong>Skip sidebar</strong> — positioned just before the sidebar. Useful after you've already read the nav and only want to skip the filters.</li>
-            </ul>
-            <a href="#demo2-main" class="demo-skip-link" onclick="event.preventDefault();document.getElementById('demo2-main').focus({preventScroll:true});">Skip to main content</a>
-            <nav aria-label="Site navigation" style="margin-top:0.25rem;padding:0.5rem 0.75rem;background:#f5f5f5;border:1px solid #ccc;border-radius:4px;">
-              <ul style="list-style:none;padding:0;margin:0;display:flex;gap:1rem;font-size:0.9rem;">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Articles</a></li>
-                <li><a href="#">About</a></li>
-              </ul>
-            </nav>
-            <!-- Skip sidebar lives here — after nav, before sidebar -->
-            <a href="#demo2-sidebar-end" class="demo-skip-link" onclick="event.preventDefault();document.getElementById('demo2-sidebar-end').focus({preventScroll:true});">Skip sidebar</a>
-            <div style="display:flex;gap:1rem;margin-top:0.25rem;">
-              <aside style="flex:0 0 155px;border:1px solid #ccc;padding:0.75rem;font-size:0.85rem;">
-                <p style="margin:0 0 0.5rem;font-weight:bold;">Search</p>
-                <input type="search" placeholder="Search articles…" aria-label="Search articles" style="width:100%;box-sizing:border-box;padding:0.3em;margin-bottom:0.75rem;">
-                <p style="margin:0 0 0.4rem;font-weight:bold;">Filter by topic</p>
-                <label style="display:block;margin-bottom:0.25rem;"><input type="checkbox"> Accessibility</label>
-                <label style="display:block;margin-bottom:0.25rem;"><input type="checkbox"> Design</label>
-                <label style="display:block;margin-bottom:0.25rem;"><input type="checkbox"> Performance</label>
-                <label style="display:block;margin-bottom:0.25rem;"><input type="checkbox"> Security</label>
-                <button type="button" style="margin-top:0.5rem;padding:0.3em 0.6em;font-size:0.85rem;">Apply filters</button>
-              </aside>
-              <article style="flex:1;padding:0.75rem;border:1px solid #ccc;">
-                <p id="demo2-sidebar-end" tabindex="-1" style="margin:0 0 0.5rem;padding:0.3em 0.6em;font-size:0.8rem;color:#1a5276;background:#eaf4fb;border:2px dashed #2e86c1;border-radius:4px;">"Skip sidebar" lands here — skipped the filters</p>
-                <h3 id="demo2-main" tabindex="-1" style="margin-top:0;">"Skip to main content" lands here</h3>
-                <p style="font-size:0.9rem;">From page top: 1 Tab press. After nav: 1 Tab press (skip sidebar).</p>
-              </article>
-            </div>
-          </div>
-        </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
       </div>
     </section>
 
@@ -226,11 +129,8 @@
     </section>
 
     <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
-      <ul>
-        <li><strong>Failure:</strong> F92 (The failure of Success Criterion 2.4.1 when a page contains content before the first heading)</li>
-        <li><strong>Success Techniques:</strong> G1 (Adding a link at the top of each page that goes directly to the main content area), H69 (Providing heading elements at the beginning of each section of reformatted content), ARIA11 (Using ARIA landmarks to identify regions of a page)</li>
-      </ul>
+      <h2 id="techniques-heading">Techniques</h2>
+      <p>WCAG techniques used in this demo: <code>H69</code>, <code>H70</code></p>
     </section>
 
   </main>

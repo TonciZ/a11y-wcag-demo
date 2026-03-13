@@ -61,17 +61,15 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-
-      <!-- Demo 1: SVG with aria-label -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-1-label"
+           aria-labelledby="demo-label-111"
            data-announce-fail="Showing fail example. SVG graphic has no accessible name - screen readers announce nothing useful."
            data-announce-pass="Showing pass example. SVG graphic has role img and a descriptive aria-label.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-1-label">Demo 1: SVG with accessible name</span>
+          <span class="demo-container__label" id="demo-label-111">Non-text Content demo</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -107,55 +105,7 @@
             </svg>
           </div>
         </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
-
       </div>
-
-      <!-- Demo 2: Image alt text -->
-      <div class="demo-container"
-           data-mode="fail"
-           role="region"
-           aria-labelledby="demo-2-label"
-           data-announce-fail="Showing fail example. Image alt text is generic - screen readers announce nothing useful about the actual content."
-           data-announce-pass="Showing pass example. Image alt text describes the meaningful content - screen readers announce what the image shows.">
-
-        <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-2-label">Demo 2: Image alt text</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
-            <span class="demo-toggle__label--fail">Show passing example</span>
-            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
-          </button>
-        </div>
-
-        <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
-        </div>
-
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
-
-        <div class="demo-stage">
-          <div data-demo-state="fail">
-            <p>This image has a vague alt attribute:</p>
-            <img src="../assets/img/poster.png" alt="image" style="margin-top:0.75rem;max-width:200px;border:1px solid #ccc;border-radius:4px;">
-          </div>
-          <div data-demo-state="pass" hidden>
-            <p>This image has a meaningful alt attribute:</p>
-            <img src="../assets/img/poster.png" alt="Company XYZ Product Launch event poster, April 2024" style="margin-top:0.75rem;max-width:200px;border:1px solid #ccc;border-radius:4px;">
-          </div>
-        </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
-
-      </div>
-
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -174,11 +124,8 @@
     </section>
 
     <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
-      <ul>
-        <li><strong>Failures:</strong> F65, F67, F72</li>
-        <li><strong>Success Techniques:</strong> H37, H36, ARIA10, ARIA16</li>
-      </ul>
+      <h2 id="techniques-heading">Techniques</h2>
+      <p>WCAG techniques used in this demo: <code>H37</code> (Using alt attribute on img elements), <code>H67</code> (Using alt attribute on img elements with empty alt value), <code>ARIA10</code> (Using aria-labelledby to provide an accessible name)</p>
     </section>
 
   </main>

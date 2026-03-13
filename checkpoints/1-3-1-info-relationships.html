@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1.3.1 Info and Relationships - WCAG Demo</title>
-  <meta name="description" content="Interactive demo showing WCAG 2.2 1.3.1 Info and Relationships failures and how to fix them.">
+  <meta name="description" content="Interactive demo showing WCAG 1.3.1 Info and Relationships failures and how to fix them.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
@@ -41,6 +41,10 @@
       </div>
     </div>
 
+    <!--
+      Content source: /content/checkpoints/1-3-1-info-relationships.md
+    -->
+
     <section class="content-section" aria-labelledby="description-heading">
       <h2 id="description-heading">Description</h2>
       <p>
@@ -72,7 +76,15 @@
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
 
-      <!-- Demo 1: Table Headers -->
+      <!--
+        Demo block - reusable pattern.
+        To add a second demo below this one, duplicate .demo-container and update content.
+        JS in demo-toggle.js handles all .demo-toggle buttons automatically.
+      -->
+      <!--
+        role="region" + aria-labelledby gives the demo a landmark name for AT.
+        data-announce-* supplies contextual text for the live region on toggle.
+      -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
@@ -81,26 +93,48 @@
            data-announce-pass="Showing pass example. The table uses th elements with scope attribute - screen readers now announce column headers.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-1-label">Demo 1: Table headers</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
+          <!--
+            id referenced by aria-labelledby above.
+            Not aria-hidden - this label is meaningful to AT users.
+          -->
+          <span class="demo-container__label" id="demo-1-label">Table structure: semantic headers</span>
+          <!--
+            No aria-label on the button - the visible text IS the accessible name.
+            aria-pressed communicates current state.
+          -->
+          <button
+            class="demo-toggle"
+            type="button"
+            aria-pressed="false"
+          >
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
           </button>
         </div>
 
+        <!-- Visual status strip - aria-hidden because the live region handles AT announcements -->
         <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
+          <span class="demo-status__text--fail">Fail - table has no semantic headers</span>
+          <span class="demo-status__text--pass">Pass - table uses &lt;th&gt; with scope</span>
         </div>
 
+        <!-- Screen reader live region. JS updates textContent on toggle. -->
         <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
 
         <div class="demo-stage">
+
+          <!--
+            FAIL STATE: all cells are <td>, no programmatic headers.
+            Screen readers cannot announce column context.
+          -->
           <div data-demo-state="fail">
-            <p>This table has no semantic headers:</p>
             <div class="demo-table-wrapper">
+              <!--
+                tabindex="0" makes the table reachable by Tab for keyboard users.
+                No aria-label - caption provides the accessible name.
+              -->
               <table class="demo-table" tabindex="0">
-                <caption class="visually-hidden">Fail example - employee data: header row uses td elements instead of th</caption>
+                <caption class="visually-hidden">Fail example - employee data: header row uses td elements instead of th, so columns have no programmatic role</caption>
                 <thead>
                   <tr>
                     <td>Name</td>
@@ -129,8 +163,11 @@
             </div>
           </div>
 
+          <!--
+            PASS STATE: first row uses <th scope="col">.
+            Screen readers announce column context with each data cell.
+          -->
           <div data-demo-state="pass" hidden>
-            <p>This table has semantic headers:</p>
             <div class="demo-table-wrapper">
               <table class="demo-table" tabindex="0">
                 <caption class="visually-hidden">Pass example - employee data: header cells use th elements with scope="col"</caption>
@@ -161,63 +198,21 @@
               </table>
             </div>
           </div>
-        </div>
 
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
+        </div><!-- /.demo-stage -->
 
-      </div>
-
-      <!-- Demo 2: List Structure -->
-      <div class="demo-container"
-           data-mode="fail"
-           role="region"
-           aria-labelledby="demo-2-label"
-           data-announce-fail="Showing fail example. List items are styled divs without semantic list markup - screen readers do not recognize them as a list."
-           data-announce-pass="Showing pass example. Items use semantic ul and li elements - screen readers announce the list structure.">
-
-        <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-2-label">Demo 2: List structure</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
-            <span class="demo-toggle__label--fail">Show passing example</span>
-            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
-          </button>
-        </div>
-
-        <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
-        </div>
-
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
-
-        <div class="demo-stage">
-          <div data-demo-state="fail">
-            <p>This list is styled with divs - no semantic list markup:</p>
-            <div style="margin-top:0.75rem;padding:1rem;border:1px solid #ccc;border-radius:4px;">
-              <div style="padding:0.5rem;border-bottom:1px solid #eee;">Plan your route</div>
-              <div style="padding:0.5rem;border-bottom:1px solid #eee;">Check traffic conditions</div>
-              <div style="padding:0.5rem;">Depart when ready</div>
-            </div>
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>All cells use <code>&lt;td&gt;</code>. Screen readers treat them as plain data with no column context. A user navigating by cell hears "Name", "Department", "Score" without knowing these are headers.</p>
           </div>
-          <div data-demo-state="pass" hidden>
-            <p>This is a proper semantic list with ul and li elements:</p>
-            <ul style="margin-top:0.75rem;padding:0;border:1px solid #ccc;border-radius:4px;list-style:none;">
-              <li style="padding:0.5rem;border-bottom:1px solid #eee;">Plan your route</li>
-              <li style="padding:0.5rem;border-bottom:1px solid #eee;">Check traffic conditions</li>
-              <li style="padding:0.5rem;">Depart when ready</li>
-            </ul>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>Header cells use <code>&lt;th scope="col"&gt;</code> inside <code>&lt;thead&gt;</code>. Screen readers can announce "Score column, Carol: 95" - the relationship is programmatically defined.</p>
           </div>
         </div>
 
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
-
-      </div>
+      </div><!-- /.demo-container -->
 
     </section>
 
@@ -227,7 +222,7 @@
         When a table uses only <code>&lt;td&gt;</code> elements for all cells - including the header row -
         screen readers announce every cell as plain data with no column context. A user navigating by
         table cell hears values like "Name", "Score", "Rank" with no indication that these are column
-        headers. Similarly, when a list is styled with divs instead of proper <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> elements, screen readers cannot announce that the items form a list or how many items there are.
+        headers. The relationship between the header and data cells is invisible to assistive technology.
       </p>
     </section>
 
@@ -237,7 +232,7 @@
         Using <code>&lt;th&gt;</code> elements for header cells, with an appropriate <code>scope</code>
         attribute (<code>scope="col"</code> for column headers, <code>scope="row"</code> for row headers),
         allows screen readers to announce context. When a user navigates to a data cell, the screen reader
-        can say "Score column, Alice: 92" - conveying the structural relationship programmatically. Semantic lists with <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> and <code>&lt;li&gt;</code> elements enable screen readers to announce "list with 3 items" and navigate between items efficiently.
+        can say "Score column, Alice: 92" - conveying the structural relationship programmatically.
       </p>
     </section>
 
@@ -254,11 +249,8 @@
     </section>
 
     <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
-      <ul>
-        <li><strong>Failures:</strong> F33, F34, F48, F49</li>
-        <li><strong>Success Techniques:</strong> H39, H51, H48, H63</li>
-      </ul>
+      <h2 id="techniques-heading">Techniques</h2>
+      <p>WCAG techniques used in this demo: <code>H39</code>, <code>H73</code>, <code>H85</code></p>
     </section>
 
   </main>
@@ -274,6 +266,7 @@
 
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
+
   <script src="../assets/js/theme-toggle.js"></script>
 </body>
 </html>

@@ -69,7 +69,7 @@
            data-announce-pass="Showing pass example. Native checkbox provides name, role, and state automatically.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-412">Demo 1: Custom element missing role and state</span>
+          <span class="demo-container__label" id="demo-label-412">Name, Role, Value demo</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -100,177 +100,7 @@
             </div>
           </div>
         </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ div has no role, name, or state — invisible to assistive technology --&gt;</span>
-<span class="hl-line-fail">&lt;<span class="hl-tag">div</span> <span class="hl-tag">onclick</span>=<span class="hl-value">"toggle()"</span>&gt;☐ Accept terms and conditions&lt;/<span class="hl-tag">div</span>&gt;</span>
-<span class="hl-comment">&lt;!-- Not keyboard focusable, no role="checkbox", no aria-checked --&gt;</span></code></pre>
-          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Native checkbox provides role, name, and state automatically --&gt;</span>
-<span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"checkbox"</span> <span class="hl-tag">id</span>=<span class="hl-value">"terms"</span>&gt;
-&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"terms"</span>&gt;Accept terms and conditions&lt;/<span class="hl-tag">label</span>&gt;</span>
-<span class="hl-comment">&lt;!-- Role: "checkbox" | Name: label text | State: "checked" / "not checked" --&gt;</span></code></pre>
-        </details>
       </div>
-
-      <!-- Demo 2: Icon-only buttons with no accessible name -->
-      <div class="demo-container"
-           data-mode="fail"
-           role="region"
-           aria-labelledby="demo-label-412-2"
-           data-announce-fail="Showing fail example. Three icon buttons have no accessible names — a screen reader announces each as just 'button'."
-           data-announce-pass="Showing pass example. Each icon button has an aria-label — screen readers announce Edit, Save, and Delete.">
-
-        <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-412-2">Demo 2: Icon-only button with no accessible name</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
-            <span class="demo-toggle__label--fail">Show passing example</span>
-            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
-          </button>
-        </div>
-
-        <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
-        </div>
-
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
-
-        <div class="demo-stage">
-          <div data-demo-state="fail">
-            <p>These buttons contain only an icon. Without an accessible name, a screen reader announces each as just "button" — the user has no idea what each one does.</p>
-            <div style="border:1px solid var(--color-border);border-radius:6px;padding:0.75rem 1rem;margin-top:0.75rem;display:flex;justify-content:space-between;align-items:center;max-width:380px;">
-              <span style="font-weight:500;">Meeting notes.docx</span>
-              <div style="display:flex;gap:0.4rem;">
-                <button type="button" style="border:1px solid var(--color-border);border-radius:4px;padding:0.35rem 0.6rem;background:var(--color-surface);cursor:pointer;font-size:1rem;line-height:1;"><span aria-hidden="true">✏</span></button>
-                <button type="button" style="border:1px solid var(--color-border);border-radius:4px;padding:0.35rem 0.6rem;background:var(--color-surface);cursor:pointer;font-size:1rem;line-height:1;"><span aria-hidden="true">☆</span></button>
-                <button type="button" style="border:1px solid var(--color-border);border-radius:4px;padding:0.35rem 0.6rem;background:var(--color-surface);cursor:pointer;font-size:1rem;line-height:1;"><span aria-hidden="true">✕</span></button>
-              </div>
-            </div>
-            <span class="demo-mock-label">Tab to the buttons — a screen reader announces each as just "button"</span>
-          </div>
-          <div data-demo-state="pass" hidden>
-            <p>Each button has an <code>aria-label</code> describing its action. The icon is hidden from assistive technology with <code>aria-hidden="true"</code> to avoid duplication.</p>
-            <div style="border:1px solid var(--color-border);border-radius:6px;padding:0.75rem 1rem;margin-top:0.75rem;display:flex;justify-content:space-between;align-items:center;max-width:380px;">
-              <span style="font-weight:500;">Meeting notes.docx</span>
-              <div style="display:flex;gap:0.4rem;">
-                <button type="button" aria-label="Edit Meeting notes.docx" style="border:1px solid var(--color-border);border-radius:4px;padding:0.35rem 0.6rem;background:var(--color-surface);cursor:pointer;font-size:1rem;line-height:1;"><span aria-hidden="true">✏</span></button>
-                <button type="button" aria-label="Save Meeting notes.docx" style="border:1px solid var(--color-border);border-radius:4px;padding:0.35rem 0.6rem;background:var(--color-surface);cursor:pointer;font-size:1rem;line-height:1;"><span aria-hidden="true">☆</span></button>
-                <button type="button" aria-label="Delete Meeting notes.docx" style="border:1px solid var(--color-border);border-radius:4px;padding:0.35rem 0.6rem;background:var(--color-surface);cursor:pointer;font-size:1rem;line-height:1;"><span aria-hidden="true">✕</span></button>
-              </div>
-            </div>
-            <span class="demo-mock-label">Tab to the buttons — a screen reader announces "Edit Meeting notes.docx, button" etc.</span>
-          </div>
-        </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Icon buttons with no accessible name —  announced as "button" only --&gt;</span>
-<span class="hl-line-fail">&lt;<span class="hl-tag">button</span> <span class="hl-tag">type</span>=<span class="hl-value">"button"</span>&gt;&lt;<span class="hl-tag">span</span> <span class="hl-tag">aria-hidden</span>=<span class="hl-value">"true"</span>&gt;✏&lt;/<span class="hl-tag">span</span>&gt;&lt;/<span class="hl-tag">button</span>&gt;
-&lt;<span class="hl-tag">button</span> <span class="hl-tag">type</span>=<span class="hl-value">"button"</span>&gt;&lt;<span class="hl-tag">span</span> <span class="hl-tag">aria-hidden</span>=<span class="hl-value">"true"</span>&gt;☆&lt;/<span class="hl-tag">span</span>&gt;&lt;/<span class="hl-tag">button</span>&gt;
-&lt;<span class="hl-tag">button</span> <span class="hl-tag">type</span>=<span class="hl-value">"button"</span>&gt;&lt;<span class="hl-tag">span</span> <span class="hl-tag">aria-hidden</span>=<span class="hl-value">"true"</span>&gt;✕&lt;/<span class="hl-tag">span</span>&gt;&lt;/<span class="hl-tag">button</span>&gt;</span></code></pre>
-          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ aria-label gives each button a distinct, descriptive name --&gt;</span>
-<span class="hl-line-pass">&lt;<span class="hl-tag">button</span> <span class="hl-tag">type</span>=<span class="hl-value">"button"</span> <span class="hl-tag">aria-label</span>=<span class="hl-value">"Edit Meeting notes.docx"</span>&gt;&lt;<span class="hl-tag">span</span> <span class="hl-tag">aria-hidden</span>=<span class="hl-value">"true"</span>&gt;✏&lt;/<span class="hl-tag">span</span>&gt;&lt;/<span class="hl-tag">button</span>&gt;
-&lt;<span class="hl-tag">button</span> <span class="hl-tag">type</span>=<span class="hl-value">"button"</span> <span class="hl-tag">aria-label</span>=<span class="hl-value">"Save Meeting notes.docx"</span>&gt;&lt;<span class="hl-tag">span</span> <span class="hl-tag">aria-hidden</span>=<span class="hl-value">"true"</span>&gt;☆&lt;/<span class="hl-tag">span</span>&gt;&lt;/<span class="hl-tag">button</span>&gt;
-&lt;<span class="hl-tag">button</span> <span class="hl-tag">type</span>=<span class="hl-value">"button"</span> <span class="hl-tag">aria-label</span>=<span class="hl-value">"Delete Meeting notes.docx"</span>&gt;&lt;<span class="hl-tag">span</span> <span class="hl-tag">aria-hidden</span>=<span class="hl-value">"true"</span>&gt;✕&lt;/<span class="hl-tag">span</span>&gt;&lt;/<span class="hl-tag">button</span>&gt;</span></code></pre>
-        </details>
-      </div>
-
-      <!-- Demo 3: Accordion without aria-expanded -->
-      <div class="demo-container"
-           data-mode="fail"
-           role="region"
-           aria-labelledby="demo-label-412-3"
-           data-announce-fail="Showing fail example. Accordion headers are div elements — not keyboard focusable, and carry no role or expanded state."
-           data-announce-pass="Showing pass example. Accordion headers are buttons with aria-expanded — screen readers announce whether each section is expanded or collapsed.">
-
-        <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-412-3">Demo 3: Accordion without aria-expanded</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
-            <span class="demo-toggle__label--fail">Show passing example</span>
-            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
-          </button>
-        </div>
-
-        <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
-        </div>
-
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
-
-        <div class="demo-stage">
-          <div data-demo-state="fail">
-            <p>These accordion headers are <code>&lt;div&gt;</code> elements. They are not keyboard focusable, carry no role, and announce no expanded or collapsed state.</p>
-            <div style="border:1px solid var(--color-border);border-radius:6px;overflow:hidden;margin-top:0.75rem;max-width:480px;">
-              <div style="border-bottom:1px solid var(--color-border);">
-                <div onclick="toggle412Fail(this)" style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;cursor:pointer;user-select:none;background:var(--color-surface);">
-                  <span>What is WCAG?</span>
-                  <span data-arrow aria-hidden="true">&#9660;</span>
-                </div>
-                <div hidden style="padding:0.75rem 1rem;border-top:1px solid var(--color-border);">
-                  <p style="margin:0;">WCAG stands for Web Content Accessibility Guidelines — a set of international standards for web accessibility.</p>
-                </div>
-              </div>
-              <div>
-                <div onclick="toggle412Fail(this)" style="display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;cursor:pointer;user-select:none;background:var(--color-surface);">
-                  <span>Who needs to comply?</span>
-                  <span data-arrow aria-hidden="true">&#9660;</span>
-                </div>
-                <div hidden style="padding:0.75rem 1rem;border-top:1px solid var(--color-border);">
-                  <p style="margin:0;">Compliance is required for public sector bodies under the EU Web Accessibility Directive, and expected of any organisation wanting to ensure digital inclusion.</p>
-                </div>
-              </div>
-            </div>
-            <span class="demo-mock-label">Try Tab — the headers are not keyboard focusable</span>
-          </div>
-          <div data-demo-state="pass" hidden>
-            <p>Each header is a <code>&lt;button&gt;</code> with <code>aria-expanded</code> and <code>aria-controls</code>. Screen readers announce the name and current state on focus, and the updated state after activation.</p>
-            <div style="border:1px solid var(--color-border);border-radius:6px;overflow:hidden;margin-top:0.75rem;max-width:480px;">
-              <div style="border-bottom:1px solid var(--color-border);">
-                <button type="button"
-                        aria-expanded="false"
-                        aria-controls="pass-412-panel1"
-                        onclick="toggle412Pass(this)"
-                        style="display:flex;justify-content:space-between;align-items:center;width:100%;padding:0.75rem 1rem;border:none;border-radius:0;background:var(--color-surface);cursor:pointer;text-align:left;font-size:inherit;font-family:inherit;">
-                  <span>What is WCAG?</span>
-                  <span data-arrow aria-hidden="true">&#9660;</span>
-                </button>
-                <div id="pass-412-panel1" hidden style="padding:0.75rem 1rem;border-top:1px solid var(--color-border);">
-                  <p style="margin:0;">WCAG stands for Web Content Accessibility Guidelines — a set of international standards for web accessibility.</p>
-                </div>
-              </div>
-              <div>
-                <button type="button"
-                        aria-expanded="false"
-                        aria-controls="pass-412-panel2"
-                        onclick="toggle412Pass(this)"
-                        style="display:flex;justify-content:space-between;align-items:center;width:100%;padding:0.75rem 1rem;border:none;border-radius:0;background:var(--color-surface);cursor:pointer;text-align:left;font-size:inherit;font-family:inherit;">
-                  <span>Who needs to comply?</span>
-                  <span data-arrow aria-hidden="true">&#9660;</span>
-                </button>
-                <div id="pass-412-panel2" hidden style="padding:0.75rem 1rem;border-top:1px solid var(--color-border);">
-                  <p style="margin:0;">Compliance is required for public sector bodies under the EU Web Accessibility Directive, and expected of any organisation wanting to ensure digital inclusion.</p>
-                </div>
-              </div>
-            </div>
-            <span class="demo-mock-label">Tab to headers — screen reader announces "What is WCAG?, collapsed, button"</span>
-          </div>
-        </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ div header — not keyboard focusable, no role, no state --&gt;</span>
-<span class="hl-line-fail">&lt;<span class="hl-tag">div</span> <span class="hl-tag">onclick</span>=<span class="hl-value">"toggle()"</span>&gt;What is WCAG? ▾&lt;/<span class="hl-tag">div</span>&gt;</span>
-&lt;<span class="hl-tag">div</span> <span class="hl-tag">hidden</span>&gt;Panel content&lt;/<span class="hl-tag">div</span>&gt;
-<span class="hl-comment">&lt;!-- No role, no aria-expanded — state change is invisible to screen readers --&gt;</span></code></pre>
-          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ button with aria-expanded communicates state on every interaction --&gt;</span>
-<span class="hl-line-pass">&lt;<span class="hl-tag">button</span> <span class="hl-tag">type</span>=<span class="hl-value">"button"</span> <span class="hl-tag">aria-expanded</span>=<span class="hl-value">"false"</span> <span class="hl-tag">aria-controls</span>=<span class="hl-value">"panel1"</span>&gt;What is WCAG?&lt;/<span class="hl-tag">button</span>&gt;</span>
-&lt;<span class="hl-tag">div</span> <span class="hl-tag">id</span>=<span class="hl-value">"panel1"</span> <span class="hl-tag">hidden</span>&gt;Panel content&lt;/<span class="hl-tag">div</span>&gt;
-<span class="hl-comment">&lt;!-- Screen reader: "What is WCAG?, collapsed, button" → after click: "expanded" --&gt;</span></code></pre>
-        </details>
-      </div>
-
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -289,11 +119,8 @@
     </section>
 
     <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
-      <ul>
-        <li><strong>Failure:</strong> F59, F68</li>
-        <li><strong>Success Techniques:</strong> ARIA14, ARIA16, H44, H91</li>
-      </ul>
+      <h2 id="techniques-heading">Techniques</h2>
+      <p>WCAG techniques used in this demo: <code>H65</code>, <code>ARIA5</code>, <code>H44</code></p>
     </section>
 
   </main>
@@ -310,22 +137,5 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
-  <script>
-    function toggle412Fail(header) {
-      var panel = header.nextElementSibling;
-      var arrow = header.querySelector('[data-arrow]');
-      panel.hidden = !panel.hidden;
-      if (arrow) arrow.textContent = panel.hidden ? '\u25bc' : '\u25b2';
-    }
-
-    function toggle412Pass(btn) {
-      var panel = document.getElementById(btn.getAttribute('aria-controls'));
-      var expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', !expanded);
-      panel.hidden = expanded;
-      var arrow = btn.querySelector('[data-arrow]');
-      if (arrow) arrow.textContent = expanded ? '\u25bc' : '\u25b2';
-    }
-  </script>
 </body>
 </html>

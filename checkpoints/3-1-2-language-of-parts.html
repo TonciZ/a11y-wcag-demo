@@ -64,12 +64,12 @@
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-312-french"
-           data-announce-fail="Screen reader applies English pronunciation rules to French phrase, causing mispronunciation and reduced comprehension"
-           data-announce-pass="Screen reader switches to French pronunciation rules for French phrase, enabling clear understanding">
+           aria-labelledby="demo-label-312"
+           data-announce-fail="Showing fail example. A French phrase is embedded without a lang attribute - screen readers will mispronounce it using English rules."
+           data-announce-pass="Showing pass example. The French phrase is wrapped in a span with lang equals fr - screen readers switch to French pronunciation.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-312-french">Foreign phrase without lang attribute</span>
+          <span class="demo-container__label" id="demo-label-312">Language of parts demo</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -85,94 +85,20 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p class="demo-mock-label">English page — French phrase has no <code>lang</code> attribute</p>
-            <article class="demo-mock-page">
-              <p>Our company motto is <span>"Liberté, égalité, fraternité"</span> — a guiding principle since our founding.</p>
-            </article>
+            <p>The French phrase below has no <code>lang</code> attribute. A screen reader will attempt to pronounce it using the page language (English), producing incorrect output.</p>
+            <blockquote style="border-left:3px solid #d0d0d0;margin:0.75rem 0;padding:0.5rem 1rem;background:#f5f5f5;border-radius:0 4px 4px 0;">
+              <p style="margin:0;">The committee noted the proverb: <em>"Vouloir c&apos;est pouvoir."</em></p>
+            </blockquote>
+            <p style="font-size:0.875rem;color:#5a5a5a;">No <code>lang</code> attribute on the French text.</p>
           </div>
           <div data-demo-state="pass" hidden>
-            <p class="demo-mock-label">English page — French phrase wrapped with <code>lang="fr"</code></p>
-            <article class="demo-mock-page">
-              <p>Our company motto is <span lang="fr">"Liberté, égalité, fraternité"</span> — a guiding principle since our founding.</p>
-            </article>
+            <p>The French phrase is wrapped in <code>&lt;span lang="fr"&gt;</code>. A screen reader will switch to French pronunciation rules for that phrase.</p>
+            <blockquote style="border-left:3px solid #d0d0d0;margin:0.75rem 0;padding:0.5rem 1rem;background:#f5f5f5;border-radius:0 4px 4px 0;">
+              <p style="margin:0;">The committee noted the proverb: <em lang="fr">"Vouloir c&apos;est pouvoir."</em></p>
+            </blockquote>
+            <p style="font-size:0.875rem;color:#5a5a5a;"><code>&lt;em lang="fr"&gt;</code> signals the language change to assistive technology.</p>
           </div>
         </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ French phrase has no lang attribute — screen reader reads it as English --&gt;</span>
-&lt;<span class="hl-tag">p</span>&gt;
-  Our company motto is
-<span class="hl-line-fail">  &lt;<span class="hl-tag">span</span>&gt;&quot;Liberté, égalité, fraternité&quot;&lt;/<span class="hl-tag">span</span>&gt;</span>
-  — a guiding principle since our founding.
-&lt;/<span class="hl-tag">p</span>&gt;</code></pre>
-          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ French phrase identified with lang="fr" --&gt;</span>
-&lt;<span class="hl-tag">p</span>&gt;
-  Our company motto is
-<span class="hl-line-pass">  &lt;<span class="hl-tag">span</span> <span class="hl-tag">lang</span>=<span class="hl-value">"fr"</span>&gt;&quot;Liberté, égalité, fraternité&quot;&lt;/<span class="hl-tag">span</span>&gt;</span>
-  — a guiding principle since our founding.
-&lt;/<span class="hl-tag">p</span>&gt;</code></pre>
-        </details>
-      </div>
-
-      <div class="demo-container"
-           data-mode="fail"
-           role="region"
-           aria-labelledby="demo-label-312-german"
-           data-announce-fail="Screen reader applies English pronunciation rules to German quotation, causing mispronunciation and reduced comprehension"
-           data-announce-pass="Screen reader switches to German pronunciation rules for German quotation, enabling clear understanding">
-
-        <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-312-german">Foreign quotation without lang attribute</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
-            <span class="demo-toggle__label--fail">Show passing example</span>
-            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
-          </button>
-        </div>
-
-        <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
-        </div>
-
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
-
-        <div class="demo-stage">
-          <div data-demo-state="fail">
-            <p class="demo-mock-label">English page — German quote has no <code>lang</code> attribute</p>
-            <article class="demo-mock-page">
-              <blockquote>
-                <p>"Wer kämpft, kann verlieren. Wer nicht kämpft, hat schon verloren."</p>
-                <cite>— Bertolt Brecht</cite>
-              </blockquote>
-            </article>
-          </div>
-          <div data-demo-state="pass" hidden>
-            <p class="demo-mock-label">English page — German quote wrapped with <code>lang="de"</code></p>
-            <article class="demo-mock-page">
-              <blockquote lang="de">
-                <p>"Wer kämpft, kann verlieren. Wer nicht kämpft, hat schon verloren."</p>
-                <cite>— Bertolt Brecht</cite>
-              </blockquote>
-            </article>
-          </div>
-        </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ German quote has no lang attribute — screen reader reads it as English --&gt;</span>
-<span class="hl-line-fail">&lt;<span class="hl-tag">blockquote</span>&gt;</span>
-  &lt;<span class="hl-tag">p</span>&gt;&quot;Wer kämpft, kann verlieren.
-     Wer nicht kämpft, hat schon verloren.&quot;&lt;/<span class="hl-tag">p</span>&gt;
-  &lt;<span class="hl-tag">cite</span>&gt;— Bertolt Brecht&lt;/<span class="hl-tag">cite</span>&gt;
-&lt;/<span class="hl-tag">blockquote</span>&gt;</code></pre>
-          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ German quote identified with lang="de" --&gt;</span>
-<span class="hl-line-pass">&lt;<span class="hl-tag">blockquote</span> <span class="hl-tag">lang</span>=<span class="hl-value">"de"</span>&gt;</span>
-  &lt;<span class="hl-tag">p</span>&gt;&quot;Wer kämpft, kann verlieren.
-     Wer nicht kämpft, hat schon verloren.&quot;&lt;/<span class="hl-tag">p</span>&gt;
-  &lt;<span class="hl-tag">cite</span>&gt;— Bertolt Brecht&lt;/<span class="hl-tag">cite</span>&gt;
-&lt;/<span class="hl-tag">blockquote</span>&gt;</code></pre>
-        </details>
       </div>
     </section>
 
@@ -192,11 +118,8 @@
     </section>
 
     <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
-      <ul>
-        <li><strong>Success Techniques:</strong> H58 (Using language attributes to identify changes in the human language)</li>
-        <li><strong>Failure Techniques:</strong> F71 (Failure due to incorrect language tag)</li>
-      </ul>
+      <h2 id="techniques-heading">Techniques</h2>
+      <p>WCAG techniques used in this demo: <code>H58</code></p>
     </section>
 
   </main>

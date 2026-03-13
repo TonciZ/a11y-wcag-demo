@@ -9,63 +9,6 @@
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
-  <style>
-    /* Demo-specific styles for focus visible checkpoint */
-    .focus-demo-button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-family: inherit;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      background: var(--color-accent);
-      color: white;
-      border: 2px solid transparent;
-    }
-
-    .focus-demo-button:hover {
-      background: var(--color-accent-hover);
-    }
-
-    .focus-demo-button:active {
-      transform: scale(0.98);
-    }
-
-    /* Demo 1: No focus indicator (fail) */
-    .demo-container[data-mode="fail"] .focus-demo-button.no-focus:focus {
-      outline: none;
-    }
-
-    /* Demo 1: With focus indicator (pass) */
-    .demo-container[data-mode="pass"] .focus-demo-button.with-focus:focus {
-      outline: 3px solid var(--color-focus);
-      outline-offset: 2px;
-    }
-
-    /* Demo 2: Low contrast focus (fail) */
-    .demo-container[data-mode="fail"] .focus-demo-button.low-contrast-focus:focus {
-      outline: 2px solid #e0e0e0;
-      outline-offset: 0;
-    }
-
-    /* Demo 2: High contrast focus (pass) */
-    .demo-container[data-mode="pass"] .focus-demo-button.high-contrast-focus:focus {
-      outline: 3px solid #0055cc;
-      outline-offset: 2px;
-      box-shadow: 0 0 0 4px rgba(0, 85, 204, 0.25);
-    }
-
-    /* Button group layout */
-    .button-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-
-    .button-group button {
-      flex-shrink: 0;
-    }
-  </style>
 </head>
 <body class="checkpoint-page">
 
@@ -117,17 +60,15 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-
-      <!-- Demo 1: No focus indicator vs visible outline -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-focus-outline"
-           data-announce-fail="Buttons have no visible focus indicator when using keyboard navigation"
-           data-announce-pass="Buttons have a clearly visible outline when focused with keyboard navigation">
+           aria-labelledby="demo-label-247"
+           data-announce-fail="Showing fail example. Focus indicator is completely hidden - keyboard users cannot track their position on the page."
+           data-announce-pass="Showing pass example. Clear focus indicator appears - keyboard users can track their position.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-focus-outline">Demo 1: Missing Focus Indicator</span>
+          <span class="demo-container__label" id="demo-label-247">Focus visible demo</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -143,92 +84,28 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Try tabbing through these buttons. The focused button has no visible outline:</p>
-            <div class="button-group">
-              <button class="focus-demo-button no-focus" type="button">Button 1</button>
-              <button class="focus-demo-button no-focus" type="button">Button 2</button>
-              <button class="focus-demo-button no-focus" type="button">Button 3</button>
-            </div>
+            <p>Press <kbd>Tab</kbd> to move through the links below. No focus indicator appears - keyboard users cannot tell which link is active.</p>
+            <nav aria-label="Example navigation (no focus ring)">
+              <ul style="list-style:none;padding:0;display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.75rem;">
+                <li><a href="#" style="outline:none;" onclick="return false;">Home</a></li>
+                <li><a href="#" style="outline:none;" onclick="return false;">Products</a></li>
+                <li><a href="#" style="outline:none;" onclick="return false;">Contact</a></li>
+              </ul>
+            </nav>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">CSS applied: <code>outline: none</code></p>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>These buttons have a visible blue outline when focused with keyboard:</p>
-            <div class="button-group">
-              <button class="focus-demo-button with-focus" type="button">Button 1</button>
-              <button class="focus-demo-button with-focus" type="button">Button 2</button>
-              <button class="focus-demo-button with-focus" type="button">Button 3</button>
-            </div>
+            <p>Press <kbd>Tab</kbd> to move through the links below. A clear focus ring appears on the active link.</p>
+            <nav aria-label="Example navigation (with focus ring)">
+              <ul style="list-style:none;padding:0;display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.75rem;">
+                <li><a href="#" onclick="return false;">Home</a></li>
+                <li><a href="#" onclick="return false;">Products</a></li>
+                <li><a href="#" onclick="return false;">Contact</a></li>
+              </ul>
+            </nav>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">No override - the site's <code>:focus-visible</code> style applies.</p>
           </div>
         </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code data-demo-code="fail">/* ❌ Focus outline removed — keyboard users see nothing */
-button:focus {
-  outline: none;
-}</code></pre>
-          <pre><code data-demo-code="pass">/* ✓ Visible focus outline */
-button:focus-visible {
-  outline: 3px solid #005fcc;
-  outline-offset: 2px;
-}</code></pre>
-        </details>
-      </div>
-
-      <!-- Demo 2: Low contrast focus vs high contrast focus -->
-      <div class="demo-container"
-           data-mode="fail"
-           role="region"
-           aria-labelledby="demo-label-focus-contrast"
-           data-announce-fail="Buttons have a barely visible focus outline that blends with the background"
-           data-announce-pass="Buttons have a prominent focus outline with sufficient contrast that stands out clearly against the background">
-
-        <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-focus-contrast">Demo 2: Low Contrast Focus Indicator</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
-            <span class="demo-toggle__label--fail">Show passing example</span>
-            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
-          </button>
-        </div>
-
-        <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
-        </div>
-
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
-
-        <div class="demo-stage">
-          <div data-demo-state="fail">
-            <p>The light gray focus outline on this light background is barely visible:</p>
-            <div class="button-group">
-              <button class="focus-demo-button low-contrast-focus" type="button">Button 1</button>
-              <button class="focus-demo-button low-contrast-focus" type="button">Button 2</button>
-              <button class="focus-demo-button low-contrast-focus" type="button">Button 3</button>
-            </div>
-          </div>
-          <div data-demo-state="pass" hidden>
-            <p>The prominent blue focus outline with added shadow is clearly visible:</p>
-            <div class="button-group">
-              <button class="focus-demo-button high-contrast-focus" type="button">Button 1</button>
-              <button class="focus-demo-button high-contrast-focus" type="button">Button 2</button>
-              <button class="focus-demo-button high-contrast-focus" type="button">Button 3</button>
-            </div>
-          </div>
-        </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code data-demo-code="fail">/* ❌ Low-contrast outline — nearly invisible on light backgrounds */
-button:focus-visible {
-  outline: 2px solid #e0e0e0;
-}</code></pre>
-          <pre><code data-demo-code="pass">/* ✓ High-contrast outline with outer glow */
-button:focus-visible {
-  outline: 3px solid #0055cc;
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(0, 85, 204, 0.25);
-}</code></pre>
-        </details>
       </div>
     </section>
 
@@ -247,12 +124,9 @@ button:focus-visible {
       <p>WCAG 2.2 introduced the new criterion 2.4.11 (Focus Not Obscured) and 2.4.13 (Focus Appearance) to address additional aspects of focus visibility. Note that 2.4.7 is a relatively low bar - it only requires that focus be visible in some mode, not that the focus indicator meet specific size or contrast requirements. The <code>:focus-visible</code> CSS pseudo-class allows developers to show focus indicators for keyboard navigation only, without showing them on mouse click, which is an acceptable and widely used approach.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="wcag-techniques-heading">
-      <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
-      <ul>
-        <li><strong>Failure:</strong> F78</li>
-        <li><strong>Success Techniques:</strong> G165, G195, SCR31</li>
-      </ul>
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">Techniques</h2>
+      <p>WCAG techniques used in this demo: <code>C15</code></p>
     </section>
 
   </main>

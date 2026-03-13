@@ -9,139 +9,6 @@
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
-  <style>
-    /* Demo-specific styles for focus not obscured checkpoint */
-    .focus-demo-button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-family: inherit;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      background: var(--color-accent);
-      color: white;
-      border: 2px solid transparent;
-    }
-
-    .focus-demo-button:hover {
-      background: var(--color-accent-hover);
-    }
-
-    .focus-demo-button:focus {
-      outline: 3px solid var(--color-focus);
-      outline-offset: 2px;
-    }
-
-    /* Scrollable container */
-    .demo-scroll-container {
-      height: 200px;
-      overflow-y: auto;
-      border: 1px solid var(--color-border);
-      border-radius: 0.5rem;
-      position: relative;
-      margin-top: 1rem;
-    }
-
-    /* Sticky header - blocks content (fail) */
-    .demo-container[data-mode="fail"] .demo-scroll-container {
-      scroll-padding-top: 0;
-    }
-
-    /* Sticky header - accounts for header (pass) */
-    .demo-container[data-mode="pass"] .demo-scroll-container {
-      scroll-padding-top: 50px;
-    }
-
-    .demo-sticky-header {
-      position: sticky;
-      top: 0;
-      background: var(--color-text);
-      color: white;
-      padding: 0.75rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      z-index: 10;
-    }
-
-    .demo-scroll-content {
-      padding: 1rem;
-    }
-
-    .demo-scroll-content p {
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
-
-    /* Modal dialog styles */
-    .demo-modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .demo-modal-overlay.active {
-      display: flex;
-    }
-
-    .demo-modal {
-      background: white;
-      border: 2px solid var(--color-border);
-      border-radius: 0.5rem;
-      padding: 2rem;
-      max-width: 400px;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-
-    .demo-modal-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .demo-modal-content {
-      margin-bottom: 1.5rem;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    .demo-modal-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: flex-end;
-    }
-
-    .demo-modal-buttons button {
-      padding: 0.5rem 1rem;
-      border: 2px solid var(--color-border);
-      border-radius: 0.25rem;
-      background: white;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    .demo-modal-buttons button:focus {
-      outline: 3px solid var(--color-focus);
-      outline-offset: 2px;
-    }
-
-    /* Fail mode: modal positioned off-screen */
-    .demo-container[data-mode="fail"] .demo-modal {
-      margin-top: 300px;
-      margin-left: auto;
-    }
-
-    /* Pass mode: modal properly centered */
-    .demo-container[data-mode="pass"] .demo-modal {
-      margin: 0;
-    }
-  </style>
 </head>
 <body class="checkpoint-page">
 
@@ -193,17 +60,15 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-
-      <!-- Demo 1: Sticky header hides focused element -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-sticky-header"
-           data-announce-fail="Focused button is completely hidden behind the sticky header"
-           data-announce-pass="Focused button is visible below the sticky header due to scroll padding">
+           aria-labelledby="demo-label-2411"
+           data-announce-fail="Showing fail example. Focused element is completely hidden behind overlapping content - user cannot see what has focus."
+           data-announce-pass="Showing pass example. Focused element remains at least partially visible - user can track keyboard position.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-sticky-header">Demo 1: Sticky Header Obscures Focus</span>
+          <span class="demo-container__label" id="demo-label-2411">Focus not obscured demo</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -219,103 +84,30 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Tab through this scrollable area. The "Subscribe" button becomes hidden behind the sticky header:</p>
-            <div class="demo-scroll-container">
-              <div class="demo-sticky-header">Navigation (sticky header)</div>
-              <div class="demo-scroll-content">
-                <p>Item 1</p>
-                <p>Item 2</p>
-                <p>Item 3</p>
-                <p>Item 4</p>
-                <button class="focus-demo-button" type="button">Subscribe</button>
+            <p>Press <kbd>Tab</kbd> inside the scrollable area below. The sticky header fully covers the focused "Subscribe" button.</p>
+            <div style="height:160px;overflow-y:auto;border:1px solid #e0e0e0;border-radius:4px;position:relative;margin-top:0.75rem;">
+              <div style="position:sticky;top:0;background:#1a1a1a;color:#fff;padding:0.5rem 0.75rem;font-size:0.85rem;font-weight:600;z-index:1;">
+                Site header (sticky)
+              </div>
+              <div style="padding:0.75rem;">
+                <p style="margin-bottom:0.75rem;font-size:0.9rem;">Sign up to our newsletter for weekly updates on accessibility best practices.</p>
+                <button type="button" style="display:block;">Subscribe</button>
               </div>
             </div>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>Same structure with scroll-padding-top. The "Subscribe" button remains visible:</p>
-            <div class="demo-scroll-container">
-              <div class="demo-sticky-header">Navigation (sticky header)</div>
-              <div class="demo-scroll-content">
-                <p>Item 1</p>
-                <p>Item 2</p>
-                <p>Item 3</p>
-                <p>Item 4</p>
-                <button class="focus-demo-button" type="button">Subscribe</button>
+            <p>Same structure with <code>scroll-padding-top</code> matching the header height. Press <kbd>Tab</kbd> - "Subscribe" remains at least partially visible.</p>
+            <div style="height:160px;overflow-y:auto;border:1px solid #e0e0e0;border-radius:4px;position:relative;margin-top:0.75rem;scroll-padding-top:40px;">
+              <div style="position:sticky;top:0;background:#1a1a1a;color:#fff;padding:0.5rem 0.75rem;font-size:0.85rem;font-weight:600;z-index:1;">
+                Site header (sticky)
+              </div>
+              <div style="padding:0.75rem;">
+                <p style="margin-bottom:0.75rem;font-size:0.9rem;">Sign up to our newsletter for weekly updates on accessibility best practices.</p>
+                <button type="button" style="display:block;">Subscribe</button>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Code blocks synced to demo state -->
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
-      </div>
-
-      <!-- Demo 2: Modal dialog positioned off-screen -->
-      <div class="demo-container"
-           data-mode="fail"
-           role="region"
-           aria-labelledby="demo-label-modal-position"
-           data-announce-fail="Dialog buttons are positioned partially or completely off-screen when focused"
-           data-announce-pass="Dialog is properly centered and all buttons remain fully visible">
-
-        <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-modal-position">Demo 2: Modal Dialog Off-Screen</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
-            <span class="demo-toggle__label--fail">Show passing example</span>
-            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
-          </button>
-        </div>
-
-        <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
-        </div>
-
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
-
-        <div class="demo-stage">
-          <div data-demo-state="fail">
-            <p>Tab inside the dialog overlay. The buttons may go off-screen:</p>
-            <button class="focus-demo-button" onclick="document.querySelector('.demo-container[data-mode=fail] .demo-modal-overlay').classList.add('active')">Open Modal (Fail)</button>
-            <div class="demo-modal-overlay">
-              <div class="demo-modal" style="margin-top: 300px; margin-left: auto;">
-                <div class="demo-modal-title">Confirm Action</div>
-                <div class="demo-modal-content">
-                  Are you sure you want to proceed?
-                </div>
-                <div class="demo-modal-buttons">
-                  <button onclick="document.querySelector('.demo-container[data-mode=fail] .demo-modal-overlay').classList.remove('active')">Cancel</button>
-                  <button>Confirm</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div data-demo-state="pass" hidden>
-            <p>Dialog is properly centered. Tab to see all buttons remain visible:</p>
-            <button class="focus-demo-button" onclick="document.querySelector('.demo-container[data-mode=pass] .demo-modal-overlay').classList.add('active')">Open Modal (Pass)</button>
-            <div class="demo-modal-overlay">
-              <div class="demo-modal">
-                <div class="demo-modal-title">Confirm Action</div>
-                <div class="demo-modal-content">
-                  Are you sure you want to proceed?
-                </div>
-                <div class="demo-modal-buttons">
-                  <button onclick="document.querySelector('.demo-container[data-mode=pass] .demo-modal-overlay').classList.remove('active')">Cancel</button>
-                  <button>Confirm</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Code blocks synced to demo state -->
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
       </div>
     </section>
 
@@ -334,11 +126,9 @@
       <p>This criterion is new in WCAG 2.2 and reflects a real-world problem that became widespread as sticky navigation patterns became dominant in web design. It applies to author-created overlapping content, not to browser-level UI such as the browser's own address bar. Even a 1px sliver of the focused component visible above the sticky element is technically a pass for 2.4.11, though 2.4.12 (Level AAA) requires the focused component to be entirely visible.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="wcag-techniques-heading">
-      <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
-      <ul>
-        <li><strong>Success Techniques:</strong> C40, SCR25</li>
-      </ul>
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">Techniques</h2>
+      <p>WCAG techniques used in this demo: <code>C40</code></p>
     </section>
 
   </main>

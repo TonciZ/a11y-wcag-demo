@@ -60,17 +60,15 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
-
-      <!-- Demo 1: Undersized buttons -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-258a"
+           aria-labelledby="demo-label-258"
            data-announce-fail="Showing fail example. Small action buttons are difficult to activate accurately - barriers for users with motor impairments or on touch screens."
            data-announce-pass="Showing pass example. Larger action buttons are easy to activate accurately - accessible to users with motor impairments.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-258a">Demo 1: Undersized buttons (16×16 px)</span>
+          <span class="demo-container__label" id="demo-label-258">Target size demo</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -86,91 +84,31 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Three action buttons sized at 16×16 px - below the 24×24 px minimum. Small targets are difficult to activate for users with motor impairments or on touch screens.</p>
+            <p>Three action buttons sized at 16&times;16&thinsp;px - below the 24&times;24&thinsp;px minimum. Small targets are difficult to activate for users with motor impairments or on touch screens.</p>
             <div style="display:flex;gap:0.5rem;align-items:center;margin-top:0.75rem;padding:0.75rem;background:#f5f5f5;border-radius:4px;">
               <span style="flex:1;font-size:0.9rem;">Project report.pdf</span>
               <button type="button" aria-label="Edit"
-                      style="width:16px;height:16px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✎</button>
+                      style="width:16px;height:16px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#9998;</button>
               <button type="button" aria-label="Share"
-                      style="width:16px;height:16px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">⬆</button>
+                      style="width:16px;height:16px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#8679;</button>
               <button type="button" aria-label="Delete"
-                      style="width:16px;height:16px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">✕</button>
+                      style="width:16px;height:16px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#10005;</button>
             </div>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>Same buttons with <code>min-width: 24px; min-height: 24px</code> and padding - each target meets the 24×24 px minimum.</p>
+            <p>Same buttons with <code>min-width: 24px; min-height: 24px</code> and padding - each target meets the 24&times;24&thinsp;px minimum.</p>
             <div style="display:flex;gap:0.5rem;align-items:center;margin-top:0.75rem;padding:0.75rem;background:#f5f5f5;border-radius:4px;">
               <span style="flex:1;font-size:0.9rem;">Project report.pdf</span>
               <button type="button" aria-label="Edit"
-                      style="min-width:24px;min-height:24px;padding:4px 8px;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:0.8rem;flex-shrink:0;">✎</button>
+                      style="min-width:24px;min-height:24px;padding:4px 8px;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:0.8rem;flex-shrink:0;">&#9998;</button>
               <button type="button" aria-label="Share"
-                      style="min-width:24px;min-height:24px;padding:4px 8px;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:0.8rem;flex-shrink:0;">⬆</button>
+                      style="min-width:24px;min-height:24px;padding:4px 8px;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:0.8rem;flex-shrink:0;">&#8679;</button>
               <button type="button" aria-label="Delete"
-                      style="min-width:24px;min-height:24px;padding:4px 8px;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:0.8rem;flex-shrink:0;">✕</button>
+                      style="min-width:24px;min-height:24px;padding:4px 8px;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:0.8rem;flex-shrink:0;">&#10005;</button>
             </div>
           </div>
         </div>
-
-        <!-- Code blocks synced to demo state -->
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
       </div>
-
-      <!-- Demo 2: Closely spaced buttons -->
-      <div class="demo-container"
-           data-mode="fail"
-           role="region"
-           aria-labelledby="demo-label-258b"
-           data-announce-fail="Showing fail example. Buttons spaced too close together create an area too small for reliable touch targeting."
-           data-announce-pass="Showing pass example. Adequate spacing between buttons increases the effective target area for each button.">
-
-        <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-258b">Demo 2: Closely spaced buttons (pagination)</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
-            <span class="demo-toggle__label--fail">Show passing example</span>
-            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
-          </button>
-        </div>
-
-        <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
-        </div>
-
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
-
-        <div class="demo-stage">
-          <div data-demo-state="fail">
-            <p>Multiple small buttons (18×18 px) with minimal gap (1px) between them. Combined spacing is insufficient - tapping one button may accidentally activate a neighbor.</p>
-            <div style="display:flex;gap:1px;margin-top:0.75rem;">
-              <button type="button" style="width:18px;height:18px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-label="Previous">‹</button>
-              <button type="button" style="width:18px;height:18px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-label="Page 1">1</button>
-              <button type="button" style="width:18px;height:18px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-label="Page 2">2</button>
-              <button type="button" style="width:18px;height:18px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-label="Page 3">3</button>
-              <button type="button" style="width:18px;height:18px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-label="Next">›</button>
-            </div>
-          </div>
-          <div data-demo-state="pass" hidden>
-            <p>Same buttons with increased spacing (8px gap). Each button now has adequate spacing - effective target area meets the 24×24 px minimum.</p>
-            <div style="display:flex;gap:8px;margin-top:0.75rem;">
-              <button type="button" style="width:18px;height:18px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-label="Previous">‹</button>
-              <button type="button" style="width:18px;height:18px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-label="Page 1">1</button>
-              <button type="button" style="width:18px;height:18px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-label="Page 2">2</button>
-              <button type="button" style="width:18px;height:18px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-label="Page 3">3</button>
-              <button type="button" style="width:18px;height:18px;padding:0;border:1px solid #8a8a8a;border-radius:3px;background:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;" aria-label="Next">›</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Code blocks synced to demo state -->
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
-      </div>
-
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -189,11 +127,8 @@
     </section>
 
     <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
-      <ul>
-        <li><strong>Failure:</strong> F110 (Failure of Success Criterion 2.5.8 due to pointer target size)</li>
-        <li><strong>Success Techniques:</strong> G206 (Providing styles and scripts that make active UI components visible)</li>
-      </ul>
+      <h2 id="techniques-heading">Techniques</h2>
+      <p>WCAG techniques used in this demo: <code>G207</code>, <code>C34</code></p>
     </section>
 
   </main>

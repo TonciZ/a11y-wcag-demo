@@ -85,78 +85,27 @@
         <div class="demo-stage">
           <div data-demo-state="fail">
             <p>These titles give screen reader users no useful information about the page's topic. They are indistinguishable across multiple tabs.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Fail: missing title --&gt;
+&lt;title&gt;&lt;/title&gt;
+
+&lt;!-- Fail: generic placeholder --&gt;
+&lt;title&gt;Untitled Document&lt;/title&gt;
+
+&lt;!-- Fail: same title on every page --&gt;
+&lt;title&gt;My Website&lt;/title&gt;</code></pre>
           </div>
           <div data-demo-state="pass" hidden>
             <p>Each page has a unique, descriptive title. The most specific information comes first so it is announced first by screen readers and visible in truncated browser tabs.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Pass: specific page name first, then site name --&gt;
+&lt;title&gt;Contact Us - Acme Corporation&lt;/title&gt;
+
+&lt;!-- Pass: product detail page --&gt;
+&lt;title&gt;Blue Widget (Large) - ShopExample&lt;/title&gt;
+
+&lt;!-- Pass: search results with context --&gt;
+&lt;title&gt;Search results for "keyboard" - WCAG 2.2 Demo&lt;/title&gt;</code></pre>
           </div>
         </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
-      </div>
-
-      <!-- Demo 2: SPA title updates -->
-      <div class="demo-container"
-           data-mode="fail"
-           role="region"
-           aria-labelledby="demo-label-242-2"
-           data-announce-fail="Showing fail example. Single-page application does not update the page title when content changes."
-           data-announce-pass="Showing pass example. Single-page application updates the page title to reflect the current view.">
-
-        <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-242-2">Page title updates in Single-Page Apps</span>
-          <button class="demo-toggle" type="button" aria-pressed="false">
-            <span class="demo-toggle__label--fail">Show passing example</span>
-            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
-          </button>
-        </div>
-
-        <div class="demo-status" aria-hidden="true">
-          <span class="demo-status__text--fail">Fail</span>
-          <span class="demo-status__text--pass">Pass</span>
-        </div>
-
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
-
-        <div class="demo-stage">
-          <div data-demo-state="fail">
-            <p>Browser tab title remains "Home" even after navigating to a new section. Screen reader users cannot tell they've switched pages.</p>
-            <div style="margin-top:0.75rem;border:1px solid #ccc;padding:0.75rem;">
-              <p style="margin:0 0 0.5rem 0;"><strong>Browser tab shows:</strong> "Home"</p>
-              <nav style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
-                <button style="padding:0.5rem 1rem;cursor:pointer;background:#eee;border:1px solid #ccc;border-radius:4px;">Home</button>
-                <button style="padding:0.5rem 1rem;cursor:pointer;background:#eee;border:1px solid #ccc;border-radius:4px;">Products</button>
-                <button style="padding:0.5rem 1rem;cursor:pointer;background:#eee;border:1px solid #ccc;border-radius:4px;">Contact</button>
-              </nav>
-              <div style="background:#f9f9f9;padding:0.75rem;border-radius:4px;">
-                <h3 style="margin:0 0 0.5rem 0;">Products Page</h3>
-                <p style="margin:0;">This is the products page, but the browser tab still says "Home".</p>
-              </div>
-            </div>
-          </div>
-          <div data-demo-state="pass" hidden>
-            <p>Browser tab title updates when content changes. Screen reader users know immediately that they've navigated to a new page.</p>
-            <div style="margin-top:0.75rem;border:1px solid #ccc;padding:0.75rem;">
-              <p style="margin:0 0 0.5rem 0;"><strong>Browser tab shows:</strong> "Products - Acme Corporation"</p>
-              <nav style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
-                <button style="padding:0.5rem 1rem;cursor:pointer;background:#eee;border:1px solid #ccc;border-radius:4px;">Home</button>
-                <button style="padding:0.5rem 1rem;cursor:pointer;background:#eee;border:1px solid #ccc;border-radius:4px;">Products</button>
-                <button style="padding:0.5rem 1rem;cursor:pointer;background:#eee;border:1px solid #ccc;border-radius:4px;">Contact</button>
-              </nav>
-              <div style="background:#f0fdf4;padding:0.75rem;border-radius:4px;">
-                <h3 style="margin:0 0 0.5rem 0;">Products Page</h3>
-                <p style="margin:0;">The page title is now "Products - Acme Corporation".</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <details class="demo-code-section" open>
-          <summary class="demo-code-section__toggle">Code</summary>
-          <pre><code class="demo-live-code"></code></pre>
-        </details>
       </div>
     </section>
 
@@ -176,11 +125,8 @@
     </section>
 
     <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
-      <ul>
-        <li><strong>Failure:</strong> F25 (Failure of Success Criterion 2.4.2 when the web page does not have a title), F85 (Failure of Success Criterion 2.4.2 when a web page has a title that does not identify the contents)</li>
-        <li><strong>Success Techniques:</strong> G88 (Providing descriptive titles for web pages), H25 (Providing a title element for web pages), ARIA12 (Using role='heading' with aria-level to create multi-level headings)</li>
-      </ul>
+      <h2 id="techniques-heading">Techniques</h2>
+      <p>WCAG techniques used in this demo: <code>H25</code></p>
     </section>
 
   </main>
