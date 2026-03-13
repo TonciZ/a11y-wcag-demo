@@ -501,13 +501,7 @@ a.checkpoint-card:hover {
   color: #ffffff;
 }
 
-/* Ensure child elements also get white text */
-.checkpoint-nav__link--active .checkpoint-nav__code,
-.checkpoint-nav__link[aria-current="page"] .checkpoint-nav__code,
-.checkpoint-nav__link--active .checkpoint-nav__title,
-.checkpoint-nav__link[aria-current="page"] .checkpoint-nav__title {
-  color: #ffffff;
-}
+/* Child elements inherit parent link color */
 
 /* Guideline (1.1) — medium indent */
 .checkpoint-nav__guideline {
@@ -537,7 +531,6 @@ a.checkpoint-card:hover {
 
 .checkpoint-nav__code {
   font-family: var(--font-family-mono);
-  color: var(--color-text-muted);
   flex-shrink: 0;
   font-size: 0.68rem;
 }
