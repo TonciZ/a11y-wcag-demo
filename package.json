@@ -1,0 +1,9 @@
+{
+  "name": "wcag-2.2-a11y-demo",
+  "version": "2.0.0",
+  "description": "Interactive WCAG 2.2 accessibility demonstration site with 45 checkpoint pages showing fail/pass examples",
+  "type": "module",
+  "devDependencies": {
+    "http-server": "^14.1"
+  }
+}
