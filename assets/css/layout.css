@@ -604,6 +604,11 @@ a.checkpoint-card:hover {
   white-space: nowrap;
 }
 
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
 .theme-toggle:hover {
   background: #333333;
   border-color: #333333;
