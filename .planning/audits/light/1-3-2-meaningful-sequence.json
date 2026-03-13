@@ -1,0 +1,66 @@
+[
+  {
+    "code": "color-contrast",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must meet minimum color contrast ratio thresholds (https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI)",
+    "context": "<span class=\"checkpoint-nav__code\">1.3.2</span>",
+    "selector": "html > body > div > nav > div:nth-child(1) > ul > li:nth-child(8) > a > span:nth-child(1)",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "needsFurtherReview": false,
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI"
+    }
+  },
+  {
+    "code": "color-contrast",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must meet minimum color contrast ratio thresholds (https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI)",
+    "context": "<span class=\"checkpoint-nav__title\">Meaningful Sequence</span>",
+    "selector": "html > body > div > nav > div:nth-child(1) > ul > li:nth-child(8) > a > span:nth-child(2)",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "needsFurtherReview": false,
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI"
+    }
+  },
+  {
+    "code": "aria-prohibited-attr",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must only use permitted ARIA attributes (https://dequeuniversity.com/rules/axe/4.11/aria-prohibited-attr?application=axeAPI)",
+    "context": "<div style=\"display:flex;gap:0.5rem;margin-top:0.75rem;\" aria-label=\"Steps (fail - DOM order does not match visual order)\">\n              <!-- DOM order: ...</div>",
+    "selector": "#main-content > section:nth-child(4) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > div",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure ARIA attributes are not prohibited for an element's role",
+      "impact": "serious",
+      "needsFurtherReview": true,
+      "help": "Elements must only use permitted ARIA attributes",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-prohibited-attr?application=axeAPI"
+    }
+  },
+  {
+    "code": "color-contrast",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must meet minimum color contrast ratio thresholds (https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI)",
+    "context": "<span aria-hidden=\"true\">←</span>",
+    "selector": "html > body > footer > div > p > a:nth-child(1) > span",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "needsFurtherReview": true,
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI"
+    }
+  }
+]
