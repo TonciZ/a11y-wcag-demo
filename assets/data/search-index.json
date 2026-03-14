@@ -60,7 +60,7 @@
       "title": "1.3.4 Orientation",
       "url": "checkpoints/1-3-4-orientation.html",
       "pillar": "Perceivable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -69,7 +69,7 @@
       "title": "1.3.5 Identify Input Purpose",
       "url": "checkpoints/1-3-5-identify-input-purpose.html",
       "pillar": "Perceivable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -87,7 +87,7 @@
       "title": "1.4.10 Reflow",
       "url": "checkpoints/1-4-10-reflow.html",
       "pillar": "Perceivable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -96,7 +96,7 @@
       "title": "1.4.11 Non-text Contrast",
       "url": "checkpoints/1-4-11-non-text-contrast.html",
       "pillar": "Perceivable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -105,7 +105,7 @@
       "title": "1.4.12 Text Spacing",
       "url": "checkpoints/1-4-12-text-spacing.html",
       "pillar": "Perceivable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -114,7 +114,7 @@
       "title": "1.4.13 Content on Hover or Focus",
       "url": "checkpoints/1-4-13-content-on-hover-or-focus.html",
       "pillar": "Perceivable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -132,7 +132,7 @@
       "title": "1.4.3 Contrast (Minimum)",
       "url": "checkpoints/1-4-3-contrast-minimum.html",
       "pillar": "Perceivable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -141,7 +141,7 @@
       "title": "1.4.4 Resize Text",
       "url": "checkpoints/1-4-4-resize-text.html",
       "pillar": "Perceivable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -150,7 +150,7 @@
       "title": "1.4.5 Images of Text",
       "url": "checkpoints/1-4-5-images-of-text.html",
       "pillar": "Perceivable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -204,7 +204,7 @@
       "title": "2.4.11 Focus Not Obscured (Minimum)",
       "url": "checkpoints/2-4-11-focus-not-obscured-minimum.html",
       "pillar": "Operable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -213,7 +213,7 @@
       "title": "2.4.13 Focus Appearance",
       "url": "checkpoints/2-4-13-focus-appearance.html",
       "pillar": "Operable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -249,7 +249,7 @@
       "title": "2.4.6 Headings and Labels",
       "url": "checkpoints/2-4-6-headings-and-labels.html",
       "pillar": "Operable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -258,7 +258,7 @@
       "title": "2.4.7 Focus Visible",
       "url": "checkpoints/2-4-7-focus-visible.html",
       "pillar": "Operable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -285,7 +285,7 @@
       "title": "2.5.7 Dragging Movements",
       "url": "checkpoints/2-5-7-dragging-movements.html",
       "pillar": "Operable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -294,7 +294,7 @@
       "title": "2.5.8 Target Size (Minimum)",
       "url": "checkpoints/2-5-8-target-size-minimum.html",
       "pillar": "Operable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -312,7 +312,7 @@
       "title": "3.1.2 Language of Parts",
       "url": "checkpoints/3-1-2-language-of-parts.html",
       "pillar": "Understandable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -366,7 +366,7 @@
       "title": "3.3.3 Error Suggestion",
       "url": "checkpoints/3-3-3-error-suggestion.html",
       "pillar": "Understandable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -384,7 +384,7 @@
       "title": "3.3.8 Accessible Authentication (Minimum)",
       "url": "checkpoints/3-3-8-accessible-authentication-minimum.html",
       "pillar": "Understandable",
-      "level": "A",
+      "level": "AA",
       "tags": []
     },
     {
@@ -402,7 +402,7 @@
       "title": "4.1.3 Status Messages",
       "url": "checkpoints/4-1-3-status-messages.html",
       "pillar": "Robust",
-      "level": "A",
+      "level": "AA",
       "tags": []
     }
   ]
