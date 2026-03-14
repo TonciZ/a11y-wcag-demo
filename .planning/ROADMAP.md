@@ -126,7 +126,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 11-01-PLAN.md — Sync dev branch with master, create Phase 5-6 VERIFICATION.md files, update REQUIREMENTS.md traceability
+- [x] 11-01-PLAN.md — Sync dev branch with master, create Phase 5-6 VERIFICATION.md files, update REQUIREMENTS.md traceability
 
 ---
 
@@ -134,13 +134,16 @@ Plans:
 **Goal**: All checkpoint demos are manually tested in a real browser by a human tester, passing the full 5-item quality gate including keyboard navigation (Item 5)
 **Depends on**: Phase 11 (branch sync complete, dev has all artifacts)
 **Requirements**: UAT-01, UAT-02, UAT-03
-**Gap Closure:** Closes partial UAT gaps — prior Phase 7 UAT was code inspection only; 22/44 checkpoints manually reviewed by human
+**Gap Closure:** Closes partial UAT gaps — prior Phase 7 UAT was code inspection only; Phase 12 adds real browser testing including Item 5 (keyboard navigation) and full NVDA validation
 **Success Criteria** (what must be TRUE):
   1. All 44 checkpoint pages manually tested in browser by human tester (not code inspection)
   2. Each checkpoint passes CHECKLIST.md 5-item quality gate including Item 5 (keyboard navigation)
   3. Any issues found during manual review are fixed with atomic commits
   4. UAT-RESULTS.md updated with real human test results replacing code-inspection-only results
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 12-01-PLAN.md — Human tester manually tests all 44 checkpoints in Chrome + NVDA (Items 1-5 + 4 SR checks per checkpoint); report failures; Claude implements fixes; human re-verifies fixed checkpoints
 
 ---
 
@@ -158,10 +161,10 @@ Phases execute in numeric order: 5 → 6 → 7 (merge gate) → 8 → 9 → 10 �
 | 9. Mobile Chrome | 0/TBD | Not started | — |
 | 10. Tool Links | 0/TBD | Not started | — |
 | 11. Branch Sync & Metadata | 1/1 | Complete    | 2026-03-14 |
-| 12. Complete Manual UAT | 0/TBD | Not started | — |
+| 12. Complete Manual UAT | 0/1 | Planning | — |
 
 **Next:**
-Execute Phase 8 (Search & Filtering) planning. Phase 11 gap closure complete; all verification artifacts present; REQUIREMENTS.md current.
+Execute Phase 12 (Complete Manual UAT). Phase 11 gap closure complete; all verification artifacts present; ready for human-driven UAT testing.
 
 ---
 
@@ -186,4 +189,5 @@ See `.planning/ROADMAP.md` (v1.0) in git history for detailed phase breakdowns.
 *Phase 5 complete: 1/1 plans; VERIFICATION.md created*
 *Phase 6 complete: 3/3 plans; VERIFICATION.md verified*
 *Phase 7 complete: 1/1 plans; merged dev→master*
-*Phase 11 complete: 1/1 plans; gap closure done; ready for Phase 8*
+*Phase 11 complete: 1/1 plans; gap closure done*
+*Phase 12 plan created: 2026-03-14; ready for execution*
