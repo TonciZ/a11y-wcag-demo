@@ -28,17 +28,17 @@ Requirements for the proof-of-concept milestone: solid infrastructure, quality g
 
 ### COMP — Component Playground
 
-- [ ] **COMP-01**: Developer can open `/components.html` locally and see all reusable UI elements (buttons, dropdowns, inputs, badges, etc.) rendered in one page
-- [ ] **COMP-02**: Component page passes axe scan and keyboard navigation (Tab, Enter, Space, arrow keys work on all interactive elements)
-- [ ] **COMP-03**: Component page is gitignored — never ships to GitHub Pages
-- [ ] **COMP-04**: Every component variant that exists in demo pages is represented (no undocumented variants)
+- [x] **COMP-01**: Developer can open `/components.html` locally and see all reusable UI elements (buttons, dropdowns, inputs, badges, etc.) rendered in one page
+- [x] **COMP-02**: Component page passes axe scan and keyboard navigation (Tab, Enter, Space, arrow keys work on all interactive elements)
+- [x] **COMP-03**: Component page is gitignored — never ships to GitHub Pages
+- [x] **COMP-04**: Every component variant that exists in demo pages is represented (no undocumented variants)
 
 ### AXE — Accessibility Audit
 
-- [ ] **AXE-01**: All 44 checkpoint pages scanned with axe in both light and dark mode
-- [ ] **AXE-02**: Each flagged issue is triaged as real issue vs. intentional demo violation
-- [ ] **AXE-03**: All confirmed real issues are fixed across the site chrome and checkpoint pages
-- [ ] **AXE-04**: Axe triage results documented so future contributors know which violations are intentional
+- [x] **AXE-01**: All 44 checkpoint pages scanned with axe in both light and dark mode
+- [x] **AXE-02**: Each flagged issue is triaged as real issue vs. intentional demo violation
+- [x] **AXE-03**: All confirmed real issues are fixed across the site chrome and checkpoint pages
+- [x] **AXE-04**: Axe triage results documented so future contributors know which violations are intentional
 
 ### UAT — Manual Testing
 
@@ -98,14 +98,14 @@ Deferred to future milestone.
 | DEMO-03 | Phase 3 | Complete |
 | CONT-01 | Phase 1 | Complete |
 | CONT-02 | Phase 4 | Complete |
-| COMP-01 | Phase 5 → 11 | Pending |
-| COMP-02 | Phase 5 → 11 | Pending |
-| COMP-03 | Phase 5 → 11 | Pending |
-| COMP-04 | Phase 5 → 11 | Pending |
-| AXE-01 | Phase 6 → 11 | Pending |
-| AXE-02 | Phase 6 → 11 | Pending |
-| AXE-03 | Phase 6 → 11 | Pending |
-| AXE-04 | Phase 6 → 11 | Pending |
+| COMP-01 | Phase 5 → 11 | Complete |
+| COMP-02 | Phase 5 → 11 | Complete |
+| COMP-03 | Phase 5 → 11 | Complete |
+| COMP-04 | Phase 5 → 11 | Complete |
+| AXE-01 | Phase 6 → 11 | Complete |
+| AXE-02 | Phase 6 → 11 | Complete |
+| AXE-03 | Phase 6 → 11 | Complete |
+| AXE-04 | Phase 6 → 11 | Complete |
 | UAT-01 | Phase 7 → 12 | Pending |
 | UAT-02 | Phase 7 → 12 | Pending |
 | UAT-03 | Phase 7 → 12 | Pending |
@@ -124,9 +124,9 @@ Deferred to future milestone.
 
 **Coverage:**
 - v1.0 requirements: 8 total — all Complete
-- v2.0 requirements: 23 total — 0 Complete, 23 Pending (11 reassigned to gap closure phases)
+- v2.0 requirements: 23 total — 8 Complete (COMP/AXE from Phases 5-6), 15 Pending (SRCH/MOB/TOOLS/UAT from Phases 8-10, 12)
 - Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-10*
-*Last updated: 2026-03-13 — v2.0 requirements added after milestone initialization*
+*Last updated: 2026-03-14 — COMP/AXE requirements marked complete via Phase 11 verification*
