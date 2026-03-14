@@ -93,9 +93,6 @@
               </video>
               <p style="font-size:0.8rem;color:#5a5a5a;margin-top:0.25rem;">(No video file loaded - this demonstrates the markup structure.)</p>
             </div>
-            <pre><code>&lt;video controls&gt;
-  &lt;source src="talk.mp4" type="video/mp4"&gt;
-&lt;/video&gt;</code></pre>
           </div>
           <div data-demo-state="pass" hidden>
             <p>A <code>&lt;track kind="captions"&gt;</code> element is added. Browsers display captions; screen readers and captioning tools can access the text.</p>
@@ -107,14 +104,82 @@
               </video>
               <p style="font-size:0.8rem;color:#5a5a5a;margin-top:0.25rem;">(No video file loaded - the <code>&lt;track&gt;</code> element is present in the markup.)</p>
             </div>
-            <pre><code>&lt;video controls&gt;
-  &lt;source src="talk.mp4" type="video/mp4"&gt;
-  &lt;track kind="captions" src="captions-en.vtt"
-         srclang="en" label="English" default&gt;
-&lt;/video&gt;</code></pre>
           </div>
         </div>
+
+        <!-- Code block - fail state -->
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo2-heading">
+      <h2 id="demo2-heading">Demo 2: Caption Quality - Sound Descriptions</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-122-2"
+           data-announce-fail="Showing fail example. Captions include only dialogue without descriptions of important sounds or music cues."
+           data-announce-pass="Showing pass example. Captions include dialogue and descriptions of all relevant sounds and music.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-122-2">Caption quality demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A video with captions containing only dialogue. Important non-speech audio is omitted.</p>
+            <div style="margin-top:0.75rem;padding:1rem;background:#f5f5f5;border:1px solid #ddd;border-radius:4px;">
+              <p style="margin:0 0 0.5rem;font-weight:600;font-size:0.875rem;">Example incomplete captions:</p>
+              <div style="font-size:0.8rem;line-height:1.6;">
+                <p style="margin:0;">[00:00] Person A: Good morning, welcome to the team.</p>
+                <p style="margin:0;">[00:03] Person B: Thanks for having me.</p>
+                <p style="margin:0;">[00:06] Person A: We're excited to work together.</p>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same video with complete captions that describe all sounds and music.</p>
+            <div style="margin-top:0.75rem;padding:1rem;background:#f5f5f5;border:1px solid #ddd;border-radius:4px;">
+              <p style="margin:0 0 0.5rem;font-weight:600;font-size:0.875rem;">Example complete captions:</p>
+              <div style="font-size:0.8rem;line-height:1.6;">
+                <p style="margin:0;">[00:00] [upbeat jazz music playing]</p>
+                <p style="margin:0;">[00:00] Person A: Good morning, welcome to the team.</p>
+                <p style="margin:0;">[00:03] Person B: Thanks for having me.</p>
+                <p style="margin:0;">[00:06] [door opens, footsteps]</p>
+                <p style="margin:0;">[00:06] Person A: We're excited to work together.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code block - fail state -->
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failures:</strong> F30 (audio content without captions), F87 (captions that do not identify speakers)</li>
+        <li><strong>Success Techniques:</strong> G87 (providing captions), H95 (using the track element to provide captions), G93 (providing open (always visible) captions)</li>
+      </ul>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">

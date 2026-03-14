@@ -1,0 +1,178 @@
+[
+  {
+    "code": "button-name",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Buttons must have discernible text (https://dequeuniversity.com/rules/axe/4.11/button-name?application=axeAPI)",
+    "context": "<button type=\"button\" style=\"border:1px solid var(--color-border);border-radius:4px;padding:0.35rem 0.6rem;background:var(--color-surface);cursor:pointer;font-size:1rem;line-height:1;\"><span aria-hidden=\"true\">✏</spa...</button>",
+    "selector": "#main-content > section:nth-child(4) > div:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div > div > button:nth-child(1)",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure buttons have discernible text",
+      "impact": "critical",
+      "needsFurtherReview": false,
+      "help": "Buttons must have discernible text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=axeAPI"
+    }
+  },
+  {
+    "code": "button-name",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Buttons must have discernible text (https://dequeuniversity.com/rules/axe/4.11/button-name?application=axeAPI)",
+    "context": "<button type=\"button\" style=\"border:1px solid var(--color-border);border-radius:4px;padding:0.35rem 0.6rem;background:var(--color-surface);cursor:pointer;font-size:1rem;line-height:1;\"><span aria-hidden=\"true\">☆</spa...</button>",
+    "selector": "#main-content > section:nth-child(4) > div:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div > div > button:nth-child(2)",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure buttons have discernible text",
+      "impact": "critical",
+      "needsFurtherReview": false,
+      "help": "Buttons must have discernible text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=axeAPI"
+    }
+  },
+  {
+    "code": "button-name",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Buttons must have discernible text (https://dequeuniversity.com/rules/axe/4.11/button-name?application=axeAPI)",
+    "context": "<button type=\"button\" style=\"border:1px solid var(--color-border);border-radius:4px;padding:0.35rem 0.6rem;background:var(--color-surface);cursor:pointer;font-size:1rem;line-height:1;\"><span aria-hidden=\"true\">✕</spa...</button>",
+    "selector": "#main-content > section:nth-child(4) > div:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div > div > button:nth-child(3)",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure buttons have discernible text",
+      "impact": "critical",
+      "needsFurtherReview": false,
+      "help": "Buttons must have discernible text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/button-name?application=axeAPI"
+    }
+  },
+  {
+    "code": "color-contrast",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must meet minimum color contrast ratio thresholds (https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI)",
+    "context": "<span class=\"checkpoint-nav__code\">4.1.2</span>",
+    "selector": "html > body > div > nav > div:nth-child(4) > ul > li:nth-child(2) > a > span:nth-child(1)",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "needsFurtherReview": false,
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI"
+    }
+  },
+  {
+    "code": "color-contrast",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must meet minimum color contrast ratio thresholds (https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI)",
+    "context": "<span class=\"checkpoint-nav__title\">Name, Role, Value</span>",
+    "selector": "html > body > div > nav > div:nth-child(4) > ul > li:nth-child(2) > a > span:nth-child(2)",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "needsFurtherReview": false,
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI"
+    }
+  },
+  {
+    "code": "color-contrast",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must meet minimum color contrast ratio thresholds (https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI)",
+    "context": "<span class=\"fake-check\" style=\"font-size:1.25rem;line-height:1;\" aria-hidden=\"true\">☐</span>",
+    "selector": "#main-content > section:nth-child(4) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > div > span:nth-child(1)",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "needsFurtherReview": true,
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI"
+    }
+  },
+  {
+    "code": "color-contrast",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must meet minimum color contrast ratio thresholds (https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI)",
+    "context": "<span aria-hidden=\"true\">☆</span>",
+    "selector": "#main-content > section:nth-child(4) > div:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div > div > button:nth-child(2) > span",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "needsFurtherReview": true,
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI"
+    }
+  },
+  {
+    "code": "color-contrast",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must meet minimum color contrast ratio thresholds (https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI)",
+    "context": "<span aria-hidden=\"true\">✕</span>",
+    "selector": "#main-content > section:nth-child(4) > div:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div > div > button:nth-child(3) > span",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "needsFurtherReview": true,
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI"
+    }
+  },
+  {
+    "code": "color-contrast",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must meet minimum color contrast ratio thresholds (https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI)",
+    "context": "<span data-arrow=\"\" aria-hidden=\"true\">▼</span>",
+    "selector": "#main-content > section:nth-child(4) > div:nth-child(4) > div:nth-child(4) > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(1) > span:nth-child(2)",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "needsFurtherReview": true,
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI"
+    }
+  },
+  {
+    "code": "color-contrast",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must meet minimum color contrast ratio thresholds (https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI)",
+    "context": "<span data-arrow=\"\" aria-hidden=\"true\">▼</span>",
+    "selector": "#main-content > section:nth-child(4) > div:nth-child(4) > div:nth-child(4) > div:nth-child(1) > div > div:nth-child(2) > div:nth-child(1) > span:nth-child(2)",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "needsFurtherReview": true,
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI"
+    }
+  },
+  {
+    "code": "color-contrast",
+    "type": "error",
+    "typeCode": 1,
+    "message": "Elements must meet minimum color contrast ratio thresholds (https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI)",
+    "context": "<span aria-hidden=\"true\">←</span>",
+    "selector": "html > body > footer > div > p > a:nth-child(1) > span",
+    "runner": "axe",
+    "runnerExtras": {
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "needsFurtherReview": true,
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI"
+    }
+  }
+]

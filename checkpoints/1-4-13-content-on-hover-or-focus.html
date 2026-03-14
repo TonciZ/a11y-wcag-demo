@@ -9,6 +9,23 @@
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
+  <style>
+    .tooltip-wrap, .tooltip-pass-wrap { position: relative; display: inline-block; }
+    .tooltip-fail { display: none; position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #fff; font-size: 0.8rem; padding: 0.4rem 0.6rem; border-radius: 4px; white-space: nowrap; z-index: 10; pointer-events: none; }
+    .tooltip-wrap:hover .tooltip-fail { display: block; }
+    .tooltip-pass { display: none; position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #fff; font-size: 0.8rem; padding: 0.4rem 0.6rem; border-radius: 4px; white-space: nowrap; z-index: 10; pointer-events: auto; }
+    .tooltip-pass-wrap:hover .tooltip-pass,
+    .tooltip-pass-wrap:focus-within .tooltip-pass,
+    .tooltip-pass:hover { display: block; }
+
+    .popover-wrap { position: relative; display: inline-block; margin-top: 1rem; }
+    .popover-fail { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: #f5f5f5; border: 1px solid #ccc; border-radius: 4px; padding: 0.75rem; width: 200px; z-index: 10; font-size: 0.9rem; line-height: 1.4; }
+    .popover-trigger-fail:focus { outline: 2px solid #0066cc; outline-offset: 2px; }
+    .popover-trigger-fail:focus ~ .popover-fail { display: block; }
+    .popover-pass { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: #f5f5f5; border: 1px solid #ccc; border-radius: 4px; padding: 0.75rem; width: 200px; z-index: 10; font-size: 0.9rem; line-height: 1.4; }
+    .popover-trigger-pass:focus { outline: 2px solid #0066cc; outline-offset: 2px; }
+    .popover-pass-visible { display: block !important; }
+  </style>
 </head>
 <body class="checkpoint-page">
 
@@ -60,16 +77,18 @@
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+      <h2 id="demo-heading">Interactive Demos</h2>
+
+      <!-- Demo 1: Tooltip that disappears on hover -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-1413"
-           data-announce-fail="Showing fail example. Tooltip vanishes when the pointer moves toward it - users cannot hover over the tooltip to read it."
-           data-announce-pass="Showing pass example. Tooltip persists when hovered and can be dismissed with Escape.">
+           aria-labelledby="demo-label-tooltip"
+           data-announce-fail="Tooltip disappears when you try to move your pointer toward it to read it fully."
+           data-announce-pass="Tooltip persists when hovered and can be dismissed with the Escape key.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-1413">Content on hover or focus demo</span>
+          <span class="demo-container__label" id="demo-label-tooltip">Demo 1: Tooltip Visibility on Hover</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -83,76 +102,158 @@
 
         <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
 
-        <style>
-          .tip-wrap { position: relative; display: inline-block; }
-          .tip-fail { display: none; position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
-            background: #1a1a1a; color: #fff; font-size: 0.8rem; padding: 0.4rem 0.6rem; border-radius: 4px;
-            white-space: nowrap; z-index: 10; pointer-events: none; }
-          .tip-wrap:hover .tip-fail { display: block; }
-          /* Fail: pointer-events:none means you cannot hover the tooltip itself */
-
-          .tip-pass-wrap { position: relative; display: inline-block; }
-          .tip-pass { display: none; position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
-            background: #1a1a1a; color: #fff; font-size: 0.8rem; padding: 0.4rem 0.6rem; border-radius: 4px;
-            white-space: nowrap; z-index: 10; pointer-events: auto; }
-          .tip-pass-wrap:hover .tip-pass,
-          .tip-pass-wrap:focus-within .tip-pass,
-          .tip-pass:hover { display: block; }
-        </style>
-
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Hover over the button. The tooltip appears, but it disappears the moment you try to move your pointer onto it to read it - it has <code>pointer-events: none</code>.</p>
+            <p>Hover over the button. The tooltip appears, but it disappears the moment you try to move your pointer onto it to read it.</p>
             <div style="padding:2rem 1rem 1rem;margin-top:0.75rem;">
-              <span class="tip-wrap">
-                <button type="button" aria-describedby="tip-fail-desc">
+              <span class="tooltip-wrap">
+                <button type="button" aria-describedby="tooltip-fail-desc">
                   Format options
                 </button>
-                <span class="tip-fail" id="tip-fail-desc" role="tooltip">Bold, italic, underline, strikethrough - you cannot hover this tooltip</span>
+                <span class="tooltip-fail" id="tooltip-fail-desc" role="tooltip">Bold, italic, underline, strikethrough</span>
               </span>
             </div>
           </div>
           <div data-demo-state="pass" hidden>
             <p>Hover over the button or focus it with <kbd>Tab</kbd>. The tooltip stays visible when you move your pointer onto it. Press <kbd>Escape</kbd> to dismiss it.</p>
             <div style="padding:2rem 1rem 1rem;margin-top:0.75rem;">
-              <span class="tip-pass-wrap" id="tip-pass-container">
-                <button type="button" aria-describedby="tip-pass-desc">
+              <span class="tooltip-pass-wrap" id="tooltip-pass-container">
+                <button type="button" aria-describedby="tooltip-pass-desc">
                   Format options
                 </button>
-                <span class="tip-pass" id="tip-pass-desc" role="tooltip">Bold, italic, underline, strikethrough - hover this tooltip to keep it visible</span>
+                <span class="tooltip-pass" id="tooltip-pass-desc" role="tooltip">Bold, italic, underline, strikethrough</span>
               </span>
             </div>
             <script>
               (function() {
-                var container = document.getElementById('tip-pass-container');
+                var container = document.getElementById('tooltip-pass-container');
                 if (!container) return;
                 document.addEventListener('keydown', function(e) {
                   if (e.key === 'Escape') {
-                    var tip = container.querySelector('.tip-pass');
-                    if (tip) { tip.style.display = 'none'; }
-                    setTimeout(function() { if (tip) tip.style.removeProperty('display'); }, 500);
+                    var tip = container.querySelector('.tooltip-pass');
+                    if (tip) {
+                      tip.style.display = 'none';
+                      setTimeout(function() { if (tip) tip.style.removeProperty('display'); }, 500);
+                    }
                   }
                 });
               })();
             </script>
           </div>
         </div>
+
+        <!-- Code blocks for Demo 1 -->
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <!-- Demo 2: Popover that disappears on focus loss -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-popover"
+           data-announce-fail="Popover disappears the moment focus moves away from the button, preventing users from reading or using it."
+           data-announce-pass="Popover remains visible while the button has focus and can be dismissed with the Escape key.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-popover">Demo 2: Popover Visibility on Focus</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Focus the button with <kbd>Tab</kbd>. The popover appears, but disappears when focus moves away, preventing you from reading or using it.</p>
+            <div style="padding:2rem 1rem 1rem;margin-top:0.75rem;">
+              <div class="popover-wrap">
+                <button class="popover-trigger-fail" type="button" aria-haspopup="true">
+                  Help
+                </button>
+                <div class="popover-fail" id="popover-fail-content" role="dialog" aria-labelledby="popover-fail-title">
+                  <p id="popover-fail-title"><strong>Help</strong></p>
+                  <p>Click for assistance. This disappears when focus leaves.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Focus the button with <kbd>Tab</kbd>. The popover stays visible while the button has focus. Press <kbd>Escape</kbd> to dismiss it.</p>
+            <div style="padding:2rem 1rem 1rem;margin-top:0.75rem;">
+              <div class="popover-wrap" id="popover-pass-container">
+                <button class="popover-trigger-pass" type="button" aria-haspopup="true" id="popover-pass-trigger">
+                  Help
+                </button>
+                <div class="popover-pass" id="popover-pass-content" role="dialog" aria-labelledby="popover-pass-title">
+                  <p id="popover-pass-title"><strong>Help</strong></p>
+                  <p>Click for assistance. Press Escape to dismiss.</p>
+                </div>
+              </div>
+            </div>
+            <script>
+              (function() {
+                var trigger = document.getElementById('popover-pass-trigger');
+                var popover = document.getElementById('popover-pass-content');
+                if (!trigger || !popover) return;
+
+                trigger.addEventListener('focus', function() {
+                  popover.classList.add('popover-pass-visible');
+                });
+                trigger.addEventListener('blur', function() {
+                  setTimeout(function() {
+                    popover.classList.remove('popover-pass-visible');
+                  }, 0);
+                });
+                document.addEventListener('keydown', function(e) {
+                  if (e.key === 'Escape' && popover.classList.contains('popover-pass-visible')) {
+                    popover.classList.remove('popover-pass-visible');
+                    trigger.focus();
+                  }
+                });
+              })();
+            </script>
+          </div>
+        </div>
+
+        <!-- Code blocks for Demo 2 -->
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
-      <p>A failure occurs when additional content triggered by hover or focus disappears before the user has had a chance to read or interact with it. Examples include custom tooltips that disappear as soon as the pointer moves slightly off the trigger, dropdown menus that close if the pointer travels in a straight line rather than along the menu edge, and tooltips that cannot be dismissed by pressing Escape. For low-vision users who use screen magnification, triggered content often appears outside their current view and requires them to pan the viewport to find it, during which the hover state may be lost and the content disappears.</p>
+      <p>A failure occurs when additional content triggered by hover or focus disappears before the user has had a chance to read or interact with it. The first demo shows a tooltip with <code>pointer-events: none</code>, which prevents hovering the tooltip itself. The second demo shows a popover that disappears when focus moves away. For low-vision users who use screen magnification, triggered content often appears outside their current view and requires panning the viewport, during which the hover state may be lost and the content disappears.</p>
     </section>
 
     <section class="content-section" aria-labelledby="pass-heading">
       <h2 id="pass-heading">Pass Explanation</h2>
-      <p>A passing implementation ensures all three conditions are satisfied. The additional content is dismissible by pressing the Escape key (or equivalent) without the user needing to move focus. The triggered content is hoverable - the pointer can travel from the trigger element onto the content itself without the content closing. The content remains visible until the user deliberately dismisses it or moves focus entirely away from the trigger. ARIA tooltips and custom dropdowns should be tested against all three conditions.</p>
+      <p>A passing implementation ensures all three conditions are satisfied. The additional content is dismissible by pressing Escape without moving focus. The triggered content is hoverable - the pointer can move from the trigger onto the content without it closing. The content remains visible until the user dismisses it or moves focus entirely away. Both demos include keyboard accessibility and Escape key dismissal.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F95 (Failure due to content disappearing without user initiation), F87 (Failure due to content appearing on focus)</li>
+        <li><strong>Success Techniques:</strong> G192 (Fully visible and hoverable), SCR39 (Making content visually and semantically dismissible)</li>
+      </ul>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading">Notes</h2>
-      <p>This criterion was added in WCAG 2.1 specifically to address the problems low-vision users experience with hover-triggered content that disappears before they can read it or navigate to it. The Escape key requirement for dismissal aligns with the general usability convention for closing dialogs and popups.</p>
+      <p>This criterion was added in WCAG 2.1 to address problems low-vision users experience with hover-triggered content that disappears before they can read it. The Escape key requirement aligns with general usability conventions for closing dialogs and popups.</p>
     </section>
 
     <section class="content-section" aria-labelledby="techniques-heading">

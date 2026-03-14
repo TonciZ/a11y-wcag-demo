@@ -60,15 +60,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Icon button with aria-label mismatch -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-253"
-           data-announce-fail="Showing fail example. The accessible name conflicts with the visible button label."
-           data-announce-pass="Showing pass example. The accessible name contains the visible button label.">
+           aria-labelledby="demo-1-label"
+           data-announce-fail="Showing fail example. Button visible text does not match aria-label - voice control users will have difficulty."
+           data-announce-pass="Showing pass example. Button visible text matches aria-label - voice control users can now use commands reliably.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-253">Label in Name demo</span>
+          <span class="demo-container__label" id="demo-1-label">Demo 1: Icon button label mismatch</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -84,19 +86,106 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>This button visually reads "Subscribe" but its <code>aria-label</code> is "Unsubscribe from mailing list". A speech recognition user saying "click Subscribe" will not activate it - the name does not match.</p>
-            <div style="margin-top:0.75rem;">
-              <button type="button" aria-label="Unsubscribe from mailing list">Subscribe</button>
+            <p>This icon button has a mismatch between visible text and aria-label:</p>
+            <div style="margin-top: 1rem;">
+              <button type="button" aria-label="Find items" style="padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer;">
+                🔍 Search
+              </button>
             </div>
           </div>
+
           <div data-demo-state="pass" hidden>
-            <p>The <code>aria-label</code> now starts with the visible text "Subscribe", so speech recognition commands match. Additional context follows the visible label text.</p>
-            <div style="margin-top:0.75rem;">
-              <button type="button" aria-label="Subscribe to our newsletter">Subscribe</button>
+            <p>This icon button has matching visible text and aria-label:</p>
+            <div style="margin-top: 1rem;">
+              <button type="button" aria-label="Search" style="padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer;">
+                🔍 Search
+              </button>
             </div>
           </div>
         </div>
-      </div>
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>The visible label is "Search" but aria-label is "Find items". A voice control user says "click Search" but the button's accessible name is "Find items", so the voice command doesn't match and fails.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>The visible label "Search" matches the aria-label="Search". A voice control user saying "click Search" will match the button's accessible name, and the command works correctly.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
+      <!-- Demo 2: Form button with obscured label -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-2-label"
+           data-announce-fail="Showing fail example. Button visible label is hidden - voice control users cannot match their spoken command to this control."
+           data-announce-pass="Showing pass example. Button has visible label and matching aria-label - voice control works predictably.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-2-label">Demo 2: Hidden label accessibility problem</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+
+          <div data-demo-state="fail">
+            <p>This button's text label is hidden visually but has aria-label:</p>
+            <div style="margin-top: 1rem;">
+              <button type="button" style="padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer;">
+                <span style="display: none;">Submit</span>
+                ✓
+              </button>
+            </div>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p>This button has visible text label and matching aria-label:</p>
+            <div style="margin-top: 1rem;">
+              <button type="button" style="padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer;">
+                ✓ Submit
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /.demo-stage -->
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>The text "Submit" is hidden with <code>display: none</code>. A voice control user cannot see any text to issue a command for, and the accessible name may not match any visible label.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>The visible text "Submit" is present and matches the button's accessible name. Voice control users can see the label and issue a command like "click Submit" with predictable results.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -107,6 +196,14 @@
     <section class="content-section" aria-labelledby="pass-heading">
       <h2 id="pass-heading">Pass Explanation</h2>
       <p>A passing implementation ensures the accessible name either exactly matches the visible label text or begins with or includes the visible label text. The accessible name may contain additional information beyond the visible text (e.g., "Submit - Place your order now") as long as it starts with or contains the visible text "Submit." The safest approach is to use native HTML labeling mechanisms (<code>&lt;label&gt;</code> for form controls, button text content for <code>&lt;button&gt;</code> elements) which automatically derive the accessible name from visible text, avoiding mismatches entirely.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F96 (accessible name includes no visible text label)</li>
+        <li><strong>Success Techniques:</strong> H44 (using label with form controls), H65 (using label element to associate text with form input), ARIA14 (using aria-label to provide accessible names)</li>
+      </ul>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">

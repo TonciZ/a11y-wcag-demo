@@ -61,15 +61,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Body text contrast -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-143"
-           data-announce-fail="Showing fail example. Text is too faint to read reliably - creates barriers for users with low vision or in bright environments."
-           data-announce-pass="Showing pass example. Text is easily readable at sufficient contrast - accessible to users with low vision.">
+           aria-labelledby="demo-label-143-1"
+           data-announce-fail="Showing fail example. Body text is too faint against the white background - difficult to read for users with low vision."
+           data-announce-pass="Showing pass example. Body text is clearly readable against the white background - accessible to users with low vision.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-143">Contrast minimum demo</span>
+          <span class="demo-container__label" id="demo-label-143-1">Demo 1: Body text contrast</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -85,21 +87,80 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Text uses <code>color: #aaaaaa</code> on white - contrast ratio 2.32:1. Fails the 4.5:1 threshold for normal text.</p>
+            <p>This text uses light gray color on white background - very difficult to read:</p>
             <div style="background:#ffffff;padding:1rem;border:1px solid #e0e0e0;border-radius:4px;margin-top:0.75rem;">
               <h3 style="color:#aaaaaa;margin-bottom:0.5rem;font-size:1.125rem;">Article heading</h3>
-              <p style="color:#aaaaaa;margin:0;">This body text is hard to read for users with low vision or in bright environments. The light grey colour barely distinguishes itself from the white background.</p>
+              <p style="color:#aaaaaa;margin:0;">This body text is hard to read for users with low vision or in bright environments. The light grey color barely distinguishes itself from the white background, making it difficult to read at normal viewing distances.</p>
             </div>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>Same content uses <code>color: #595959</code> on white - contrast ratio 7.0:1. Passes for normal and large text.</p>
+            <p>This text uses dark gray color on white background - clearly readable:</p>
             <div style="background:#ffffff;padding:1rem;border:1px solid #e0e0e0;border-radius:4px;margin-top:0.75rem;">
               <h3 style="color:#595959;margin-bottom:0.5rem;font-size:1.125rem;">Article heading</h3>
-              <p style="color:#595959;margin:0;">This body text is easy to read at adequate contrast. The dark grey passes the 4.5:1 threshold for normal text and 3:1 for large text.</p>
+              <p style="color:#595959;margin:0;">This body text is easy to read at adequate contrast. The dark gray has sufficient contrast against the white background, making it accessible for users with low vision, color blindness, or viewing in bright light.</p>
             </div>
           </div>
         </div>
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
+
+      <!-- Demo 2: Form control contrast -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-143-2"
+           data-announce-fail="Showing fail example. Form input boundaries are difficult to distinguish from the background - users with low vision may not see where to enter text."
+           data-announce-pass="Showing pass example. Form input boundaries are clearly visible against the background - all users can easily locate and interact with the input field.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-143-2">Demo 2: Form input contrast</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Form input with light border on light background - barely distinguishable:</p>
+            <form style="margin-top:0.75rem;" onsubmit="return false;">
+              <label for="fail-143-2-email" style="display:block;margin-bottom:0.5rem;">Email address</label>
+              <input type="email" id="fail-143-2-email" style="border:1px solid #d0d0d0;padding:0.5rem;font-size:1rem;background:#f8f8f8;">
+            </form>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Form input with dark border on light background - clearly visible:</p>
+            <form style="margin-top:0.75rem;" onsubmit="return false;">
+              <label for="pass-143-2-email" style="display:block;margin-bottom:0.5rem;">Email address</label>
+              <input type="email" id="pass-143-2-email" style="border:2px solid #595959;padding:0.5rem;font-size:1rem;background:#ffffff;">
+            </form>
+          </div>
+        </div>
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <section class="content-section" aria-labelledby="techniques-heading">
+        <h2 id="techniques-heading">WCAG Techniques</h2>
+        <ul>
+          <li><strong>Failures:</strong> F83 (using background images without sufficient color contrast)</li>
+          <li><strong>Success Techniques:</strong> G17 (ensuring text contrast meets WCAG requirements), G18 (ensuring large text has sufficient contrast), C15 (using CSS to achieve proper contrast ratios)</li>
+        </ul>
+      </section>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">

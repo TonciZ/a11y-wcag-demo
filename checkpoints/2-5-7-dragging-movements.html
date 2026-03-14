@@ -59,15 +59,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: List reordering with drag-only interface -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-257"
-           data-announce-fail="Showing fail example. The volume control is a slider with only drag interaction and no alternative input."
-           data-announce-pass="Showing pass example. A number input is provided alongside the slider as a non-drag alternative.">
+           aria-labelledby="demo-1-label"
+           data-announce-fail="Showing fail example. List items can only be reordered by dragging - users with motor impairments cannot use this interaction."
+           data-announce-pass="Showing pass example. List items can be reordered using Move Up and Move Down buttons as alternatives to dragging.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-257">Dragging movements demo</span>
+          <span class="demo-container__label" id="demo-1-label">Demo 1: List reordering with alternative input</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -83,28 +85,125 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>The volume control below is a range slider. Although keyboard arrow keys do work, there is no single-point alternative for users who cannot perform a dragging motion.</p>
-            <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.5rem;">
-              <label for="vol-fail-257">Volume</label>
-              <input type="range" id="vol-fail-257" min="0" max="100" value="50" style="max-width:240px;">
+            <p>This todo list can only be reordered by dragging items. Users with motor impairments cannot reliably perform drag operations:</p>
+            <div style="margin-top: 1rem; max-width: 400px;">
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="padding: 0.75rem; margin-bottom: 0.5rem; background: #f5f5f5; border: 1px solid #ccc; cursor: move; border-radius: 4px;">
+                  Buy groceries
+                </li>
+                <li style="padding: 0.75rem; margin-bottom: 0.5rem; background: #f5f5f5; border: 1px solid #ccc; cursor: move; border-radius: 4px;">
+                  Call dentist
+                </li>
+                <li style="padding: 0.75rem; margin-bottom: 0.5rem; background: #f5f5f5; border: 1px solid #ccc; cursor: move; border-radius: 4px;">
+                  Finish report
+                </li>
+              </ul>
+              <p style="font-size: 0.875rem; color: #666; margin-top: 0.75rem;">Drag items to reorder (Note: this demo does not implement actual drag - it shows the fail interface)</p>
             </div>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>A number input is provided alongside the slider. Users who cannot drag can type a value directly. Both controls stay in sync.</p>
-            <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.5rem;">
-              <label for="vol-pass-257">Volume</label>
-              <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
-                <input type="range" id="vol-pass-257" min="0" max="100" value="50" style="max-width:200px;"
-                       oninput="document.getElementById('vol-num-257').value=this.value;">
-                <input type="number" id="vol-num-257" min="0" max="100" value="50"
-                       aria-label="Volume (number input)"
-                       style="width:64px;padding:0.3rem 0.4rem;border:1px solid #8a8a8a;border-radius:4px;"
-                       oninput="var v=Math.min(100,Math.max(0,this.value||0));document.getElementById('vol-pass-257').value=v;">
+            <p>Each todo item has Move Up and Move Down buttons for non-drag reordering:</p>
+            <div style="margin-top: 1rem; max-width: 500px;">
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="padding: 0.75rem; margin-bottom: 0.5rem; background: #f5f5f5; border: 1px solid #ccc; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                  <span>Buy groceries</span>
+                  <div style="display: flex; gap: 0.5rem;">
+                    <button type="button" style="padding: 0.3rem 0.6rem; font-size: 0.875rem; cursor: pointer;">↑ Up</button>
+                    <button type="button" style="padding: 0.3rem 0.6rem; font-size: 0.875rem; cursor: pointer;">↓ Down</button>
+                  </div>
+                </li>
+                <li style="padding: 0.75rem; margin-bottom: 0.5rem; background: #f5f5f5; border: 1px solid #ccc; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                  <span>Call dentist</span>
+                  <div style="display: flex; gap: 0.5rem;">
+                    <button type="button" style="padding: 0.3rem 0.6rem; font-size: 0.875rem; cursor: pointer;">↑ Up</button>
+                    <button type="button" style="padding: 0.3rem 0.6rem; font-size: 0.875rem; cursor: pointer;">↓ Down</button>
+                  </div>
+                </li>
+                <li style="padding: 0.75rem; margin-bottom: 0.5rem; background: #f5f5f5; border: 1px solid #ccc; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                  <span>Finish report</span>
+                  <div style="display: flex; gap: 0.5rem;">
+                    <button type="button" style="padding: 0.3rem 0.6rem; font-size: 0.875rem; cursor: pointer;">↑ Up</button>
+                    <button type="button" style="padding: 0.3rem 0.6rem; font-size: 0.875rem; cursor: pointer;">↓ Down</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>Items can only be reordered by dragging. Users with tremors, limited dexterity, or those using switch control cannot perform sustained drag operations.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>Move Up and Move Down buttons provide a single-pointer click alternative to dragging. Users can click buttons to achieve the same result.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo 2: Slider with numeric input alternative -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-2-label"
+           data-announce-fail="Showing fail example. The volume slider can only be adjusted by dragging - no numeric input alternative available."
+           data-announce-pass="Showing pass example. A number input field provides a non-drag alternative to the slider control.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-2-label">Demo 2: Range slider with numeric input alternative</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This volume slider can only be adjusted by dragging. Keyboard arrow keys work, but dragging is the primary interaction:</p>
+            <div style="margin-top: 1rem; max-width: 400px;">
+              <label for="vol-fail">Volume:</label>
+              <input type="range" id="vol-fail" min="0" max="100" value="50" style="max-width: 240px; display: block; margin-top: 0.5rem;">
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The slider now has a number input field. Users can type a value or use the slider, and both stay synchronized:</p>
+            <div style="margin-top: 1rem; max-width: 400px;">
+              <label for="vol-pass">Volume:</label>
+              <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
+                <input type="range" id="vol-pass" min="0" max="100" value="50" style="max-width: 200px;">
+                <input type="number" id="vol-num" min="0" max="100" value="50" style="width: 80px; padding: 0.5rem; border: 1px solid #8a8a8a; border-radius: 4px; font-size: 1rem;">
               </div>
             </div>
           </div>
         </div>
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>The slider only provides drag interaction. While keyboard arrow keys work, there is no alternative for users who cannot reliably perform drag operations.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>A number input provides a non-drag alternative. Users can type a specific value directly instead of dragging, or use the slider if they prefer.</p>
+          </div>
+        </div>
       </div>
+
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -115,6 +214,14 @@
     <section class="content-section" aria-labelledby="pass-heading">
       <h2 id="pass-heading">Pass Explanation</h2>
       <p>A passing implementation provides at least one alternative to every drag interaction that requires only a single pointer action (a tap or click). For a sortable list, this could be "Move up" and "Move down" buttons on each item. For a range slider, a text input that accepts the numeric value is a valid alternative. For a map with draggable pins, a button that opens a dialog where coordinates can be typed would satisfy the requirement. The alternative does not need to provide an identical experience, only equivalent functionality.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F108 (dragging movements - no non-drag alternative)</li>
+        <li><strong>Success Techniques:</strong> G215 (providing buttons and scripts that perform the same function as the drag operation), G216 (providing single point activation for a drag operation)</li>
+      </ul>
     </section>
 
     <section class="content-section" aria-labelledby="notes-heading">

@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Playground - WCAG 2.2 Demo</title>
+  <meta name="description" content="Internal component showcase for testing and development. Never shipped to public.">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/demo.css">
+  <style>
+    /* Component Playground Styles */
+    .component-playground {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-6);
+    }
+
+    .playground-header {
+      margin-bottom: var(--space-12);
+      padding-bottom: var(--space-8);
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .playground-header h1 {
+      margin-bottom: var(--space-4);
+    }
+
+    .playground-header p {
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-4);
+    }
+
+    .component-preview {
+      margin-bottom: var(--space-16);
+      padding: var(--space-6);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-surface);
+    }
+
+    .component-preview h2 {
+      margin-top: 0;
+      margin-bottom: var(--space-4);
+      font-size: var(--font-size-2xl);
+    }
+
+    .component-preview h3 {
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+      font-size: var(--font-size-lg);
+      color: var(--color-text-muted);
+    }
+
+    .component-preview h4 {
+      margin-top: var(--space-4);
+      margin-bottom: var(--space-2);
+      font-size: var(--font-size-base);
+    }
+
+    .preview-description {
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-6);
+    }
+
+    .preview-demo {
+      padding: var(--space-6);
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      margin-bottom: var(--space-6);
+    }
+
+    [data-theme="dark"] .preview-demo {
+      background: #1a1a1a;
+    }
+
+    .preview-variant {
+      padding: var(--space-4);
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      margin-bottom: var(--space-4);
+    }
+
+    [data-theme="dark"] .preview-variant {
+      background: #1a1a1a;
+    }
+
+    .keyboard-nav-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .keyboard-nav-list li {
+      display: flex;
+      gap: var(--space-4);
+      margin-bottom: var(--space-2);
+      padding: var(--space-2);
+      background: var(--color-bg);
+      border-radius: var(--radius);
+    }
+
+    [data-theme="dark"] .keyboard-nav-list li {
+      background: #2a2a2a;
+    }
+
+    .keyboard-nav-list kbd {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      background: var(--color-text);
+      color: var(--color-bg);
+      border-radius: 3px;
+      font-family: var(--font-family-mono);
+      font-size: 0.875rem;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .accessibility-notes {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .accessibility-note {
+      padding: var(--space-3);
+      background: var(--color-bg);
+      border-left: 3px solid var(--color-accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    [data-theme="dark"] .accessibility-note {
+      background: #2a2a2a;
+    }
+
+    .code-snippet {
+      overflow-x: auto;
+    }
+
+    .code-snippet pre {
+      background: var(--color-text);
+      color: #ffffff;
+      padding: var(--space-4);
+      border-radius: var(--radius);
+      font-family: var(--font-family-mono);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Tab buttons demo */
+    .tab-btn-demo {
+      border-bottom: 2px solid var(--color-border);
+      margin-bottom: var(--space-4);
+    }
+
+    .tab-btn-group {
+      display: flex;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tab-btn {
+      padding: var(--space-3) var(--space-6);
+      border: none;
+      border-bottom: 3px solid transparent;
+      background: transparent;
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--color-text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--color-text);
+      border-bottom-color: var(--color-accent);
+    }
+
+    .tab-btn[aria-selected="true"] {
+      color: var(--color-accent);
+      border-bottom-color: var(--color-accent);
+    }
+
+    .tab-panel {
+      display: none;
+      padding: var(--space-4);
+      animation: fadeIn 0.2s ease;
+    }
+
+    .tab-panel[aria-hidden="false"] {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Combobox demo */
+    .combobox-demo {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .combobox-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .combobox-input {
+      width: 100%;
+      padding: var(--space-2) var(--space-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+    }
+
+    .combobox-input:focus {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+
+    .combobox-listbox {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      max-height: 200px;
+      overflow-y: auto;
+      background: white;
+      border: 1px solid var(--color-border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+      z-index: 10;
+    }
+
+    [data-theme="dark"] .combobox-listbox {
+      background: #1a1a1a;
+    }
+
+    .combobox-listbox[aria-expanded="true"] {
+      display: block;
+    }
+
+    .combobox-option {
+      padding: var(--space-2) var(--space-4);
+      cursor: pointer;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .combobox-option:last-child {
+      border-bottom: none;
+    }
+
+    .combobox-option:hover {
+      background: var(--color-surface);
+    }
+
+    [data-theme="dark"] .combobox-option:hover {
+      background: #2a2a2a;
+    }
+
+    .combobox-option[aria-selected="true"] {
+      background: var(--color-accent);
+      color: white;
+    }
+
+    /* Popover/Tooltip demo */
+    .popover-demo-trigger {
+      position: relative;
+      display: inline-block;
+    }
+
+    .popover-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--color-text);
+      color: white;
+      padding: var(--space-4);
+      border-radius: var(--radius);
+      margin-top: var(--space-2);
+      min-width: 200px;
+      display: none;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .popover-content[aria-hidden="false"] {
+      display: block;
+    }
+
+    .popover-content::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 12px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-text);
+      transform: rotate(45deg);
+    }
+
+    /* Focus demo button styles */
+    .focus-demo-button {
+      padding: var(--space-3) var(--space-6);
+      font-size: var(--font-size-base);
+      font-family: inherit;
+      border-radius: var(--radius);
+      cursor: pointer;
+      background: var(--color-accent);
+      color: white;
+      border: 2px solid transparent;
+      margin-bottom: var(--space-2);
+    }
+
+    .focus-demo-button:hover {
+      background: var(--color-accent-hover);
+    }
+
+    /* No focus (fail) */
+    .focus-demo-button.no-focus:focus {
+      outline: none;
+    }
+
+    /* Low contrast focus (fail) */
+    .focus-demo-button.low-contrast-focus:focus {
+      outline: 2px solid #e0e0e0;
+      outline-offset: 0;
+    }
+
+    /* With focus (pass) */
+    .focus-demo-button.with-focus:focus {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+
+    /* High contrast focus (pass) */
+    .focus-demo-button.high-contrast-focus:focus {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px rgba(0, 85, 204, 0.25);
+    }
+
+    /* Badge styles */
+    .badge {
+      display: inline-block;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      background: var(--color-accent);
+      color: white;
+    }
+
+    .badge--level-a {
+      background: #2563eb;
+    }
+
+    .badge--level-aa {
+      background: #0055cc;
+    }
+
+    /* Details/Summary styling */
+    .demo-code-section {
+      margin-top: var(--space-6);
+    }
+
+    .demo-code-section__toggle {
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+      text-align: left;
+    }
+
+    .demo-code-section__toggle:hover {
+      background: var(--color-bg);
+    }
+
+    .demo-code-section > pre {
+      margin: 0;
+      margin-top: var(--space-4);
+    }
+
+    /* Inline code */
+    code {
+      background: var(--color-surface);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: var(--font-family-mono);
+      font-size: 0.875em;
+    }
+
+    /* Skip to content for accessibility */
+    .internal-note {
+      padding: var(--space-4);
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      border-radius: var(--radius);
+      margin-bottom: var(--space-8);
+    }
+
+    [data-theme="dark"] .internal-note {
+      background: #664d03;
+      color: #ffecb5;
+    }
+
+    /* Grid for variant previews */
+    .variant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">Internal Testing Only</p>
+        <p class="site-hero__title">Component Playground</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false" id="playground-theme-toggle">
+          Dark mode
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="component-playground">
+
+    <div class="playground-header">
+      <h1>Component Playground</h1>
+      <p><strong>⚠️ Internal development only.</strong> This page is gitignored and never shipped to GitHub Pages. Use it to test components in isolation, verify keyboard accessibility, and audit axe compliance in both light and dark modes.</p>
+      <div class="internal-note">
+        <strong>How to use:</strong> Open in browser, toggle dark mode, tab through interactive elements, verify focus outlines visible, test arrow keys on combobox/tabs. Scan with axe: <code>npx http-server . -p 8080 &</code> then <code>npx @axe-core/cli http://localhost:8080/components.html --tags wcag2aa</code>
+      </div>
+    </div>
+
+    <!-- 1. Demo Toggle Button -->
+    <section class="component-preview" id="preview-demo-toggle">
+      <h2>1. Demo Toggle Button</h2>
+      <p class="preview-description">Binary fail/pass toggle used in all 45 checkpoint demos. Uses <code>aria-pressed</code> to communicate state to screen readers. Label text changes via hidden spans.</p>
+
+      <h3>Interactive Example</h3>
+      <div class="preview-demo">
+        <button class="demo-toggle" type="button" aria-pressed="false">
+          <span class="demo-toggle__label--fail">Show passing example</span>
+          <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+        </button>
+      </div>
+
+      <h3>Variants</h3>
+      <div class="variant-grid">
+        <div class="preview-variant">
+          <h4>Fail State (default)</h4>
+          <button class="demo-toggle" type="button" aria-pressed="false">Show passing example</button>
+        </div>
+        <div class="preview-variant">
+          <h4>Pass State</h4>
+          <button class="demo-toggle" type="button" aria-pressed="true">Show failing example</button>
+        </div>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>&lt;button class="demo-toggle" type="button" aria-pressed="false"&gt;
+  &lt;span class="demo-toggle__label--fail"&gt;Show passing example&lt;/span&gt;
+  &lt;span class="demo-toggle__label--pass" hidden&gt;Show failing example&lt;/span&gt;
+&lt;/button&gt;</pre>
+      </div>
+
+      <h3>Keyboard Navigation</h3>
+      <ul class="keyboard-nav-list">
+        <li><kbd>Tab</kbd> <span>Focus button</span></li>
+        <li><kbd>Space</kbd> <span>Toggle fail/pass state, announce via live region</span></li>
+        <li><kbd>Enter</kbd> <span>Toggle fail/pass state, announce via live region</span></li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Uses <code>aria-pressed="true|false"</code> to announce state to screen readers</div>
+        <div class="accessibility-note">Label text changes via hidden spans (no aria-label needed)</div>
+        <div class="accessibility-note">Works with demo-toggle.js live region announcements (data-announce-fail, data-announce-pass)</div>
+      </div>
+    </section>
+
+    <!-- 2. Demo Container -->
+    <section class="component-preview" id="preview-demo-container">
+      <h2>2. Demo Container</h2>
+      <p class="preview-description">Wrapper element that holds toolbar, status, stage, and code. State machine driven by <code>data-mode="fail|pass"</code> attribute. All child visibility/styling keyed off this single attribute.</p>
+
+      <h3>Interactive Example</h3>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-container-label"
+           data-announce-fail="Demo is showing failing example"
+           data-announce-pass="Demo is showing passing example">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-container-label">Demo: Form Input Style</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Form input with no visible boundary (fail):</p>
+            <input type="text" placeholder="Type something..." style="padding: 0.5rem; font-size: 1rem; background: white; border: none;">
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Form input with visible border (pass):</p>
+            <input type="text" placeholder="Type something..." style="padding: 0.5rem; font-size: 1rem; background: white; border: 2px solid var(--color-accent); border-radius: var(--radius);">
+          </div>
+        </div>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>&lt;div class="demo-container"
+     data-mode="fail"
+     role="region"
+     aria-labelledby="demo-label"
+     data-announce-fail="..."
+     data-announce-pass="..."&gt;
+  &lt;!-- toolbar, status, stage, code --&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <h3>Keyboard Navigation</h3>
+      <ul class="keyboard-nav-list">
+        <li><kbd>Tab</kbd> <span>Focus toggle button</span></li>
+        <li><kbd>Space/Enter</kbd> <span>Switch data-mode attribute (CSS updates child visibility)</span></li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Uses <code>role="region"</code> with <code>aria-labelledby</code> to identify demo section</div>
+        <div class="accessibility-note">Uses <code>data-announce-fail/pass</code> attributes for live region updates</div>
+        <div class="accessibility-note">Child elements toggled via data-demo-state matching parent data-mode</div>
+      </div>
+    </section>
+
+    <!-- 3. Demo Status Indicator -->
+    <section class="component-preview" id="preview-demo-status">
+      <h2>3. Demo Status Indicator</h2>
+      <p class="preview-description">Color-coded visual indicator showing current demo state (Fail/Pass). Visual-only, marked with <code>aria-hidden="true"</code>.</p>
+
+      <h3>Interactive Example</h3>
+      <div class="preview-demo">
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass" hidden>Pass</span>
+        </div>
+        <p style="margin-top: var(--space-4);">Fail state visible above (red background)</p>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>&lt;div class="demo-status" aria-hidden="true"&gt;
+  &lt;span class="demo-status__text--fail"&gt;Fail&lt;/span&gt;
+  &lt;span class="demo-status__text--pass"&gt;Pass&lt;/span&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Marked <code>aria-hidden="true"</code> — visual only, redundant with button state</div>
+        <div class="accessibility-note">Never convey critical information via status indicator alone</div>
+      </div>
+    </section>
+
+    <!-- 4. Demo Stage -->
+    <section class="component-preview" id="preview-demo-stage">
+      <h2>4. Demo Stage</h2>
+      <p class="preview-description">Content area where the actual demo lives. In dark mode, applies <code>color-scheme: light</code> to preserve demo colors (critical for contrast demos).</p>
+
+      <h3>Interactive Example (Light Mode)</h3>
+      <div class="preview-demo" style="color-scheme: light;">
+        <h4>Light Mode Demo Stage</h4>
+        <p>This background stays light even in dark theme mode. Essential for contrast ratio demos.</p>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>/* CSS critical rule: */
+[data-theme="dark"] .demo-stage {
+  color-scheme: light;
+}</pre>
+      </div>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Preserves demo color integrity in both light and dark page themes</div>
+        <div class="accessibility-note">Critical for WCAG 1.4.3 (Contrast Minimum) and 1.4.11 (Non-text Contrast) demos</div>
+      </div>
+    </section>
+
+    <!-- 5. Focus Demo Button -->
+    <section class="component-preview" id="preview-focus-demo-button">
+      <h2>5. Focus Demo Button</h2>
+      <p class="preview-description">Button variants demonstrating focus outline requirements. Four variants: no-focus (fail), low-contrast-focus (fail), with-focus (pass), high-contrast-focus (pass).</p>
+
+      <h3>Variants</h3>
+      <div class="variant-grid">
+        <div class="preview-variant">
+          <h4>No Focus (fail)</h4>
+          <button class="focus-demo-button no-focus" type="button">Click and Tab to me</button>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: var(--space-2);">No outline visible when focused</p>
+        </div>
+        <div class="preview-variant">
+          <h4>Low Contrast Focus (fail)</h4>
+          <button class="focus-demo-button low-contrast-focus" type="button">Click and Tab to me</button>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: var(--space-2);">Outline barely visible (low contrast)</p>
+        </div>
+        <div class="preview-variant">
+          <h4>With Focus (pass)</h4>
+          <button class="focus-demo-button with-focus" type="button">Click and Tab to me</button>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: var(--space-2);">Blue outline, 3px, visible</p>
+        </div>
+        <div class="preview-variant">
+          <h4>High Contrast Focus (pass)</h4>
+          <button class="focus-demo-button high-contrast-focus" type="button">Click and Tab to me</button>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted); margin-top: var(--space-2);">Blue outline plus shadow for extra contrast</p>
+        </div>
+      </div>
+
+      <h3>Keyboard Navigation</h3>
+      <ul class="keyboard-nav-list">
+        <li><kbd>Tab</kbd> <span>Focus button, observe outline</span></li>
+        <li><kbd>Space/Enter</kbd> <span>Activate button (no state change)</span></li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">WCAG 2.4.7 (Focus Visible) and 2.4.13 (Focus Appearance) requirements</div>
+        <div class="accessibility-note">Outline must be visible in both light and dark modes</div>
+        <div class="accessibility-note">Minimum 3px outline, contrast ratio 3:1 or greater</div>
+      </div>
+    </section>
+
+    <!-- 6. Details/Summary Code Toggle -->
+    <section class="component-preview" id="preview-details-summary">
+      <h2>6. Details/Summary Code Toggle</h2>
+      <p class="preview-description">Native HTML <code>&lt;details&gt;</code> element for collapsible code sections. Keyboard accessible by default, no JavaScript required.</p>
+
+      <h3>Interactive Example</h3>
+      <div class="preview-demo">
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code>&lt;button type="button"&gt;Click me&lt;/button&gt;</code></pre>
+        </details>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>&lt;details class="demo-code-section" open&gt;
+  &lt;summary class="demo-code-section__toggle"&gt;Code&lt;/summary&gt;
+  &lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;</pre>
+      </div>
+
+      <h3>Keyboard Navigation</h3>
+      <ul class="keyboard-nav-list">
+        <li><kbd>Tab</kbd> <span>Focus summary element</span></li>
+        <li><kbd>Space/Enter</kbd> <span>Toggle details open/closed</span></li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Native element — fully keyboard accessible without JavaScript</div>
+        <div class="accessibility-note">Screen readers announce open/closed state</div>
+        <div class="accessibility-note">Avoids focus trap issues (unlike custom JavaScript toggles)</div>
+      </div>
+    </section>
+
+    <!-- 7. Tab Navigation Demo -->
+    <section class="component-preview" id="preview-tab-navigation">
+      <h2>7. Tab Navigation Demo</h2>
+      <p class="preview-description">Native <code>&lt;button&gt;</code> elements with <code>aria-selected</code> and keyboard event handlers for left/right arrow navigation.</p>
+
+      <h3>Interactive Example</h3>
+      <div class="preview-demo">
+        <div class="tab-btn-demo">
+          <ul class="tab-btn-group" role="tablist">
+            <li role="presentation">
+              <button class="tab-btn" role="tab" aria-selected="true" aria-controls="panel-1">Tab 1</button>
+            </li>
+            <li role="presentation">
+              <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-2">Tab 2</button>
+            </li>
+            <li role="presentation">
+              <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-3">Tab 3</button>
+            </li>
+          </ul>
+        </div>
+        <div id="panel-1" role="tabpanel" class="tab-panel" aria-hidden="false">
+          <p>Content for Tab 1. Use arrow keys to switch tabs.</p>
+        </div>
+        <div id="panel-2" role="tabpanel" class="tab-panel" aria-hidden="true">
+          <p>Content for Tab 2.</p>
+        </div>
+        <div id="panel-3" role="tabpanel" class="tab-panel" aria-hidden="true">
+          <p>Content for Tab 3.</p>
+        </div>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>&lt;ul class="tab-btn-group" role="tablist"&gt;
+  &lt;li role="presentation"&gt;
+    &lt;button class="tab-btn" role="tab" aria-selected="true" aria-controls="panel-1"&gt;Tab 1&lt;/button&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id="panel-1" role="tabpanel" aria-hidden="false"&gt;...&lt;/div&gt;</pre>
+      </div>
+
+      <h3>Keyboard Navigation</h3>
+      <ul class="keyboard-nav-list">
+        <li><kbd>Tab</kbd> <span>Focus active tab button</span></li>
+        <li><kbd>←/→</kbd> <span>Switch to previous/next tab, update aria-selected</span></li>
+        <li><kbd>Home/End</kbd> <span>Jump to first/last tab (optional)</span></li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Uses ARIA tab pattern: tablist, tab, tabpanel roles</div>
+        <div class="accessibility-note">Arrow key handlers update <code>aria-selected</code> and panel visibility</div>
+        <div class="accessibility-note">Screen readers announce active tab and panel content</div>
+      </div>
+    </section>
+
+    <!-- 8. Combobox / Autocomplete -->
+    <section class="component-preview" id="preview-combobox">
+      <h2>8. Combobox / Autocomplete</h2>
+      <p class="preview-description">Input field with listbox dropdown. Arrow keys navigate options, Enter selects. ARIA 1.2 combobox pattern.</p>
+
+      <h3>Interactive Example</h3>
+      <div class="preview-demo">
+        <div class="combobox-demo">
+          <label for="ac-input">Choose a fruit:</label>
+          <div class="combobox-wrapper">
+            <input id="ac-input" type="text" class="combobox-input" placeholder="Type or arrow keys..."
+                   role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="ac-listbox">
+            <ul id="ac-listbox" role="listbox" class="combobox-listbox" aria-expanded="false">
+              <li role="option" data-value="apple">Apple</li>
+              <li role="option" data-value="banana">Banana</li>
+              <li role="option" data-value="cherry">Cherry</li>
+              <li role="option" data-value="date">Date</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>&lt;input role="combobox" aria-autocomplete="list" aria-expanded="false"&gt;
+&lt;ul role="listbox" aria-expanded="false"&gt;
+  &lt;li role="option"&gt;Option 1&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+
+      <h3>Keyboard Navigation</h3>
+      <ul class="keyboard-nav-list">
+        <li><kbd>Tab</kbd> <span>Focus input</span></li>
+        <li><kbd>↑/↓</kbd> <span>Navigate list options (opens list)</span></li>
+        <li><kbd>Enter</kbd> <span>Select focused option</span></li>
+        <li><kbd>Escape</kbd> <span>Close listbox</span></li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Uses ARIA 1.2 combobox pattern with proper roles and attributes</div>
+        <div class="accessibility-note"><code>aria-expanded</code> indicates listbox visibility</div>
+        <div class="accessibility-note">Arrow key handlers update <code>aria-selected</code> on options</div>
+      </div>
+    </section>
+
+    <!-- 9. Popover / Tooltip -->
+    <section class="component-preview" id="preview-popover-tooltip">
+      <h2>9. Popover / Tooltip</h2>
+      <p class="preview-description">Button that reveals hidden content on focus or click. Content visible only in one mode (fail/pass), managed by parent data-mode.</p>
+
+      <h3>Interactive Example</h3>
+      <div class="preview-demo">
+        <div class="popover-demo-trigger">
+          <button type="button" class="focus-demo-button with-focus" aria-expanded="false" aria-controls="popover-content-1">
+            Click or focus for tooltip
+          </button>
+          <div id="popover-content-1" class="popover-content" aria-hidden="true">
+            This content appears on focus or click. Use focus or click handlers to toggle visibility.
+          </div>
+        </div>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>&lt;button aria-expanded="false" aria-controls="popover-1"&gt;Trigger&lt;/button&gt;
+&lt;div id="popover-1" aria-hidden="true"&gt;Content&lt;/div&gt;
+
+&lt;script&gt;
+button.addEventListener('focus', () =&gt; {
+  popover.setAttribute('aria-hidden', 'false');
+});
+&lt;/script&gt;</pre>
+      </div>
+
+      <h3>Keyboard Navigation</h3>
+      <ul class="keyboard-nav-list">
+        <li><kbd>Tab</kbd> <span>Focus trigger button</span></li>
+        <li><kbd>Space/Enter</kbd> <span>Toggle popover visibility (if using button click)</span></li>
+        <li><kbd>Escape</kbd> <span>Close popover</span></li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Uses <code>aria-expanded</code> to indicate visibility state</div>
+        <div class="accessibility-note">Content visible on focus (keyboard accessible)</div>
+        <div class="accessibility-note">No keyboard trap — escape or blur closes popover</div>
+      </div>
+    </section>
+
+    <!-- 10. Heading Structure -->
+    <section class="component-preview" id="preview-heading-structure">
+      <h2>10. Heading Structure</h2>
+      <p class="preview-description">Page header with eyebrow and title (h1). Fixed pattern across all 45 checkpoint pages. Semantic hierarchy critical for screen readers.</p>
+
+      <h3>Interactive Example</h3>
+      <div class="preview-demo">
+        <div class="page-header">
+          <p class="page-header__eyebrow">WCAG 2.2 - Success Criterion</p>
+          <h1 class="page-header__title">2.4.7 Focus Visible</h1>
+          <div class="page-header__meta">
+            <span class="badge badge--level-aa">Level AA</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>&lt;div class="page-header"&gt;
+  &lt;p class="page-header__eyebrow"&gt;WCAG 2.2&lt;/p&gt;
+  &lt;h1 class="page-header__title"&gt;Checkpoint Title&lt;/h1&gt;
+  &lt;span class="badge badge--level-aa"&gt;Level AA&lt;/span&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Only one <code>&lt;h1&gt;</code> per page (inside page-header)</div>
+        <div class="accessibility-note">Proper heading hierarchy (h1, h2, h3) for document outline</div>
+        <div class="accessibility-note">Eyebrow uses <code>&lt;p&gt;</code>, not <code>&lt;span&gt;</code> for semantic structure</div>
+      </div>
+    </section>
+
+    <!-- 11. Badge -->
+    <section class="component-preview" id="preview-badge">
+      <h2>11. Badge</h2>
+      <p class="preview-description">Visual indicator for WCAG conformance level (Level A or Level AA). Used in page headers.</p>
+
+      <h3>Variants</h3>
+      <div class="variant-grid">
+        <div class="preview-variant">
+          <h4>Level A</h4>
+          <span class="badge badge--level-a">Level A</span>
+        </div>
+        <div class="preview-variant">
+          <h4>Level AA</h4>
+          <span class="badge badge--level-aa">Level AA</span>
+        </div>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>&lt;span class="badge badge--level-a"&gt;Level A&lt;/span&gt;
+&lt;span class="badge badge--level-aa"&gt;Level AA&lt;/span&gt;</pre>
+      </div>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Badge text alone is sufficient — no aria-label needed</div>
+        <div class="accessibility-note">Visual color coding supplemented by text for color-blind users</div>
+      </div>
+    </section>
+
+    <!-- 12. Theme Toggle Button -->
+    <section class="component-preview" id="preview-theme-toggle">
+      <h2>12. Theme Toggle Button</h2>
+      <p class="preview-description">Button that switches page theme between light and dark modes. Uses <code>aria-pressed</code> and toggles <code>data-theme</code> attribute on <code>&lt;html&gt;</code>.</p>
+
+      <h3>Interactive Example</h3>
+      <div class="preview-demo">
+        <p>Current theme: <strong id="current-theme">Light</strong></p>
+        <button class="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
+        <p style="margin-top: var(--space-4); font-size: 0.875rem; color: var(--color-text-muted);">Click to toggle light/dark mode (affects entire page)</p>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>&lt;button class="theme-toggle" aria-pressed="false"&gt;Dark mode&lt;/button&gt;
+
+&lt;script&gt;
+button.addEventListener('click', () =&gt; {
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? '' : 'dark');
+  button.setAttribute('aria-pressed', !isDark);
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+});
+&lt;/script&gt;</pre>
+      </div>
+
+      <h3>Keyboard Navigation</h3>
+      <ul class="keyboard-nav-list">
+        <li><kbd>Tab</kbd> <span>Focus button</span></li>
+        <li><kbd>Space/Enter</kbd> <span>Toggle theme, update aria-pressed and localStorage</span></li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Uses <code>aria-pressed</code> to announce current state</div>
+        <div class="accessibility-note">Theme preference persisted in localStorage</div>
+        <div class="accessibility-note">Respects system prefers-color-scheme on first load</div>
+      </div>
+    </section>
+
+    <!-- 13. Code Blocks -->
+    <section class="component-preview" id="preview-code-blocks">
+      <h2>13. Code Blocks</h2>
+      <p class="preview-description">Inline <code>&lt;code&gt;</code> and block <code>&lt;pre&gt;&lt;code&gt;</code> elements with syntax highlighting classes.</p>
+
+      <h3>Inline Code Example</h3>
+      <div class="preview-demo">
+        <p>Use the <code>aria-pressed</code> attribute to indicate button state.</p>
+        <p>The <code>&lt;details&gt;</code> element provides native collapsible behavior.</p>
+      </div>
+
+      <h3>Block Code Example</h3>
+      <div class="preview-demo">
+        <pre><code>&lt;button class="demo-toggle" aria-pressed="false"&gt;
+  &lt;span&gt;Label text&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+      </div>
+
+      <h3>Code</h3>
+      <div class="code-snippet">
+        <pre>&lt;!-- Inline --&gt;
+&lt;p&gt;Use &lt;code&gt;aria-pressed&lt;/code&gt; attribute.&lt;/p&gt;
+
+&lt;!-- Block --&gt;
+&lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</pre>
+      </div>
+
+      <h3>Accessibility</h3>
+      <div class="accessibility-notes">
+        <div class="accessibility-note">Inline code background color provides visual distinction</div>
+        <div class="accessibility-note">Sufficient contrast between code background and text</div>
+        <div class="accessibility-note">Block code uses monospace font and dark background for readability</div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/js/demo-toggle.js"></script>
+  <script>
+    // Theme toggle functionality
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('playground-theme-toggle');
+    const currentThemeDisplay = document.getElementById('current-theme');
+
+    // Initialize theme from localStorage or system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      html.setAttribute('data-theme', 'dark');
+      themeToggle.setAttribute('aria-pressed', 'true');
+      if (currentThemeDisplay) currentThemeDisplay.textContent = 'Dark';
+    }
+
+    // Theme toggle button
+    themeToggle.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        html.removeAttribute('data-theme');
+        themeToggle.setAttribute('aria-pressed', 'false');
+        localStorage.setItem('theme', 'light');
+        if (currentThemeDisplay) currentThemeDisplay.textContent = 'Light';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        themeToggle.setAttribute('aria-pressed', 'true');
+        localStorage.setItem('theme', 'dark');
+        if (currentThemeDisplay) currentThemeDisplay.textContent = 'Dark';
+      }
+    });
+
+    // Tab navigation keyboard handling
+    const tabButtons = document.querySelectorAll('[role="tab"]');
+    tabButtons.forEach((btn, idx) => {
+      btn.addEventListener('keydown', (e) => {
+        let newIdx = idx;
+        if (e.key === 'ArrowLeft') {
+          newIdx = (idx - 1 + tabButtons.length) % tabButtons.length;
+          e.preventDefault();
+        } else if (e.key === 'ArrowRight') {
+          newIdx = (idx + 1) % tabButtons.length;
+          e.preventDefault();
+        }
+        if (newIdx !== idx) {
+          tabButtons[newIdx].focus();
+          tabButtons[newIdx].click();
+        }
+      });
+
+      btn.addEventListener('click', () => {
+        // Update all tab states
+        tabButtons.forEach((b) => {
+          const panelId = b.getAttribute('aria-controls');
+          const panel = document.getElementById(panelId);
+          if (b === btn) {
+            b.setAttribute('aria-selected', 'true');
+            if (panel) panel.setAttribute('aria-hidden', 'false');
+          } else {
+            b.setAttribute('aria-selected', 'false');
+            if (panel) panel.setAttribute('aria-hidden', 'true');
+          }
+        });
+      });
+    });
+
+    // Combobox keyboard handling
+    const acInput = document.getElementById('ac-input');
+    const acListbox = document.getElementById('ac-listbox');
+    const acOptions = acListbox ? acListbox.querySelectorAll('[role="option"]') : [];
+    let currentOptionIdx = -1;
+
+    if (acInput && acListbox) {
+      acInput.addEventListener('focus', () => {
+        acListbox.setAttribute('aria-expanded', 'true');
+        acInput.setAttribute('aria-expanded', 'true');
+      });
+
+      acInput.addEventListener('blur', () => {
+        setTimeout(() => {
+          acListbox.setAttribute('aria-expanded', 'false');
+          acInput.setAttribute('aria-expanded', 'false');
+          currentOptionIdx = -1;
+        }, 100);
+      });
+
+      acInput.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (currentOptionIdx < acOptions.length - 1) {
+            currentOptionIdx++;
+            updateComboboxSelection();
+          }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (currentOptionIdx > 0) {
+            currentOptionIdx--;
+            updateComboboxSelection();
+          }
+        } else if (e.key === 'Enter' && currentOptionIdx >= 0) {
+          e.preventDefault();
+          acInput.value = acOptions[currentOptionIdx].textContent;
+          acListbox.setAttribute('aria-expanded', 'false');
+          acInput.setAttribute('aria-expanded', 'false');
+        } else if (e.key === 'Escape') {
+          acListbox.setAttribute('aria-expanded', 'false');
+          acInput.setAttribute('aria-expanded', 'false');
+          currentOptionIdx = -1;
+        }
+      });
+
+      function updateComboboxSelection() {
+        acOptions.forEach((opt, idx) => {
+          if (idx === currentOptionIdx) {
+            opt.setAttribute('aria-selected', 'true');
+          } else {
+            opt.removeAttribute('aria-selected');
+          }
+        });
+      }
+    }
+
+    // Popover toggle
+    const popoverBtn = document.querySelector('[aria-controls="popover-content-1"]');
+    const popoverContent = document.getElementById('popover-content-1');
+    if (popoverBtn && popoverContent) {
+      popoverBtn.addEventListener('focus', () => {
+        popoverContent.setAttribute('aria-hidden', 'false');
+        popoverBtn.setAttribute('aria-expanded', 'true');
+      });
+
+      popoverBtn.addEventListener('blur', () => {
+        setTimeout(() => {
+          popoverContent.setAttribute('aria-hidden', 'true');
+          popoverBtn.setAttribute('aria-expanded', 'false');
+        }, 100);
+      });
+
+      popoverBtn.addEventListener('click', () => {
+        const isHidden = popoverContent.getAttribute('aria-hidden') === 'true';
+        popoverContent.setAttribute('aria-hidden', !isHidden);
+        popoverBtn.setAttribute('aria-expanded', isHidden);
+      });
+    }
+  </script>
+
+</body>
+</html>

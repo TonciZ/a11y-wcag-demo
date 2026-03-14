@@ -74,12 +74,52 @@
           : (container.dataset.announceFail || 'Now showing: fail example.');
         announcement.textContent = msg;
       }
+
+      // Serialize active demo state HTML into live code block
+      updateLiveCode(container, nextMode);
     });
+  }
+
+  function highlightHTML(raw) {
+    // Escape for display
+    var s = raw
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+
+    // Comments
+    s = s.replace(/(&lt;!--[\s\S]*?--&gt;)/g,
+      '<span class="hl-comment">$1</span>');
+
+    // Attribute values: ="..."
+    s = s.replace(/=(&quot;.*?&quot;)/g,
+      '=<span class="hl-value">$1</span>');
+
+    // Tag names: <tag or </tag
+    s = s.replace(/(&lt;\/?)([\w:-]+)/g,
+      '$1<span class="hl-tag">$2</span>');
+
+    return s;
+  }
+
+  function updateLiveCode(container, mode) {
+    var activeState = container.querySelector('[data-demo-state="' + mode + '"]');
+    var codeEl = container.querySelector('.demo-live-code');
+    if (activeState && codeEl) {
+      codeEl.innerHTML = highlightHTML(activeState.innerHTML.trim());
+    }
   }
 
   function init() {
     var buttons = document.querySelectorAll('.demo-toggle');
     buttons.forEach(initDemoToggle);
+
+    // Populate live code blocks with initial state on page load
+    document.querySelectorAll('.demo-container').forEach(function (container) {
+      var mode = container.getAttribute('data-mode') || 'fail';
+      updateLiveCode(container, mode);
+    });
   }
 
   if (document.readyState === 'loading') {

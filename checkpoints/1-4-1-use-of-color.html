@@ -60,15 +60,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Form required fields -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-141"
-           data-announce-fail="Showing fail example. Required fields lack any non-color indicator - users who cannot perceive color have no way to identify them."
-           data-announce-pass="Showing pass example. Required fields use multiple indicators including text symbols - all users can identify them.">
+           aria-labelledby="demo-label-141-1"
+           data-announce-fail="Showing fail example. Required fields are marked only with color - users who cannot distinguish colors have no way to identify them."
+           data-announce-pass="Showing pass example. Required fields are marked with symbols in addition to color - all users can identify them.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-141">Use of colour demo</span>
+          <span class="demo-container__label" id="demo-label-141-1">Demo 1: Form field requirement indicators</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -84,42 +86,129 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>Required fields are shown only by changing the label colour to red. Users who cannot distinguish colour have no way to know which fields are mandatory.</p>
+            <p>Required fields are shown only by changing the label color to red. Users who cannot distinguish color have no way to know which fields are mandatory.</p>
             <form style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;" onsubmit="return false;">
               <div>
-                <label for="fail-141-name" style="display:block;margin-bottom:0.25rem;color:#b91c1c;">Full name</label>
-                <input type="text" id="fail-141-name">
+                <label for="fail-141-1-name" style="display:block;margin-bottom:0.25rem;color:#b91c1c;">Full name</label>
+                <input type="text" id="fail-141-1-name">
               </div>
               <div>
-                <label for="fail-141-company" style="display:block;margin-bottom:0.25rem;">Company (optional)</label>
-                <input type="text" id="fail-141-company">
+                <label for="fail-141-1-company" style="display:block;margin-bottom:0.25rem;">Company (optional)</label>
+                <input type="text" id="fail-141-1-company">
               </div>
               <div>
-                <label for="fail-141-email" style="display:block;margin-bottom:0.25rem;color:#b91c1c;">Email address</label>
-                <input type="email" id="fail-141-email">
+                <label for="fail-141-1-email" style="display:block;margin-bottom:0.25rem;color:#b91c1c;">Email address</label>
+                <input type="email" id="fail-141-1-email">
               </div>
             </form>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>Required fields are marked with a red asterisk <strong style="color:#b91c1c;">*</strong> and a visible legend - two distinct cues, not colour alone.</p>
+            <p>Required fields are marked with an asterisk <strong style="color:#b91c1c;">*</strong> and a visible legend - two distinct cues, not color alone.</p>
             <form style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.75rem;" onsubmit="return false;">
               <p style="font-size:0.875rem;margin:0;"><strong style="color:#b91c1c;" aria-hidden="true">*</strong> Required field</p>
               <div>
-                <label for="pass-141-name" style="display:block;margin-bottom:0.25rem;color:#b91c1c;"><strong aria-hidden="true">*</strong> Full name</label>
-                <input type="text" id="pass-141-name" required aria-required="true">
+                <label for="pass-141-1-name" style="display:block;margin-bottom:0.25rem;color:#b91c1c;"><strong aria-hidden="true">*</strong> Full name</label>
+                <input type="text" id="pass-141-1-name" required aria-required="true">
               </div>
               <div>
-                <label for="pass-141-company" style="display:block;margin-bottom:0.25rem;">Company <span style="color:#5a5a5a;">(optional)</span></label>
-                <input type="text" id="pass-141-company">
+                <label for="pass-141-1-company" style="display:block;margin-bottom:0.25rem;">Company <span style="color:#5a5a5a;">(optional)</span></label>
+                <input type="text" id="pass-141-1-company">
               </div>
               <div>
-                <label for="pass-141-email" style="display:block;margin-bottom:0.25rem;color:#b91c1c;"><strong aria-hidden="true">*</strong> Email address</label>
-                <input type="email" id="pass-141-email" required aria-required="true">
+                <label for="pass-141-1-email" style="display:block;margin-bottom:0.25rem;color:#b91c1c;"><strong aria-hidden="true">*</strong> Email address</label>
+                <input type="email" id="pass-141-1-email" required aria-required="true">
               </div>
             </form>
           </div>
         </div>
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
+
+      <!-- Demo 2: Data visualization with color only -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-141-2"
+           data-announce-fail="Showing fail example. Chart legend uses color only - users who cannot see colors have no way to identify the data series."
+           data-announce-pass="Showing pass example. Chart legend uses both colors and text labels - all users can identify the data series.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-141-2">Demo 2: Data visualization with color-only legend</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The legend has labels, but color is the <em>only</em> way to match them to the lines. A colorblind user cannot tell which line is Revenue and which is Expenses.</p>
+            <div style="margin-top:0.75rem;border:1px solid #ccc;padding:1rem;background:#fff;">
+              <div style="display:flex;gap:2rem;margin-bottom:1rem;">
+                <div style="display:flex;align-items:center;gap:0.5rem;">
+                  <div style="width:16px;height:3px;background:#b91c1c;"></div>
+                  <span>Revenue</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.5rem;">
+                  <div style="width:16px;height:3px;background:#0055cc;"></div>
+                  <span>Expenses</span>
+                </div>
+              </div>
+              <svg viewBox="0 0 400 200" style="width:100%;max-width:400px;border:1px solid #ddd;">
+                <polyline points="10,180 60,130 110,150 160,100 210,120 260,80 310,100 360,60" fill="none" stroke="#b91c1c" stroke-width="2"/>
+                <polyline points="10,150 60,100 110,80 160,60 210,40 260,30 310,50 360,20" fill="none" stroke="#0055cc" stroke-width="2"/>
+                <line x1="10" y1="190" x2="360" y2="190" stroke="#999" stroke-width="1"/>
+                <text x="370" y="195" font-size="12">Time</text>
+              </svg>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Color and line style both differentiate the series. The dashed line is distinguishable from the solid line even without color perception.</p>
+            <div style="margin-top:0.75rem;border:1px solid #ccc;padding:1rem;background:#fff;">
+              <div style="display:flex;gap:2rem;margin-bottom:1rem;">
+                <div style="display:flex;align-items:center;gap:0.5rem;">
+                  <svg width="16" height="10" aria-hidden="true"><line x1="0" y1="5" x2="16" y2="5" stroke="#b91c1c" stroke-width="2"/></svg>
+                  <span>Revenue</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.5rem;">
+                  <svg width="16" height="10" aria-hidden="true"><line x1="0" y1="5" x2="16" y2="5" stroke="#0055cc" stroke-width="2" stroke-dasharray="4,2"/></svg>
+                  <span>Expenses</span>
+                </div>
+              </div>
+              <svg viewBox="0 0 400 200" style="width:100%;max-width:400px;border:1px solid #ddd;">
+                <polyline points="10,180 60,130 110,150 160,100 210,120 260,80 310,100 360,60" fill="none" stroke="#b91c1c" stroke-width="2"/>
+                <polyline points="10,150 60,100 110,80 160,60 210,40 260,30 310,50 360,20" fill="none" stroke="#0055cc" stroke-width="2" stroke-dasharray="8,4"/>
+                <line x1="10" y1="190" x2="360" y2="190" stroke="#999" stroke-width="1"/>
+                <text x="370" y="195" font-size="12">Time</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <section class="content-section" aria-labelledby="techniques-heading">
+        <h2 id="techniques-heading">WCAG Techniques</h2>
+        <ul>
+          <li><strong>Failures:</strong> F81 (color used as only visual means to convey information)</li>
+          <li><strong>Success Techniques:</strong> G14 (ensuring information conveyed through color is also conveyed through other visual means), H51 (using semantic HTML for form labels)</li>
+        </ul>
+      </section>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">

@@ -105,7 +105,76 @@
             <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">Any user can find and activate the button by its visible text label, regardless of visual ability.</p>
           </div>
         </div>
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-133-2"
+           data-announce-fail="Showing fail example. Instructions reference location only, making them unclear to users who cannot perceive spatial position.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-133-2">Position-only instructions demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Instructions identify the action by position only:</p>
+            <blockquote style="border-left:3px solid #d0d0d0;margin:0.75rem 0;padding:0.5rem 1rem;background:#f5f5f5;border-radius:0 4px 4px 0;">
+              <p style="margin:0;">To continue, click the button in the top right corner.</p>
+            </blockquote>
+            <div style="margin-top:1rem;padding:1rem;border:1px solid #e0e0e0;border-radius:4px;background:#f5f5f5;">
+              <p>Welcome to our survey. This quick 5-question form helps us improve your experience.</p>
+              <div style="display:flex;justify-content:space-between;margin-top:1rem;">
+                <button type="button" style="visibility:hidden;">Previous</button>
+                <button type="button">Next</button>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Instructions identify the action by its label:</p>
+            <blockquote style="border-left:3px solid #d0d0d0;margin:0.75rem 0;padding:0.5rem 1rem;background:#f5f5f5;border-radius:0 4px 4px 0;">
+              <p style="margin:0;">To continue, click the <strong>Next</strong> button.</p>
+            </blockquote>
+            <div style="margin-top:1rem;padding:1rem;border:1px solid #e0e0e0;border-radius:4px;background:#f5f5f5;">
+              <p>Welcome to our survey. This quick 5-question form helps us improve your experience.</p>
+              <div style="display:flex;justify-content:space-between;margin-top:1rem;">
+                <button type="button" style="visibility:hidden;">Previous</button>
+                <button type="button">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failure:</strong> F14 (Failure due to identifying content only by its shape or visual location)</li>
+        <li><strong>Success Techniques:</strong> H44 (Using label elements to associate text labels with form inputs), G96 (Providing textual identification of items that otherwise rely only on sensory information to be distinguished)</li>
+      </ul>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">

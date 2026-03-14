@@ -109,7 +109,80 @@
             </div>
           </div>
         </div>
+
+        <!-- Code block - fail state -->
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo2-heading">
+      <h2 id="demo2-heading">Demo 2: Video-only with Text Description</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-121-2"
+           data-announce-fail="Showing fail example. A silent video with no description or audio track - blind users cannot understand what the video shows."
+           data-announce-pass="Showing pass example. A text description provides equivalent information about the video content.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-121-2">Video-only with text description demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A silent product demonstration video with no description. Blind users cannot understand what happens in the video.</p>
+            <div style="margin-top:0.75rem;">
+              <video controls style="width:100%;max-width:400px;background:#000;aspect-ratio:16/9;">
+                <source src="" type="video/mp4">
+                Your browser does not support video.
+              </video>
+              <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.25rem;">(No video file - demonstrates the markup without description.)</p>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The video is followed by a text description providing equivalent information about the visual content.</p>
+            <div style="margin-top:0.75rem;">
+              <video controls style="width:100%;max-width:400px;background:#000;aspect-ratio:16/9;">
+                <source src="" type="video/mp4">
+                Your browser does not support video.
+              </video>
+              <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.25rem;">(No video file - demonstrates the markup with description.)</p>
+              <div style="margin-top:1rem;padding:0.75rem;background:#f5f5f5;border-left:3px solid #0055cc;">
+                <p style="margin:0 0 0.25rem;font-weight:600;">Video Description:</p>
+                <p style="margin:0;font-size:0.875rem;">The video shows a coffee mug being filled with hot water, followed by a tea bag being placed in the mug. The water turns amber as the tea steeps. After 3 minutes, the tea bag is removed and the finished cup is set on a saucer.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code block - fail state -->
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="techniques-heading">
+      <h2 id="techniques-heading">WCAG Techniques</h2>
+      <ul>
+        <li><strong>Failures:</strong> F67 (audio-only content without transcript), F68 (video-only content without audio or text alternative)</li>
+        <li><strong>Success Techniques:</strong> G158 (providing transcript of an audio track), G166 (providing audio description of a video), H96 (using markup to identify a web page as a video transcript)</li>
+      </ul>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">

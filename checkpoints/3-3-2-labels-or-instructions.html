@@ -9,6 +9,46 @@
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
+  <style>
+    .demo-float-label-wrap {
+      position: relative;
+      max-width: 22rem;
+      margin-top: 1.25rem;
+    }
+    .demo-float-label-wrap input {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.7em 0.75em 0.4em;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .demo-float-label-wrap input:focus {
+      outline: 2px solid #0055cc;
+      outline-offset: 1px;
+      border-color: #0055cc;
+    }
+    .demo-float-label-wrap label {
+      position: absolute;
+      left: 0.7rem;
+      top: 0.62em;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #666;
+      pointer-events: none;
+      background: white;
+      padding: 0 0.2em;
+      line-height: 1;
+      transition: top 0.15s ease, font-size 0.15s ease, color 0.15s ease;
+    }
+    .demo-float-label-wrap input:focus + label,
+    .demo-float-label-wrap input:not(:placeholder-shown) + label {
+      top: -0.55em;
+      font-size: 0.78rem;
+      color: #0055cc;
+    }
+  </style>
 </head>
 <body class="checkpoint-page">
 
@@ -61,15 +101,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Missing field labels -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-332"
+           aria-labelledby="demo-label-332-1"
            data-announce-fail="Showing fail example. Input uses only placeholder text - no persistent label."
            data-announce-pass="Showing pass example. Input has a persistent visible label associated programmatically.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-332">Labels or Instructions demo</span>
+          <span class="demo-container__label" id="demo-label-332-1">Demo 1: Missing field labels</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -91,14 +133,94 @@
             </div>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>A persistent <code>&lt;label&gt;</code> is linked to the input via <code>for</code> and <code>id</code>. It remains visible at all times and is announced by screen readers when the field is focused.</p>
-            <div style="margin-top:0.75rem;">
-              <label for="email-332-pass" style="display:block;margin-bottom:0.25rem;font-weight:600;">Email address</label>
-              <input type="email" id="email-332-pass" placeholder="name@example.com" style="padding:0.5em 0.75em;border:1px solid #aaa;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;">
+            <p>A persistent <code>&lt;label&gt;</code> is linked via <code>for</code>/<code>id</code> and animates above the field on focus or input. Screen readers announce it normally — the visual effect is CSS only.</p>
+            <div class="demo-float-label-wrap">
+              <input type="email" id="email-332-pass" placeholder=" ">
+              <label for="email-332-pass">Email address</label>
             </div>
           </div>
         </div>
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Placeholder is the only label — disappears on input --&gt;</span>
+<span class="hl-line-fail">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"email"</span> <span class="hl-tag">placeholder</span>=<span class="hl-value">"Email address"</span>&gt;</span>
+<span class="hl-comment">&lt;!-- No &lt;label&gt; — screen readers may announce nothing --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Label floats above on focus — SR unaffected via for/id --&gt;</span>
+&lt;<span class="hl-tag">div</span> <span class="hl-tag">class</span>=<span class="hl-value">"float-wrap"</span>&gt;
+<span class="hl-comment">  &lt;!-- placeholder=" " is the CSS hook for :not(:placeholder-shown) --&gt;</span>
+<span class="hl-line-pass">  &lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"email"</span> <span class="hl-tag">id</span>=<span class="hl-value">"email"</span> <span class="hl-tag">placeholder</span>=<span class="hl-value">" "</span>&gt;
+  &lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"email"</span>&gt;Email address&lt;/<span class="hl-tag">label</span>&gt;</span>
+&lt;/<span class="hl-tag">div</span>&gt;</code></pre>
+        </details>
       </div>
+
+      <!-- Demo 2: Unclear input format -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-332-2"
+           data-announce-fail="Showing fail example. Date field has no format instruction - user cannot know what format is expected."
+           data-announce-pass="Showing pass example. Date field has a visible format instruction below the label.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-332-2">Demo 2: Unclear input format</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The field enforces <code>xx/xx/xxxx</code> format but gives no clue whether to enter day or month first. The user has to guess.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="date-fail-332" style="display:block;margin-bottom:0.25rem;font-weight:600;">Date of birth</label>
+              <input type="text" id="date-fail-332" inputmode="numeric" maxlength="10"
+                     style="padding:0.5em 0.75em;border:1px solid #aaa;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;"
+                     oninput="maskDate332(this)">
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Same format enforced, but a visible instruction tells the user exactly what order is expected — day first, then month, then year.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="date-pass-332" style="display:block;margin-bottom:0.25rem;font-weight:600;">Date of birth</label>
+              <input type="text" id="date-pass-332" placeholder="DD/MM/YYYY" inputmode="numeric" maxlength="10"
+                     style="padding:0.5em 0.75em;border:1px solid #aaa;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;"
+                     oninput="maskDate332(this)">
+              <span style="font-size:0.875rem;color:#555;display:block;margin-top:0.25rem;">Format: DD/MM/YYYY (e.g., 15/03/1990)</span>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Label present but no format instruction --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"dob"</span>&gt;Date of birth&lt;/<span class="hl-tag">label</span>&gt;
+<span class="hl-line-fail">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">id</span>=<span class="hl-value">"dob"</span> <span class="hl-tag">placeholder</span>=<span class="hl-value">"Date"</span>&gt;</span>
+<span class="hl-comment">&lt;!-- User must guess the expected format --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Label + visible format instruction before input --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"dob"</span>&gt;Date of birth&lt;/<span class="hl-tag">label</span>&gt;
+&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">id</span>=<span class="hl-value">"dob"</span> <span class="hl-tag">placeholder</span>=<span class="hl-value">"DD/MM/YYYY"</span>&gt;
+<span class="hl-line-pass">&lt;<span class="hl-tag">span</span>&gt;Format: DD/MM/YYYY (e.g., 15/03/1990)&lt;/<span class="hl-tag">span</span>&gt;</span></code></pre>
+        </details>
+      </div>
+
+      <!-- WCAG Techniques -->
+      <section class="content-section" aria-labelledby="techniques-heading">
+        <h3 id="techniques-heading">WCAG Techniques</h3>
+        <ul>
+          <li><strong>Failures:</strong> F82 (lack of visual and programmatic indication of input requirements), F86 (placeholder as sole label)</li>
+          <li><strong>Success Techniques:</strong> H44 (using label elements), H71 (providing description for form controls), ARIA14 (using aria-label to provide an invisible label)</li>
+        </ul>
+      </section>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -135,5 +257,17 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script>
+    function maskDate332(input) {
+      var digits = input.value.replace(/\D/g, '').slice(0, 8);
+      var out = digits;
+      if (digits.length > 4) {
+        out = digits.slice(0,2) + '/' + digits.slice(2,4) + '/' + digits.slice(4);
+      } else if (digits.length > 2) {
+        out = digits.slice(0,2) + '/' + digits.slice(2);
+      }
+      input.value = out;
+    }
+  </script>
 </body>
 </html>

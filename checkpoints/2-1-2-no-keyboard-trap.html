@@ -60,15 +60,17 @@
 
     <section class="content-section" aria-labelledby="demo-heading">
       <h2 id="demo-heading">Demo</h2>
+
+      <!-- Demo 1: Modal without escape mechanism -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-212"
-           data-announce-fail="Showing fail example. Modal markup has no keyboard exit."
-           data-announce-pass="Showing pass example. Modal markup provides Escape key handler and close button.">
+           aria-labelledby="demo-label-212-1"
+           data-announce-fail="Showing fail example. Modal dialog has no keyboard exit mechanism."
+           data-announce-pass="Showing pass example. Modal dialog provides Escape key handler and close button for keyboard exit.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-212">No Keyboard Trap demo</span>
+          <span class="demo-container__label" id="demo-label-212-1">Demo 1: Modal without escape mechanism</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -84,45 +86,67 @@
 
         <div class="demo-stage">
           <div data-demo-state="fail">
-            <p>A live keyboard trap on this page would itself be inaccessible. This markup shows a modal with no exit: focus loops inside with no Escape handler and no close button.</p>
-            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;div role="dialog" aria-modal="true" aria-labelledby="dlg-title"&gt;
-  &lt;h2 id="dlg-title"&gt;Confirm action&lt;/h2&gt;
-  &lt;p&gt;Are you sure you want to proceed?&lt;/p&gt;
-  &lt;button&gt;Yes&lt;/button&gt;
-  &lt;!-- No close button. No Escape handler. --&gt;
-&lt;/div&gt;
-
-&lt;script&gt;
-dialog.addEventListener('keydown', e =&gt; {
-  if (e.key === 'Tab') {
-    // cycles focus inside - never exits
-  }
-  // Missing: if (e.key === 'Escape') { closeDialog(); }
-});
-&lt;/script&gt;</code></pre>
+            <p>This code demonstrates a keyboard trap pattern. A live implementation would be unsafe for keyboard users — do not interact with it. The modal below only has a "Yes" button and no Escape handler:</p>
           </div>
           <div data-demo-state="pass" hidden>
-            <p>The same modal constrains focus within the dialog but always provides a keyboard exit: an Escape key handler and a visible close button both dismiss the dialog.</p>
-            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;div role="dialog" aria-modal="true" aria-labelledby="dlg-title"&gt;
-  &lt;h2 id="dlg-title"&gt;Confirm action&lt;/h2&gt;
-  &lt;p&gt;Are you sure you want to proceed?&lt;/p&gt;
-  &lt;button&gt;Yes&lt;/button&gt;
-  &lt;button&gt;Cancel&lt;/button&gt;  &lt;!-- explicit close --&gt;
-&lt;/div&gt;
-
-&lt;script&gt;
-dialog.addEventListener('keydown', e =&gt; {
-  if (e.key === 'Tab') {
-    // cycles focus inside only
-  }
-  if (e.key === 'Escape') {
-    closeDialog(); // ✓ keyboard exit provided
-  }
-});
-&lt;/script&gt;</code></pre>
+            <p>This code demonstrates the safe pattern. The modal has both a "Yes" button and an explicit "Cancel" button, plus an Escape key handler:</p>
           </div>
         </div>
+
+        <!-- Code blocks synced to demo state -->
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
+
+      <!-- Demo 2: Positive tabindex creating focus order trap -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-212-2"
+           data-announce-fail="Showing fail example. Positive tabindex values create an artificial focus order."
+           data-announce-pass="Showing pass example. Natural tab order without positive tabindex values.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-212-2">Demo 2: Positive tabindex focus trap</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This code uses positive tabindex values to force a specific focus order. When tabbing, focus skips to these elements and can become difficult to predict. Do not implement this pattern:</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>This code uses the natural tab order (elements in DOM order). Focus moves predictably through the page in the order elements appear in HTML:</p>
+          </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <!-- WCAG Techniques -->
+      <section class="content-section" aria-labelledby="techniques-heading">
+        <h2 id="techniques-heading">WCAG Techniques</h2>
+        <ul>
+          <li><strong>Failures:</strong> F55 (Using script to make a control unrecoverable when focus is moved away), F85 (Using nested interactive form controls)</li>
+          <li><strong>Success Techniques:</strong> H4 (Creating a logical tab order through links, form controls, and objects), G21 (Ensuring that users are not trapped in content), ARIA6 (Using aria-label to provide labels for objects), ARIA11 (Using ARIA landmarks to identify regions of a page)</li>
+        </ul>
+      </section>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
