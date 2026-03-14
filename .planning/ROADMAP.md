@@ -84,7 +84,9 @@ Plans:
   3. All search results are announced to screen readers via aria-live region as results update
   4. Keyboard user can navigate search input, results list, and filter buttons using Tab, arrow keys, and Enter
   5. Clicking/tapping a result or pressing Enter opens the checkpoint page
-**Plans**: TBD
+
+Plans:
+- [ ] 08-01-PLAN.md — Create static search index, search CSS, filter JS, inject on all pages; verify keyboard/SR accessibility
 
 ---
 
@@ -157,14 +159,14 @@ Phases execute in numeric order: 5 → 6 → 7 (merge gate) → 8 → 9 → 10 �
 | 5. Component Playground | 1/1 | Complete | 2026-03-13 |
 | 6. Axe Audit | 3/3 | Complete | 2026-03-13 |
 | 7. Manual UAT | 1/1 | Complete (code inspection) | 2026-03-13 |
-| 8. Search & Filtering | 0/TBD | Not started | — |
+| 8. Search & Filtering | 0/1 | Planning | — |
 | 9. Mobile Chrome | 0/TBD | Not started | — |
 | 10. Tool Links | 0/TBD | Not started | — |
 | 11. Branch Sync & Metadata | 1/1 | Complete    | 2026-03-14 |
 | 12. Complete Manual UAT | 0/1 | Planning | — |
 
 **Next:**
-Execute Phase 12 (Complete Manual UAT). Phase 11 gap closure complete; all verification artifacts present; ready for human-driven UAT testing.
+Execute Phase 8 (Search & Filtering). Phase 7 UAT complete and merged to live; Phase 11 gap closure done; all prerequisites met.
 
 ---
 
@@ -185,9 +187,11 @@ See `.planning/ROADMAP.md` (v1.0) in git history for detailed phase breakdowns.
 
 *Roadmap created: 2026-03-13*
 *Updated: 2026-03-14 after Phase 11 execution complete*
+*Updated: 2026-03-14 after Phase 8 planning complete*
 *v2.0 feature set defined: 6 phases + 2 gap closure phases = 8 total*
 *Phase 5 complete: 1/1 plans; VERIFICATION.md created*
 *Phase 6 complete: 3/3 plans; VERIFICATION.md verified*
 *Phase 7 complete: 1/1 plans; merged dev→master*
+*Phase 8 plan created: 1/1 plans; ready for execution*
 *Phase 11 complete: 1/1 plans; gap closure done*
 *Phase 12 plan created: 2026-03-14; ready for execution*
