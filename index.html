@@ -162,7 +162,7 @@
     </nav>
 
     <div class="search-widget-wrapper">
-      <form class="search-widget" role="search" aria-label="Search checkpoints">
+      <form class="search-widget" role="search" aria-label="Search checkpoints" onsubmit="return false">
         <div class="search-widget__input-group">
           <label for="search-input" class="visually-hidden">Search</label>
           <input
@@ -173,51 +173,18 @@
             autocomplete="off"
             aria-label="Search checkpoint titles and codes"
             aria-describedby="search-instructions">
-
           <div id="search-instructions" class="visually-hidden">
             Type to filter checkpoints by title or code.
             Use arrow keys to navigate results.
             Press Enter to open a checkpoint.
           </div>
         </div>
-
-        <fieldset class="search-filters">
-          <legend class="search-filters__legend">Filter by pillar and level</legend>
-
-          <div class="filter-group filter-pillar-group">
-            <label class="filter-label">
-              <input type="checkbox" class="filter-pillar" value="Perceivable" checked>
-              Perceivable
-            </label>
-            <label class="filter-label">
-              <input type="checkbox" class="filter-pillar" value="Operable" checked>
-              Operable
-            </label>
-            <label class="filter-label">
-              <input type="checkbox" class="filter-pillar" value="Understandable" checked>
-              Understandable
-            </label>
-            <label class="filter-label">
-              <input type="checkbox" class="filter-pillar" value="Robust" checked>
-              Robust
-            </label>
-          </div>
-
-          <div class="filter-group filter-level-group">
-            <label class="filter-label">
-              <input type="checkbox" class="filter-level" value="A" checked>
-              Level A
-            </label>
-            <label class="filter-label">
-              <input type="checkbox" class="filter-level" value="AA" checked>
-              Level AA
-            </label>
-          </div>
-        </fieldset>
+        <div class="search-level-filters" role="group" aria-label="Filter by conformance level">
+          <button type="button" class="search-level-btn active" data-level="A" aria-pressed="true">Level A</button>
+          <button type="button" class="search-level-btn active" data-level="AA" aria-pressed="true">Level AA</button>
+        </div>
       </form>
-
-      <div class="search-results" role="region" aria-label="Search results"
-           aria-live="polite" aria-atomic="false">
+      <div class="search-results" role="region" aria-label="Search results" aria-live="polite">
         <div class="search-results__count" aria-live="assertive"></div>
         <ul class="search-results__list"></ul>
       </div>
