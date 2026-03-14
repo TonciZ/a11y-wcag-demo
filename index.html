@@ -7,6 +7,7 @@
   <meta name="description" content="Interactive WCAG 2.2 demos showing accessibility failures and how to fix them. For testers and developers.">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
@@ -159,6 +160,68 @@
       </div>
 
     </nav>
+
+    <div class="search-widget-wrapper">
+      <form class="search-widget" role="search" aria-label="Search checkpoints">
+        <div class="search-widget__input-group">
+          <label for="search-input" class="visually-hidden">Search</label>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="Search checkpoints..."
+            autocomplete="off"
+            aria-label="Search checkpoint titles and codes"
+            aria-describedby="search-instructions">
+
+          <div id="search-instructions" class="visually-hidden">
+            Type to filter checkpoints by title or code.
+            Use arrow keys to navigate results.
+            Press Enter to open a checkpoint.
+          </div>
+        </div>
+
+        <fieldset class="search-filters">
+          <legend class="search-filters__legend">Filter by pillar and level</legend>
+
+          <div class="filter-group filter-pillar-group">
+            <label class="filter-label">
+              <input type="checkbox" class="filter-pillar" value="Perceivable" checked>
+              Perceivable
+            </label>
+            <label class="filter-label">
+              <input type="checkbox" class="filter-pillar" value="Operable" checked>
+              Operable
+            </label>
+            <label class="filter-label">
+              <input type="checkbox" class="filter-pillar" value="Understandable" checked>
+              Understandable
+            </label>
+            <label class="filter-label">
+              <input type="checkbox" class="filter-pillar" value="Robust" checked>
+              Robust
+            </label>
+          </div>
+
+          <div class="filter-group filter-level-group">
+            <label class="filter-label">
+              <input type="checkbox" class="filter-level" value="A" checked>
+              Level A
+            </label>
+            <label class="filter-label">
+              <input type="checkbox" class="filter-level" value="AA" checked>
+              Level AA
+            </label>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="search-results" role="region" aria-label="Search results"
+           aria-live="polite" aria-atomic="false">
+        <div class="search-results__count" aria-live="assertive"></div>
+        <ul class="search-results__list"></ul>
+      </div>
+    </div>
 
   <main id="main-content" class="site-main">
 
@@ -1266,5 +1329,6 @@
   </footer>
 
   <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/search-filter.js"></script>
 </body>
 </html>
