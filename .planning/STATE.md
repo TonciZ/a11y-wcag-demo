@@ -1,5 +1,19 @@
 ---
 gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: Roadmap
+status: planning
+last_updated: "2026-03-14T12:42:37.260Z"
+progress:
+  total_phases: 8
+  completed_phases: 4
+  total_plans: 6
+  completed_plans: 6
+  percent: 33
+---
+
+---
+gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Feature Expansion & Quality Assurance
 status: in-progress
@@ -28,7 +42,7 @@ See: `.planning/PROJECT.md` (updated 2026-03-10)
 
 **Milestone:** v2.0
 **Phase:** 11 of 12 (Branch Sync & Metadata Reconciliation) — COMPLETE (Plan 1 of 1 complete)
-**Status:** Ready to plan Phase 8
+**Status:** Ready to plan
 **Progress:** [=========>      ] 33% (8/24 plans complete: Phases 5-7 done, Phase 11 gap closure done)
 
 ---
