@@ -57,6 +57,13 @@
         <li>For touch devices, perform the same test: tap and hold on a control, then slide your finger away before lifting - the action should not fire.</li>
         <li>Check whether any JavaScript event listeners use <code>mousedown</code>, <code>touchstart</code>, or <code>pointerdown</code> to trigger primary actions directly.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Browser extension. Install from official page, open DevTools, go to axe tab, run scan. Look for focus order, keyboard trap, and focus visible violations.</li>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Free screen reader for Windows. Download and install, then open Firefox and navigate the demo using Tab, Shift+Tab, arrow keys, and Enter. Listen for focus announcements.</li>
+      <li>Browser DevTools Accessibility Inspector — Built into all browsers. Right-click on a focused element, select "Inspect", open DevTools, go to Accessibility tab to see the accessibility tree and focus properties.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">

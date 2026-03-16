@@ -3,6 +3,20 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: Roadmap
 status: planning
+last_updated: "2026-03-16T21:59:26.689Z"
+progress:
+  total_phases: 8
+  completed_phases: 6
+  total_plans: 10
+  completed_plans: 9
+  percent: 50
+---
+
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: Roadmap
+status: planning
 last_updated: "2026-03-14T12:42:37.260Z"
 progress:
   total_phases: 8
@@ -41,9 +55,9 @@ See: `.planning/PROJECT.md` (updated 2026-03-10)
 ## Current Position
 
 **Milestone:** v2.0
-**Phase:** 9 of 12 (Mobile Chrome) — COMPLETE
-**Status:** Phase 9 Plans 1-2 complete; ready for Phase 10 planning
-**Progress:** [============>   ] 50% (12/24 plans complete: Phases 5-9 done, Phase 11 gap closure done)
+**Phase:** 10 of 12 (Tool Links) — IN PROGRESS
+**Status:** Plan 01 complete, ready for Plan 02
+**Progress:** [=============>  ] 54% (13/24 plans complete: Phases 5-10 Plan 01 done, Phase 11 gap closure done)
 
 ---
 
@@ -98,7 +112,11 @@ See: `.planning/PROJECT.md` (updated 2026-03-10)
 **Goal:** Tool download links and setup guides per checkpoint
 **Requirements:** TOOLS-01, TOOLS-02, TOOLS-03
 **Depends on:** Phase 9
-**Status:** Pending planning
+**Status:** IN PROGRESS
+- Plan 1: Create five tool setup guide pages (NVDA, axe, CCA, Lighthouse, VoiceOver) — COMPLETE (2026-03-16)
+  - **Artifacts:** 5 HTML pages in `tools/` directory with external tool links and step-by-step setup instructions
+  - **Commits:** 1 (feat: create five tool setup guide pages)
+- Plan 2: Add tool links to checkpoint pages (pending)
 
 ### Phase 11: Branch Sync & Metadata Reconciliation (Gap Closure)
 **Goal:** Resolve dev/master branch desync, create missing verification artifacts
@@ -127,8 +145,8 @@ See: `.planning/PROJECT.md` (updated 2026-03-10)
 | 6. Axe Audit | ✓ Complete | 4 | 4 |
 | 7. Manual UAT | ✓ Complete | 3 | 4 |
 | 8. Search & Filtering | ✓ Complete | 5 | 5 |
-| 9. Mobile Chrome | Ready to plan | 4 | 4 |
-| 10. Tool Links | Blocked (awaiting 9) | 3 | 3 |
+| 9. Mobile Chrome | ✓ Complete | 4 | 4 |
+| 10. Tool Links | In Progress (1 of 2 plans) | 3 | 3 |
 | 11. Branch Sync & Metadata | ✓ Complete (gap closure) | 8 | 8 |
 | 12. Complete Manual UAT | Ready to plan (gap closure) | 3 | 4 |
 
