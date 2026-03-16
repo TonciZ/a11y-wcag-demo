@@ -3,6 +3,15 @@
   // Only run on checkpoint pages (not index)
   if (!document.body.classList.contains('checkpoint-page')) return;
 
+  // Simple debounce helper
+  var debounce = function(fn, delay) {
+    var timeout;
+    return function() {
+      clearTimeout(timeout);
+      timeout = setTimeout(fn, delay);
+    };
+  };
+
   var navHTML = `
     <nav class="checkpoint-nav" aria-label="Checkpoint navigation">
       <div class="checkpoint-nav__group">
@@ -95,12 +104,28 @@
     currentCheckpoint = currentCheckpoint[0];
   }
 
+  // Mobile viewport detection
+  var isMobile = window.innerWidth <= 768;
+
   // Create wrapper and inject navigation
   var mainContent = document.getElementById('main-content');
   if (mainContent) {
     var wrapper = document.createElement('div');
     wrapper.className = 'index-layout';
-    wrapper.innerHTML = navHTML;
+
+    if (isMobile) {
+      // Mobile: wrap nav in <details> hamburger menu
+      var detailsHtml = `
+        <details class="checkpoint-nav-hamburger" id="nav-menu">
+          <summary aria-label="Navigation menu">☰</summary>
+          <nav class="checkpoint-nav" aria-label="Checkpoint navigation">` + navHTML.match(/<nav[^>]*>[\s\S]*?<\/nav>/)[0].replace('<nav class="checkpoint-nav" aria-label="Checkpoint navigation">', '').replace('</nav>', '') + `</nav>
+        </details>
+      `;
+      wrapper.innerHTML = detailsHtml;
+    } else {
+      // Desktop: inject nav as sidebar (existing pattern)
+      wrapper.innerHTML = navHTML;
+    }
 
     // Move main content into wrapper
     mainContent.parentNode.insertBefore(wrapper, mainContent);
@@ -120,4 +145,26 @@
       }
     }
   }
+
+  // Close hamburger menu when user selects a checkpoint
+  document.addEventListener('click', function(e) {
+    var details = document.getElementById('nav-menu');
+    if (e.target.closest('.checkpoint-nav a') && details) {
+      details.open = false;
+    }
+  });
+
+  // Re-inject nav on viewport resize
+  window.addEventListener('resize', debounce(function() {
+    var navMenu = document.getElementById('nav-menu');
+    var sidebar = document.querySelector('.checkpoint-nav');
+    if (navMenu || sidebar) {
+      var currentWrapper = document.querySelector('.index-layout');
+      if (currentWrapper) {
+        currentWrapper.remove();
+        // Re-run injectNav by reloading the script logic
+        location.reload();
+      }
+    }
+  }, 250));
 })();
