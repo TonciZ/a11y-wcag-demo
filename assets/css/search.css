@@ -201,21 +201,43 @@
 }
 
 /* Mobile */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .search-widget-wrapper {
     padding: 0.375rem 0.75rem;
   }
 
   .search-widget {
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: var(--space-3);
   }
 
   .search-widget__input-group {
     flex: 1 1 100%;
     min-width: auto;
+    width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    font-size: 1rem; /* Prevent iOS auto-zoom */
   }
 
   .search-level-filters {
-    justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    width: 100%;
+  }
+
+  .search-level-btn {
+    flex: 0 1 auto; /* Allow buttons to wrap */
+    padding: var(--space-2);
+    font-size: 0.9rem;
+  }
+
+  .search-results {
+    max-height: 300px;
+    overflow-y: auto;
   }
 }
