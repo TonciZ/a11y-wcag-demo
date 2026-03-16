@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoiceOver Setup Guide - WCAG 2.2 Demo</title>
+  <meta name="description" content="Built into macOS and iOS. System-level screen reader for testing.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
+</head>
+<body class="checkpoint-page">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">Setup Guide</p>
+        <p class="site-hero__title">VoiceOver Screen Reader (macOS)</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">Setup Guide</p>
+      <h1 class="page-header__title">VoiceOver Setup Guide</h1>
+    </div>
+
+    <section class="content-section" aria-labelledby="setup-heading">
+      <h2 id="setup-heading">Getting Started with VoiceOver on macOS</h2>
+      <p>VoiceOver is a powerful screen reader built into every Mac and iPad. It reads aloud the text and interface elements of webpages and applications, allowing blind and low-vision users to navigate and interact with content. VoiceOver requires no download or installation—it's ready to enable immediately.</p>
+
+      <h3>Enable VoiceOver on macOS</h3>
+      <p>Open System Preferences (or System Settings on newer macOS versions) and navigate to Accessibility. Look for VoiceOver in the left sidebar and click it. Toggle the "Enable VoiceOver" switch to turn it on. Alternatively, use the keyboard shortcut <strong>Cmd+F5</strong> to toggle VoiceOver on and off instantly.</p>
+
+      <h3>First-Time Activation</h3>
+      <p>When you enable VoiceOver for the first time, you'll hear a welcome message and audio notification. If you don't hear anything, check your Mac's volume and audio output settings in System Preferences → Sound. Ensure speakers or headphones are connected and working. VoiceOver will speak using your system voice (usually "Alex" on older Macs or "Samantha" on newer ones).</p>
+
+      <h3>Learn VoiceOver Navigation</h3>
+      <p>VoiceOver uses a modifier key combination called "VO" (Voice Over) to control navigation and interaction. By default, VO is <strong>Control+Option</strong>. Key shortcuts for testing this site:</p>
+      <ul>
+        <li><strong>VO+Right Arrow:</strong> Move to the next item (word, link, button) and hear it announced.</li>
+        <li><strong>VO+Left Arrow:</strong> Move to the previous item.</li>
+        <li><strong>VO+Down Arrow:</strong> Move into a container (like a list) and read its contents.</li>
+        <li><strong>VO+Up Arrow:</strong> Move out of a container to the parent element.</li>
+        <li><strong>VO+Space:</strong> Activate a link or button (equivalent to clicking or pressing Enter).</li>
+        <li><strong>VO+H:</strong> Open the comprehensive VoiceOver help menu and tutorial (highly recommended for learning).</li>
+        <li><strong>VO+U:</strong> Open the VoiceOver Rotor, a menu of headings, links, and other navigable items on the page.</li>
+        <li><strong>VO+F3:</strong> Show focus highlight (blue spotlight around the current item).</li>
+      </ul>
+
+      <h3>Test with Checkpoint Demo</h3>
+      <p>Open a checkpoint page from this site in Safari or Chrome (both work well with VoiceOver). Enable VoiceOver using Cmd+F5. Use VO+Right Arrow to navigate through the page and listen to announcements. When you toggle a demo between "Fail" and "Pass" mode, VoiceOver will announce the status change. Pay attention to whether all content is announced clearly and in the correct order.</p>
+
+      <h3>Use the Rotor for Efficient Navigation</h3>
+      <p>Press <strong>VO+U</strong> to open the VoiceOver Rotor, which displays a menu of all headings, links, form fields, and other landmarks on the page. You can use arrow keys to navigate this list and jump directly to items. This is much faster than reading through the entire page linearly.</p>
+
+      <h3>Focus Indicators</h3>
+      <p>VoiceOver shows a distinctive blue spotlight around the currently focused element. You can press <strong>VO+F3</strong> to toggle this visual indicator on and off. This is helpful for seeing exactly which element VoiceOver is announcing.</p>
+
+      <h3>Built-in, No Installation Required</h3>
+      <p>VoiceOver is included with every Mac—no download or installation needed. It's part of the accessibility features built into macOS. If you're on Windows, VoiceOver is not available; instead, use NVDA (free) or JAWS (commercial).</p>
+
+      <h3>Helpful Tips</h3>
+      <ul>
+        <li>Start with a simple page like <a href="../checkpoints/1-1-1-non-text-content.html">1.1.1 Non-text Content</a> to get comfortable with VO shortcuts.</li>
+        <li>Use the VoiceOver help menu (VO+H) to access detailed documentation and practice exercises.</li>
+        <li>Combine VoiceOver testing with axe DevTools and CCA to verify different accessibility aspects.</li>
+        <li>Test both Safari and Chrome—some announcements may differ slightly between browsers due to different accessibility implementations.</li>
+        <li>When testing screen reader announcements, listen for clarity: Does the announcement describe the functional impact (what happened) or visual properties (colors, sizes)? Good announcements focus on behavior and meaning.</li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
+</html>

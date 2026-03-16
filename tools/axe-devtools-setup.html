@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>axe DevTools Setup Guide - WCAG 2.2 Demo</title>
+  <meta name="description" content="Browser extension for Chrome/Firefox. Scan any page for accessibility violations.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
+</head>
+<body class="checkpoint-page">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">Setup Guide</p>
+        <p class="site-hero__title">axe DevTools Browser Extension</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">Setup Guide</p>
+      <h1 class="page-header__title">axe DevTools Setup Guide</h1>
+    </div>
+
+    <section class="content-section" aria-labelledby="setup-heading">
+      <h2 id="setup-heading">Getting Started with axe DevTools</h2>
+      <p>axe DevTools is a free browser extension for Chrome and Firefox that scans any webpage for accessibility violations and best practices. It helps you identify which checkpoint examples are failing or passing according to the WCAG 2.2 rules.</p>
+
+      <h3>Install axe DevTools</h3>
+      <p>Visit the official axe DevTools page for installation links:</p>
+      <p><a href="https://www.deque.com/axe/browser-extensions/">https://www.deque.com/axe/browser-extensions/</a></p>
+      <p>For Chrome, install from the Chrome Web Store. For Firefox, install from the Mozilla Add-ons page. The extension is free and no account is required.</p>
+
+      <h3>Open Browser DevTools</h3>
+      <p>Once installed, open your browser's Developer Tools using one of these methods:</p>
+      <ul>
+        <li>Press <strong>F12</strong> (Windows) or <strong>Cmd+Option+I</strong> (Mac).</li>
+        <li>Right-click anywhere on the page and select "Inspect" or "Inspect Element".</li>
+      </ul>
+      <p>DevTools will appear as a panel at the bottom or side of your browser window.</p>
+
+      <h3>Navigate to the axe DevTools Tab</h3>
+      <p>Look for the "axe DevTools" tab in the DevTools panel (you may need to click the <strong>»</strong> menu to find it if there are many tabs). Click on the tab to open the axe scanner.</p>
+
+      <h3>Run a Scan</h3>
+      <p>Click the "Scan" button in the axe panel. The scanner will analyze the current page for accessibility issues. It typically takes a few seconds. When complete, results appear in categories:</p>
+      <ul>
+        <li><strong>Violations (red):</strong> Issues that fail WCAG criteria.</li>
+        <li><strong>Passes (green):</strong> Criteria that the page meets.</li>
+        <li><strong>Best Practices:</strong> Recommended patterns that aren't strict WCAG failures.</li>
+        <li><strong>Needs Review (yellow):</strong> Items that require manual verification.</li>
+      </ul>
+
+      <h3>Test with Checkpoint Demo</h3>
+      <p>Open a checkpoint page from this demo site (e.g., <a href="../checkpoints/1-4-3-contrast-minimum.html">1.4.3 Contrast Minimum</a>) and run an axe scan. Notice which violations appear in the "Fail" mode. Toggle the demo to "Pass" and scan again to see violations disappear. This shows exactly which HTML/CSS changes eliminate the issue.</p>
+
+      <h3>Understanding Intentional Violations</h3>
+      <p>Many violations you see in the "Fail" mode of checkpoints are <strong>intentional demonstrations</strong>. The pages are designed to show what a failing checkpoint looks like so testers can learn to identify the problem. This is not a bug in the site—it's the point of the checkpoint.</p>
+
+      <h3>Helpful Tips</h3>
+      <ul>
+        <li>Use axe alongside NVDA (screen reader) and CCA (contrast checker) to verify different aspects of accessibility.</li>
+        <li>Click on any violation to see the HTML element, the rule that failed, and remediation advice.</li>
+        <li>Export scan results using the download icon for documentation and sharing with team members.</li>
+        <li>Run scans after any code changes to ensure new content remains accessible.</li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
+</html>
