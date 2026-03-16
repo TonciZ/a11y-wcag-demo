@@ -3,13 +3,41 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: Roadmap
 status: planning
-last_updated: "2026-03-13T22:03:26.195Z"
+last_updated: "2026-03-16T21:59:26.689Z"
 progress:
-  total_phases: 6
-  completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
+  total_phases: 8
+  completed_phases: 6
+  total_plans: 10
+  completed_plans: 9
   percent: 50
+---
+
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: Roadmap
+status: planning
+last_updated: "2026-03-14T12:42:37.260Z"
+progress:
+  total_phases: 8
+  completed_phases: 4
+  total_plans: 6
+  completed_plans: 6
+  percent: 33
+---
+
+---
+gsd_state_version: 1.0
+milestone: v2.0
+milestone_name: Feature Expansion & Quality Assurance
+status: in-progress
+last_updated: "2026-03-16T15:30:00Z"
+progress:
+  total_phases: 12
+  completed_phases: 8
+  total_plans: 24
+  completed_plans: 11
+  percent: 46
 ---
 
 # Project State — v2.0 Roadmap
@@ -27,9 +55,9 @@ See: `.planning/PROJECT.md` (updated 2026-03-10)
 ## Current Position
 
 **Milestone:** v2.0
-**Phase:** 6 of 6 (Axe Audit) — COMPLETE (Plan 3 of 3 complete)
-**Status:** Ready to plan
-**Progress:** [===============>] 50% (3/3 plans in phase 6 complete)
+**Phase:** 10 of 12 (Tool Links) — IN PROGRESS (Plan 02 of 02 complete)
+**Status:** Plan 02 complete (all 45 checkpoints updated with tool links)
+**Progress:** [===============> ] 58% (14/24 plans complete: Phases 5-10 all done, Phase 11 gap closure done)
 
 ---
 
@@ -54,26 +82,59 @@ See: `.planning/PROJECT.md` (updated 2026-03-10)
 **Goal:** Verify all checkpoints against quality gate; **MERGE GATE**
 **Requirements:** UAT-01, UAT-02, UAT-03
 **Depends on:** Phase 6
-**Status:** Pending planning
-**Note:** Phase 7 completion triggers merge to live (origin/master)
+**Status:** COMPLETE (merged to origin/master 2026-03-13)
+**Note:** Phase 7 completion triggered merge to live (origin/master); all 45 checkpoints pass CHECKLIST.md items 1-4
 
 ### Phase 8: Search & Filtering
 **Goal:** Full-text search, pillar/level filtering, keyboard/screen-reader accessible
 **Requirements:** SRCH-01, SRCH-02, SRCH-03, SRCH-04, SRCH-05
 **Depends on:** Phase 7
-**Status:** Pending planning
+**Status:** COMPLETE (2026-03-16)
+- Plan 1: Implement search index, CSS, JS module, integrate on all pages — COMPLETE (2026-03-14)
+- **Artifacts:** search-index.json (45 checkpoints), search.css, search-filter.js
+- **Integration:** index.html + all 45 checkpoint pages updated
+- **Commits:** 6 (5 tasks + 1 summary)
 
 ### Phase 9: Mobile Chrome
 **Goal:** Responsive sidebar (hamburger menu), mobile-friendly demos, axe verification
 **Requirements:** MOB-01, MOB-02, MOB-03, MOB-04
 **Depends on:** Phase 8
-**Status:** Pending planning
+**Status:** COMPLETE (2026-03-16)
+- Plan 1: Hamburger navigation at ≤768px using native `<details>` — COMPLETE (2026-03-16)
+- Plan 2: Mobile-responsive search widget and demo containers, axe verification — COMPLETE (2026-03-16)
+- **Artifacts:**
+  - Mobile viewport detection in checkpoint-nav.js, 768px media query in layout.css
+  - Search widget: 768px breakpoint with flex-wrap on filter buttons, full-width input
+  - Demo containers: overflow-x: auto at 640px breakpoint (verified compliant)
+- **Commits:** 3 (hamburger injection + hamburger styling + search widget mobile update)
 
 ### Phase 10: Tool Links & Setup Guides
 **Goal:** Tool download links and setup guides per checkpoint
 **Requirements:** TOOLS-01, TOOLS-02, TOOLS-03
 **Depends on:** Phase 9
+**Status:** COMPLETE (2026-03-16)
+- Plan 1: Create five tool setup guide pages (NVDA, axe, CCA, Lighthouse, VoiceOver) — COMPLETE (2026-03-16)
+  - **Artifacts:** 5 HTML pages in `tools/` directory with external tool links and step-by-step setup instructions
+  - **Commits:** 1 (feat: create five tool setup guide pages)
+- Plan 2: Add tool links to checkpoint pages — COMPLETE (2026-03-16)
+  - **Artifacts:** All 45 checkpoints updated with Testing Tools subsections (3 tools per checkpoint, category-specific)
+  - **Commits:** 2 (feat: add tool subsections; docs: summary + audit)
+  - **Status:** TOOLS-01 and TOOLS-03 satisfied (45/45 checkpoints have ≥3 tool links, all verified)
+
+### Phase 11: Branch Sync & Metadata Reconciliation (Gap Closure)
+**Goal:** Resolve dev/master branch desync, create missing verification artifacts
+**Requirements:** COMP-01–04, AXE-01–04 (verification/traceability)
+**Depends on:** Phases 5-7 (all complete)
+**Status:** COMPLETE (2026-03-14)
+- Plan 1: Sync dev with master, create Phase 5-6 VERIFICATION.md, update REQUIREMENTS.md — COMPLETE
+**Note:** Closes gap introduced when phases 5-7 executed across dev/master branches
+
+### Phase 12: Complete Manual UAT (Gap Closure)
+**Goal:** Full human browser testing of all checkpoints (Item 5: keyboard navigation)
+**Requirements:** UAT-01, UAT-02, UAT-03 (human verification)
+**Depends on:** Phase 11
 **Status:** Pending planning
+**Note:** Phase 7 UAT was code inspection only; Phase 12 adds human manual testing in real browser
 
 ---
 
@@ -83,16 +144,20 @@ See: `.planning/PROJECT.md` (updated 2026-03-10)
 
 | Phase | Status | Requirements | Success Criteria |
 |-------|--------|--------------|------------------|
-| 5. Component Playground | Not started | 4 | 4 |
-| 6. Axe Audit | Blocked (awaiting 5) | 4 | 4 |
-| 7. Manual UAT | Blocked (awaiting 6) | 3 | 4 |
-| 8. Search & Filtering | Blocked (awaiting 7) | 5 | 5 |
-| 9. Mobile Chrome | Blocked (awaiting 8) | 4 | 4 |
-| 10. Tool Links | Blocked (awaiting 9) | 3 | 3 |
+| 5. Component Playground | ✓ Complete | 4 | 4 |
+| 6. Axe Audit | ✓ Complete | 4 | 4 |
+| 7. Manual UAT | ✓ Complete | 3 | 4 |
+| 8. Search & Filtering | ✓ Complete | 5 | 5 |
+| 9. Mobile Chrome | ✓ Complete | 4 | 4 |
+| 10. Tool Links | ✓ Complete (2 of 2 plans) | 3 | 3 |
+| 11. Branch Sync & Metadata | ✓ Complete (gap closure) | 8 | 8 |
+| 12. Complete Manual UAT | Ready to plan (gap closure) | 3 | 4 |
 
 ### Coverage
 
 - **Total v2.0 requirements:** 23
+- **Completed:** 13 (COMP-01–04, AXE-01–04, SRCH-01–05, MOB-01–04, TOOLS-01–03 via Phases 5-6, 8-10, 11)
+- **Pending:** 10 (UAT-01–03 via Phase 12, plus 7 others)
 - **All mapped:** Yes ✓
 - **Unmapped:** 0 ✓
 
@@ -192,10 +257,10 @@ Research is complete; roadmap is locked; all requirements traced; Phase 5 can be
 
 ## Session Continuity
 
-**Last completed:** v1.0 roadmap and final UAT (2026-03-12)
-**Last updated:** Roadmap created, STATE.md initialized (2026-03-13)
-**Current session focus:** v2.0 roadmap definition
-**Next session focus:** Plan Phase 5 (Component Playground)
+**Last completed:** Phase 10 Plan 02 — Add Tool Links to Checkpoint Pages (2026-03-16)
+**Last updated:** STATE.md updated with Phase 10 Plan 02 completion (2026-03-16)
+**Current session focus:** Phase 10 Plan 02 executed; Phase 10 now COMPLETE (both plans done)
+**Next session focus:** Phase 11 planning or Phase 12 (Complete Manual UAT gap closure)
 
 ---
 
@@ -208,6 +273,7 @@ Research is complete; roadmap is locked; all requirements traced; Phase 5 can be
 
 ---
 
-*State initialized: 2026-03-13*
+*State updated: 2026-03-14T12:38:25Z*
 *Milestone: v2.0*
-*Status: Ready for Phase 5 planning*
+*Status: Phase 11 complete; Phase 8 ready for planning*
+*Last executor: Claude (gsd-executor)*

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
   <style>
     .demo-float-label-wrap {
@@ -97,6 +98,13 @@
         <li>Confirm that instructions are available before the user needs to enter data, not only after a submission error.</li>
         <li>Check that group-level instructions (such as "Select all that apply") are provided for checkbox groups and radio groups via <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Free screen reader for Windows. Download, install, and open Firefox to test the demo. Navigate using Tab and arrow keys, and listen to role, name, and state announcements from the page.</li>
+      <li><a href="../tools/voiceover-setup.html">VoiceOver (macOS)</a> — Built into macOS. Enable with Cmd+F5, then open Safari or Chrome to test the demo. Use VO+arrow keys to navigate and hear semantic structure announcements.</li>
+      <li><a href="../tools/lighthouse-setup.html">Lighthouse</a> — Browser accessibility audit in Chrome DevTools. Open DevTools (F12), go to Lighthouse, run the audit to identify semantic and labeling issues.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -214,8 +222,8 @@
       </div>
 
       <!-- WCAG Techniques -->
-      <section class="content-section" aria-labelledby="techniques-heading">
-        <h3 id="techniques-heading">WCAG Techniques</h3>
+      <section class="content-section" aria-labelledby="wcag-techniques-heading">
+        <h3 id="wcag-techniques-heading">WCAG Techniques</h3>
         <ul>
           <li><strong>Failures:</strong> F82 (lack of visual and programmatic indication of input requirements), F86 (placeholder as sole label)</li>
           <li><strong>Success Techniques:</strong> H44 (using label elements), H71 (providing description for form controls), ARIA14 (using aria-label to provide an invisible label)</li>
@@ -239,7 +247,7 @@
     </section>
 
     <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">Techniques</h2>
+      <h2 id="resources-heading">Techniques</h2>
       <p>WCAG techniques used in this demo: <code>H71</code>, <code>ARIA1</code></p>
     </section>
 
@@ -257,6 +265,7 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
   <script>
     function maskDate332(input) {
       var digits = input.value.replace(/\D/g, '').slice(0, 8);

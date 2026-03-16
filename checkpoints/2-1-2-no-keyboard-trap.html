@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -56,6 +57,13 @@
         <li>If a component uses a non-standard exit key, check that this is communicated to the user through visible instructions or an accessible announcement.</li>
         <li>For modal dialogs, confirm that Escape closes the dialog and returns focus to the element that opened it.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Browser extension. Install from official page, open DevTools, go to axe tab, run scan. Look for focus order, keyboard trap, and focus visible violations.</li>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Free screen reader for Windows. Download and install, then open Firefox and navigate the demo using Tab, Shift+Tab, arrow keys, and Enter. Listen for focus announcements.</li>
+      <li>Browser DevTools Accessibility Inspector — Built into all browsers. Right-click on a focused element, select "Inspect", open DevTools, go to Accessibility tab to see the accessibility tree and focus properties.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -140,8 +148,8 @@
       </div>
 
       <!-- WCAG Techniques -->
-      <section class="content-section" aria-labelledby="techniques-heading">
-        <h2 id="techniques-heading">WCAG Techniques</h2>
+      <section class="content-section" aria-labelledby="wcag-techniques-heading">
+        <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
         <ul>
           <li><strong>Failures:</strong> F55 (Using script to make a control unrecoverable when focus is moved away), F85 (Using nested interactive form controls)</li>
           <li><strong>Success Techniques:</strong> H4 (Creating a logical tab order through links, form controls, and objects), G21 (Ensuring that users are not trapped in content), ARIA6 (Using aria-label to provide labels for objects), ARIA11 (Using ARIA landmarks to identify regions of a page)</li>
@@ -164,8 +172,8 @@
       <p>An intentional focus lock inside a modal dialog is acceptable - and often desirable - as long as the dialog itself is dismissible via keyboard. The failure condition is a component from which there is no keyboard escape at all, not one that constrains focus to a logical region while still providing an exit.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">Techniques</h2>
+    <section class="content-section" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Techniques</h2>
       <p>WCAG techniques used in this demo: <code>G21</code></p>
     </section>
 
@@ -183,5 +191,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

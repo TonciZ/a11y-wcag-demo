@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -57,6 +58,13 @@
         <li>If a CAPTCHA is used, verify that an audio or non-text alternative is offered alongside it.</li>
         <li>For account recovery flows, check that users are not required to answer knowledge-based questions as the sole recovery method.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Free screen reader for Windows. Download, install, and open Firefox to test the demo. Navigate using Tab and arrow keys, and listen to role, name, and state announcements from the page.</li>
+      <li><a href="../tools/voiceover-setup.html">VoiceOver (macOS)</a> — Built into macOS. Enable with Cmd+F5, then open Safari or Chrome to test the demo. Use VO+arrow keys to navigate and hear semantic structure announcements.</li>
+      <li><a href="../tools/lighthouse-setup.html">Lighthouse</a> — Browser accessibility audit in Chrome DevTools. Open DevTools (F12), go to Lighthouse, run the audit to identify semantic and labeling issues.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -116,7 +124,7 @@
                 <label for="pass-338-pw" style="display:block;margin-bottom:0.25rem;">Password</label>
                 <div style="display:flex;gap:0.5rem;align-items:center;">
                   <input type="password" id="pass-338-pw" name="password" autocomplete="current-password" style="flex:1;">
-                  <button type="button" id="pass-338-toggle" aria-controls="pass-338-pw" aria-pressed="false"
+                  <button type="button" id="pass-338-toggle" aria-controls="pass-338-pw" aria-pressed="false" aria-label="Toggle password visibility"
                           onclick="var i=document.getElementById('pass-338-pw'),p=i.type==='password';i.type=p?'text':'password';this.setAttribute('aria-pressed',p);this.textContent=p?'Hide':'Show';">
                     Show
                   </button>
@@ -177,5 +185,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

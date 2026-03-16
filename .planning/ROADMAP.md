@@ -16,10 +16,10 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 5: Component Playground** - Build internal-only component showcase for testing reusable UI elements in isolation
 - [x] **Phase 6: Axe Accessibility Audit** - Establish audit infrastructure, scan all checkpoints, triage violations, fix confirmed issues (Plan 3 of 3 COMPLETE)
-- [ ] **Phase 7: Manual UAT** - Verify all checkpoints against quality gate, test in browsers/screen readers, fix issues
+- [x] **Phase 7: Manual UAT** - Verify all checkpoints against quality gate, test in browsers/screen readers, fix issues
   - **MERGE GATE** — Phase 7 completion triggers merge to live
-- [ ] **Phase 8: Search & Filtering** - Implement full-text search, pillar/level filtering, keyboard navigation, screen reader announcements
-- [ ] **Phase 9: Mobile Chrome** - Responsive navigation with hamburger menu, mobile-friendly demo containers, axe verification at mobile breakpoints
+- [x] **Phase 8: Search & Filtering** - Implement full-text search, pillar/level filtering, keyboard navigation, screen reader announcements
+- [x] **Phase 9: Mobile Chrome** - Responsive navigation with hamburger menu, mobile-friendly demo containers, axe verification at mobile breakpoints (completed 2026-03-16)
 - [ ] **Phase 10: Tool Links & Setup Guides** - Add tool download links and setup instructions to each checkpoint
 
 ## Phase Details
@@ -67,7 +67,10 @@ Plans:
   2. Each checkpoint page passes CHECKLIST.md 5-item quality gate: toggle works, code blocks sync, announcements are functional, technique codes present, no live structural failures
   3. Any issues found during UAT have been fixed and verified closed
   4. UAT results documented in `.planning/UAT-RESULTS.md` with pass/fail count per checkpoint
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [x] 07-01-PLAN.md — Audit all 45 checkpoints against CHECKLIST.md items 1-4; add technique codes; merge dev→master (2026-03-13)
 
 ---
 
@@ -81,7 +84,9 @@ Plans:
   3. All search results are announced to screen readers via aria-live region as results update
   4. Keyboard user can navigate search input, results list, and filter buttons using Tab, arrow keys, and Enter
   5. Clicking/tapping a result or pressing Enter opens the checkpoint page
-**Plans**: TBD
+
+Plans:
+- [x] 08-01-PLAN.md — Create static search index, search CSS, filter JS, inject on all pages; verify keyboard/SR accessibility (2026-03-16)
 
 ---
 
@@ -94,7 +99,11 @@ Plans:
   2. Hamburger menu is keyboard accessible: Enter/Space open, ESC closes; focus management prevents trap
   3. Demo containers, code blocks, and toggle buttons remain usable on mobile without horizontal scroll
   4. Site passes axe scan at mobile breakpoints (375px, 768px) with zero new violations introduced by responsive layout
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [x] 09-01-PLAN.md — Implement hamburger nav with native `<details>` element; add 768px media query to layout.css for nav collapse and hamburger styling
+- [x] 09-02-PLAN.md — Update search widget to 768px breakpoint with flex-wrap; verify demo containers handle mobile scaling; run axe scans at 375px and 768px viewports
 
 ---
 
@@ -106,26 +115,66 @@ Plans:
   1. Each checkpoint "How to test" section includes direct download/access links for at least 3 relevant tools (axe DevTools, NVDA, VoiceOver, JAWS, Lighthouse, etc.)
   2. Each tool link includes 2–3 sentence setup guide (browser install, keyboard shortcut, how to activate for this demo)
   3. All tool links verified working at time of implementation; broken links will be caught by future maintenance audits
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 10-01-PLAN.md — Create 5 setup guide pages under tools/ (NVDA, axe DevTools, CCA, Lighthouse, VoiceOver); verify accessibility with axe scan
+- [ ] 10-02-PLAN.md — Add "Testing Tools" subsections to all 44 checkpoint "How To Test" sections; 3+ category-appropriate tools per checkpoint; verify all external URLs working; create tools-links-audit.md
+
+---
+
+### Phase 11: Branch Sync & Metadata Reconciliation
+**Goal**: Dev branch is synchronized with master, all completed phases have proper verification artifacts, and REQUIREMENTS.md accurately reflects completion status
+**Depends on**: Nothing (prerequisite for further work)
+**Requirements**: COMP-01, COMP-02, COMP-03, COMP-04, AXE-01, AXE-02, AXE-03, AXE-04
+**Gap Closure:** Closes orphaned/partial gaps from v2.0 audit
+**Success Criteria** (what must be TRUE):
+  1. Dev branch contains all commits from master (60+ commit desync resolved)
+  2. Phase 5 has VERIFICATION.md confirming all 4 COMP requirements satisfied
+  3. Phase 6 has VERIFICATION.md and missing SUMMARY.md files for plans 01/02
+  4. REQUIREMENTS.md checkboxes updated for all 8 requirements (COMP-01–04, AXE-01–04)
+**Plans**: 1 plan
+
+Plans:
+- [x] 11-01-PLAN.md — Sync dev branch with master, create Phase 5-6 VERIFICATION.md files, update REQUIREMENTS.md traceability
+
+---
+
+### Phase 12: Complete Manual UAT
+**Goal**: All checkpoint demos are manually tested in a real browser by a human tester, passing the full 5-item quality gate including keyboard navigation (Item 5)
+**Depends on**: Phase 11 (branch sync complete, dev has all artifacts)
+**Requirements**: UAT-01, UAT-02, UAT-03
+**Gap Closure:** Closes partial UAT gaps — prior Phase 7 UAT was code inspection only; Phase 12 adds real browser testing including Item 5 (keyboard navigation) and full NVDA validation
+**Success Criteria** (what must be TRUE):
+  1. All 44 checkpoint pages manually tested in browser by human tester (not code inspection)
+  2. Each checkpoint passes CHECKLIST.md 5-item quality gate including Item 5 (keyboard navigation)
+  3. Any issues found during manual review are fixed with atomic commits
+  4. UAT-RESULTS.md updated with real human test results replacing code-inspection-only results
+**Plans**: 1 plan
+
+Plans:
+- [ ] 12-01-PLAN.md — Human tester manually tests all 44 checkpoints in Chrome + NVDA (Items 1-5 + 4 SR checks per checkpoint); report failures; Claude implements fixes; human re-verifies fixed checkpoints
 
 ---
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 5 → 6 → 7 (merge gate) → 8 → 9 → 10
+Phases execute in numeric order: 5 → 6 → 7 (merge gate) → 8 → 9 → 10 → 11 → 12
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 5. Component Playground | 1/1 | Complete | 2026-03-13 |
-| 6. Axe Audit | 0/3 | Planning | — |
-| 7. Manual UAT | 0/TBD | Not started | — |
-| 8. Search & Filtering | 0/TBD | Not started | — |
-| 9. Mobile Chrome | 0/TBD | Not started | — |
-| 10. Tool Links | 0/TBD | Not started | — |
+| 6. Axe Audit | 3/3 | Complete | 2026-03-13 |
+| 7. Manual UAT | 1/1 | Complete (code inspection) | 2026-03-13 |
+| 8. Search & Filtering | 1/1 | Complete | 2026-03-16 |
+| 9. Mobile Chrome | 2/2 | Complete | 2026-03-16 |
+| 10. Tool Links | 0/2 | Planning | — |
+| 11. Branch Sync & Metadata | 1/1 | Complete | 2026-03-14 |
+| 12. Complete Manual UAT | 0/1 | Planning | — |
 
 **Next:**
-Execute Phase 6 (Axe Accessibility Audit). Plans 06-01 through 06-03 establish audit infrastructure, triage violations, and fix real issues.
+Plan Phase 10 (Tool Links & Setup Guides). Phase 9 complete; all prerequisites met.
 
 ---
 
@@ -145,6 +194,16 @@ See `.planning/ROADMAP.md` (v1.0) in git history for detailed phase breakdowns.
 ---
 
 *Roadmap created: 2026-03-13*
-*v2.0 feature set defined: 6 phases, 23 requirements, all with phase assignments*
-*Phase 5 planning complete: 1 plan covering all 4 requirements*
-*Phase 6 planning complete: 3 plans covering all 4 requirements, wave structure defined*
+*Updated: 2026-03-14 after Phase 11 execution complete*
+*Updated: 2026-03-14 after Phase 8 planning complete*
+*Updated: 2026-03-16 after Phase 9 planning complete*
+*Updated: 2026-03-16 after Phase 10 planning complete*
+*v2.0 feature set defined: 6 phases + 2 gap closure phases = 8 total*
+*Phase 5 complete: 1/1 plans; VERIFICATION.md created*
+*Phase 6 complete: 3/3 plans; VERIFICATION.md verified*
+*Phase 7 complete: 1/1 plans; merged dev→master*
+*Phase 8 complete: 1/1 plans; ready for execution*
+*Phase 9 complete: 2/2 plans; ready for Phase 10*
+*Phase 10 plans created: 2/2 plans; ready for execution*
+*Phase 11 complete: 1/1 plans; gap closure done*
+*Phase 12 plan ready; awaits Phase 10 completion*

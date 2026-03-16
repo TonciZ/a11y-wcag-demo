@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -57,6 +58,13 @@
         <li>Test any time-based interactions to confirm they do not require precise timing of keystrokes.</li>
         <li>If a screen reader is available, navigate with NVDA or JAWS (Windows) or VoiceOver (macOS/iOS) and verify all functionality remains reachable.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Browser extension. Install from official page, open DevTools, go to axe tab, run scan. Look for focus order, keyboard trap, and focus visible violations.</li>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Free screen reader for Windows. Download and install, then open Firefox and navigate the demo using Tab, Shift+Tab, arrow keys, and Enter. Listen for focus announcements.</li>
+      <li>Browser DevTools Accessibility Inspector — Built into all browsers. Right-click on a focused element, select "Inspect", open DevTools, go to Accessibility tab to see the accessibility tree and focus properties.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -226,8 +234,8 @@
       </div>
 
       <!-- WCAG Techniques -->
-      <section class="content-section" aria-labelledby="techniques-heading">
-        <h2 id="techniques-heading">WCAG Techniques</h2>
+      <section class="content-section" aria-labelledby="wcag-techniques-heading">
+        <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
         <ul>
           <li><strong>Failures:</strong> F54 (Using only pointing-device-specific event handlers), F59 (Using script to make div or span a user interface control without role)</li>
           <li><strong>Success Techniques:</strong> H91 (Using HTML form controls and links), G202 (Ensuring keyboard control for all functionality), ARIA6 (Using aria-label to provide labels for objects), ARIA9 (Using aria-labelledby to concatenate a label from several text nodes)</li>
@@ -250,8 +258,8 @@
       <p>This criterion applies to all functionality, not just navigation - operations like drag-and-drop, right-click context menus, and hover-triggered tooltips all require keyboard-accessible equivalents. The exception for "path-dependent" input (such as freehand drawing) is narrow and applies only when the path itself, not just the endpoints, is essential.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">Techniques</h2>
+    <section class="content-section" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Techniques</h2>
       <p>WCAG techniques used in this demo: <code>H91</code>, <code>G202</code></p>
     </section>
 
@@ -269,5 +277,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

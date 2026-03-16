@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -56,6 +57,13 @@
         <li>Review form validation states, charts, graphs, status indicators, and inline links as common areas of failure.</li>
         <li>Check navigation and interactive elements to ensure their state (active, selected, required) is not conveyed by color alone.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/cca-setup.html">Color Contrast Analyser (CCA)</a> — Free desktop app. Download from GitHub, install, use the eyedropper tool to measure contrast ratios on the demo. Read the ratio value and compare to AA (4.5:1) or AAA (7:1) standards.</li>
+      <li><a href="../tools/lighthouse-setup.html">Lighthouse</a> — Built into Chrome DevTools. Open DevTools (F12), go to Lighthouse tab, select "Accessibility", and run the audit. Review contrast violations and pass criteria in the results.</li>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Browser extension for Chrome/Firefox. Install from official page, open DevTools, go to axe tab, run scan, and see detailed contrast violations with remediation advice.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -202,8 +210,8 @@
         </details>
       </div>
 
-      <section class="content-section" aria-labelledby="techniques-heading">
-        <h2 id="techniques-heading">WCAG Techniques</h2>
+      <section class="content-section" aria-labelledby="wcag-techniques-heading">
+        <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
         <ul>
           <li><strong>Failures:</strong> F81 (color used as only visual means to convey information)</li>
           <li><strong>Success Techniques:</strong> G14 (ensuring information conveyed through color is also conveyed through other visual means), H51 (using semantic HTML for form labels)</li>
@@ -226,8 +234,8 @@
       <p>This criterion does not prohibit the use of color; it only requires that color not be the only means of conveying information. It is important to note that contrast ratio requirements are covered under SC 1.4.3, not this criterion - 1.4.1 is specifically about redundancy of information, not color luminance.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">Techniques</h2>
+    <section class="content-section" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Techniques</h2>
       <p>WCAG techniques used in this demo: <code>H89</code>, <code>C6</code></p>
     </section>
 
@@ -245,5 +253,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

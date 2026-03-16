@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lighthouse Setup Guide - WCAG 2.2 Demo</title>
+  <meta name="description" content="Built into Chrome DevTools. Run accessibility audits on any webpage.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
+</head>
+<body class="checkpoint-page">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">Setup Guide</p>
+        <p class="site-hero__title">Lighthouse Accessibility Audit</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">Setup Guide</p>
+      <h1 class="page-header__title">Lighthouse Setup Guide</h1>
+    </div>
+
+    <section class="content-section" aria-labelledby="setup-heading">
+      <h2 id="setup-heading">Getting Started with Lighthouse</h2>
+      <p>Lighthouse is a free, built-in audit tool in Google Chrome that analyzes webpages for accessibility, performance, SEO, and best practices. Unlike axe DevTools (which is an extension), Lighthouse is part of Chrome DevTools and requires no installation—it's ready to use immediately.</p>
+
+      <h3>Open Chrome DevTools</h3>
+      <p>Open a checkpoint page in Google Chrome. Then open DevTools using one of these methods:</p>
+      <ul>
+        <li>Press <strong>F12</strong> (Windows) or <strong>Cmd+Option+I</strong> (Mac).</li>
+        <li>Right-click on the page and select "Inspect" or "Inspect Element".</li>
+      </ul>
+      <p>DevTools will open at the bottom or side of your Chrome window.</p>
+
+      <h3>Navigate to the Lighthouse Tab</h3>
+      <p>Look for the "Lighthouse" tab at the top of DevTools. If you don't see it immediately, look for a <strong>»</strong> menu (double arrow) to the right of the tab list. Click that menu to reveal additional tabs, and select "Lighthouse".</p>
+
+      <h3>Select the Accessibility Category</h3>
+      <p>The Lighthouse panel has several categories: Performance, Accessibility, Best Practices, and SEO. Check the <strong>Accessibility</strong> checkbox to focus on WCAG compliance. You can uncheck the others if you want a faster audit, or leave them checked to audit multiple aspects.</p>
+
+      <h3>Run the Audit</h3>
+      <p>Click the button labeled <strong>"Analyze page load"</strong> or <strong>"Generate report"</strong> (button label varies by Chrome version). Lighthouse will scan the page for 1–2 minutes and then display results.</p>
+
+      <h3>Review the Results</h3>
+      <p>Results are organized into sections:</p>
+      <ul>
+        <li><strong>Passed Checks (green):</strong> Criteria the page meets.</li>
+        <li><strong>Issues (red):</strong> Problems that fail WCAG requirements. Click each item to see the HTML element, the rule violated, and suggestions to fix it.</li>
+        <li><strong>Manual Checks (yellow):</strong> Items that require human judgment. Review these carefully—they're not automatic failures but need your assessment.</li>
+      </ul>
+
+      <h3>Test Multiple Checkpoints</h3>
+      <p>Open different checkpoint pages from this demo (e.g., <a href="../checkpoints/1-1-1-non-text-content.html">1.1.1 Non-text Content</a> or <a href="../checkpoints/2-4-7-focus-visible.html">2.4.7 Focus Visible</a>) and run Lighthouse audits on each. Compare the "Fail" and "Pass" modes to see which issues appear and disappear. This shows how specific code changes affect the audit score.</p>
+
+      <h3>Interpret the Accessibility Score</h3>
+      <p>Lighthouse displays an overall Accessibility Score (0–100). A higher score indicates fewer detected issues. Note that:</p>
+      <ul>
+        <li>The score is based on automated checks—some WCAG failures require manual testing (e.g., keyboard navigation, screen reader behavior).</li>
+        <li>A page may score well but still have accessibility issues that Lighthouse doesn't detect.</li>
+        <li>Intentional "fail" examples in checkpoints will score lower—that's expected.</li>
+      </ul>
+
+      <h3>Helpful Tips</h3>
+      <ul>
+        <li>Run Lighthouse audits in an incognito window to avoid browser extensions interfering with results.</li>
+        <li>Test the same page multiple times—network conditions and CPU can affect scores slightly.</li>
+        <li>Use Lighthouse alongside manual testing with NVDA and axe DevTools for comprehensive accessibility assessment.</li>
+        <li>The "Manual Checks" section often highlights important items like focus visibility that require human verification—don't skip these.</li>
+        <li>Lighthouse is especially useful for checking heading structure, alt text, and color contrast, which are common WCAG failures.</li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
+</html>

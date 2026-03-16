@@ -687,6 +687,84 @@ a.checkpoint-card:hover {
 }
 
 /* -------------------------------------------------------
+   Responsive - Mobile breakpoint (≤768px) — hamburger menu
+   ------------------------------------------------------- */
+@media (max-width: 768px) {
+  .checkpoint-nav-hamburger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+
+  .checkpoint-nav-hamburger summary {
+    cursor: pointer;
+    padding: var(--space-3);
+    font-size: 1.5rem;
+    font-weight: bold;
+    user-select: none;
+    background-color: var(--color-primary);
+    color: var(--color-primary-text);
+    border: none;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    min-width: 44px;
+  }
+
+  .checkpoint-nav-hamburger summary:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  .checkpoint-nav-hamburger summary:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .checkpoint-nav-hamburger nav {
+    display: none;
+    position: absolute;
+    top: 44px;
+    left: 0;
+    background-color: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    max-height: calc(100vh - 44px);
+    overflow-y: auto;
+    width: 250px;
+    z-index: 101;
+  }
+
+  .checkpoint-nav-hamburger[open] nav {
+    display: block;
+  }
+
+  .checkpoint-nav-hamburger .checkpoint-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .checkpoint-nav-hamburger .checkpoint-nav a {
+    padding: var(--space-3) var(--space-4);
+    border-left: 4px solid transparent;
+  }
+
+  .checkpoint-nav-hamburger .checkpoint-nav a:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: -2px;
+  }
+
+  /* Add top padding to prevent fixed hamburger from overlapping content */
+  .index-layout {
+    padding-top: 44px;
+  }
+
+  main {
+    padding-top: var(--space-4);
+  }
+}
+
+/* -------------------------------------------------------
    Responsive - Mobile (≤640px)
    ------------------------------------------------------- */
 @media (max-width: 640px) {

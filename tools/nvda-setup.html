@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NVDA Setup Guide - WCAG 2.2 Demo</title>
+  <meta name="description" content="Free screen reader for Windows. Quick setup to test checkpoint announcements.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
+</head>
+<body class="checkpoint-page">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">Setup Guide</p>
+        <p class="site-hero__title">NVDA Screen Reader</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">Setup Guide</p>
+      <h1 class="page-header__title">NVDA Setup Guide</h1>
+    </div>
+
+    <section class="content-section" aria-labelledby="setup-heading">
+      <h2 id="setup-heading">Getting Started with NVDA</h2>
+      <p>NVDA (NonVisual Desktop Access) is a free, open-source screen reader for Windows that reads aloud the text and interface elements on your computer. It helps you test how checkpoint announcements sound to blind and low-vision users.</p>
+
+      <h3>Download NVDA</h3>
+      <p>Visit the official NVDA website and download the installer for Windows:</p>
+      <p><a href="https://www.nvaccess.org/download/">https://www.nvaccess.org/download/</a></p>
+      <p>Choose the "Stable release" version (recommended for most users). The download is a .exe file that runs directly without needing installation, though you can also install it for all users on your computer.</p>
+
+      <h3>Install NVDA</h3>
+      <p>Run the downloaded installer and follow these steps:</p>
+      <ol>
+        <li>Double-click the NVDA executable file to start installation.</li>
+        <li>During the first run, NVDA will prompt you to set up a startup sound. You can accept the defaults or customize them.</li>
+        <li>NVDA will create a desktop shortcut and a Start menu entry so you can launch it easily in the future.</li>
+      </ol>
+
+      <h3>Start NVDA</h3>
+      <p>Launch NVDA from your Start menu or desktop shortcut. NVDA will begin speaking a startup message, confirming it's running. Your system speakers or headphones will output speech. If you don't hear anything, check your system volume and audio device settings.</p>
+
+      <h3>Test with Checkpoint Demo</h3>
+      <p>Open any checkpoint page from this site (e.g., <a href="../checkpoints/1-1-1-non-text-content.html">1.1.1 Non-text Content</a>). Use arrow keys to navigate the page and listen to NVDA read the content aloud. When you click the demo toggle button, NVDA will announce the fail/pass switch so you can hear the difference.</p>
+
+      <h3>Basic Navigation with NVDA</h3>
+      <p>Here are the essential keyboard shortcuts for testing:</p>
+      <ul>
+        <li><strong>Tab key:</strong> Move focus to the next link or button.</li>
+        <li><strong>Shift+Tab:</strong> Move focus to the previous link or button.</li>
+        <li><strong>Arrow keys:</strong> Read content line-by-line or word-by-word as you move through text.</li>
+        <li><strong>Enter:</strong> Activate a link or button.</li>
+        <li><strong>NVDA+H:</strong> Open the NVDA help window with full documentation.</li>
+        <li><strong>NVDA+Q:</strong> Exit NVDA (Control+Alt+N launches it again).</li>
+      </ul>
+
+      <h3>Helpful Tips</h3>
+      <ul>
+        <li>Start with simple checkpoint pages like 1.1.1 to get comfortable with navigation.</li>
+        <li>Use Focus Mode (press NVDA+Space) to switch between browse and focus modes for different interaction types.</li>
+        <li>If you toggle a demo and don't hear an announcement, check the <code>data-announce-fail</code> and <code>data-announce-pass</code> attributes in the checkpoint HTML.</li>
+        <li>Combine NVDA testing with visual inspection to understand how the checkpoint impacts both screen reader and sighted users.</li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
+</html>

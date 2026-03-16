@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Contrast Analyser Setup Guide - WCAG 2.2 Demo</title>
+  <meta name="description" content="Free desktop app for Windows/macOS. Measure color contrast ratios on any webpage.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
+</head>
+<body class="checkpoint-page">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-hero" role="banner">
+    <div class="site-hero__inner">
+      <div class="site-hero__brand">
+        <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
+      </div>
+      <div class="site-hero__text">
+        <p class="site-hero__eyebrow">Setup Guide</p>
+        <p class="site-hero__title">Color Contrast Analyser (CCA)</p>
+      </div>
+      <div class="site-hero__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          Dark mode
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-main">
+
+    <div class="page-header">
+      <p class="page-header__eyebrow">Setup Guide</p>
+      <h1 class="page-header__title">Color Contrast Analyser Setup Guide</h1>
+    </div>
+
+    <section class="content-section" aria-labelledby="setup-heading">
+      <h2 id="setup-heading">Getting Started with Color Contrast Analyser</h2>
+      <p>Color Contrast Analyser (CCA) is a free, open-source desktop application for Windows and macOS that measures the contrast ratio between two colors. It helps you verify whether text and interface elements meet WCAG contrast requirements (4.5:1 for normal text, 3:1 for large text).</p>
+
+      <h3>Download from GitHub</h3>
+      <p>The Color Contrast Analyser project is maintained on GitHub:</p>
+      <p><a href="https://github.com/ThePacielloGroup/CCAe">https://github.com/ThePacielloGroup/CCAe</a></p>
+      <p>Go to the Releases section and download the latest version for your operating system. For Windows, download the .exe file. For macOS, download the .dmg file.</p>
+
+      <h3>Install CCA</h3>
+      <p><strong>Windows:</strong> Run the .exe installer and follow the on-screen prompts. CCA will be added to your Start menu and desktop.</p>
+      <p><strong>macOS:</strong> Open the .dmg file and drag the CCA application to your Applications folder. Then launch it from Applications.</p>
+
+      <h3>Use the Eyedropper Tool</h3>
+      <p>Open a checkpoint page from this site (e.g., <a href="../checkpoints/1-4-3-contrast-minimum.html">1.4.3 Contrast Minimum</a>). Launch the CCA app on your computer. Look for the eyedropper icon in the CCA interface. Click it, then click on text in the checkpoint page to sample the text color. Next, click on the background area to sample the background color. CCA will immediately calculate the contrast ratio.</p>
+
+      <h3>Read the Contrast Ratio</h3>
+      <p>CCA displays the contrast ratio as a number followed by a colon (e.g., "4.5:1" or "3:1"). The larger the ratio, the greater the contrast. WCAG defines these requirements:</p>
+      <ul>
+        <li><strong>4.5:1 or higher:</strong> Passes Level AA for normal text.</li>
+        <li><strong>3:1 or higher:</strong> Passes Level AA for large text (18pt+) and UI components.</li>
+        <li><strong>7:1 or higher:</strong> Passes Level AAA for normal text.</li>
+        <li><strong>Below these thresholds:</strong> Fails the contrast requirement.</li>
+      </ul>
+
+      <h3>Test Fail and Pass Modes</h3>
+      <p>Many checkpoint pages have a toggle button to switch between "Fail" and "Pass" examples. Use CCA to measure contrast on both versions. You should see lower ratios in the fail example and higher ratios in the pass example. This demonstrates exactly how color adjustments fix contrast issues.</p>
+
+      <h3>Helpful Tips</h3>
+      <ul>
+        <li>Test both light and dark modes of this site (toggle the Dark Mode button in the page header) to verify contrast works in both themes.</li>
+        <li>Pay special attention to focus indicators, links, and buttons—they often have strict contrast requirements.</li>
+        <li>Use CCA in combination with NVDA (screen reader) and axe DevTools to cover different accessibility aspects.</li>
+        <li>Some checkpoints like 1.4.11 (Non-text Contrast) specifically test UI component contrast, not just text. Use CCA on buttons, borders, and icons too.</li>
+        <li>Remember that CCA measures the colors at the moment you sample them—if contrast changes on hover or focus, you may need to sample multiple times.</li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
+</html>

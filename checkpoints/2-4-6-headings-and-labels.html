@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -55,6 +56,13 @@
         <li>Check for any headings that are generic (e.g., "More Information," "Details") without enough specificity to differentiate sections.</li>
         <li>Generate a headings outline using a browser extension (such as HeadingsMap) and review it for clarity and meaningful structure.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Scan for missing link text, label associations, and heading structure issues.</li>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Navigate links and form fields using Tab and arrow keys to verify purpose is announced clearly.</li>
+      <li><a href="../tools/voiceover-setup.html">VoiceOver (macOS)</a> — Alternative screen reader to test link names, form labels, and heading hierarchy.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -152,5 +160,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

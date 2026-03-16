@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -56,6 +57,13 @@
         <li>If a custom focus style is provided, assess whether it is visually distinct and perceivable against the background and surrounding content.</li>
         <li>Test all interactive elements: links, buttons, inputs, selects, checkboxes, radio buttons, and custom widgets.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Browser extension. Install from official page, open DevTools, go to axe tab, run scan. Look for focus order, keyboard trap, and focus visible violations.</li>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Free screen reader for Windows. Download and install, then open Firefox and navigate the demo using Tab, Shift+Tab, arrow keys, and Enter. Listen for focus announcements.</li>
+      <li>Browser DevTools Accessibility Inspector — Built into all browsers. Right-click on a focused element, select "Inspect", open DevTools, go to Accessibility tab to see the accessibility tree and focus properties.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -65,7 +73,7 @@
            role="region"
            aria-labelledby="demo-label-247"
            data-announce-fail="Showing fail example. Focus indicator is completely hidden - keyboard users cannot track their position on the page."
-           data-announce-pass="Showing pass example. Clear focus indicator appears - keyboard users can track their position.">
+           data-announce-pass="Showing pass example. Focus indicator appears - keyboard users can track their position.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-247">Focus visible demo</span>
@@ -143,5 +151,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

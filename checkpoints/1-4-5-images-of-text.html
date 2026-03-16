@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -56,6 +57,13 @@
         <li>Check whether the image has an appropriate <code>alt</code> attribute providing the same text as a fallback - this mitigates screen reader impact but does not make the implementation pass this criterion.</li>
         <li>Review banner images, promotional images, and decorative headers as common areas of failure.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/cca-setup.html">Color Contrast Analyser (CCA)</a> — Free desktop app. Download from GitHub, install, use the eyedropper tool to measure contrast ratios on the demo. Read the ratio value and compare to AA (4.5:1) or AAA (7:1) standards.</li>
+      <li><a href="../tools/lighthouse-setup.html">Lighthouse</a> — Built into Chrome DevTools. Open DevTools (F12), go to Lighthouse tab, select "Accessibility", and run the audit. Review contrast violations and pass criteria in the results.</li>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Browser extension for Chrome/Firefox. Install from official page, open DevTools, go to axe tab, run scan, and see detailed contrast violations with remediation advice.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -64,8 +72,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-145"
-           data-announce-fail="Showing fail example. The heading is rendered as an SVG graphic - users cannot resize, customize, or copy the text."
-           data-announce-pass="Showing pass example. The same heading is real HTML text - fully resizable, selectable, and adaptable.">
+           data-announce-fail="Showing fail example. The heading cannot be resized or customized by users - text is locked in its original size."
+           data-announce-pass="Showing pass example. The heading can be resized and customized - users have full control over text size and appearance.">
 
         <div class="demo-container__toolbar">
           <span class="demo-container__label" id="demo-label-145">Images of text demo</span>
@@ -137,5 +145,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

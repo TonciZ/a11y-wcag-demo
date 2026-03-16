@@ -7,6 +7,7 @@
   <meta name="description" content="Interactive WCAG 2.2 demos showing accessibility failures and how to fix them. For testers and developers.">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body>
@@ -161,6 +162,36 @@
     </nav>
 
   <main id="main-content" class="site-main">
+
+    <div class="search-widget-wrapper">
+      <form class="search-widget" role="search" aria-label="Search checkpoints" onsubmit="return false">
+        <div class="search-widget__input-group">
+          <label for="search-input" class="visually-hidden">Search checkpoints</label>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="Search checkpoints&#x2026;"
+            autocomplete="search"
+            aria-describedby="search-instructions" aria-controls="search-results">
+          <span id="search-instructions" class="visually-hidden">
+            Type to filter checkpoints by title or code.
+            Use arrow keys to navigate results.
+            Press Escape to clear.
+            Click a level button to filter; click again to show all.
+            Press Enter to open a checkpoint.
+          </span>
+        </div>
+        <div class="search-level-filters" role="group" aria-label="Filter by conformance level">
+          <button type="button" class="search-level-btn active" data-level="A" aria-pressed="false">A</button>
+          <button type="button" class="search-level-btn active" data-level="AA" aria-pressed="false">AA</button>
+        </div>
+      </form>
+      <div id="search-results" class="search-results" role="region" aria-label="Search results" aria-live="polite">
+        <p class="search-results__count" aria-live="polite"></p>
+        <ul class="search-results__list" role="list"></ul>
+      </div>
+    </div>
 
     <p class="index-intro">Full list of WCAG 2.2 success criteria. Level A and AA criteria with interactive fail/pass demos are marked <strong>Demo ready</strong>. Criteria marked <strong>No demo possible</strong> cannot be demonstrated as an interactive demo on a static site - the reason is noted on each card. Level AAA criteria are aspirational and shown for reference; demos are planned for a future phase.</p>
 
@@ -1266,5 +1297,6 @@
   </footer>
 
   <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/search-filter.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -56,6 +57,13 @@
         <li>Test with a speech recognition tool such as Dragon NaturallySpeaking: say "click [visible label text]" and verify the correct control is activated.</li>
         <li>Look for <code>aria-label</code> attributes that completely replace visible text with different wording - these are common sources of failures.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Scan for missing link text, label associations, and heading structure issues.</li>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Navigate links and form fields using Tab and arrow keys to verify purpose is announced clearly.</li>
+      <li><a href="../tools/voiceover-setup.html">VoiceOver (macOS)</a> — Alternative screen reader to test link names, form labels, and heading hierarchy.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -198,8 +206,8 @@
       <p>A passing implementation ensures the accessible name either exactly matches the visible label text or begins with or includes the visible label text. The accessible name may contain additional information beyond the visible text (e.g., "Submit - Place your order now") as long as it starts with or contains the visible text "Submit." The safest approach is to use native HTML labeling mechanisms (<code>&lt;label&gt;</code> for form controls, button text content for <code>&lt;button&gt;</code> elements) which automatically derive the accessible name from visible text, avoiding mismatches entirely.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
+    <section class="content-section" aria-labelledby="wcag-techniques-heading">
+      <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
       <ul>
         <li><strong>Failure:</strong> F96 (accessible name includes no visible text label)</li>
         <li><strong>Success Techniques:</strong> H44 (using label with form controls), H65 (using label element to associate text with form input), ARIA14 (using aria-label to provide accessible names)</li>
@@ -211,8 +219,8 @@
       <p>This criterion is particularly important for speech recognition users, who activate controls by speaking their visible labels. It does not prohibit accessible names that are longer than the visible label - augmenting the accessible name with additional context is fine as long as the visible text is present within it. Acronyms and abbreviations should be treated carefully: if the visible label says "CTA" and the accessible name says "Call to Action," neither contains the other verbatim.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">Techniques</h2>
+    <section class="content-section" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Techniques</h2>
       <p>WCAG techniques used in this demo: <code>C127</code>, <code>F96</code></p>
     </section>
 
@@ -230,5 +238,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

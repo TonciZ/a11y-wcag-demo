@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -56,6 +57,13 @@
         <li>Use a screen reader and attempt to navigate to the audio control while audio is playing, to verify the control is findable and operable.</li>
         <li>Test that the control actually stops or mutes the audio when activated.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/cca-setup.html">Color Contrast Analyser (CCA)</a> — Free desktop app. Download from GitHub, install, use the eyedropper tool to measure contrast ratios on the demo. Read the ratio value and compare to AA (4.5:1) or AAA (7:1) standards.</li>
+      <li><a href="../tools/lighthouse-setup.html">Lighthouse</a> — Built into Chrome DevTools. Open DevTools (F12), go to Lighthouse tab, select "Accessibility", and run the audit. Review contrast violations and pass criteria in the results.</li>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Browser extension for Chrome/Firefox. Install from official page, open DevTools, go to axe tab, run scan, and see detailed contrast violations with remediation advice.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -150,5 +158,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

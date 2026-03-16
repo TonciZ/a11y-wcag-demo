@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -57,6 +58,13 @@
         <li>Confirm that meaningful non-speech audio (e.g., sound effects, music cues) is described in the captions.</li>
         <li>Check whether the captions are open (always visible) or closed (user-controlled); both are acceptable, but closed captions must be easy to enable.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Screen reader to verify captions are properly associated with media and alternate descriptions are announced.</li>
+      <li><a href="../tools/lighthouse-setup.html">Lighthouse</a> — Accessibility audit to check for missing captions, transcripts, and media accessibility issues.</li>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Detailed scan of media-related accessibility violations and remediation suggestions.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -174,8 +182,8 @@
       </div>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
+    <section class="content-section" aria-labelledby="wcag-techniques-heading">
+      <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
       <ul>
         <li><strong>Failures:</strong> F30 (audio content without captions), F87 (captions that do not identify speakers)</li>
         <li><strong>Success Techniques:</strong> G87 (providing captions), H95 (using the track element to provide captions), G93 (providing open (always visible) captions)</li>
@@ -197,8 +205,8 @@
       <p>Auto-generated captions from platforms such as YouTube are not automatically compliant; they must be reviewed and corrected for accuracy before they can be considered sufficient. This criterion does not apply to media that is itself a text alternative for other content, such as a video version of a text document.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">Techniques</h2>
+    <section class="content-section" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Techniques</h2>
       <p>WCAG techniques used in this demo: <code>H95</code>, <code>G93</code></p>
     </section>
 
@@ -216,5 +224,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

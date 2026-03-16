@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
   <style>
     .tooltip-wrap, .tooltip-pass-wrap { position: relative; display: inline-block; }
@@ -74,6 +75,13 @@
         <li>Test with keyboard focus using the Tab key and verify the same three conditions are satisfied for keyboard-triggered content.</li>
         <li>Test with a screen magnifier (such as Windows Magnifier or ZoomText) to verify content remains reachable when the view is zoomed.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/cca-setup.html">Color Contrast Analyser (CCA)</a> — Free desktop app. Download from GitHub, install, use the eyedropper tool to measure contrast ratios on the demo. Read the ratio value and compare to AA (4.5:1) or AAA (7:1) standards.</li>
+      <li><a href="../tools/lighthouse-setup.html">Lighthouse</a> — Built into Chrome DevTools. Open DevTools (F12), go to Lighthouse tab, select "Accessibility", and run the audit. Review contrast violations and pass criteria in the results.</li>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Browser extension for Chrome/Firefox. Install from official page, open DevTools, go to axe tab, run scan, and see detailed contrast violations with remediation advice.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -243,8 +251,8 @@
       <p>A passing implementation ensures all three conditions are satisfied. The additional content is dismissible by pressing Escape without moving focus. The triggered content is hoverable - the pointer can move from the trigger onto the content without it closing. The content remains visible until the user dismisses it or moves focus entirely away. Both demos include keyboard accessibility and Escape key dismissal.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
+    <section class="content-section" aria-labelledby="wcag-techniques-heading">
+      <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
       <ul>
         <li><strong>Failure:</strong> F95 (Failure due to content disappearing without user initiation), F87 (Failure due to content appearing on focus)</li>
         <li><strong>Success Techniques:</strong> G192 (Fully visible and hoverable), SCR39 (Making content visually and semantically dismissible)</li>
@@ -256,8 +264,8 @@
       <p>This criterion was added in WCAG 2.1 to address problems low-vision users experience with hover-triggered content that disappears before they can read it. The Escape key requirement aligns with general usability conventions for closing dialogs and popups.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">Techniques</h2>
+    <section class="content-section" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Techniques</h2>
       <p>WCAG techniques used in this demo: <code>C40</code>, <code>SCR39</code></p>
     </section>
 
@@ -275,5 +283,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

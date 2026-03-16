@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -57,6 +58,13 @@
         <li>For constrained fields (date, phone, postal code, password), check that the suggestion specifies the accepted format or constraints.</li>
         <li>Verify that suggestions for security-sensitive fields (e.g., "Incorrect password") do not inadvertently expose information that would compromise security.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Free screen reader for Windows. Download, install, and open Firefox to test the demo. Navigate using Tab and arrow keys, and listen to role, name, and state announcements from the page.</li>
+      <li><a href="../tools/voiceover-setup.html">VoiceOver (macOS)</a> — Built into macOS. Enable with Cmd+F5, then open Safari or Chrome to test the demo. Use VO+arrow keys to navigate and hear semantic structure announcements.</li>
+      <li><a href="../tools/lighthouse-setup.html">Lighthouse</a> — Browser accessibility audit in Chrome DevTools. Open DevTools (F12), go to Lighthouse, run the audit to identify semantic and labeling issues.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -200,7 +208,7 @@
       </div>
 
       <!-- WCAG Techniques -->
-      <section class="content-section" aria-labelledby="techniques-heading">
+      <section class="content-section" aria-labelledby="resources-heading">
         <h3 id="techniques-heading">WCAG Techniques</h3>
         <ul>
           <li><strong>Failures:</strong> F89 (not providing error feedback), F70 (using generic error messages only)</li>
@@ -224,8 +232,8 @@
       <p>This criterion only applies when the system can programmatically determine a correct suggestion; if the input is ambiguous or the cause of failure is genuinely unknown to the system, a suggestion is not required. This criterion is closely paired with 3.3.1 (Error Identification) and together they form a comprehensive error-handling pattern for accessible forms.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">Techniques</h2>
+    <section class="content-section" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Techniques</h2>
       <p>WCAG techniques used in this demo: <code>G177</code>, <code>G199</code></p>
     </section>
 
@@ -243,6 +251,7 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
   <script>
     var BORDER_DEFAULT_333 = '2px solid var(--color-border)';
     var BORDER_ERROR_333   = '2px solid #b91c1c';

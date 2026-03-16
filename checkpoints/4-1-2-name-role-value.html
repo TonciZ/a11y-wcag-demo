@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -57,6 +58,13 @@
         <li>Activate interactive controls (open accordions, toggle switches, select tabs) and confirm the screen reader announces the updated state.</li>
         <li>Check that any custom widgets built with <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code>, or <code>&lt;a&gt;</code> elements that function as buttons or other controls carry the necessary <code>role</code> and <code>aria-*</code> attributes.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Free screen reader for Windows. Download, install, and open Firefox to test the demo. Navigate using Tab and arrow keys, and listen to role, name, and state announcements from the page.</li>
+      <li><a href="../tools/voiceover-setup.html">VoiceOver (macOS)</a> — Built into macOS. Enable with Cmd+F5, then open Safari or Chrome to test the demo. Use VO+arrow keys to navigate and hear semantic structure announcements.</li>
+      <li><a href="../tools/lighthouse-setup.html">Lighthouse</a> — Browser accessibility audit in Chrome DevTools. Open DevTools (F12), go to Lighthouse, run the audit to identify semantic and labeling issues.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -137,5 +145,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

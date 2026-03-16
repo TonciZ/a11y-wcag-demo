@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -55,6 +56,13 @@
         <li>Check custom widgets that respond to input events (<code>onchange</code>, <code>oninput</code>, <code>onkeyup</code>) for unexpected context changes.</li>
         <li>Use a screen reader to confirm that input changes are announced correctly and do not cause unexpected navigation or page reorganization.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Scan for missing link text, label associations, and heading structure issues.</li>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Navigate links and form fields using Tab and arrow keys to verify purpose is announced clearly.</li>
+      <li><a href="../tools/voiceover-setup.html">VoiceOver (macOS)</a> — Alternative screen reader to test link names, form labels, and heading hierarchy.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -276,16 +284,16 @@
       <p>This criterion applies specifically to unintended changes of context. Some input changes that provide immediate visual feedback (like filtering a list as you type, or showing matching results in real-time) are not considered changes of context if the user remains focused on the same page and can continue interacting predictably. The distinction is whether the change is major and disorienting versus providing immediate, in-context feedback.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
+    <section class="content-section" aria-labelledby="wcag-techniques-heading">
+      <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
       <ul>
         <li><strong>Failure:</strong> F36, F37</li>
         <li><strong>Success Techniques:</strong> H32, SCR24</li>
       </ul>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">Techniques</h2>
+    <section class="content-section" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Techniques</h2>
       <p>WCAG techniques used in this demo: <code>H32</code>, <code>H84</code>, <code>H85</code></p>
     </section>
 
@@ -303,5 +311,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

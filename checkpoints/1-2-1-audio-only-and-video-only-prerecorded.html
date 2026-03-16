@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -56,6 +57,13 @@
         <li>Verify the text description covers all visual information including actions, on-screen text, and scene context.</li>
         <li>Confirm the alternative is clearly labeled and easy to find in proximity to the media player.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Screen reader to verify captions are properly associated with media and alternate descriptions are announced.</li>
+      <li><a href="../tools/lighthouse-setup.html">Lighthouse</a> — Accessibility audit to check for missing captions, transcripts, and media accessibility issues.</li>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Detailed scan of media-related accessibility violations and remediation suggestions.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -177,8 +185,8 @@
       </div>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
+    <section class="content-section" aria-labelledby="wcag-techniques-heading">
+      <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
       <ul>
         <li><strong>Failures:</strong> F67 (audio-only content without transcript), F68 (video-only content without audio or text alternative)</li>
         <li><strong>Success Techniques:</strong> G158 (providing transcript of an audio track), G166 (providing audio description of a video), H96 (using markup to identify a web page as a video transcript)</li>
@@ -200,8 +208,8 @@
       <p>This criterion applies only to prerecorded content; live audio-only and live video-only are covered separately. If a video has both audio and video tracks, it falls under the captions and audio description criteria rather than this one.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">Techniques</h2>
+    <section class="content-section" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Techniques</h2>
       <p>WCAG techniques used in this demo: <code>G159</code>, <code>G166</code></p>
     </section>
 
@@ -219,5 +227,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>

@@ -78,3 +78,26 @@ Example of a passing announcement:
 **Special case — structural failure demos:** A demo that demonstrates a keyboard trap (2.1.2) or broken focus order (2.4.3) must use a code-display-only approach. Show the broken HTML in a `<pre><code>` block. Do not implement the live broken interaction — doing so would harm keyboard users visiting the page.
 
 **Pass condition:** No focus trap; logical tab order throughout the full page.
+
+---
+
+## Item 6 — Search Widget Works and Is Accessible
+
+**What to check:**
+
+1. Confirm the search widget is visible at the top of the main content area (below the hero header).
+2. Type a checkpoint code (e.g., "1.4.3") or keyword (e.g., "contrast") in the search input.
+3. Confirm matching results appear below the input with code, title, and level badge.
+4. Click the "A" filter button — confirm only Level A checkpoints appear in results.
+5. Click the "AA" filter button — confirm only Level AA checkpoints appear in results.
+6. Click the active filter button again — confirm both levels appear (reset to all).
+7. Click a search result link — confirm it navigates to the correct checkpoint page.
+8. Confirm the search widget is also present on checkpoint pages (not just the index).
+9. Tab to the search input — confirm a visible focus ring appears.
+10. Tab to each filter button — confirm a visible focus ring appears.
+11. Type a search term, then press Arrow Down — confirm focus moves to the first result.
+12. Press Arrow Up from the first result — confirm focus returns to the search input.
+13. Press Escape — confirm the search input clears and results are removed.
+14. Use a screen reader: confirm the search input has an accessible label, the filter buttons announce their pressed state, and results are announced via the live region.
+
+**Pass condition:** Search returns correct results for text and level filters; all interactive elements are keyboard-operable with visible focus; screen reader announces input label, button states, and result count.

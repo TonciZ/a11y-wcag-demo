@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/search.css">
   <script>!function(){var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');'dark'===t&&document.documentElement.setAttribute('data-theme','dark')}();</script>
 </head>
 <body class="checkpoint-page">
@@ -55,6 +56,13 @@
         <li>Verify the non-drag alternative is accessible via keyboard as well (this also relates to 2.1.1 Keyboard).</li>
         <li>Test with a pointing device set to a low precision (or simulated tremor) to understand the difficulty of drag interactions for affected users.</li>
       </ol>
+    <h3>Testing Tools</h3>
+    <ul>
+      <li><a href="../tools/axe-devtools-setup.html">axe DevTools</a> — Scan for drag-required interactions and form label issues.</li>
+      <li><a href="../tools/nvda-setup.html">NVDA</a> — Test form announcements and error messages using keyboard-only navigation.</li>
+      <li><a href="../tools/lighthouse-setup.html">Lighthouse</a> — Accessibility audit for form input and error handling.</li>
+    </ul>
+
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
@@ -183,6 +191,7 @@
               <label for="vol-pass">Volume:</label>
               <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
                 <input type="range" id="vol-pass" min="0" max="100" value="50" style="max-width: 200px;">
+                <label for="vol-num" style="display: block; font-size: 0.875rem; margin-bottom: 0.25rem;">Value:</label>
                 <input type="number" id="vol-num" min="0" max="100" value="50" style="width: 80px; padding: 0.5rem; border: 1px solid #8a8a8a; border-radius: 4px; font-size: 1rem;">
               </div>
             </div>
@@ -216,8 +225,8 @@
       <p>A passing implementation provides at least one alternative to every drag interaction that requires only a single pointer action (a tap or click). For a sortable list, this could be "Move up" and "Move down" buttons on each item. For a range slider, a text input that accepts the numeric value is a valid alternative. For a map with draggable pins, a button that opens a dialog where coordinates can be typed would satisfy the requirement. The alternative does not need to provide an identical experience, only equivalent functionality.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">WCAG Techniques</h2>
+    <section class="content-section" aria-labelledby="wcag-techniques-heading">
+      <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
       <ul>
         <li><strong>Failure:</strong> F108 (dragging movements - no non-drag alternative)</li>
         <li><strong>Success Techniques:</strong> G215 (providing buttons and scripts that perform the same function as the drag operation), G216 (providing single point activation for a drag operation)</li>
@@ -229,8 +238,8 @@
       <p>This criterion applies to drag interactions that are author-implemented, not to browser or operating system drag behaviors. Scroll dragging (using a scrollbar or touch-scrolling a region) is specifically excluded from this criterion. The criterion is closely related to 2.1.1 (Keyboard) but focuses specifically on pointer-based dragging rather than all keyboard accessibility, and applies to mouse/touch interfaces that lack equivalent non-drag paths.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="techniques-heading">
-      <h2 id="techniques-heading">Techniques</h2>
+    <section class="content-section" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Techniques</h2>
       <p>WCAG techniques used in this demo: <code>G219</code></p>
     </section>
 
@@ -248,5 +257,6 @@
   <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/search-filter.js"></script>
 </body>
 </html>
