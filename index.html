@@ -161,36 +161,37 @@
 
     </nav>
 
+  <main id="main-content" class="site-main">
+
     <div class="search-widget-wrapper">
       <form class="search-widget" role="search" aria-label="Search checkpoints" onsubmit="return false">
         <div class="search-widget__input-group">
-          <label for="search-input" class="visually-hidden">Search</label>
+          <label for="search-input" class="visually-hidden">Search checkpoints</label>
           <input
             type="search"
             id="search-input"
             class="search-input"
-            placeholder="Search checkpoints..."
-            autocomplete="off"
-            aria-label="Search checkpoint titles and codes"
-            aria-describedby="search-instructions">
-          <div id="search-instructions" class="visually-hidden">
+            placeholder="Search checkpoints&#x2026;"
+            autocomplete="search"
+            aria-describedby="search-instructions" aria-controls="search-results">
+          <span id="search-instructions" class="visually-hidden">
             Type to filter checkpoints by title or code.
             Use arrow keys to navigate results.
+            Press Escape to clear.
+            Click a level button to filter; click again to show all.
             Press Enter to open a checkpoint.
-          </div>
+          </span>
         </div>
         <div class="search-level-filters" role="group" aria-label="Filter by conformance level">
-          <button type="button" class="search-level-btn active" data-level="A" aria-pressed="true">Level A</button>
-          <button type="button" class="search-level-btn active" data-level="AA" aria-pressed="true">Level AA</button>
+          <button type="button" class="search-level-btn active" data-level="A" aria-pressed="false">A</button>
+          <button type="button" class="search-level-btn active" data-level="AA" aria-pressed="false">AA</button>
         </div>
       </form>
-      <div class="search-results" role="region" aria-label="Search results" aria-live="polite">
-        <div class="search-results__count" aria-live="assertive"></div>
-        <ul class="search-results__list"></ul>
+      <div id="search-results" class="search-results" role="region" aria-label="Search results" aria-live="polite">
+        <p class="search-results__count" aria-live="polite"></p>
+        <ul class="search-results__list" role="list"></ul>
       </div>
     </div>
-
-  <main id="main-content" class="site-main">
 
     <p class="index-intro">Full list of WCAG 2.2 success criteria. Level A and AA criteria with interactive fail/pass demos are marked <strong>Demo ready</strong>. Criteria marked <strong>No demo possible</strong> cannot be demonstrated as an interactive demo on a static site - the reason is noted on each card. Level AAA criteria are aspirational and shown for reference; demos are planned for a future phase.</p>
 

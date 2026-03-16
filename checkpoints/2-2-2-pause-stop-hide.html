@@ -91,6 +91,9 @@
           }
           .marquee-222 { overflow: hidden; white-space: nowrap; background: #f5f5f5; border-radius: 4px; padding: 0.5rem; }
           .marquee-222 span { display: inline-block; animation: marquee-222 8s linear infinite; }
+          @media (prefers-reduced-motion: reduce) {
+            .marquee-222 span { animation: none; }
+          }
         </style>
 
         <div class="demo-stage">
