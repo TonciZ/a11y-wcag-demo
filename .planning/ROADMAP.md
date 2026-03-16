@@ -19,7 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 7: Manual UAT** - Verify all checkpoints against quality gate, test in browsers/screen readers, fix issues
   - **MERGE GATE** — Phase 7 completion triggers merge to live
 - [x] **Phase 8: Search & Filtering** - Implement full-text search, pillar/level filtering, keyboard navigation, screen reader announcements
-- [ ] **Phase 9: Mobile Chrome** - Responsive navigation with hamburger menu, mobile-friendly demo containers, axe verification at mobile breakpoints
+- [x] **Phase 9: Mobile Chrome** - Responsive navigation with hamburger menu, mobile-friendly demo containers, axe verification at mobile breakpoints (completed 2026-03-16)
 - [ ] **Phase 10: Tool Links & Setup Guides** - Add tool download links and setup instructions to each checkpoint
 
 ## Phase Details
@@ -102,8 +102,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 09-01-PLAN.md — Implement hamburger nav with native `<details>` element; add 768px media query to layout.css for nav collapse and hamburger styling
-- [ ] 09-02-PLAN.md — Update search widget to 768px breakpoint with flex-wrap; verify demo containers handle mobile scaling; run axe scans at 375px and 768px viewports
+- [x] 09-01-PLAN.md — Implement hamburger nav with native `<details>` element; add 768px media query to layout.css for nav collapse and hamburger styling
+- [x] 09-02-PLAN.md — Update search widget to 768px breakpoint with flex-wrap; verify demo containers handle mobile scaling; run axe scans at 375px and 768px viewports
 
 ---
 
@@ -115,7 +115,11 @@ Plans:
   1. Each checkpoint "How to test" section includes direct download/access links for at least 3 relevant tools (axe DevTools, NVDA, VoiceOver, JAWS, Lighthouse, etc.)
   2. Each tool link includes 2–3 sentence setup guide (browser install, keyboard shortcut, how to activate for this demo)
   3. All tool links verified working at time of implementation; broken links will be caught by future maintenance audits
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 10-01-PLAN.md — Create 5 setup guide pages under tools/ (NVDA, axe DevTools, CCA, Lighthouse, VoiceOver); verify accessibility with axe scan
+- [ ] 10-02-PLAN.md — Add "Testing Tools" subsections to all 44 checkpoint "How To Test" sections; 3+ category-appropriate tools per checkpoint; verify all external URLs working; create tools-links-audit.md
 
 ---
 
@@ -164,13 +168,13 @@ Phases execute in numeric order: 5 → 6 → 7 (merge gate) → 8 → 9 → 10 �
 | 6. Axe Audit | 3/3 | Complete | 2026-03-13 |
 | 7. Manual UAT | 1/1 | Complete (code inspection) | 2026-03-13 |
 | 8. Search & Filtering | 1/1 | Complete | 2026-03-16 |
-| 9. Mobile Chrome | 0/2 | Planned | — |
-| 10. Tool Links | 0/TBD | Not started | — |
-| 11. Branch Sync & Metadata | 1/1 | Complete    | 2026-03-14 |
+| 9. Mobile Chrome | 2/2 | Complete | 2026-03-16 |
+| 10. Tool Links | 0/2 | Planning | — |
+| 11. Branch Sync & Metadata | 1/1 | Complete | 2026-03-14 |
 | 12. Complete Manual UAT | 0/1 | Planning | — |
 
 **Next:**
-Execute Phase 9 (Mobile Chrome). Phase 8 complete; all prerequisites met.
+Plan Phase 10 (Tool Links & Setup Guides). Phase 9 complete; all prerequisites met.
 
 ---
 
@@ -193,11 +197,13 @@ See `.planning/ROADMAP.md` (v1.0) in git history for detailed phase breakdowns.
 *Updated: 2026-03-14 after Phase 11 execution complete*
 *Updated: 2026-03-14 after Phase 8 planning complete*
 *Updated: 2026-03-16 after Phase 9 planning complete*
+*Updated: 2026-03-16 after Phase 10 planning complete*
 *v2.0 feature set defined: 6 phases + 2 gap closure phases = 8 total*
 *Phase 5 complete: 1/1 plans; VERIFICATION.md created*
 *Phase 6 complete: 3/3 plans; VERIFICATION.md verified*
 *Phase 7 complete: 1/1 plans; merged dev→master*
-*Phase 8 plan created: 1/1 plans; ready for execution*
-*Phase 9 plans created: 2/2 plans; ready for execution*
+*Phase 8 complete: 1/1 plans; ready for execution*
+*Phase 9 complete: 2/2 plans; ready for Phase 10*
+*Phase 10 plans created: 2/2 plans; ready for execution*
 *Phase 11 complete: 1/1 plans; gap closure done*
-*Phase 12 plan created: 2026-03-14; ready for execution*
+*Phase 12 plan ready; awaits Phase 10 completion*
