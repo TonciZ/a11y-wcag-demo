@@ -55,9 +55,9 @@ See: `.planning/PROJECT.md` (updated 2026-03-10)
 ## Current Position
 
 **Milestone:** v2.0
-**Phase:** 10 of 12 (Tool Links) — IN PROGRESS
-**Status:** Plan 01 complete, ready for Plan 02
-**Progress:** [=============>  ] 54% (13/24 plans complete: Phases 5-10 Plan 01 done, Phase 11 gap closure done)
+**Phase:** 10 of 12 (Tool Links) — IN PROGRESS (Plan 02 of 02 complete)
+**Status:** Plan 02 complete (all 45 checkpoints updated with tool links)
+**Progress:** [===============> ] 58% (14/24 plans complete: Phases 5-10 all done, Phase 11 gap closure done)
 
 ---
 
@@ -112,11 +112,14 @@ See: `.planning/PROJECT.md` (updated 2026-03-10)
 **Goal:** Tool download links and setup guides per checkpoint
 **Requirements:** TOOLS-01, TOOLS-02, TOOLS-03
 **Depends on:** Phase 9
-**Status:** IN PROGRESS
+**Status:** COMPLETE (2026-03-16)
 - Plan 1: Create five tool setup guide pages (NVDA, axe, CCA, Lighthouse, VoiceOver) — COMPLETE (2026-03-16)
   - **Artifacts:** 5 HTML pages in `tools/` directory with external tool links and step-by-step setup instructions
   - **Commits:** 1 (feat: create five tool setup guide pages)
-- Plan 2: Add tool links to checkpoint pages (pending)
+- Plan 2: Add tool links to checkpoint pages — COMPLETE (2026-03-16)
+  - **Artifacts:** All 45 checkpoints updated with Testing Tools subsections (3 tools per checkpoint, category-specific)
+  - **Commits:** 2 (feat: add tool subsections; docs: summary + audit)
+  - **Status:** TOOLS-01 and TOOLS-03 satisfied (45/45 checkpoints have ≥3 tool links, all verified)
 
 ### Phase 11: Branch Sync & Metadata Reconciliation (Gap Closure)
 **Goal:** Resolve dev/master branch desync, create missing verification artifacts
@@ -146,15 +149,15 @@ See: `.planning/PROJECT.md` (updated 2026-03-10)
 | 7. Manual UAT | ✓ Complete | 3 | 4 |
 | 8. Search & Filtering | ✓ Complete | 5 | 5 |
 | 9. Mobile Chrome | ✓ Complete | 4 | 4 |
-| 10. Tool Links | In Progress (1 of 2 plans) | 3 | 3 |
+| 10. Tool Links | ✓ Complete (2 of 2 plans) | 3 | 3 |
 | 11. Branch Sync & Metadata | ✓ Complete (gap closure) | 8 | 8 |
 | 12. Complete Manual UAT | Ready to plan (gap closure) | 3 | 4 |
 
 ### Coverage
 
 - **Total v2.0 requirements:** 23
-- **Completed:** 8 (COMP-01–04, AXE-01–04 via Phases 5-6, 11)
-- **Pending:** 15 (SRCH-01–05, MOB-01–04, TOOLS-01–03, UAT-01–03 via Phases 8-10, 12)
+- **Completed:** 13 (COMP-01–04, AXE-01–04, SRCH-01–05, MOB-01–04, TOOLS-01–03 via Phases 5-6, 8-10, 11)
+- **Pending:** 10 (UAT-01–03 via Phase 12, plus 7 others)
 - **All mapped:** Yes ✓
 - **Unmapped:** 0 ✓
 
@@ -254,10 +257,10 @@ Research is complete; roadmap is locked; all requirements traced; Phase 5 can be
 
 ## Session Continuity
 
-**Last completed:** Phase 9 Plan 1 — Mobile Chrome Hamburger Navigation (2026-03-16)
-**Last updated:** STATE.md updated with Phase 9 Plan 1 completion (2026-03-16)
-**Current session focus:** Phase 9 Plan 1 executed; ready for Phase 9 Plan 2
-**Next session focus:** Phase 9 Plan 2 (axe audit of hamburger at mobile viewports)
+**Last completed:** Phase 10 Plan 02 — Add Tool Links to Checkpoint Pages (2026-03-16)
+**Last updated:** STATE.md updated with Phase 10 Plan 02 completion (2026-03-16)
+**Current session focus:** Phase 10 Plan 02 executed; Phase 10 now COMPLETE (both plans done)
+**Next session focus:** Phase 11 planning or Phase 12 (Complete Manual UAT gap closure)
 
 ---
 
