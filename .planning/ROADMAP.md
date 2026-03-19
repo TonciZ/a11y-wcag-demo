@@ -169,12 +169,12 @@ Phases execute in numeric order: 5 → 6 → 7 (merge gate) → 8 → 9 → 10 �
 | 7. Manual UAT | 1/1 | Complete (code inspection) | 2026-03-13 |
 | 8. Search & Filtering | 1/1 | Complete | 2026-03-16 |
 | 9. Mobile Chrome | 2/2 | Complete | 2026-03-16 |
-| 10. Tool Links | 0/2 | Planning | — |
+| 10. Tool Links | 2/2 | Complete | 2026-03-19 |
 | 11. Branch Sync & Metadata | 1/1 | Complete | 2026-03-14 |
 | 12. Complete Manual UAT | 0/1 | Planning | — |
 
 **Next:**
-Plan Phase 10 (Tool Links & Setup Guides). Phase 9 complete; all prerequisites met.
+Execute Phase 12 (Complete Manual UAT). All prerequisites complete. Phase 12 requires human tester to manually verify all 44 checkpoints in browser with keyboard + NVDA screen reader testing.
 
 ---
 
