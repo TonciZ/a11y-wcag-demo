@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -106,7 +106,7 @@
           <div data-demo-state="pass" hidden>
             <p>A skip link is the first focusable element. Tab to it then press Enter to jump directly to main content, bypassing all navigation.</p>
             <a href="#bypass-pass-main" style="display:inline-block;padding:0.4em 0.9em;background:#000;color:#fff;border-radius:4px;margin-bottom:0.5rem;font-size:0.9rem;">Skip to main content</a>
-            <nav aria-label="Example site navigation">
+            <nav aria-label="Example site navigation (passing demo)">
               <ul style="list-style:none;padding:0;display:flex;gap:0.75rem;flex-wrap:wrap;margin:0;">
                 <li><a href="#bypass-pass-main">Home</a></li>
                 <li><a href="#bypass-pass-main">About</a></li>
@@ -115,7 +115,7 @@
                 <li><a href="#bypass-pass-main">Contact</a></li>
               </ul>
             </nav>
-            <p id="bypass-pass-main" tabindex="-1" style="margin:0.75rem 0 0;padding:0.5em;background:#f0f7ee;border-left:3px solid #27ae60;">Main content area</p>
+            <p id="bypass-pass-main" tabindex="0" style="margin:0.75rem 0 0;padding:0.5em;background:#f0f7ee;border-left:3px solid #27ae60;">Main content area</p>
           </div>
         </div>
       </div>
@@ -143,7 +143,7 @@
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -152,7 +152,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>
