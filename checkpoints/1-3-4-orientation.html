@@ -131,6 +131,85 @@
           </div>
         </div>
       </div>
+
+      <!-- Demo 2: Check imaging with user control -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-134-2"
+           data-announce-fail="Showing fail example. Check deposit form locks to portrait orientation without user control - users cannot switch to landscape for better visibility."
+           data-announce-pass="Showing pass example. Check deposit form with user-controlled orientation toggle - users can choose their preferred orientation.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-134-2">Check deposit with orientation control</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail - portrait-only lock, no user control</span>
+          <span class="demo-status__text--pass">Pass - user can control orientation</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Check deposit form locked to portrait. Users cannot rotate to landscape even if they need wider view to see check fields.</p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+              <div style="width: 150px; height: 280px; border: 3px solid #1a1a1a; border-radius: 8px; background: #f9f9f9; position: relative; overflow: hidden; flex-shrink: 0;" aria-label="Portrait mobile screen showing check deposit form" role="img">
+                <div style="padding: 0.5rem; font-size: 0.65rem;">
+                  <strong>Mobile Check Deposit</strong>
+                  <div style="margin-top: 0.3rem; border: 1px solid #ccc; padding: 0.25rem; background: #fff; height: 45px; overflow: hidden;">
+                    <p style="margin: 0; font-size: 0.55rem; color: #666;">Check number input...</p>
+                  </div>
+                  <div style="margin-top: 0.3rem; border: 1px solid #ccc; padding: 0.25rem; background: #fff; height: 45px; overflow: hidden;">
+                    <p style="margin: 0; font-size: 0.55rem; color: #666;">Amount field...</p>
+                  </div>
+                </div>
+              </div>
+              <div style="text-align: center; flex: 1; min-width: 150px; display: flex; align-items: center; justify-content: center;">
+                <p style="margin: 0; color: #5a5a5a; font-size: 0.875rem;">❌ Cannot rotate<br>to landscape</p>
+              </div>
+            </div>
+            <p style="font-size: 0.875rem; color: #5a5a5a; margin-top: 0.75rem;">In code: <code>@media (orientation: landscape) &#123; body &#123; display: none &#125; &#125;</code></p>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p>Check deposit form with user-controlled orientation button. Users can choose portrait or landscape view.</p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+              <div style="width: 150px; height: 280px; border: 3px solid #1a1a1a; border-radius: 8px; background: #f9f9f9; position: relative; overflow: hidden; flex-shrink: 0;" aria-label="Portrait mobile screen with orientation toggle" role="img">
+                <div style="padding: 0.4rem; font-size: 0.65rem;">
+                  <button style="width: 100%; padding: 0.2rem; font-size: 0.55rem; margin-bottom: 0.2rem;">🔄 Rotate to landscape</button>
+                  <strong>Mobile Check Deposit</strong>
+                  <div style="margin-top: 0.2rem; border: 1px solid #ccc; padding: 0.2rem; background: #fff;">
+                    <p style="margin: 0; font-size: 0.55rem;">Check number:</p>
+                  </div>
+                </div>
+              </div>
+              <div style="text-align: center; flex: 1; min-width: 150px; display: flex; align-items: center; justify-content: center;">
+                <p style="margin: 0; color: #5a5a5a; font-size: 0.875rem;">✓ User controls<br>orientation</p>
+              </div>
+            </div>
+            <p style="font-size: 0.875rem; color: #5a5a5a; margin-top: 0.75rem;">User has a button to toggle layout or rotate their device - orientation is not locked.</p>
+          </div>
+        </div>
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>A check deposit form that forces portrait orientation prevents users from rotating to landscape for a better view of form fields. Users with devices mounted in fixed positions cannot access the form at all. Even if the form looks acceptable in portrait, restricting it fails the criterion because users cannot override the restriction.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>The form works in any orientation. If the essential use case is imaging a check (which may benefit from landscape), the user has control via a toggle button or natural device rotation. The restriction is not forced by CSS or JavaScript - the layout simply adapts to the available space.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">

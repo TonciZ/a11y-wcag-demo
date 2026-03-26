@@ -127,6 +127,185 @@
           </div>
         </div>
       </div>
+
+      <!-- Demo 2: Order form with billing and shipping address -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-135-2"
+           data-announce-fail="Showing fail example. Billing and shipping address fields have generic autocomplete attributes - assistive technology cannot distinguish between them."
+           data-announce-pass="Showing pass example. Address fields use billing-address and shipping-address autocomplete modifiers - purpose is now clear.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-135-2">Order form with billing &amp; shipping</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail - generic address autocomplete</span>
+          <span class="demo-status__text--pass">Pass - billing/shipping address distinction</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Order form with billing and shipping addresses. Both use <code>autocomplete="street-address"</code> - autofill tools cannot distinguish between them.</p>
+            <form style="display: flex; flex-direction: column; gap: 1rem; margin-top: 0.75rem;" onsubmit="return false;">
+              <fieldset style="border: 1px solid #ddd; padding: 0.75rem; border-radius: 4px;">
+                <legend style="font-weight: bold; margin-bottom: 0.5rem;">Billing Address</legend>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                  <div>
+                    <label for="fail-135-bill-street" style="display: block; margin-bottom: 0.25rem;">Street Address</label>
+                    <input type="text" id="fail-135-bill-street" name="billing-street" autocomplete="street-address" style="width: 100%;">
+                  </div>
+                  <div>
+                    <label for="fail-135-bill-city" style="display: block; margin-bottom: 0.25rem;">City</label>
+                    <input type="text" id="fail-135-bill-city" name="billing-city" autocomplete="address-level2" style="width: 100%;">
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset style="border: 1px solid #ddd; padding: 0.75rem; border-radius: 4px;">
+                <legend style="font-weight: bold; margin-bottom: 0.5rem;">Shipping Address</legend>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                  <div>
+                    <label for="fail-135-ship-street" style="display: block; margin-bottom: 0.25rem;">Street Address</label>
+                    <input type="text" id="fail-135-ship-street" name="shipping-street" autocomplete="street-address" style="width: 100%;">
+                  </div>
+                  <div>
+                    <label for="fail-135-ship-city" style="display: block; margin-bottom: 0.25rem;">City</label>
+                    <input type="text" id="fail-135-ship-city" name="shipping-city" autocomplete="address-level2" style="width: 100%;">
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p>Same form with refined autocomplete modifiers. Billing fields use <code>billing</code> prefix, shipping fields use <code>shipping</code> - autofill tools can now distinguish purpose.</p>
+            <form style="display: flex; flex-direction: column; gap: 1rem; margin-top: 0.75rem;" onsubmit="return false;">
+              <fieldset style="border: 1px solid #ddd; padding: 0.75rem; border-radius: 4px;">
+                <legend style="font-weight: bold; margin-bottom: 0.5rem;">Billing Address</legend>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                  <div>
+                    <label for="pass-135-bill-street" style="display: block; margin-bottom: 0.25rem;">Street Address</label>
+                    <input type="text" id="pass-135-bill-street" name="billing-street" autocomplete="billing street-address" style="width: 100%;">
+                  </div>
+                  <div>
+                    <label for="pass-135-bill-city" style="display: block; margin-bottom: 0.25rem;">City</label>
+                    <input type="text" id="pass-135-bill-city" name="billing-city" autocomplete="billing address-level2" style="width: 100%;">
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset style="border: 1px solid #ddd; padding: 0.75rem; border-radius: 4px;">
+                <legend style="font-weight: bold; margin-bottom: 0.5rem;">Shipping Address</legend>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                  <div>
+                    <label for="pass-135-ship-street" style="display: block; margin-bottom: 0.25rem;">Street Address</label>
+                    <input type="text" id="pass-135-ship-street" name="shipping-street" autocomplete="shipping street-address" style="width: 100%;">
+                  </div>
+                  <div>
+                    <label for="pass-135-ship-city" style="display: block; margin-bottom: 0.25rem;">City</label>
+                    <input type="text" id="pass-135-ship-city" name="shipping-city" autocomplete="shipping address-level2" style="width: 100%;">
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>Both billing and shipping address fields use the same <code>autocomplete</code> value. Autofill tools cannot distinguish between them, so they may fill the billing address into the shipping field or vice versa. The semantic distinction is lost.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>Using <code>autocomplete="billing street-address"</code> and <code>autocomplete="shipping street-address"</code> (with <code>billing</code>/<code>shipping</code> prefixes) allows autofill tools and assistive technology to understand the distinct purposes. Users with autofill tools get correct suggestions for each address type.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
+      <!-- Demo 3: Password change form -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-135-3"
+           data-announce-fail="Showing fail example. Password fields lack autocomplete attributes - password managers cannot distinguish current vs. new password fields."
+           data-announce-pass="Showing pass example. Password fields use current-password and new-password autocomplete attributes - password managers work correctly.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-135-3">Password change form</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail - password fields without autocomplete</span>
+          <span class="demo-status__text--pass">Pass - current-password and new-password autocomplete</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Password change form without autocomplete attributes. Password managers cannot tell which field is the current password and which is the new password.</p>
+            <form style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.75rem;" onsubmit="return false;">
+              <div>
+                <label for="fail-135-current" style="display: block; margin-bottom: 0.25rem;">Current password</label>
+                <input type="password" id="fail-135-current" name="current-password">
+              </div>
+              <div>
+                <label for="fail-135-new" style="display: block; margin-bottom: 0.25rem;">New password</label>
+                <input type="password" id="fail-135-new" name="new-password">
+              </div>
+              <div>
+                <label for="fail-135-confirm" style="display: block; margin-bottom: 0.25rem;">Confirm new password</label>
+                <input type="password" id="fail-135-confirm" name="confirm-password">
+              </div>
+            </form>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <p>Same form with correct autocomplete attributes. Password managers can now fill current password correctly and prompt for new password separately.</p>
+            <form style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.75rem;" onsubmit="return false;">
+              <div>
+                <label for="pass-135-current" style="display: block; margin-bottom: 0.25rem;">Current password</label>
+                <input type="password" id="pass-135-current" name="current-password" autocomplete="current-password">
+              </div>
+              <div>
+                <label for="pass-135-new" style="display: block; margin-bottom: 0.25rem;">New password</label>
+                <input type="password" id="pass-135-new" name="new-password" autocomplete="new-password">
+              </div>
+              <div>
+                <label for="pass-135-confirm" style="display: block; margin-bottom: 0.25rem;">Confirm new password</label>
+                <input type="password" id="pass-135-confirm" name="confirm-password" autocomplete="new-password">
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>Password fields without autocomplete attributes give password managers no semantic hint about the field's purpose. A password manager may incorrectly fill the current password into the new password field, or vice versa. Users have to manually manage password changes without tool support.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>Using <code>autocomplete="current-password"</code> for existing password fields and <code>autocomplete="new-password"</code> for new password fields allows password managers to handle password changes correctly. Users can update their password securely with minimal manual data entry.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">

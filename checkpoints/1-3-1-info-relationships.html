@@ -96,7 +96,7 @@
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-1-label"
+           aria-labelledby="demo-label-131"
            data-announce-fail="Showing fail example. The table uses only td elements - screen readers cannot announce column context."
            data-announce-pass="Showing pass example. The table uses th elements with scope attribute - screen readers now announce column headers.">
 
@@ -217,6 +217,66 @@
           <div class="demo-explanation__panel demo-explanation__panel--pass">
             <p class="demo-explanation__heading">Why this passes</p>
             <p>Header cells use <code>&lt;th scope="col"&gt;</code> inside <code>&lt;thead&gt;</code>. Screen readers can announce "Score column, Carol: 95" - the relationship is programmatically defined.</p>
+          </div>
+        </div>
+
+      </div><!-- /.demo-container -->
+
+      <!-- Demo 2: Heading structure -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-131-2"
+           data-announce-fail="Showing fail example. Styled paragraph that looks like a heading but uses p and strong tags - screen readers announce it as regular text with no heading semantics."
+           data-announce-pass="Showing pass example. Proper h2 elements with semantic hierarchy - screen readers announce heading level and allow navigation by heading.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-131-2">Heading structure</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail - styled paragraph, no heading semantics</span>
+          <span class="demo-status__text--pass">Pass - proper &lt;h2&gt; elements</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p style="font-size: 1.5rem; font-weight: bold; margin: 1rem 0 0.5rem;">Section One</p>
+            <p>This section discusses the fundamentals of accessibility. It is visually large and bold, but it is marked up as a paragraph element.</p>
+
+            <p style="font-size: 1.25rem; font-weight: bold; margin: 1rem 0 0.5rem;">Subsection A</p>
+            <p>This is supporting content under the first subsection. A screen reader user will not know this is a subsection - it sounds like a regular paragraph.</p>
+
+            <p style="font-size: 1.25rem; font-weight: bold; margin: 1rem 0 0.5rem;">Subsection B</p>
+            <p>More content. The visual hierarchy suggests this is a subheading, but the HTML does not reflect that structure.</p>
+          </div>
+
+          <div data-demo-state="pass" hidden>
+            <h2>Section One</h2>
+            <p>This section discusses the fundamentals of accessibility. It uses a proper h2 element, so screen reader users can navigate to it and understand the document structure.</p>
+
+            <h3>Subsection A</h3>
+            <p>This is supporting content under the first subsection. The h3 element tells screen reader users that this is a subheading nested under Section One.</p>
+
+            <h3>Subsection B</h3>
+            <p>More content. The semantic h3 element conveys that this is a subsection at the same level as Subsection A.</p>
+          </div>
+        </div>
+
+        <div class="demo-explanation">
+          <div class="demo-explanation__panel demo-explanation__panel--fail">
+            <p class="demo-explanation__heading">Why this fails</p>
+            <p>Using <code>&lt;p&gt;&lt;strong&gt;</code> styled to look like a heading may look correct visually, but screen reader users hear no heading semantics. They cannot use heading navigation keys (H in NVDA) to jump between sections, and the document structure is invisible to assistive technology.</p>
+          </div>
+          <div class="demo-explanation__panel demo-explanation__panel--pass">
+            <p class="demo-explanation__heading">Why this passes</p>
+            <p>Using semantic heading elements <code>&lt;h1&gt;–&lt;h6&gt;</code> with a proper hierarchy conveys document structure to assistive technology. Screen reader users can navigate by heading level, understand relationships between sections, and locate content quickly.</p>
           </div>
         </div>
 
