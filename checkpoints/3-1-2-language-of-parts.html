@@ -68,16 +68,16 @@
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+      <h2 id="demo-heading">Demo 1: Foreign Language Phrases</h2>
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-312"
+           aria-labelledby="demo-label-312-1"
            data-announce-fail="Showing fail example. A French phrase is embedded without a language marker - screen readers cannot apply correct pronunciation rules."
            data-announce-pass="Showing pass example. The French phrase is properly marked with its language - screen readers can apply correct pronunciation rules.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-312">Language of parts demo</span>
+          <span class="demo-container__label" id="demo-label-312-1">Foreign language phrases</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -105,6 +105,88 @@
               <p style="margin:0;">The committee noted the proverb: <em lang="fr">"Vouloir c&apos;est pouvoir."</em></p>
             </blockquote>
             <p style="font-size:0.875rem;color:#5a5a5a;"><code>&lt;em lang="fr"&gt;</code> signals the language change to assistive technology.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Multilingual Quotes</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-312-2"
+           data-announce-fail="Showing fail example. A German quotation is embedded without a language marker - screen readers will mispronounce German words using English phonetic rules.\n"
+           data-announce-pass="Showing pass example. The German quotation is properly marked with its language - screen readers can apply correct German pronunciation rules.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-312-2">Multilingual quotes</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A German quotation without a <code>lang</code> attribute will be read using English pronunciation, distorting the meaning and flow.</p>
+            <blockquote style="border-left:3px solid #d0d0d0;margin:0.75rem 0;padding:0.5rem 1rem;background:#f5f5f5;border-radius:0 4px 4px 0;">
+              <p style="margin:0;"><em>«Ich bin nicht allein. Mit mir ist die Dunkelheit, das Licht und die ganze Welt.»</em> — Max Beckmann</p>
+            </blockquote>
+            <p style="font-size:0.875rem;color:#5a5a5a;">No <code>lang</code> attribute on the German quotation.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same German quotation wrapped with <code>&lt;blockquote lang="de"&gt;</code> signals the language change, allowing screen readers to apply German pronunciation.</p>
+            <blockquote lang="de" style="border-left:3px solid #d0d0d0;margin:0.75rem 0;padding:0.5rem 1rem;background:#f5f5f5;border-radius:0 4px 4px 0;">
+              <p style="margin:0;"><em>«Ich bin nicht allein. Mit mir ist die Dunkelheit, das Licht und die ganze Welt.»</em> — Max Beckmann</p>
+            </blockquote>
+            <p style="font-size:0.875rem;color:#5a5a5a;"><code>&lt;blockquote lang="de"&gt;</code> signals language to assistive technology.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-3">
+      <h2 id="demo-heading-3">Demo 3: Right-to-Left Language Content</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-312-3"
+           data-announce-fail="Showing fail example. Arabic text has a language marker but no text direction attribute - braille output and text rendering may be incorrect.\n"
+           data-announce-pass="Showing pass example. The Arabic text has both language and direction attributes - screen readers and braille converters render content correctly.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-312-3">Right-to-left language content</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Arabic and other right-to-left languages need both <code>lang</code> and <code>dir</code> attributes. Without <code>dir="rtl"</code>, text rendering and braille conversion may be incorrect.</p>
+            <p lang="ar" style="margin:0.75rem 0;font-size:1.125rem;line-height:1.6;padding:0.5rem 0;">السلام عليكم</p>
+            <p style="font-size:0.875rem;color:#5a5a5a;">Has <code>lang="ar"</code> but missing <code>dir="rtl"</code>.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Both <code>lang="ar"</code> and <code>dir="rtl"</code> together tell screen readers, braille converters, and rendering engines the correct language and text direction.</p>
+            <p lang="ar" dir="rtl" style="margin:0.75rem 0;font-size:1.125rem;line-height:1.6;padding:0.5rem 0;">السلام عليكم</p>
+            <p style="font-size:0.875rem;color:#5a5a5a;">Has both <code>lang="ar"</code> and <code>dir="rtl"</code> for correct rendering.</p>
           </div>
         </div>
       </div>

@@ -124,6 +124,112 @@
           </div>
         </div>
       </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-246-2"
+           data-announce-fail="Showing fail example. Form labels are generic and do not describe the expected input."
+           data-announce-pass="Showing pass example. Form labels are descriptive and clearly identify the required information.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-246-2">Form labels demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Generic labels provide no context about what information is needed:</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                <div>
+                  <label for="fail-fl-input1" style="display:block;margin-bottom:0.25rem;">Name:</label>
+                  <input type="text" id="fail-fl-input1" style="width:100%;max-width:280px;">
+                </div>
+                <div>
+                  <label for="fail-fl-input2" style="display:block;margin-bottom:0.25rem;">Email:</label>
+                  <input type="email" id="fail-fl-input2" style="width:100%;max-width:280px;">
+                </div>
+                <div>
+                  <label for="fail-fl-input3" style="display:block;margin-bottom:0.25rem;">Address:</label>
+                  <input type="text" id="fail-fl-input3" style="width:100%;max-width:280px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Descriptive labels clearly identify the type of information needed for each field:</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;">
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                <div>
+                  <label for="pass-fl-input1" style="display:block;margin-bottom:0.25rem;">Full name (as it appears on your ID):</label>
+                  <input type="text" id="pass-fl-input1" style="width:100%;max-width:280px;">
+                </div>
+                <div>
+                  <label for="pass-fl-input2" style="display:block;margin-bottom:0.25rem;">Business email address:</label>
+                  <input type="email" id="pass-fl-input2" style="width:100%;max-width:280px;">
+                </div>
+                <div>
+                  <label for="pass-fl-input3" style="display:block;margin-bottom:0.25rem;">Billing address (street, city, postal code):</label>
+                  <input type="text" id="pass-fl-input3" style="width:100%;max-width:280px;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-246-3"
+           data-announce-fail="Showing fail example. Button labels are generic and do not describe what action they perform."
+           data-announce-pass="Showing pass example. Button labels are descriptive and clearly indicate the action.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-246-3">Button labels demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Generic button text is unclear without surrounding context:</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;display:flex;flex-direction:column;gap:0.75rem;">
+              <button type="button">Submit</button>
+              <button type="button">OK</button>
+              <button type="button">Next</button>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Descriptive button text makes the action clear in any context:</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;display:flex;flex-direction:column;gap:0.75rem;">
+              <button type="button">Submit payment information</button>
+              <button type="button">Accept terms and continue</button>
+              <button type="button">Next: Select shipping method</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">

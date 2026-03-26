@@ -67,7 +67,7 @@
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+      <h2 id="demo-heading-1">Demo 1: Form field requirement indicators</h2>
 
       <!-- Demo 1: Form required fields -->
       <div class="demo-container"
@@ -78,7 +78,7 @@
            data-announce-pass="Showing pass example. Required fields are marked with symbols in addition to color - all users can identify them.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-141-1">Demo 1: Form field requirement indicators</span>
+          <span class="demo-container__label" id="demo-label-141-1">Demo Label</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -136,16 +136,74 @@
         </details>
       </div>
 
-      <!-- Demo 2: Data visualization with color only -->
+      <section class="content-section" aria-labelledby="demo-heading-2">
+        <h2 id="demo-heading-2">Demo 2: Links in paragraph text</h2>
+        <div class="demo-container"
+             data-mode="fail"
+             role="region"
+             aria-labelledby="demo-label-141-2"
+             data-announce-fail="Showing fail example. Links in the text are distinguished only by color - users who cannot perceive color have no way to identify them as clickable."
+             data-announce-pass="Showing pass example. Links are distinguished by both color and underline - all users can identify them as clickable regardless of color perception.">
+
+          <div class="demo-container__toolbar">
+            <span class="demo-container__label" id="demo-label-141-2">Demo Label</span>
+            <button class="demo-toggle" type="button" aria-pressed="false">
+              <span class="demo-toggle__label--fail">Show passing example</span>
+              <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+            </button>
+          </div>
+
+          <div class="demo-status" aria-hidden="true">
+            <span class="demo-status__text--fail">Fail</span>
+            <span class="demo-status__text--pass">Pass</span>
+          </div>
+
+          <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+          <div class="demo-stage">
+            <div data-demo-state="fail">
+              <p>Links are distinguished only by color. A user with color blindness cannot tell which text is clickable and which is regular text.</p>
+              <p style="margin-top:0.75rem;line-height:1.6;">
+                Accessible web design requires attention to multiple factors. For more information about color blindness,
+                <a href="#" style="color:#0055cc;text-decoration:none;">visit our color accessibility guide</a>.
+                You can also <a href="#" style="color:#0055cc;text-decoration:none;">learn about testing methods</a>
+                to ensure your designs work for everyone.
+                <a href="#" style="color:#0055cc;text-decoration:none;">Check out our case studies</a>
+                to see real-world examples of inclusive design in action.
+              </p>
+            </div>
+            <div data-demo-state="pass" hidden>
+              <p>Links are distinguished by both color and underline. All users can identify clickable text regardless of color perception.</p>
+              <p style="margin-top:0.75rem;line-height:1.6;">
+                Accessible web design requires attention to multiple factors. For more information about color blindness,
+                <a href="#" style="color:#0055cc;text-decoration:underline;">visit our color accessibility guide</a>.
+                You can also <a href="#" style="color:#0055cc;text-decoration:underline;">learn about testing methods</a>
+                to ensure your designs work for everyone.
+                <a href="#" style="color:#0055cc;text-decoration:underline;">Check out our case studies</a>
+                to see real-world examples of inclusive design in action.
+              </p>
+            </div>
+          </div>
+
+          <details class="demo-code-section" open>
+            <summary class="demo-code-section__toggle">Code</summary>
+            <pre><code class="demo-live-code"></code></pre>
+          </details>
+        </div>
+      </section>
+
+      <section class="content-section" aria-labelledby="demo-heading-3">
+        <h2 id="demo-heading-3">Demo 3: Data visualization with color-only legend</h2>
+        <!-- Demo 3: Data visualization with color only -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-141-2"
+           aria-labelledby="demo-label-141-3"
            data-announce-fail="Showing fail example. Chart legend uses color only - users who cannot see colors have no way to identify the data series."
            data-announce-pass="Showing pass example. Chart legend uses both colors and text labels - all users can identify the data series.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-141-2">Demo 2: Data visualization with color-only legend</span>
+          <span class="demo-container__label" id="demo-label-141-3">Demo Label</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>

@@ -67,17 +67,17 @@
 
     </section>
 
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+    <section class="content-section" aria-labelledby="demo-heading-1">
+      <h2 id="demo-heading-1">Demo 1: Fixed-height container overflow</h2>
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-144"
+           aria-labelledby="demo-label-144-1"
            data-announce-fail="Showing fail example. Text is cut off when users increase font size - some content becomes unreadable."
            data-announce-pass="Showing pass example. All text remains visible when users increase font size - fully readable.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-144">Resize text demo</span>
+          <span class="demo-container__label" id="demo-label-144-1">Demo 1: Fixed-height container overflow</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -107,6 +107,68 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <h2 id="demo-heading-2">Demo 2: Responsive text sizing with flexible units</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-144-2"
+           data-announce-fail="Showing fail example. All text sizes and container widths use fixed pixels - layout breaks when font size increases."
+           data-announce-pass="Showing pass example. Text sizes and container widths use relative units like em and percentages - layout adjusts smoothly with font size changes.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-144-2">Demo 2: Responsive text sizing</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Layout uses fixed pixel sizes - breaks at larger font sizes:</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f5f5f5;">
+              <div style="display:flex;gap:10px;">
+                <div style="width:150px;padding:10px;background:#ffffff;border:1px solid #d0d0d0;border-radius:4px;">
+                  <h4 style="font-size:12px;margin:0 0 5px 0;font-weight:bold;">Option A</h4>
+                  <p style="font-size:12px;margin:0;">Fixed widths and pixel font sizes cause text to wrap unpredictably.</p>
+                </div>
+                <div style="width:150px;padding:10px;background:#ffffff;border:1px solid #d0d0d0;border-radius:4px;">
+                  <h4 style="font-size:12px;margin:0 0 5px 0;font-weight:bold;">Option B</h4>
+                  <p style="font-size:12px;margin:0;">Columns may become too narrow or stack unexpectedly.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Layout uses relative units - adjusts gracefully at larger font sizes:</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f5f5f5;">
+              <div style="display:flex;gap:0.75rem;">
+                <div style="width:40%;padding:0.75rem;background:#ffffff;border:1px solid #d0d0d0;border-radius:4px;">
+                  <h4 style="font-size:1.125rem;margin:0 0 0.5rem 0;font-weight:bold;">Option A</h4>
+                  <p style="font-size:1rem;margin:0;line-height:1.5;">Relative units (em, rem, %) scale smoothly with user font size changes.</p>
+                </div>
+                <div style="width:40%;padding:0.75rem;background:#ffffff;border:1px solid #d0d0d0;border-radius:4px;">
+                  <h4 style="font-size:1.125rem;margin:0 0 0.5rem 0;font-weight:bold;">Option B</h4>
+                  <p style="font-size:1rem;margin:0;line-height:1.5;">Columns remain proportional and readable at all zoom levels.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 

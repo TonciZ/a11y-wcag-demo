@@ -115,6 +115,64 @@
       </div>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Field Identification in Error Messages</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-331-2"
+           data-announce-fail="Showing fail example. Error message says invalid format but does not identify which field has the error."
+           data-announce-pass="Showing pass example. Error message identifies the field by name and describes what needs to be corrected.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-331-2">Field identification in errors demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A form is submitted with two fields. The error message says "Invalid format" but does not indicate which field is wrong. Screen reader users cannot determine which field needs correction.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="phone-331-fail" style="display:block;margin-bottom:0.25rem;font-weight:600;">Phone number</label>
+              <input type="tel" id="phone-331-fail" value="123"
+                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;margin-bottom:0.75rem;">
+              <label for="website-331-fail" style="display:block;margin-bottom:0.25rem;font-weight:600;">Website URL</label>
+              <input type="url" id="website-331-fail" value="invalid"
+                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;margin-bottom:0.75rem;">
+              <p style="margin:0.5rem 0 0;color:#c0392b;font-size:0.9rem;font-weight:600;">Error: Invalid format</p>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The error message now identifies each field by name and describes what format is expected. Users know exactly which fields to correct and how.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="phone-331-pass" style="display:block;margin-bottom:0.25rem;font-weight:600;">Phone number</label>
+              <input type="tel" id="phone-331-pass" value="123" aria-invalid="true" aria-describedby="phone-331-error"
+                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;margin-bottom:0.75rem;">
+              <p id="phone-331-error" style="margin:0.35rem 0 0 0;color:#c0392b;font-size:0.9rem;">
+                Error: Phone number must be 10 digits (e.g., 555-123-4567)
+              </p>
+              <label for="website-331-pass" style="display:block;margin-bottom:0.75rem;margin-top:0.75rem;font-weight:600;">Website URL</label>
+              <input type="url" id="website-331-pass" value="invalid" aria-invalid="true" aria-describedby="website-331-error"
+                     style="padding:0.5em 0.75em;border:2px solid #c0392b;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;margin-bottom:0.75rem;">
+              <p id="website-331-error" style="margin:0.35rem 0 0 0;color:#c0392b;font-size:0.9rem;">
+                Error: Website URL must start with http:// or https://
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
       <p>A form that uses only colour (such as a red border) or an icon (such as a warning triangle) to indicate an error, without any accompanying text, fails this criterion because users who are blind, have low vision, or have colour blindness cannot perceive or interpret purely visual error signals. Similarly, displaying a generic message like "There was a problem with your submission" without identifying which specific fields caused the error is a failure, because users cannot determine what they need to correct without further exploration.</p>

@@ -67,8 +67,8 @@
 
     </section>
 
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+    <section class="content-section" aria-labelledby="demo-heading-1">
+      <h2 id="demo-heading-1">Demo 1: Native button vs styled div</h2>
 
       <!-- Demo 1: Native button vs styled div -->
       <div class="demo-container"
@@ -79,7 +79,7 @@
            data-announce-pass="Showing pass example. Native button element is keyboard focusable and operable by pressing Enter or Space.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-211-1">Demo 1: Native button vs styled div</span>
+          <span class="demo-container__label" id="demo-label-211-1">Demo</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -115,6 +115,9 @@
         </details>
       </div>
 
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Custom widget keyboard support</h2>
+
       <!-- Demo 2: Custom widget with keyboard support -->
       <div class="demo-container"
            data-mode="fail"
@@ -124,7 +127,7 @@
            data-announce-pass="Showing pass example. Custom slider responds to mouse clicks, keyboard Enter, Space, and arrow keys.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-211-2">Demo 2: Custom widget keyboard support</span>
+          <span class="demo-container__label" id="demo-label-211-2">Demo</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -223,6 +226,77 @@
                 sliderPass.addEventListener('keydown', handleSliderKeydown);
               }
             </script>
+          </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+    <section class="content-section" aria-labelledby="demo-heading-3">
+      <h2 id="demo-heading-3">Demo 3: Image navigation with keyboard support</h2>
+
+      <!-- Demo 3: Image navigation -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-211-3"
+           data-announce-fail="Showing fail example. Navigation arrow image uses mouse events only. Keyboard users cannot activate navigation."
+           data-announce-pass="Showing pass example. Navigation button works with both mouse clicks and keyboard Enter or Space keys.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-211-3">Demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Try using Tab to reach the navigation arrow below. Using only the keyboard, you cannot navigate to the next item:</p>
+            <div style="margin-top:0.75rem;">
+              <p style="font-size:0.875rem;margin-bottom:0.5rem;">Current item: <strong id="item-fail">Item 1 of 5</strong></p>
+              <svg id="nav-arrow-fail"
+                   viewBox="0 0 24 24"
+                   width="40"
+                   height="40"
+                   style="cursor:pointer;border:2px solid #ccc;padding:4px;border-radius:4px;fill:currentColor;"
+                   onmousedown="const el = document.getElementById('item-fail'); const num = parseInt(el.textContent); if (num < 5) el.textContent = 'Item ' + (num + 1) + ' of 5';">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+              </svg>
+              <p style="font-size:0.875rem;color:#666;margin-top:0.5rem;">Mouse hover or click the arrow to proceed.</p>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Try using Tab and keyboard to reach and operate the button below. Both mouse and keyboard work equally:</p>
+            <div style="margin-top:0.75rem;">
+              <p style="font-size:0.875rem;margin-bottom:0.5rem;">Current item: <strong id="item-pass">Item 1 of 5</strong></p>
+              <button id="nav-btn-pass" type="button" style="padding:0.5em 1em;font-size:1rem;">
+                Next Item →
+              </button>
+              <p style="font-size:0.875rem;color:#666;margin-top:0.5rem;">Press Tab to focus, then Enter or Space to advance.</p>
+              <script>
+                const nextBtn = document.getElementById('nav-btn-pass');
+                if (nextBtn) {
+                  nextBtn.addEventListener('click', function() {
+                    const el = document.getElementById('item-pass');
+                    const num = parseInt(el.textContent);
+                    if (num < 5) el.textContent = 'Item ' + (num + 1) + ' of 5';
+                  });
+                }
+              </script>
+            </div>
           </div>
         </div>
 

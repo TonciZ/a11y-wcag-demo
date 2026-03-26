@@ -67,8 +67,8 @@
 
     </section>
 
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+    <section class="content-section" aria-labelledby="demo-heading-1">
+      <h2 id="demo-heading-1">Demo 1: Complex Images (Charts)</h2>
       <div class="demo-container"
            data-mode="fail"
            role="region"
@@ -111,6 +111,156 @@
               <rect x="100" y="70" width="30" height="50" fill="#4a90e2"/>
               <rect x="145" y="40" width="30" height="80" fill="#4a90e2"/>
             </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Functional Icons and Buttons</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-111-2"
+           data-announce-fail="Showing fail example. Icon buttons lack text alternatives. Screen reader users cannot determine button purposes."
+           data-announce-pass="Showing pass example. Icon buttons have aria-label attributes explaining their purpose. Screen reader users understand what each button does.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-111-2">Icon Buttons</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Icon buttons without accessible names. Screen reader announces just "button" - no context about what each button does.</p>
+            <div style="display:flex; gap:1rem; margin-top:0.75rem;">
+              <button type="button" style="padding:0.75rem; background:#4a90e2; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M2.5 3h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5zm0 5h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5zm0 5h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5z"/>
+                </svg>
+              </button>
+              <button type="button" style="padding:0.75rem; background:#4a90e2; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M8.5 3a.5.5 0 01.5.5v12a.5.5 0 01-1 0v-12a.5.5 0 01.5-.5zm3 0a.5.5 0 01.5.5v12a.5.5 0 01-1 0v-12a.5.5 0 01.5-.5z"/>
+                </svg>
+              </button>
+              <button type="button" style="padding:0.75rem; background:#e24a4a; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 11-2 0V5H4v11a1 1 0 01-1-1V4zm2 3a1 1 0 000 2h10a1 1 0 100-2H5zm0 3a1 1 0 000 2h10a1 1 0 100-2H5z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same buttons now have <code>aria-label</code> attributes. Screen reader announces the purpose of each button.</p>
+            <div style="display:flex; gap:1rem; margin-top:0.75rem;">
+              <button type="button" aria-label="Open menu" style="padding:0.75rem; background:#4a90e2; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M2.5 3h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5zm0 5h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5zm0 5h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5z"/>
+                </svg>
+              </button>
+              <button type="button" aria-label="Pause video" style="padding:0.75rem; background:#4a90e2; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M8.5 3a.5.5 0 01.5.5v12a.5.5 0 01-1 0v-12a.5.5 0 01.5-.5zm3 0a.5.5 0 01.5.5v12a.5.5 0 01-1 0v-12a.5.5 0 01.5-.5z"/>
+                </svg>
+              </button>
+              <button type="button" aria-label="Delete item" style="padding:0.75rem; background:#e24a4a; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 11-2 0V5H4v11a1 1 0 01-1-1V4zm2 3a1 1 0 000 2h10a1 1 0 100-2H5zm0 3a1 1 0 000 2h10a1 1 0 100-2H5z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-3">
+      <h2 id="demo-heading-3">Demo 3: Decorative vs. Informative Images</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-111-3"
+           data-announce-fail="Showing fail example. Images have missing or unhelpful alt text. Decorative images are announced as 'picture', creating noise."
+           data-announce-pass="Showing pass example. Informative images have descriptive alt text. Decorative images are properly hidden with alt=''.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-111-3">Product Listings</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Product images with poor alt text, and a decorative divider that's announced unnecessarily:</p>
+            <div style="margin-top:0.75rem; padding:1rem; background:#f5f5f5; border-radius:4px;">
+              <div style="margin-bottom:1rem; display:flex; gap:1rem;">
+                <div style="flex:1;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" alt="Picture" style="background:#ddd; margin-bottom:0.5rem;">
+                    <rect width="80" height="80" fill="#bbb"/>
+                  </svg>
+                  <h3 style="margin:0 0 0.5rem 0; font-size:1rem;">High-Performance Laptop</h3>
+                  <p style="margin:0; color:#666;">$999.99</p>
+                </div>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="2" viewBox="0 0 100 2" alt="divider line">
+                <line x1="0" y1="1" x2="100" y2="1" stroke="#ccc" stroke-width="1"/>
+              </svg>
+              <div style="margin-top:1rem; display:flex; gap:1rem;">
+                <div style="flex:1;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" alt="" style="background:#ddd; margin-bottom:0.5rem;">
+                    <rect width="80" height="80" fill="#bbb"/>
+                  </svg>
+                  <h3 style="margin:0 0 0.5rem 0; font-size:1rem;">Budget Laptop</h3>
+                  <p style="margin:0; color:#666;">$399.99</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Informative product images have descriptive alt text, and the decorative divider is properly hidden:</p>
+            <div style="margin-top:0.75rem; padding:1rem; background:#f5f5f5; border-radius:4px;">
+              <div style="margin-bottom:1rem; display:flex; gap:1rem;">
+                <div style="flex:1;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" alt="Silver laptop with 15.6 inch display" style="background:#ddd; margin-bottom:0.5rem;">
+                    <rect width="80" height="80" fill="#bbb"/>
+                  </svg>
+                  <h3 style="margin:0 0 0.5rem 0; font-size:1rem;">High-Performance Laptop</h3>
+                  <p style="margin:0; color:#666;">$999.99</p>
+                </div>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="2" viewBox="0 0 100 2" alt="" aria-hidden="true">
+                <line x1="0" y1="1" x2="100" y2="1" stroke="#ccc" stroke-width="1"/>
+              </svg>
+              <div style="margin-top:1rem; display:flex; gap:1rem;">
+                <div style="flex:1;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" alt="Black budget laptop with 14 inch display" style="background:#ddd; margin-bottom:0.5rem;">
+                    <rect width="80" height="80" fill="#bbb"/>
+                  </svg>
+                  <h3 style="margin:0 0 0.5rem 0; font-size:1rem;">Budget Laptop</h3>
+                  <p style="margin:0; color:#666;">$399.99</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

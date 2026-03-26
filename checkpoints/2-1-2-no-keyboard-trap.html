@@ -147,6 +147,45 @@
         </details>
       </div>
 
+      <!-- Demo 3: Rich Text Editor Keyboard Trap -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-212-3"
+           data-announce-fail="Showing fail example. Text editor captures Tab key for indentation. Keyboard users cannot exit to the submit button below."
+           data-announce-pass="Showing pass example. Text editor allows Tab to exit when at content boundary. Instructions provided before editor.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-212-3">Demo 3: Rich text editor keyboard trap</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This code demonstrates a text editor that traps Tab key for indentation. Users cannot reach the submit button using only the keyboard:</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>This code demonstrates a text editor that allows Tab to exit when at the content boundary. Instructions inform users how to exit:</p>
+          </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
       <!-- WCAG Techniques -->
       <section class="content-section" aria-labelledby="wcag-techniques-heading">
         <h2 id="wcag-techniques-heading">WCAG Techniques</h2>

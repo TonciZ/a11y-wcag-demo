@@ -77,7 +77,7 @@
            data-announce-pass="Showing pass example. A pause button lets users stop the moving content.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-222">Pause, stop, hide demo</span>
+          <span class="demo-container__label" id="demo-label-222">Demo 1: Marquee animation with pause control</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -123,6 +123,86 @@
                 Pause
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-222-2"
+           data-announce-fail="Showing fail example. News headlines scroll continuously with no way to pause or control update frequency."
+           data-announce-pass="Showing pass example. Pause button and frequency dropdown let you control how often headlines update.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-222-2">Demo 2: News ticker with pause and frequency control</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <style>
+          @keyframes ticker-scroll-222 {
+            from { transform: translateX(100%); }
+            to   { transform: translateX(-100%); }
+          }
+          .ticker-222 { overflow: hidden; background: #f5f5f5; border-radius: 4px; padding: 0.75rem; margin-top: 0.75rem; }
+          .ticker-222__content { display: inline-block; white-space: nowrap; animation: ticker-scroll-222 10s linear infinite; }
+          .ticker-222__content span { display: inline-block; margin-right: 2rem; }
+          @media (prefers-reduced-motion: reduce) {
+            .ticker-222__content { animation: none; }
+          }
+          .ticker-controls-222 { margin-top: 0.75rem; display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+          .ticker-controls-222 button { padding: 0.5rem 1rem; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; background: white; }
+          .ticker-controls-222 select { padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; }
+          .ticker-status-222 { margin-top: 0.75rem; padding: 0.5rem; background: #e8f4f8; border-radius: 4px; font-size: 0.9rem; }
+          @media (prefers-reduced-motion: reduce) {
+            .ticker-controls-222 { display: none; }
+          }
+        </style>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>News ticker scrolls continuously with no pause control. Users cannot read headlines at their own pace, and the constant motion is disorienting.</p>
+            <div class="ticker-222" role="region" aria-label="Breaking news ticker">
+              <div class="ticker-222__content" aria-hidden="true">
+                <span>🔴 Breaking: New accessibility standards released</span>
+                <span>📱 Mobile app wins accessibility award</span>
+                <span>🌐 Web accessibility reaches 95% compliance</span>
+                <span>👥 Industry adopts WCAG 2.2 guidelines</span>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Pause button and frequency controls let users read headlines at their own pace. The ticker respects their need for time to process information.</p>
+            <div class="ticker-222" id="ticker-pass-222" role="region" aria-label="Breaking news ticker with controls">
+              <div class="ticker-222__content" aria-hidden="true">
+                <span>🔴 Breaking: New accessibility standards released</span>
+                <span>📱 Mobile app wins accessibility award</span>
+                <span>🌐 Web accessibility reaches 95% compliance</span>
+                <span>👥 Industry adopts WCAG 2.2 guidelines</span>
+              </div>
+            </div>
+            <div class="ticker-controls-222">
+              <button type="button" onclick="var t=document.getElementById('ticker-pass-222').querySelector('.ticker-222__content');t.style.animationPlayState=(t.style.animationPlayState==='paused'?'running':'paused');this.textContent=(t.style.animationPlayState==='paused'?'Resume':'Pause');">Pause</button>
+              <label for="ticker-freq-222" style="margin: 0;">Update frequency:</label>
+              <select id="ticker-freq-222" onchange="var status=document.getElementById('ticker-status-222');status.textContent='Update frequency set to: '+this.options[this.selectedIndex].text;">
+                <option value="realtime">Real-time (every 4 seconds)</option>
+                <option value="30sec">Every 30 seconds</option>
+                <option value="5min">Every 5 minutes</option>
+                <option value="manual">Manual only</option>
+              </select>
+              <button type="button" onclick="var status=document.getElementById('ticker-status-222');status.textContent='Loading latest news...';setTimeout(function(){status.textContent='3 new articles since last refresh.';},800);">Load latest</button>
+            </div>
+            <div class="ticker-status-222" id="ticker-status-222" role="status">News ticker is playing - headlines advance every 4 seconds</div>
           </div>
         </div>
       </div>

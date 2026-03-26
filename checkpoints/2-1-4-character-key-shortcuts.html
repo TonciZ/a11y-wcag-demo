@@ -177,6 +177,69 @@
           <pre><code class="demo-live-code"></code></pre>
         </details>
       </div>
+
+      <!-- Demo 3: Focus-scoped shortcuts -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-214-3"
+           data-announce-fail="Showing fail example. Delete shortcut is active everywhere in the application. Pressing D deletes a message even when focus is in the compose area, causing accidental deletion while typing."
+           data-announce-pass="Showing pass example. Delete shortcut is only active when focus is in the message list. When focus is in the compose area, D types the letter normally.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-214-3">Demo 3: Focus-scoped shortcuts</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The delete shortcut (D) is active everywhere in the application. Pressing D deletes the selected message even when focus is in the compose area, causing accidental message deletion while typing.</p>
+            <div style="margin-top:0.75rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div style="padding:1rem;border:1px solid #ccc;border-radius:4px;background:#f9f9f9;">
+                <h4 style="margin:0 0 0.5rem 0;font-size:0.95rem;">Messages</h4>
+                <div style="padding:0.5rem;border:1px solid #ddd;border-radius:3px;background:#fff;margin-bottom:0.5rem;cursor:pointer;">Message 1</div>
+                <p style="margin:0;font-size:0.85rem;color:#666;"><strong>D = Delete (active)</strong></p>
+              </div>
+              <div style="padding:1rem;border:1px solid #ccc;border-radius:4px;background:#fff3cd;">
+                <h4 style="margin:0 0 0.5rem 0;font-size:0.95rem;">Compose</h4>
+                <textarea style="width:100%;padding:0.5rem;border:1px solid #ffc107;border-radius:3px;font-family:monospace;font-size:0.85rem;" placeholder="Type here... D will delete, not type" rows="3"></textarea>
+                <p style="margin:0.5rem 0 0 0;font-size:0.85rem;color:#666;"><strong>D = Delete (active - DANGER)</strong></p>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The delete shortcut (D) is only active when focus is in the message list. When focus is in the compose area, D types the letter D normally. The shortcut is scoped to its relevant context.</p>
+            <div style="margin-top:0.75rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div style="padding:1rem;border:1px solid #ccc;border-radius:4px;background:#f0fdf4;">
+                <h4 style="margin:0 0 0.5rem 0;font-size:0.95rem;">Messages</h4>
+                <div style="padding:0.5rem;border:1px solid #16a34a;border-radius:3px;background:#fff;margin-bottom:0.5rem;cursor:pointer;">Message 1</div>
+                <p style="margin:0;font-size:0.85rem;color:#666;"><strong>D = Delete (active when this list has focus)</strong></p>
+              </div>
+              <div style="padding:1rem;border:1px solid #ccc;border-radius:4px;background:#fff;">
+                <h4 style="margin:0 0 0.5rem 0;font-size:0.95rem;">Compose</h4>
+                <textarea style="width:100%;padding:0.5rem;border:1px solid #ccc;border-radius:3px;font-family:monospace;font-size:0.85rem;" placeholder="Type here... D types normally (shortcut inactive here)" rows="3"></textarea>
+                <p style="margin:0.5rem 0 0 0;font-size:0.85rem;color:#666;"><strong>D = Types letter (shortcut inactive here)</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">

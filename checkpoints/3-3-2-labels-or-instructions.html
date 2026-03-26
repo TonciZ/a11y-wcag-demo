@@ -221,6 +221,63 @@
         </details>
       </div>
 
+      <!-- Demo 3: Required field indicators -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-332-3"
+           data-announce-fail="Showing fail example. Required field marked only with a red asterisk - screen reader users have no indication it is required."
+           data-announce-pass="Showing pass example. Required field marked with text and programmatically indicated as required - screen readers announce it.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-332-3">Demo 3: Required field indicators</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A red asterisk indicates required fields visually, but screen reader users cannot perceive color or symbols. They have no way to know the field is required until after submission fails.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="name-fail-332" style="display:block;margin-bottom:0.25rem;font-weight:600;">Name <span style="color:#c0392b;font-weight:bold;">*</span></label>
+              <input type="text" id="name-fail-332" style="padding:0.5em 0.75em;border:1px solid #aaa;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;margin-bottom:0.75rem;">
+              <label for="email-fail-332" style="display:block;margin-bottom:0.25rem;font-weight:600;">Email <span style="color:#c0392b;font-weight:bold;">*</span></label>
+              <input type="email" id="email-fail-332" style="padding:0.5em 0.75em;border:1px solid #aaa;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;margin-bottom:0.75rem;">
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Text label clearly states "(required)" and the input has the <code>required</code> attribute + <code>aria-required</code>. Screen readers announce the requirement when the field is focused.</p>
+            <div style="margin-top:0.75rem;">
+              <label for="name-pass-332" style="display:block;margin-bottom:0.25rem;font-weight:600;">Name (required)</label>
+              <input type="text" id="name-pass-332" required aria-required="true" style="padding:0.5em 0.75em;border:1px solid #aaa;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;margin-bottom:0.75rem;">
+              <label for="email-pass-332" style="display:block;margin-bottom:0.25rem;font-weight:600;">Email (required)</label>
+              <input type="email" id="email-pass-332" required aria-required="true" style="padding:0.5em 0.75em;border:1px solid #aaa;border-radius:4px;font-size:1rem;width:100%;max-width:22rem;margin-bottom:0.75rem;">
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section" open>
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Red asterisk only — not perceivable by screen reader users --&gt;</span>
+<span class="hl-line-fail">&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"name"</span>&gt;Name <span class="hl-tag">span</span> <span class="hl-tag">style</span>=<span class="hl-value">"color:red;"</span>&gt;*&lt;/<span class="hl-tag">span</span>&gt;&lt;/<span class="hl-tag">label</span>&gt;</span>
+<span class="hl-line-fail">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">id</span>=<span class="hl-value">"name"</span>&gt;</span>
+<span class="hl-comment">&lt;!-- No required attribute or aria-required --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Text label + required attribute + aria-required --&gt;</span>
+<span class="hl-line-pass">&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"name"</span>&gt;Name (required)&lt;/<span class="hl-tag">label</span>&gt;</span>
+<span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">id</span>=<span class="hl-value">"name"</span> <span class="hl-tag">required</span> <span class="hl-tag">aria-required</span>=<span class="hl-value">"true"</span>&gt;</span>
+<span class="hl-comment">&lt;!-- Screen reader announces both the text label and the required state --&gt;</span></code></pre>
+        </details>
+      </div>
+
       <!-- WCAG Techniques -->
       <section class="content-section" aria-labelledby="wcag-techniques-heading">
         <h3 id="wcag-techniques-heading">WCAG Techniques</h3>

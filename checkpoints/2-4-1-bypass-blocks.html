@@ -119,9 +119,70 @@
           </div>
         </div>
       </div>
-    </section>
 
-    <section class="content-section" aria-labelledby="fail-heading">
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-241-2"
+           data-announce-fail="Showing fail example. Skip link is invisible and focus does not move to the main content when activated."
+           data-announce-pass="Showing pass example. Skip link becomes visible when focused, and focus moves to a keyboard-accessible main content target.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-241-2">Demo 2: Skip link focus management</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <style>
+          .skip-link-demo-fail { position: absolute; left: -9999px; }
+          .skip-link-demo-pass { display: inline-block; padding: 0.4em 0.9em; background: #000; color: #fff; border-radius: 4px; margin-bottom: 0.5rem; font-size: 0.9rem; }
+          .skip-link-demo-pass:focus { outline: 3px solid #4A90E2; outline-offset: 2px; }
+        </style>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Skip link is positioned off-screen and never becomes visible, even when focused. The main content area is not focusable, so focus does not move when the link is activated.</p>
+            <a href="#bypass-fail-content-241-2" class="skip-link-demo-fail">Skip to main content</a>
+            <nav aria-label="Navigation menu">
+              <ul style="list-style:none;padding:0;display:flex;gap:0.75rem;flex-wrap:wrap;margin:0;">
+                <li><a href="#bypass-fail-content-241-2">Home</a></li>
+                <li><a href="#bypass-fail-content-241-2">Services</a></li>
+                <li><a href="#bypass-fail-content-241-2">Contact</a></li>
+              </ul>
+            </nav>
+            <div style="margin-top:0.75rem;padding:0.5em;background:#f4f4f4;border-left:3px solid #aaa;">
+              <p style="margin:0;">Main content - focus cannot reach this element</p>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Skip link becomes visible on keyboard focus with clear visual indicator. When activated, focus moves to a focusable main content element with tabindex="0".</p>
+            <a href="#bypass-pass-content-241-2" class="skip-link-demo-pass">Skip to main content</a>
+            <nav aria-label="Navigation menu">
+              <ul style="list-style:none;padding:0;display:flex;gap:0.75rem;flex-wrap:wrap;margin:0;">
+                <li><a href="#bypass-pass-content-241-2">Home</a></li>
+                <li><a href="#bypass-pass-content-241-2">Services</a></li>
+                <li><a href="#bypass-pass-content-241-2">Contact</a></li>
+              </ul>
+            </nav>
+            <p id="bypass-pass-content-241-2" tabindex="0" style="margin:0.75rem 0 0;padding:0.5em;background:#f0f7ee;border-left:3px solid #27ae60;outline:none;">Main content - keyboard focus moves here</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-241-3"
+           data-announce-fail="Showing fail example. Page has semantic structure but users must navigate through an unlabeled nav region to reach main content.\"\n           data-announce-pass=\"Showing pass example. Combined bypass mechanisms: visible skip link, clearly labeled landmarks, and logical heading hierarchy let users navigate efficiently by choice.\">\n\n        <div class=\"demo-container__toolbar\">\n          <span class=\"demo-container__label\" id=\"demo-label-241-3\">Demo 3: Combined bypass mechanisms (skip link + landmarks + heading hierarchy)</span>\n          <button class=\"demo-toggle\" type=\"button\" aria-pressed=\"false\">\n            <span class=\"demo-toggle__label--fail\">Show passing example</span>\n            <span class=\"demo-toggle__label--pass\" hidden>Show failing example</span>\n          </button>\n        </div>\n\n        <div class=\"demo-status\" aria-hidden=\"true\">\n          <span class=\"demo-status__text--fail\">Fail</span>\n          <span class=\"demo-status__text--pass\">Pass</span>\n        </div>\n\n        <div class=\"visually-hidden\" aria-live=\"polite\" aria-atomic=\"true\" data-demo-announcement></div>\n\n        <div class=\"demo-stage\">\n          <div data-demo-state=\"fail\">\n            <p>Page has semantic landmarks and heading structure, but no skip link and no aria-labels on navigation. Keyboard and screen reader users must navigate through the content in order.</p>\n            <nav>\n              <h2 style=\"margin:0.75rem 0 0.5rem;font-size:1rem;\">Navigation</h2>\n              <ul style=\"list-style:none;padding:0;display:flex;gap:0.75rem;flex-wrap:wrap;margin:0;\">\n                <li><a href=\"#bypass-fail-main-241-3\">Home</a></li>\n                <li><a href=\"#bypass-fail-main-241-3\">About</a></li>\n                <li><a href=\"#bypass-fail-main-241-3\">Services</a></li>\n                <li><a href=\"#bypass-fail-main-241-3\">Blog</a></li>\n                <li><a href=\"#bypass-fail-main-241-3\">Contact</a></li>\n              </ul>\n            </nav>\n            <h1 style=\"margin:0.75rem 0 0.5rem;font-size:1.2rem;\">Main Content</h1>\n            <p id=\"bypass-fail-main-241-3\" style=\"margin:0;padding:0.5em;background:#f4f4f4;border-left:3px solid #aaa;\">This is the main article. Users without a skip link must Tab through all nav links to reach here.</p>\n            <h2 style=\"margin:0.75rem 0 0.5rem;margin-top:1rem;font-size:1rem;\">Section Heading</h2>\n            <p style=\"margin:0;padding:0.5em;background:#f4f4f4;border-left:3px solid #aaa;\">Supporting content. Screen reader users may use H key to jump by headings, but keyboard Tab users must navigate sequentially.</p>\n          </div>\n          <div data-demo-state=\"pass\" hidden>\n            <p>Passing: All three bypass mechanisms are present. Users can choose the method that works best for them.</p>\n            <a href=\"#bypass-pass-main-241-3\" style=\"display:inline-block;padding:0.4em 0.9em;background:#000;color:#fff;border-radius:4px;margin-bottom:0.75rem;font-size:0.9rem;\">\n              Skip to main content\n            </a>\n            <nav aria-label=\"Site navigation\">\n              <h2 style=\"margin:0.75rem 0 0.5rem;font-size:1rem;\">Navigation</h2>\n              <ul style=\"list-style:none;padding:0;display:flex;gap:0.75rem;flex-wrap:wrap;margin:0;\">\n                <li><a href=\"#bypass-pass-main-241-3\">Home</a></li>\n                <li><a href=\"#bypass-pass-main-241-3\">About</a></li>\n                <li><a href=\"#bypass-pass-main-241-3\">Services</a></li>\n                <li><a href=\"#bypass-pass-main-241-3\">Blog</a></li>\n                <li><a href=\"#bypass-pass-main-241-3\">Contact</a></li>\n              </ul>\n            </nav>\n            <main>\n              <h1 style=\"margin:0.75rem 0 0.5rem;font-size:1.2rem;\">Main Content</h1>\n              <p id=\"bypass-pass-main-241-3\" tabindex=\"-1\" style=\"margin:0;padding:0.5em;background:#f0f7ee;border-left:3px solid #27ae60;\">\n                Multiple bypass options: skip link (keyboard), landmark (screen reader), heading navigation (both). Users in control of how they navigate.\n              </p>\n              <h2 style=\"margin:0.75rem 0 0.5rem;margin-top:1rem;font-size:1rem;\">Section Heading</h2>\n              <p style=\"margin:0;padding:0.5em;background:#f0f7ee;border-left:3px solid #aaa;\">\n                Supporting content. Screen readers announce &lt;main&gt; landmark and H2 heading. Keyboard users can Tab from skip link directly to main content.\n              </p>\n            </main>\n          </div>\n        </div>\n      </div>\n    </section>\n\n    <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
       <p>A failure occurs when a page that shares repeated blocks of content with other pages (such as a global navigation with 30 links) provides no skip mechanism. Keyboard-only users must press Tab dozens of times to reach the first piece of main content on every page load. For screen reader users, this means hearing the entire navigation read aloud before reaching the relevant content, which is extremely inefficient and fatiguing over repeated use.</p>
     </section>

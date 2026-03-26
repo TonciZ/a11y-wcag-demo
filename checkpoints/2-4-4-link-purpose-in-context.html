@@ -133,6 +133,50 @@
           </div>
         </div>
       </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-244-2"
+           data-announce-fail="Showing fail example. Icon-only links without accessible names are ambiguous to screen reader users."
+           data-announce-pass="Showing pass example. ARIA labels provide clear accessible names for icon-only links.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-244-2">Demo 2: Icon-only links with ARIA labels</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Icon-only links without accessible names are indeterminate. Screen reader users hear only the link role with no indication of destination.</p>
+            <div style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+              <span style="font-size:0.9rem;color:#666;min-width:150px;">Navigate to related content:</span>
+              <a href="#" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+              <a href="#" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+              <a href="#" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Each icon-only link includes an <code>aria-label</code> that describes its destination. Screen reader users hear the full purpose of each link.</p>
+            <div style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+              <span style="font-size:0.9rem;color:#666;min-width:150px;">Navigate to related content:</span>
+              <a href="#" aria-label="Read more about Keyboard Accessibility Basics" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+              <a href="#" aria-label="Read more about Screen Reader Testing Guide" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+              <a href="#" aria-label="Read more about ARIA Authoring Practices" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
