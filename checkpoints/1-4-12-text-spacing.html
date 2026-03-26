@@ -137,17 +137,17 @@
             <p>A tooltip uses a fixed width and height with <code>overflow: hidden</code>. When users apply WCAG 1.4.12 text spacing overrides, the tooltip content is clipped and becomes unreadable.</p>
             <div style="position:relative;display:inline-block;margin-top:0.75rem;">
               <button style="padding:0.5rem 1rem;background:#0055cc;color:white;border:none;border-radius:4px;cursor:pointer;">Hover for info</button>
-              <div style="position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#333;color:white;padding:0.75rem;border-radius:4px;white-space:nowrap;width:120px;overflow:hidden;z-index:1000;font-size:0.875rem;line-height:1.5;letter-spacing:0.12em;word-spacing:0.16em;\">This is a tooltip with fixed width.</div>
+              <div style="position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#333;color:white;padding:0.75rem;border-radius:4px;white-space:nowrap;width:120px;overflow:hidden;z-index:1000;font-size:0.875rem;line-height:1.5;letter-spacing:0.12em;word-spacing:0.16em;">This is a tooltip with fixed width.</div>
             </div>
-            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;\">Tooltip content clipped - <code>width: 120px; overflow: hidden</code></p>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">Tooltip content clipped - <code>width: 120px; overflow: hidden</code></p>
           </div>
           <div data-demo-state="pass" hidden>
             <p>The same tooltip uses <code>white-space: normal</code> and no fixed width constraint. Content expands naturally when users apply text spacing overrides.</p>
             <div style="position:relative;display:inline-block;margin-top:0.75rem;">
               <button style="padding:0.5rem 1rem;background:#0055cc;color:white;border:none;border-radius:4px;cursor:pointer;">Hover for info</button>
-              <div style="position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#333;color:white;padding:0.75rem;border-radius:4px;white-space:normal;overflow:visible;z-index:1000;font-size:0.875rem;line-height:1.5;letter-spacing:0.12em;word-spacing:0.16em;max-width:200px;\">This is a tooltip that adapts to content size.</div>
+              <div style="position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#333;color:white;padding:0.75rem;border-radius:4px;white-space:normal;overflow:visible;z-index:1000;font-size:0.875rem;line-height:1.5;letter-spacing:0.12em;word-spacing:0.16em;max-width:200px;">This is a tooltip that adapts to content size.</div>
             </div>
-            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;\">All content visible - <code>white-space: normal; overflow: visible; max-width: 200px</code></p>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">All content visible - <code>white-space: normal; overflow: visible; max-width: 200px</code></p>
           </div>
         </div>
       </div>

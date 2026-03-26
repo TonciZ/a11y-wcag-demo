@@ -125,7 +125,8 @@
            data-mode="fail"
            role="region"
            aria-labelledby="demo-label-321-2"
-           data-announce-fail="Showing fail example. A help dialog appears when the form field receives focus, blocking form access and requiring users to close the dialog before continuing. This violates 3.2.1 because focus alone changed the page context.\n"
+           data-announce-fail="Showing fail example. A help dialog appears when the form field receives focus, blocking form access and requiring users to close the dialog before continuing. This violates 3.2.1 because focus alone changed the page context.
+"
            data-announce-pass="Showing pass example. The help dialog only appears when the user explicitly clicks the help button, not on focus. Users can focus and fill form fields without unexpected dialogs.">
 
         <div class="demo-container__toolbar">
@@ -146,11 +147,20 @@
         <div class="demo-stage">
           <div data-demo-state="fail">
             <p>A help dialog launches the moment a user tabs into or focuses on a form field, without any explicit activation. This blocks access to the field until the user closes the dialog.</p>
-            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Fail: Help dialog triggered by focus --&gt;\n&lt;input id=\"email-fail\"\n       type=\"email\"\n       onfocus=\"showHelpDialog()\"&gt;</code></pre>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Fail: Help dialog triggered by focus --&gt;
+&lt;input id="email-fail"
+       type="email"
+       onfocus="showHelpDialog()"&gt;</code></pre>
           </div>
           <div data-demo-state="pass" hidden>
             <p>The same form field has no focus trigger. Help information appears only when the user explicitly clicks a dedicated help button, leaving the field accessible.</p>
-            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Pass: Help triggered by explicit button click --&gt;\n&lt;input id=\"email-pass\"\n       type=\"email\"&gt;\n&lt;button type=\"button\"\n        onclick=\"showHelpDialog()\"&gt;\n  Help\n&lt;/button&gt;</code></pre>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Pass: Help triggered by explicit button click --&gt;
+&lt;input id="email-pass"
+       type="email"&gt;
+&lt;button type="button"
+        onclick="showHelpDialog()"&gt;
+  Help
+&lt;/button&gt;</code></pre>
           </div>
         </div>
       </div>

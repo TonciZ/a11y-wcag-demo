@@ -217,26 +217,36 @@
           <div data-demo-state="fail">
             <p>Audio plays automatically for 10 seconds with no pause or stop button. Users must wait for the audio to finish playing before proceeding.</p>
             <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f5f5f5;">
-              <p style="margin:0 0 0.5rem;font-weight:600;\">Background Music (10 seconds)</p>
+              <p style="margin:0 0 0.5rem;font-weight:600;">Background Music (10 seconds)</p>
               <audio autoplay style="width:100%;max-width:400px;">
                 <source src="" type="audio/mpeg">
                 Your browser does not support the audio element.
               </audio>
-              <p style="margin:0.5rem 0 0;font-size:0.8rem;color:#5a5a5a;\">(No audio file loaded - demonstrates absence of controls.)</p>
+              <p style="margin:0.5rem 0 0;font-size:0.8rem;color:#5a5a5a;">(No audio file loaded - demonstrates absence of controls.)</p>
             </div>
-            <pre><code>&lt;audio autoplay&gt;\n  &lt;source src=\"long-music.mp3\" type=\"audio/mpeg\"&gt;\n&lt;/audio&gt;\n<!-- No controls or timeout specified --></code></pre>
+            <pre><code>&lt;audio autoplay&gt;
+  &lt;source src="long-music.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+<!-- No controls or timeout specified --></code></pre>
           </div>
           <div data-demo-state="pass" hidden>
             <p>Audio plays automatically but stops on its own after 3 seconds. Since the duration is at or below the threshold, no control mechanism is required.</p>
             <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f5f5f5;">
-              <p style="margin:0 0 0.5rem;font-weight:600;\">Notification Sound (3 seconds)</p>
+              <p style="margin:0 0 0.5rem;font-weight:600;">Notification Sound (3 seconds)</p>
               <audio id="short-audio-142" autoplay style="width:100%;max-width:400px;">
                 <source src="" type="audio/mpeg">
                 Your browser does not support the audio element.
               </audio>
-              <p style="margin:0.5rem 0 0;font-size:0.8rem;color:#5a5a5a;\">(No audio file loaded - demonstrates auto-stop behavior.)</p>
+              <p style="margin:0.5rem 0 0;font-size:0.8rem;color:#5a5a5a;">(No audio file loaded - demonstrates auto-stop behavior.)</p>
             </div>
-            <pre><code>&lt;audio id=\"notification\" autoplay&gt;\n  &lt;source src=\"notification.mp3\" type=\"audio/mpeg\"&gt;\n&lt;/audio&gt;\n&lt;script&gt;\n  setTimeout(() =&gt; {\n    document.getElementById('notification').pause();\n  }, 3000); // Stop after 3 seconds\n&lt;/script&gt;</code></pre>
+            <pre><code>&lt;audio id="notification" autoplay&gt;
+  &lt;source src="notification.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+&lt;script&gt;
+  setTimeout(() =&gt; {
+    document.getElementById('notification').pause();
+  }, 3000); // Stop after 3 seconds
+&lt;/script&gt;</code></pre>
           </div>
         </div>
       </div>
