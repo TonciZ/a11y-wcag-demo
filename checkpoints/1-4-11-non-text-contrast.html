@@ -120,6 +120,51 @@
           </div>
         </div>
       </div>
+
+      <!-- Demo 2: Focus indicator contrast -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-1411-2"
+           data-announce-fail="Showing fail example. Focus indicator is barely visible - keyboard users cannot see which button has focus."
+           data-announce-pass="Showing pass example. Focus indicator is clearly visible with sufficient contrast - keyboard users can easily see which button is focused.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-1411-2">Focus indicator contrast demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Buttons use <code>outline: 1px solid #f0f0f0</code> on white background - contrast ratio 1.08:1. When focused via keyboard Tab, the outline is nearly invisible.</p>
+            <div style="display:flex;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap;">
+              <button style="padding:0.5rem 1rem;border:none;background:#0055cc;color:white;border-radius:4px;outline:1px solid #f0f0f0;outline-offset:2px;cursor:pointer;">Action 1</button>
+              <button style="padding:0.5rem 1rem;border:none;background:#0055cc;color:white;border-radius:4px;outline:1px solid #f0f0f0;outline-offset:2px;cursor:pointer;">Action 2</button>
+              <button style="padding:0.5rem 1rem;border:none;background:#0055cc;color:white;border-radius:4px;outline:1px solid #f0f0f0;outline-offset:2px;cursor:pointer;">Action 3</button>
+            </div>
+            <p style="font-size:0.85rem;margin-top:0.75rem;color:#666;">Try tabbing through the buttons - the focus indicator is nearly imperceptible.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Buttons use <code>outline: 3px solid #ffb81c</code> on white background - contrast ratio 8.21:1. When focused via keyboard, the outline is immediately obvious.</p>
+            <div style="display:flex;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap;">
+              <button style="padding:0.5rem 1rem;border:none;background:#0055cc;color:white;border-radius:4px;outline:3px solid #ffb81c;outline-offset:2px;cursor:pointer;">Action 1</button>
+              <button style="padding:0.5rem 1rem;border:none;background:#0055cc;color:white;border-radius:4px;outline:3px solid #ffb81c;outline-offset:2px;cursor:pointer;">Action 2</button>
+              <button style="padding:0.5rem 1rem;border:none;background:#0055cc;color:white;border-radius:4px;outline:3px solid #ffb81c;outline-offset:2px;cursor:pointer;">Action 3</button>
+            </div>
+            <p style="font-size:0.85rem;margin-top:0.75rem;color:#666;">Tab through the buttons - the focus outline is clearly visible and keyboard navigation is easy to follow.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
