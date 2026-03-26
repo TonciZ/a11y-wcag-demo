@@ -119,6 +119,60 @@
       </div>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Undo Mechanism for Destructive Actions</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-252-2"
+           data-announce-fail="Showing fail example. Destructive action completes immediately with no way to reverse it - users who accidentally trigger it lose data."
+           data-announce-pass="Showing pass example. Destructive action provides an undo option - users who accidentally trigger it can reverse the action.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-252-2">Undo mechanism demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Clicking "Remove" instantly removes the item with no confirmation or undo. Users with motor impairments who accidentally click have no recourse.</p>
+            <div style="margin-top:0.75rem;padding:0.75rem;border:1px solid #ddd;border-radius:4px;">
+              <div id="fail-item-252" style="display:flex;justify-content:space-between;align-items:center;">
+                <span>Important document.pdf</span>
+                <button type="button" style="background:#b91c1c;color:#fff;border:none;padding:0.25rem 0.75rem;border-radius:4px;cursor:pointer;" onclick="document.getElementById('fail-item-252').hidden=true;document.getElementById('fail-msg-252').hidden=false;">Remove</button>
+              </div>
+              <p id="fail-msg-252" hidden style="color:#b91c1c;margin:0;">Item permanently deleted. No undo available.</p>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">No confirmation dialog, no undo — action is immediate and irreversible.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Clicking "Remove" shows a confirmation with an undo option. Users can reverse an accidental action, satisfying the "abort or undo" requirement.</p>
+            <div style="margin-top:0.75rem;padding:0.75rem;border:1px solid #ddd;border-radius:4px;">
+              <div id="pass-item-252" style="display:flex;justify-content:space-between;align-items:center;">
+                <span>Important document.pdf</span>
+                <button type="button" style="background:#b91c1c;color:#fff;border:none;padding:0.25rem 0.75rem;border-radius:4px;cursor:pointer;" onclick="document.getElementById('pass-item-252').hidden=true;document.getElementById('pass-undo-252').hidden=false;">Remove</button>
+              </div>
+              <div id="pass-undo-252" hidden style="margin-top:0.5rem;padding:0.5rem;background:#fef3c7;border:1px solid #f59e0b;border-radius:4px;display:flex;justify-content:space-between;align-items:center;" role="alert">
+                <span>Item removed.</span>
+                <button type="button" style="background:#15803d;color:#fff;border:none;padding:0.25rem 0.75rem;border-radius:4px;cursor:pointer;" onclick="document.getElementById('pass-undo-252').hidden=true;document.getElementById('pass-item-252').hidden=false;">Undo</button>
+              </div>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Confirmation with undo — the action can be reversed, meeting the abort/undo requirement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
       <p>A failure occurs when functionality triggers immediately on the pointer down event (mousedown or touchstart) with no way to abort or reverse the action before releasing the pointer. For example, a "Delete account" button that executes the deletion the instant the user presses down - before they even release the mouse button - means a user who mis-clicks cannot simply slide their pointer away to cancel. Users with motor disabilities that cause involuntary movements or tremors are particularly affected, as they may frequently trigger down events unintentionally.</p>
