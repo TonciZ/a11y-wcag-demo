@@ -119,6 +119,61 @@
       </div>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Tightly Packed vs Properly Spaced Targets</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-258-2"
+           data-announce-fail="Showing fail example. Adjacent buttons have no spacing between them - users with motor impairments frequently activate the wrong button."
+           data-announce-pass="Showing pass example. Buttons have adequate spacing so 24px target circles do not overlap - each button can be activated independently.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-258-2">Target spacing demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>These 20&times;20&thinsp;px pagination buttons are packed together with no gap. The 24&thinsp;px target circles overlap, making it easy to accidentally activate the wrong page.</p>
+            <nav aria-label="Pagination (cramped)" style="margin-top:0.75rem;">
+              <div style="display:flex;gap:0;">
+                <button type="button" style="width:20px;height:20px;padding:0;border:1px solid #666;background:#fff;cursor:pointer;font-size:11px;line-height:1;">1</button>
+                <button type="button" style="width:20px;height:20px;padding:0;border:1px solid #666;background:#fff;cursor:pointer;font-size:11px;line-height:1;">2</button>
+                <button type="button" style="width:20px;height:20px;padding:0;border:1px solid #666;background:#fff;cursor:pointer;font-size:11px;line-height:1;">3</button>
+                <button type="button" style="width:20px;height:20px;padding:0;border:1px solid #666;background:#fff;cursor:pointer;font-size:11px;line-height:1;">4</button>
+                <button type="button" style="width:20px;height:20px;padding:0;border:1px solid #666;background:#fff;cursor:pointer;font-size:11px;line-height:1;">5</button>
+              </div>
+            </nav>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">20&times;20&thinsp;px buttons with 0&thinsp;px gap — target circles overlap, violating the spacing exception.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Same 20&times;20&thinsp;px buttons but with 8&thinsp;px gaps between them. The 24&thinsp;px target circles no longer overlap, satisfying the spacing exception.</p>
+            <nav aria-label="Pagination (spaced)" style="margin-top:0.75rem;">
+              <div style="display:flex;gap:8px;">
+                <button type="button" style="width:20px;height:20px;padding:0;border:1px solid #666;background:#fff;cursor:pointer;font-size:11px;line-height:1;">1</button>
+                <button type="button" style="width:20px;height:20px;padding:0;border:1px solid #666;background:#fff;cursor:pointer;font-size:11px;line-height:1;">2</button>
+                <button type="button" style="width:20px;height:20px;padding:0;border:1px solid #666;background:#fff;cursor:pointer;font-size:11px;line-height:1;">3</button>
+                <button type="button" style="width:20px;height:20px;padding:0;border:1px solid #666;background:#fff;cursor:pointer;font-size:11px;line-height:1;">4</button>
+                <button type="button" style="width:20px;height:20px;padding:0;border:1px solid #666;background:#fff;cursor:pointer;font-size:11px;line-height:1;">5</button>
+              </div>
+            </nav>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">20&times;20&thinsp;px buttons with 8&thinsp;px gap — target circles don't overlap, meeting the spacing exception.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
       <p>A failure occurs when a tappable or clickable target is smaller than 24×24 CSS pixels and does not have sufficient spacing around it to compensate. For example, a row of small icon buttons spaced tightly together - each 16×16 pixels with only 2 pixels of gap - fails because the combined area of each icon plus its spacing is less than 24×24 pixels. Users with tremors, limited fine motor control, or who use assistive touch technology cannot reliably tap such small, densely packed targets without accidentally activating adjacent ones.</p>
