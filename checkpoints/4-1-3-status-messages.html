@@ -68,7 +68,7 @@
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+      <h2 id="demo-heading-1">Demo 1: Shopping Cart Update</h2>
       <div class="demo-container"
            data-mode="fail"
            role="region"
@@ -117,6 +117,61 @@
               </div>
             </div>
             <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;"><code>role="status"</code> (equivalent to <code>aria-live="polite"</code>) announces the update automatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Form Validation Error Announcement</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-413-2"
+           data-announce-fail="Showing fail example. Form validation error appears visually but is not announced - screen reader users do not know their input was invalid."
+           data-announce-pass="Showing pass example. Form validation error uses role alert and is immediately announced to screen reader users.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-413-2">Form error announcement demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Type an invalid email and click Validate. The error message appears visually but has no live region — screen readers stay silent.</p>
+            <form onsubmit="return false;" style="max-width:320px;margin-top:0.75rem;">
+              <label for="fail-413-email" style="display:block;margin-bottom:0.25rem;">Email address</label>
+              <input type="text" id="fail-413-email" value="user@missing" style="width:100%;padding:0.4rem 0.6rem;border:2px solid var(--color-border);border-radius:4px;">
+              <div id="fail-413-err" style="color:#b91c1c;font-size:0.875rem;margin-top:0.25rem;min-height:1.25rem;"></div>
+              <button type="button" style="margin-top:0.5rem;padding:0.4rem 1rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;"
+                      onclick="document.getElementById('fail-413-err').textContent='Email address must include a valid domain (e.g. user@example.com).';">
+                Validate
+              </button>
+            </form>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">No <code>role="alert"</code> or <code>aria-live</code> — screen readers do not announce the error.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Type an invalid email and click Validate. The error message uses <code>role="alert"</code> — screen readers immediately announce the validation error.</p>
+            <form onsubmit="return false;" style="max-width:320px;margin-top:0.75rem;">
+              <label for="pass-413-email" style="display:block;margin-bottom:0.25rem;">Email address</label>
+              <input type="text" id="pass-413-email" value="user@missing" aria-describedby="pass-413-err" style="width:100%;padding:0.4rem 0.6rem;border:2px solid var(--color-border);border-radius:4px;">
+              <div id="pass-413-err" role="alert" style="color:#b91c1c;font-size:0.875rem;margin-top:0.25rem;min-height:1.25rem;"></div>
+              <button type="button" style="margin-top:0.5rem;padding:0.4rem 1rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;"
+                      onclick="document.getElementById('pass-413-err').textContent='Email address must include a valid domain (e.g. user@example.com).';">
+                Validate
+              </button>
+            </form>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;"><code>role="alert"</code> (equivalent to <code>aria-live="assertive"</code>) announces the error immediately.</p>
           </div>
         </div>
       </div>
