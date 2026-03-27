@@ -208,13 +208,110 @@
         </details>
       </div>
 
-    <section class="content-section" aria-labelledby="wcag-techniques-heading">
-        <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
-        <ul>
-          <li><strong>Failures:</strong> F83 (using background images without sufficient color contrast)</li>
-          <li><strong>Success Techniques:</strong> G17 (ensuring text contrast meets WCAG requirements), G18 (ensuring large text has sufficient contrast), C15 (using CSS to achieve proper contrast ratios)</li>
-        </ul>
-      </section>
+      <!-- Demo 4: Placeholder text contrast -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-143-4"
+           data-announce-fail="Showing fail example. Placeholder text in form fields is too light to read - users cannot determine the field's purpose."
+           data-announce-pass="Showing pass example. Placeholder text meets contrast requirements - field purpose is clear to all users.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-143-4">Demo 4: Placeholder text contrast</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Placeholder text using #A8A8A8 on white — contrast ratio 2.37:1 (fails 4.5:1). Found in 10 real-world audits across payment forms and search fields.</p>
+            <form style="margin-top:0.75rem;max-width:320px;" onsubmit="return false;">
+              <label for="fail-143-4-card" style="display:block;margin-bottom:0.25rem;">Card number</label>
+              <input type="text" id="fail-143-4-card" placeholder="1234 5678 9012 3456" style="width:100%;padding:0.5rem;border:1px solid #ccc;border-radius:4px;color:#A8A8A8;background:#fff;">
+              <label for="fail-143-4-exp" style="display:block;margin-top:0.75rem;margin-bottom:0.25rem;">Expiry date</label>
+              <input type="text" id="fail-143-4-exp" placeholder="MM / YY" style="width:100%;padding:0.5rem;border:1px solid #ccc;border-radius:4px;color:#A8A8A8;background:#fff;">
+            </form>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Ratio: <strong>2.37:1</strong> — placeholder text is nearly invisible to users with low vision.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Placeholder text using #767676 on white — contrast ratio 4.54:1 (passes 4.5:1). Visible labels are also provided.</p>
+            <form style="margin-top:0.75rem;max-width:320px;" onsubmit="return false;">
+              <label for="pass-143-4-card" style="display:block;margin-bottom:0.25rem;">Card number</label>
+              <input type="text" id="pass-143-4-card" placeholder="1234 5678 9012 3456" style="width:100%;padding:0.5rem;border:1px solid #ccc;border-radius:4px;color:#767676;background:#fff;">
+              <label for="pass-143-4-exp" style="display:block;margin-top:0.75rem;margin-bottom:0.25rem;">Expiry date</label>
+              <input type="text" id="pass-143-4-exp" placeholder="MM / YY" style="width:100%;padding:0.5rem;border:1px solid #ccc;border-radius:4px;color:#767676;background:#fff;">
+            </form>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Ratio: <strong>4.54:1</strong> — #767676 is the lightest gray that passes on white.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo 5: Branded color combinations -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-143-5"
+           data-announce-fail="Showing fail example. Brand-colored text fails contrast against its background - real color combinations from audits."
+           data-announce-pass="Showing pass example. Brand colors adjusted to meet 4.5:1 contrast while staying close to the original palette.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-143-5">Demo 5: Branded color combinations</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Real branded color combinations that failed audits. Each shows the exact hex values found:</p>
+            <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.75rem;">
+              <div style="background:#F63620;color:#FBFDFB;padding:0.75rem 1rem;border-radius:4px;font-weight:600;">
+                MEMBERS ONLY REWARDS <span style="font-size:0.8rem;font-weight:400;">(#FBFDFB on #F63620 — 3.76:1)</span>
+              </div>
+              <div style="background:#752D9B;color:#CC94EC;padding:0.75rem 1rem;border-radius:4px;font-weight:600;">
+                Get 5% rewards on every purchase <span style="font-size:0.8rem;font-weight:400;">(#CC94EC on #752D9B — 3.46:1)</span>
+              </div>
+              <div style="background:#2D99C5;color:#FEDB94;padding:0.75rem 1rem;border-radius:4px;font-weight:600;">
+                Father's Day Favourites <span style="font-size:0.8rem;font-weight:400;">(#FEDB94 on #2D99C5 — 2.44:1)</span>
+              </div>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">All fail the 4.5:1 minimum for normal text.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same branding with adjusted colors to meet 4.5:1:</p>
+            <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.75rem;">
+              <div style="background:#C1200E;color:#FFFFFF;padding:0.75rem 1rem;border-radius:4px;font-weight:600;">
+                MEMBERS ONLY REWARDS <span style="font-size:0.8rem;font-weight:400;">(#FFFFFF on #C1200E — 4.63:1)</span>
+              </div>
+              <div style="background:#752D9B;color:#F0D4FF;padding:0.75rem 1rem;border-radius:4px;font-weight:600;">
+                Get 5% rewards on every purchase <span style="font-size:0.8rem;font-weight:400;">(#F0D4FF on #752D9B — 6.12:1)</span>
+              </div>
+              <div style="background:#1A6B8A;color:#FEDB94;padding:0.75rem 1rem;border-radius:4px;font-weight:600;">
+                Father's Day Favourites <span style="font-size:0.8rem;font-weight:400;">(#FEDB94 on #1A6B8A — 4.82:1)</span>
+              </div>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Minor color adjustments maintain brand feel while meeting accessibility requirements.</p>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -234,7 +331,30 @@
 
     <section class="content-section" aria-labelledby="resources-heading">
       <h2 id="resources-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>G18</code>, <code>G156</code></p>
+      <p>WCAG techniques used in this demo: <code>G17</code>, <code>G18</code>, <code>G156</code>, <code>F83</code>, <code>C15</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 77 real-world audit findings and official WCAG guidance.</p>
+
+      <h3>Official W3C / WAI</h3>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">Understanding SC 1.4.3: Contrast (Minimum)</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G18">Technique G18: Ensuring 4.5:1 contrast for text</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G17">Technique G17: Ensuring 7:1 contrast for enhanced</a></li>
+      </ul>
+
+      <h3>Tools</h3>
+      <ul>
+        <li><a href="https://webaim.org/resources/contrastchecker/">WebAIM Contrast Checker</a></li>
+        <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi Colour Contrast Analyser (CCA)</a></li>
+      </ul>
+
+      <h3>Guides</h3>
+      <ul>
+        <li><a href="https://www.smashingmagazine.com/2023/08/designing-accessible-text-over-images-part1/">Smashing: Accessible Text Over Images</a></li>
+      </ul>
     </section>
 
   </main>
