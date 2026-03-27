@@ -165,6 +165,121 @@
           </div>
         </div>
       </div>
+      <!-- Demo 3: Icon button contrast -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-1411-3"
+           data-announce-fail="Showing fail example. Icon buttons are nearly invisible against their background - users with low vision cannot locate them."
+           data-announce-pass="Showing pass example. Icon buttons have sufficient contrast against their background and are clearly visible.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-1411-3">Icon button contrast demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Icon buttons using light gray on white — contrast ratios 1.3–2.3:1. Found in 10 real-world audits (close buttons, menu icons, navigation arrows).</p>
+            <div style="margin-top:0.75rem;padding:1rem;background:#fff;border:1px solid #e0e0e0;border-radius:4px;display:flex;gap:1rem;align-items:center;">
+              <button type="button" aria-label="Close" style="background:none;border:none;cursor:pointer;padding:0.5rem;font-size:1.5rem;color:#E0E0E0;line-height:1;">&#x2715;</button>
+              <button type="button" aria-label="Menu" style="background:none;border:none;cursor:pointer;padding:0.5rem;font-size:1.5rem;color:#CECFD0;line-height:1;">&#x2630;</button>
+              <button type="button" aria-label="Transfer" style="background:none;border:none;cursor:pointer;padding:0.5rem;font-size:1.25rem;color:#E0E0E0;line-height:1;">&#x2192;</button>
+              <span style="font-size:0.85rem;color:#888;">Icons at ~1.3:1 ratio</span>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Same icons using darker colors — contrast ratio 4.5:1+. Clearly visible to all users.</p>
+            <div style="margin-top:0.75rem;padding:1rem;background:#fff;border:1px solid #e0e0e0;border-radius:4px;display:flex;gap:1rem;align-items:center;">
+              <button type="button" aria-label="Close" style="background:none;border:none;cursor:pointer;padding:0.5rem;font-size:1.5rem;color:#595959;line-height:1;">&#x2715;</button>
+              <button type="button" aria-label="Menu" style="background:none;border:none;cursor:pointer;padding:0.5rem;font-size:1.5rem;color:#595959;line-height:1;">&#x2630;</button>
+              <button type="button" aria-label="Transfer" style="background:none;border:none;cursor:pointer;padding:0.5rem;font-size:1.25rem;color:#595959;line-height:1;">&#x2192;</button>
+              <span style="font-size:0.85rem;color:#888;">Icons at 4.54:1 ratio</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo 4: Radio button / checkbox contrast -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-1411-4"
+           data-announce-fail="Showing fail example. Custom radio buttons are nearly invisible on white - users cannot see which option is available or selected."
+           data-announce-pass="Showing pass example. Radio buttons have visible borders meeting 3:1 contrast - users can clearly see all options and selection state.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-1411-4">Radio button contrast demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Custom radio buttons using #F1F1F3 border on white — contrast 1.13:1. Found in real-world checkout payment option audits.</p>
+            <fieldset style="border:1px solid #e0e0e0;padding:1rem;border-radius:4px;margin-top:0.75rem;">
+              <legend style="font-weight:600;">Payment method</legend>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.5rem;">
+                <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+                  <span style="display:inline-block;width:20px;height:20px;border-radius:50%;border:2px solid #F1F1F3;flex-shrink:0;position:relative;">
+                    <span style="position:absolute;top:4px;left:4px;width:8px;height:8px;border-radius:50%;background:#F1F1F3;"></span>
+                  </span>
+                  Credit Card
+                </label>
+                <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+                  <span style="display:inline-block;width:20px;height:20px;border-radius:50%;border:2px solid #F1F1F3;flex-shrink:0;"></span>
+                  PayPal
+                </label>
+                <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+                  <span style="display:inline-block;width:20px;height:20px;border-radius:50%;border:2px solid #F1F1F3;flex-shrink:0;"></span>
+                  Gift Card
+                </label>
+              </div>
+            </fieldset>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Radio borders at 1.13:1 — virtually invisible. Users can't see which options exist.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Native radio inputs with <code>accent-color</code> — browser defaults meet contrast. Border visible at 3:1+.</p>
+            <fieldset style="border:1px solid #e0e0e0;padding:1rem;border-radius:4px;margin-top:0.75rem;">
+              <legend style="font-weight:600;">Payment method</legend>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.5rem;">
+                <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+                  <input type="radio" name="payment-pass-1411" checked style="width:20px;height:20px;accent-color:#0055cc;">
+                  Credit Card
+                </label>
+                <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+                  <input type="radio" name="payment-pass-1411" style="width:20px;height:20px;accent-color:#0055cc;">
+                  PayPal
+                </label>
+                <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+                  <input type="radio" name="payment-pass-1411" style="width:20px;height:20px;accent-color:#0055cc;">
+                  Gift Card
+                </label>
+              </div>
+            </fieldset>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Native radio inputs have built-in contrast. Use <code>accent-color</code> to brand while keeping accessibility.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -184,7 +299,32 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>G209</code>, <code>G201</code></p>
+      <p>WCAG techniques used in this demo: <code>G195</code>, <code>G207</code>, <code>G209</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 46 real-world audit findings and official WCAG guidance.</p>
+
+      <h3>Official W3C / WAI</h3>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html">Understanding SC 1.4.11: Non-text Contrast</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G207">Technique G207: Ensuring 3:1 contrast for icons</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G209">Technique G209: Sufficient contrast at UI component boundaries</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G195">Technique G195: Using author-supplied visible focus indicator</a></li>
+      </ul>
+
+      <h3>Guides</h3>
+      <ul>
+        <li><a href="https://www.sarasoueidan.com/blog/focus-indicators/">Sara Soueidan: A Guide to Designing Accessible Focus Indicators</a></li>
+        <li><a href="https://www.smashingmagazine.com/2023/08/designing-accessible-text-over-images-part1/">Smashing: Accessible Text Over Images</a></li>
+      </ul>
+
+      <h3>Tools</h3>
+      <ul>
+        <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi Colour Contrast Analyser (CCA)</a></li>
+        <li><a href="https://webaim.org/resources/contrastchecker/">WebAIM Contrast Checker</a></li>
+      </ul>
     </section>
 
   </main>
