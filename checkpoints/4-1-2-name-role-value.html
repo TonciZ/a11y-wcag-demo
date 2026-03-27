@@ -264,6 +264,67 @@
           </div>
         </div>
       </div>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-412-5"
+           data-announce-fail="Showing fail example. Icon buttons have no accessible name - screen readers announce them as just 'button' with no indication of purpose."
+           data-announce-pass="Showing pass example. Each icon button has an aria-label describing its action, so screen readers announce purpose clearly.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-412-5">Icon Buttons Without Labels demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>These icon-only buttons have no accessible name. A screen reader announces each one as just "button" — the user has no idea what any button does. This is the single most common 4.1.2 failure found in real-world audits.</p>
+            <div style="margin-top:0.75rem;display:flex;gap:0.75rem;align-items:center;">
+              <button type="button" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Search activated');">
+                &#x1F50D;
+              </button>
+              <button type="button" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Close activated');">
+                &#x2715;
+              </button>
+              <button type="button" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Menu activated');">
+                &#x2630;
+              </button>
+              <button type="button" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Favorite activated');">
+                &#x2764;
+              </button>
+            </div>
+            <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--color-text-muted);">Try navigating with a screen reader — each button is announced as just "button" with no label.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Each icon button now has an <code>aria-label</code> that describes its action. Screen readers announce "Search, button", "Close dialog, button", "Open menu, button", and "Add to favorites, button".</p>
+            <div style="margin-top:0.75rem;display:flex;gap:0.75rem;align-items:center;">
+              <button type="button" aria-label="Search" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Search activated');">
+                &#x1F50D;
+              </button>
+              <button type="button" aria-label="Close dialog" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Close activated');">
+                &#x2715;
+              </button>
+              <button type="button" aria-label="Open menu" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Menu activated');">
+                &#x2630;
+              </button>
+              <button type="button" aria-label="Add to favorites" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Favorite activated');">
+                &#x2764;
+              </button>
+            </div>
+            <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--color-text-muted);">Now each button announces its purpose: "Search, button", "Close dialog, button", etc.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -283,7 +344,43 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>H65</code>, <code>ARIA5</code>, <code>H44</code></p>
+      <p>WCAG techniques used in this demo: <code>H65</code>, <code>ARIA5</code>, <code>H44</code>, <code>ARIA14</code>, <code>ARIA16</code>, <code>H64</code>, <code>G131</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 163 real-world audit findings and official WCAG guidance.</p>
+
+      <h3>Official W3C / WAI</h3>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">Understanding SC 4.1.2: Name, Role, Value</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">ARIA Authoring: Dialog (Modal) Pattern</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/">ARIA Authoring: Combobox Pattern</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/">ARIA Authoring: Menu Button Pattern</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/switch/">ARIA Authoring: Switch Pattern</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio/">ARIA Authoring: Radio Group Example</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">Technique ARIA14: Using aria-label for link purpose</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H44">Technique H44: Using label elements for form controls</a></li>
+      </ul>
+
+      <h3>MDN Web Docs</h3>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label attribute</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded">aria-expanded attribute</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-pressed">aria-pressed attribute</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-current">aria-current attribute</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">&lt;button&gt; element</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select">&lt;select&gt; element</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions">ARIA Live Regions</a></li>
+      </ul>
+
+      <h3>Component Checklists</h3>
+      <ul>
+        <li><a href="https://www.magentaa11y.com/checklist-native/button/">MagentaA11y: Button Checklist</a></li>
+        <li><a href="https://www.magentaa11y.com/checklist-native/radio/">MagentaA11y: Radio Button Checklist</a></li>
+        <li><a href="https://www.magentaa11y.com/checklist-native/checkbox/">MagentaA11y: Checkbox Checklist</a></li>
+        <li><a href="https://www.magentaa11y.com/checklist-native/text-input/">MagentaA11y: Text Input Checklist</a></li>
+      </ul>
     </section>
 
   </main>
