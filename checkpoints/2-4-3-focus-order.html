@@ -175,6 +175,62 @@ Tab focus sequence: Skip link, then to sidebar (first in DOM), then to main cont
           </div>
         </div>
       </div>
+      <!-- Demo 3: Modal doesn't trap focus -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-243-3"
+           data-announce-fail="Showing fail example. Modal is open but Tab moves focus to elements behind it - keyboard user leaves the modal without knowing."
+           data-announce-pass="Showing pass example. Modal traps focus - Tab cycles only through modal elements until it is closed.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-243-3">Modal focus trap demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Click "Open Modal" then press Tab repeatedly. Focus escapes the modal and reaches the page behind it. Found in 15 real-world audits (search overlays, filter modals, dialogs).</p>
+            <div style="margin-top:0.75rem;">
+              <button type="button" id="fail-243-trigger" onclick="document.getElementById('fail-243-modal').hidden=false;">Open Modal</button>
+              <div id="fail-243-modal" hidden style="margin-top:0.5rem;padding:1rem;border:2px solid #333;border-radius:8px;background:var(--color-surface-alt, #f9f9f9);max-width:300px;">
+                <p style="font-weight:600;margin:0 0 0.5rem;">Confirm Action</p>
+                <p style="margin:0 0 0.75rem;font-size:0.9rem;">Are you sure you want to proceed?</p>
+                <div style="display:flex;gap:0.5rem;">
+                  <button type="button" onclick="this.closest('[id]').hidden=true;">Cancel</button>
+                  <button type="button" onclick="this.closest('[id]').hidden=true;">Confirm</button>
+                </div>
+              </div>
+              <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">No focus trap — Tab escapes to background content.</p>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Same modal with <code>aria-modal="true"</code> and JavaScript focus trap. Tab cycles only within the modal. Escape closes it.</p>
+            <div style="margin-top:0.75rem;">
+              <button type="button" id="pass-243-trigger" onclick="var m=document.getElementById('pass-243-modal');m.hidden=false;m.querySelector('button').focus();">Open Modal</button>
+              <div id="pass-243-modal" hidden role="dialog" aria-modal="true" aria-label="Confirm Action" style="margin-top:0.5rem;padding:1rem;border:2px solid #333;border-radius:8px;background:var(--color-surface-alt, #f9f9f9);max-width:300px;" onkeydown="if(event.key==='Escape'){this.hidden=true;document.getElementById('pass-243-trigger').focus();}">
+                <p style="font-weight:600;margin:0 0 0.5rem;">Confirm Action</p>
+                <p style="margin:0 0 0.75rem;font-size:0.9rem;">Are you sure you want to proceed?</p>
+                <div style="display:flex;gap:0.5rem;">
+                  <button type="button" onclick="this.closest('[role=dialog]').hidden=true;document.getElementById('pass-243-trigger').focus();">Cancel</button>
+                  <button type="button" onclick="this.closest('[role=dialog]').hidden=true;document.getElementById('pass-243-trigger').focus();">Confirm</button>
+                </div>
+              </div>
+              <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Focus trapped in modal. Escape closes and returns focus to trigger button.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -194,7 +250,22 @@ Tab focus sequence: Skip link, then to sidebar (first in DOM), then to main cont
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>H4</code>, <code>H79</code></p>
+      <p>WCAG techniques used in this demo: <code>H4</code>, <code>G59</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 56 real-world audit findings and official WCAG guidance.</p>
+      <h3>Official W3C / WAI</h3>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html">Understanding SC 2.4.3: Focus Order</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">ARIA Authoring: Dialog (Modal) Pattern</a></li>
+      </ul>
+      <h3>MDN Web Docs</h3>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus">HTMLElement.focus() method</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden">aria-hidden attribute</a></li>
+      </ul>
     </section>
 
   </main>

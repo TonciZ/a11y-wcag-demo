@@ -307,6 +307,105 @@
         </details>
       </div>
 
+      <!-- Demo 4: Custom dropdown not keyboard operable -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-211-4"
+           data-announce-fail="Showing fail example. Custom dropdown opens on click but cannot be navigated or closed with keyboard."
+           data-announce-pass="Showing pass example. Native select element is fully keyboard operable - arrow keys navigate, Enter selects.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-211-4">Custom dropdown keyboard access demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Custom dropdown built with divs — opens on click but keyboard users can't navigate options or close it. Found in 15 real-world audits (quantity selectors, country pickers).</p>
+            <div style="margin-top:0.75rem;max-width:200px;">
+              <label for="fail-211-qty" style="display:block;margin-bottom:0.25rem;">Quantity</label>
+              <div style="position:relative;">
+                <div id="fail-211-qty" tabindex="0" style="padding:0.4rem 0.6rem;border:1px solid #ccc;border-radius:4px;cursor:pointer;background:#fff;" onclick="var list=this.nextElementSibling;list.hidden=!list.hidden;">
+                  1 ▾
+                </div>
+                <div hidden style="position:absolute;top:100%;left:0;right:0;border:1px solid #ccc;border-radius:4px;background:#fff;z-index:1;">
+                  <div style="padding:0.4rem 0.6rem;cursor:pointer;" onclick="this.parentElement.hidden=true;">1</div>
+                  <div style="padding:0.4rem 0.6rem;cursor:pointer;" onclick="this.parentElement.hidden=true;">2</div>
+                  <div style="padding:0.4rem 0.6rem;cursor:pointer;" onclick="this.parentElement.hidden=true;">3</div>
+                </div>
+              </div>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Try keyboard: Tab reaches it, but Enter/Space/arrows don't work. Options are mouse-only.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Native <code>&lt;select&gt;</code> element — fully keyboard operable. Arrow keys navigate, Enter selects, Escape closes.</p>
+            <div style="margin-top:0.75rem;max-width:200px;">
+              <label for="pass-211-qty" style="display:block;margin-bottom:0.25rem;">Quantity</label>
+              <select id="pass-211-qty" style="padding:0.4rem 0.6rem;border:1px solid #ccc;border-radius:4px;font-size:1rem;width:100%;">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Native <code>&lt;select&gt;</code> provides keyboard support, screen reader announcements, and touch support for free.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo 5: Link not focusable -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-211-5"
+           data-announce-fail="Showing fail example. Interactive element built with span cannot receive keyboard focus."
+           data-announce-pass="Showing pass example. Native anchor element is keyboard focusable and activatable.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-211-5">Non-focusable interactive element demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A "link" built with a <code>&lt;span&gt;</code> and onclick — cannot be focused or activated via keyboard. Found in real-world audits where navigation items were unreachable.</p>
+            <div style="margin-top:0.75rem;">
+              <span style="color:#0055cc;text-decoration:underline;cursor:pointer;" onclick="alert('Enrolled!');">Enroll your business</span>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Try Tab — focus skips right past this "link".</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>A proper <code>&lt;a&gt;</code> element with <code>href</code> — keyboard focusable and activatable with Enter.</p>
+            <div style="margin-top:0.75rem;">
+              <a href="#" onclick="alert('Enrolled!');return false;">Enroll your business</a>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Native <code>&lt;a href&gt;</code> is focusable by default and activates with Enter key.</p>
+          </div>
+        </div>
+      </div>
+
       <!-- WCAG Techniques -->
       <section class="content-section" aria-labelledby="wcag-techniques-heading">
         <h2 id="wcag-techniques-heading">WCAG Techniques</h2>
@@ -334,7 +433,27 @@
 
     <section class="content-section" aria-labelledby="resources-heading">
       <h2 id="resources-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>H91</code>, <code>G202</code></p>
+      <p>WCAG techniques used in this demo: <code>G59</code>, <code>G202</code>, <code>H91</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 61 real-world audit findings and official WCAG guidance.</p>
+      <h3>Official W3C / WAI</h3>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">Understanding SC 2.1.1: Keyboard</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">Technique G202: Keyboard control for all functionality</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">Technique G59: Placing interactive elements in order</a></li>
+      </ul>
+      <h3>MDN Web Docs</h3>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select">&lt;select&gt; element</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">&lt;a&gt; element</a></li>
+      </ul>
+      <h3>Component Guides</h3>
+      <ul>
+        <li><a href="https://www.magentaa11y.com/checklist-native/link/">MagentaA11y: Link Checklist</a></li>
+      </ul>
     </section>
 
   </main>
