@@ -170,6 +170,60 @@
           <pre><code class="demo-live-code"></code></pre>
         </details>
       </div>
+      <!-- Demo 3: Form label overlap at large text -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-144-3"
+           data-announce-fail="Showing fail example. Form labels overlap input values when text is enlarged - content becomes unreadable."
+           data-announce-pass="Showing pass example. Form layout adapts when text is enlarged - labels stack above inputs with no overlap.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-144-3">Form label overlap demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Labels use <code>position:absolute</code> with fixed heights. At large text sizes, labels overlap the values below. Found in real-world checkout form audits.</p>
+            <div style="margin-top:0.75rem;max-width:300px;">
+              <div style="position:relative;height:50px;margin-bottom:0.25rem;border:1px solid #ccc;border-radius:4px;padding:0.5rem;">
+                <label style="position:absolute;top:2px;left:8px;font-size:1.4em;color:#555;">Country</label>
+                <span style="position:absolute;bottom:4px;left:8px;font-size:1.4em;">United States</span>
+              </div>
+              <div style="position:relative;height:50px;margin-bottom:0.25rem;border:1px solid #ccc;border-radius:4px;padding:0.5rem;">
+                <label style="position:absolute;top:2px;left:8px;font-size:1.4em;color:#555;">State</label>
+                <span style="position:absolute;bottom:4px;left:8px;font-size:1.4em;">California</span>
+              </div>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Simulates ~200% text: labels and values overlap because of fixed container height.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Labels stack above values using normal flow. Container uses <code>min-height</code> and relative units — no overlap at any text size.</p>
+            <div style="margin-top:0.75rem;max-width:300px;">
+              <div style="min-height:50px;margin-bottom:0.5rem;border:1px solid #ccc;border-radius:4px;padding:0.5rem;">
+                <label style="display:block;font-size:1.4em;color:#555;">Country</label>
+                <span style="display:block;font-size:1.4em;">United States</span>
+              </div>
+              <div style="min-height:50px;margin-bottom:0.5rem;border:1px solid #ccc;border-radius:4px;padding:0.5rem;">
+                <label style="display:block;font-size:1.4em;color:#555;">State</label>
+                <span style="display:block;font-size:1.4em;">California</span>
+              </div>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Labels and values stack naturally. <code>min-height</code> allows growth.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="content-section" aria-labelledby="fail-heading">
@@ -189,7 +243,22 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>C28</code></p>
+      <p>WCAG techniques used in this demo: <code>C12</code>, <code>C28</code>, <code>G179</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 32 real-world audit findings and official WCAG guidance.</p>
+      <h3>Official W3C / WAI</h3>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html">Understanding SC 1.4.4: Resize Text</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C28">Technique C28: Specifying text size in em units</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G179">Technique G179: No loss of content at 200% text size</a></li>
+      </ul>
+      <h3>Guides</h3>
+      <ul>
+        <li><a href="https://appt.org/en/guidelines/wcag/success-criterion-1-4-4">Appt.org: Resize Text (iOS/Android)</a></li>
+      </ul>
     </section>
 
   </main>

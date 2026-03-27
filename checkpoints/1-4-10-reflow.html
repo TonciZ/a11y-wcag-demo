@@ -215,6 +215,65 @@
         </div>
       </div><!-- /.demo-container -->
 
+      <!-- Demo 3: Popup/modal content cut off at small viewport -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-1410-3"
+           data-announce-fail="Showing fail example. Popup content is cut off at small viewport - users cannot access all content."
+           data-announce-pass="Showing pass example. Popup scrolls vertically so all content remains accessible at any viewport size.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-1410-3">Popup overflow demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A popup with <code>overflow:hidden</code> and a fixed height. Content at the bottom is cut off — users can't reach the submit button. Found in real-world feedback and modal audits.</p>
+            <div style="margin-top:0.75rem;max-width:280px;height:160px;overflow:hidden;border:2px solid #ccc;border-radius:8px;padding:1rem;background:var(--color-surface-alt, #f9f9f9);">
+              <p style="font-weight:600;margin:0 0 0.5rem;">Feedback</p>
+              <p style="margin:0 0 0.5rem;font-size:0.9rem;">How was your experience today?</p>
+              <div style="display:flex;gap:0.25rem;margin-bottom:0.75rem;">
+                <button type="button" style="font-size:1.25rem;background:none;border:1px solid #ccc;border-radius:4px;padding:0.25rem 0.5rem;cursor:pointer;">&#x2639;</button>
+                <button type="button" style="font-size:1.25rem;background:none;border:1px solid #ccc;border-radius:4px;padding:0.25rem 0.5rem;cursor:pointer;">&#x1F610;</button>
+                <button type="button" style="font-size:1.25rem;background:none;border:1px solid #ccc;border-radius:4px;padding:0.25rem 0.5rem;cursor:pointer;">&#x1F60A;</button>
+              </div>
+              <label for="fail-1410-fb" style="display:block;font-size:0.85rem;margin-bottom:0.25rem;">Comments:</label>
+              <textarea id="fail-1410-fb" rows="2" style="width:100%;border:1px solid #ccc;border-radius:4px;padding:0.25rem;"></textarea>
+              <button type="button" style="margin-top:0.5rem;padding:0.4rem 1rem;background:#0055cc;color:#fff;border:none;border-radius:4px;cursor:pointer;">Submit</button>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">The Submit button and textarea are cut off — unreachable.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Same popup with <code>overflow:auto</code> and <code>max-height</code>. All content scrollable and accessible.</p>
+            <div style="margin-top:0.75rem;max-width:280px;max-height:160px;overflow:auto;border:2px solid #ccc;border-radius:8px;padding:1rem;background:var(--color-surface-alt, #f9f9f9);">
+              <p style="font-weight:600;margin:0 0 0.5rem;">Feedback</p>
+              <p style="margin:0 0 0.5rem;font-size:0.9rem;">How was your experience today?</p>
+              <div style="display:flex;gap:0.25rem;margin-bottom:0.75rem;">
+                <button type="button" style="font-size:1.25rem;background:none;border:1px solid #ccc;border-radius:4px;padding:0.25rem 0.5rem;cursor:pointer;">&#x2639;</button>
+                <button type="button" style="font-size:1.25rem;background:none;border:1px solid #ccc;border-radius:4px;padding:0.25rem 0.5rem;cursor:pointer;">&#x1F610;</button>
+                <button type="button" style="font-size:1.25rem;background:none;border:1px solid #ccc;border-radius:4px;padding:0.25rem 0.5rem;cursor:pointer;">&#x1F60A;</button>
+              </div>
+              <label for="pass-1410-fb" style="display:block;font-size:0.85rem;margin-bottom:0.25rem;">Comments:</label>
+              <textarea id="pass-1410-fb" rows="2" style="width:100%;border:1px solid #ccc;border-radius:4px;padding:0.25rem;"></textarea>
+              <button type="button" style="margin-top:0.5rem;padding:0.4rem 1rem;background:#0055cc;color:#fff;border:none;border-radius:4px;cursor:pointer;">Submit</button>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Users can scroll to reach all content. Use <code>max-height</code> + <code>overflow:auto</code>.</p>
+          </div>
+        </div>
+      </div>
+
       </div>
     </section>
 
@@ -235,7 +294,22 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>C32</code>, <code>C34</code></p>
+      <p>WCAG techniques used in this demo: <code>C31</code>, <code>C32</code>, <code>C34</code>, <code>C38</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 10 real-world audit findings and official WCAG guidance.</p>
+      <h3>Official W3C / WAI</h3>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html">Understanding SC 1.4.10: Reflow</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C31">Technique C31: Using CSS Flexbox for reflow</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C38">Technique C38: Using CSS width, max-width and flexbox</a></li>
+      </ul>
+      <h3>MDN Web Docs</h3>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow">CSS overflow property</a></li>
+      </ul>
     </section>
 
   </main>
