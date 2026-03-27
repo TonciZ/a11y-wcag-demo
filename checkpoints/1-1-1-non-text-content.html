@@ -266,6 +266,109 @@
       </div>
     </section>
 
+    <section class="content-section" aria-labelledby="demo-heading-4">
+      <h2 id="demo-heading-4">Demo 4: Image + Text Link Duplication</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-111-4"
+           data-announce-fail="Showing fail example. Product image and text link are separate - screen readers announce the same destination twice."
+           data-announce-pass="Showing pass example. Image and text are wrapped in a single link with the image marked decorative - announced once.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-111-4">Image + text link duplication demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The product image and product name are separate links to the same page. Screen readers announce the link twice — once for the image (with duplicate alt text) and once for the text. Found in 8 real-world audits.</p>
+            <div style="margin-top:0.75rem;padding:1rem;background:var(--color-surface-alt, #f5f5f5);border-radius:4px;max-width:200px;">
+              <a href="#" onclick="return false;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="180" height="120" viewBox="0 0 180 120" role="img" aria-label="Ergonomic Office Chair" style="display:block;background:#ddd;border-radius:4px;">
+                  <rect width="180" height="120" fill="#bbb"/>
+                  <text x="90" y="65" text-anchor="middle" fill="#666" font-size="12">Chair photo</text>
+                </svg>
+              </a>
+              <a href="#" onclick="return false;" style="display:block;margin-top:0.5rem;font-weight:600;">Ergonomic Office Chair</a>
+              <p style="margin:0.25rem 0 0;color:#666;font-size:0.9rem;">$349.99</p>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Screen reader announces "Ergonomic Office Chair, link" twice — redundant and confusing.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Image and text wrapped in a single <code>&lt;a&gt;</code> tag. The image uses <code>alt=""</code> since the text link already describes the destination. Screen readers announce the link once.</p>
+            <div style="margin-top:0.75rem;padding:1rem;background:var(--color-surface-alt, #f5f5f5);border-radius:4px;max-width:200px;">
+              <a href="#" onclick="return false;" style="display:block;text-decoration:none;color:inherit;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="180" height="120" viewBox="0 0 180 120" role="img" alt="" aria-hidden="true" style="display:block;background:#ddd;border-radius:4px;">
+                  <rect width="180" height="120" fill="#bbb"/>
+                  <text x="90" y="65" text-anchor="middle" fill="#666" font-size="12">Chair photo</text>
+                </svg>
+                <span style="display:block;margin-top:0.5rem;font-weight:600;">Ergonomic Office Chair</span>
+              </a>
+              <p style="margin:0.25rem 0 0;color:#666;font-size:0.9rem;">$349.99</p>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Single link announced once: "Ergonomic Office Chair, link". Image hidden with <code>alt=""</code> and <code>aria-hidden</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-5">
+      <h2 id="demo-heading-5">Demo 5: Star Rating Without Context</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-111-5"
+           data-announce-fail="Showing fail example. Star rating icons have no text alternative - screen reader announces meaningless numbers or nothing."
+           data-announce-pass="Showing pass example. Star rating has a descriptive text alternative giving full context.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-111-5">Star rating context demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Star icons are announced individually or the numeric rating has no context. Screen reader may say "4.2" with no indication that it means stars or the scale. Found in multiple real-world audits.</p>
+            <div style="margin-top:0.75rem;display:flex;align-items:center;gap:0.5rem;">
+              <span style="color:#f59e0b;font-size:1.25rem;">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+              <span>4.2</span>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Screen reader may announce "star star star star star 4.2" with no meaningful context.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The star icons are hidden from AT with <code>aria-hidden</code>, and a visually-hidden text provides the full context. The visible number also has an <code>aria-label</code>.</p>
+            <div style="margin-top:0.75rem;display:flex;align-items:center;gap:0.5rem;">
+              <span aria-hidden="true" style="color:#f59e0b;font-size:1.25rem;">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+              <span aria-label="4.2 out of 5 stars, based on 127 reviews">4.2</span>
+              <span class="visually-hidden">4.2 out of 5 stars, based on 127 reviews</span>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Screen reader announces "4.2 out of 5 stars, based on 127 reviews" — complete context.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="content-section" aria-labelledby="fail-heading">
       <h2 id="fail-heading">Fail Explanation</h2>
       <p>A failure occurs when an image, icon, or other non-text element has no accessible name, an empty alt attribute where one is needed, or a meaningless description such as "image" or a file name like "img0042.jpg". Screen reader users will either hear nothing, hear the file name, or hear a generic label that provides no useful information about the content or purpose of the element.</p>
@@ -283,7 +386,35 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>H37</code> (Using alt attribute on img elements), <code>H67</code> (Using alt attribute on img elements with empty alt value), <code>ARIA10</code> (Using aria-labelledby to provide an accessible name)</p>
+      <p>WCAG techniques used in this demo: <code>H37</code>, <code>H67</code>, <code>H2</code>, <code>G94</code>, <code>F38</code>, <code>ARIA10</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 91 real-world audit findings and official WCAG guidance.</p>
+
+      <h3>Official W3C / WAI</h3>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html">Understanding SC 1.1.1: Non-text Content</a></li>
+        <li><a href="https://www.w3.org/WAI/tutorials/images/informative/">WAI Tutorial: Informative Images</a></li>
+        <li><a href="https://www.w3.org/WAI/tutorials/images/decorative/">WAI Tutorial: Decorative Images</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">Technique H37: Using alt on img elements</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H2">Technique H2: Combining adjacent image and text links</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G94">Technique G94: Short text alternative for non-text content</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F38">Failure F38: Not marking up decorative images</a></li>
+      </ul>
+
+      <h3>MDN Web Docs</h3>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden">aria-hidden attribute</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tooltip_role">tooltip role</a></li>
+      </ul>
+
+      <h3>Guides</h3>
+      <ul>
+        <li><a href="https://www.smashingmagazine.com/2023/08/designing-accessible-text-over-images-part1/">Smashing: Accessible Text Over Images</a></li>
+        <li><a href="https://www.magentaa11y.com/checklist-native/button/">MagentaA11y: Button Checklist</a></li>
+      </ul>
     </section>
 
   </main>
