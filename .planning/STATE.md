@@ -1,5 +1,5 @@
 ---
-gsd_state_version: 1.0
+state_version: 1.0
 milestone: v1.0
 milestone_name: Roadmap
 status: planning
@@ -13,7 +13,7 @@ progress:
 ---
 
 ---
-gsd_state_version: 1.0
+state_version: 1.0
 milestone: v1.0
 milestone_name: Roadmap
 status: planning
@@ -27,7 +27,7 @@ progress:
 ---
 
 ---
-gsd_state_version: 1.0
+state_version: 1.0
 milestone: v2.0
 milestone_name: Feature Expansion & Quality Assurance
 status: in-progress
@@ -279,5 +279,5 @@ Research is complete; roadmap is locked; all requirements traced; Phase 5 can be
 *State updated: 2026-03-19T14:30:00Z*
 *Milestone: v2.0*
 *Status: Phase 10-11 complete; Phase 12 ready for execution*
-*Last executor: Claude (gsd-executor)*
+*Last executor: Claude*
 *Phase 12 status: All documentation complete (12-01-PLAN.md, QUICK-TEST-GUIDE.md, UAT-RESULTS.md template)*

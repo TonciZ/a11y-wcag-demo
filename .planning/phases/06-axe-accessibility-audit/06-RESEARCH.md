@@ -344,7 +344,7 @@ const classifyViolation = (violation, pageHtml) => {
 ### Sampling Rate
 - **Per task commit:** `node scripts/audit-light.js` (light mode quick scan) ~5 minutes
 - **Per wave merge:** `npm run audit` (full light + dark scan) ~15 minutes total
-- **Phase gate:** All JSON files exist + AUDIT-TRIAGE.md is complete + all real issues fixed before `/gsd:verify-work`
+- **Phase gate:** All JSON files exist + AUDIT-TRIAGE.md is complete + all real issues fixed before `verification step`
 
 ### Wave 0 Gaps
 - [ ] `scripts/audit-light.js` — enumerate checkpoints, start server, invoke @axe-core/cli and pa11y, output JSON
