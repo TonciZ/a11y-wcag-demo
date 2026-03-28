@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -102,7 +102,11 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code class="demo-live-code"></code></pre>
         </details>
@@ -141,7 +145,54 @@
         </div>
 
         <!-- Code blocks synced to demo state -->
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <!-- Demo 3: Rich Text Editor Keyboard Trap -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-212-3"
+           data-announce-fail="Showing fail example. Text editor captures Tab key for indentation. Keyboard users cannot exit to the submit button below."
+           data-announce-pass="Showing pass example. Text editor allows Tab to exit when at content boundary. Instructions provided before editor.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-212-3">Demo 3: Rich text editor keyboard trap</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This code demonstrates a text editor that traps Tab key for indentation. Users cannot reach the submit button using only the keyboard:</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>This code demonstrates a text editor that allows Tab to exit when at the content boundary. Instructions inform users how to exit:</p>
+          </div>
+        </div>
+
+        <!-- Code blocks synced to demo state -->
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code class="demo-live-code"></code></pre>
         </details>
@@ -177,9 +228,19 @@
       <p>WCAG techniques used in this demo: <code>G21</code></p>
     </section>
 
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 9 real-world audit findings and official WCAG guidance.</p>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html">Understanding SC 2.1.2: No Keyboard Trap</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G21">Technique G21: Ensuring users are not trapped in content</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">ARIA Authoring: Dialog (Modal) Pattern</a></li>
+      </ul>
+    </section>
+
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -188,7 +249,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -108,6 +108,247 @@
             </div>
           </div>
         </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-412-2"
+           data-announce-fail="Showing fail example. Form inputs lack associated labels - screen readers cannot identify which field is for what purpose."
+           data-announce-pass="Showing pass example. Form inputs have proper label elements with for and id attributes for programmatic association.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-412-2">Form Controls demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>These form inputs have no associated <code>&lt;label&gt;</code> elements. Screen readers cannot determine which label corresponds to which field.</p>
+            <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.75rem;max-width:300px;">
+              <input type="text" placeholder="Full Name">
+              <input type="email" placeholder="Email Address">
+              <input type="tel" placeholder="Phone Number">
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Each input has a proper <code>&lt;label&gt;</code> element linked via <code>for</code> and <code>id</code> attributes. Screen readers announce the label and input relationship.</p>
+            <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.75rem;max-width:300px;">
+              <div>
+                <label for="name-412-pass">Full Name</label>
+                <input type="text" id="name-412-pass">
+              </div>
+              <div>
+                <label for="email-412-pass">Email Address</label>
+                <input type="email" id="email-412-pass">
+              </div>
+              <div>
+                <label for="phone-412-pass">Phone Number</label>
+                <input type="tel" id="phone-412-pass">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-412-3"
+           data-announce-fail="Showing fail example. Custom div button has no role, name, or keyboard support - screen readers cannot identify it as interactive."
+           data-announce-pass="Showing pass example. Native button element provides role, accessible name, and keyboard activation automatically.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-412-3">Custom Button demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This is a styled <code>&lt;div&gt;</code> with a click handler. It has no <code>role</code>, no accessible name, and is not keyboard focusable. Screen readers cannot identify it as a button.</p>
+            <div style="margin-top:0.75rem;display:inline-block;padding:0.5rem 1rem;background:#dc3545;color:white;border-radius:4px;cursor:pointer;user-select:none;font-weight:bold;"
+                 onclick="alert('Account deletion initiated.');">
+              Delete Account
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>A native <code>&lt;button&gt;</code> automatically provides role ("button"), accessible name ("Delete Account"), and keyboard support (Enter/Space to activate).</p>
+            <div style="margin-top:0.75rem;">
+              <button type="button" style="padding:0.5rem 1rem;background:#dc3545;color:white;border:none;border-radius:4px;cursor:pointer;font-weight:bold;" onclick="alert('Account deletion initiated.');">Delete Account</button>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-412-4"
+           data-announce-fail="Showing fail example. Menu does not update aria-expanded when opened - screen readers cannot determine if menu is open or closed."
+           data-announce-pass="Showing pass example. Menu updates aria-expanded and manages focus properly - keyboard users and screen reader users can navigate options.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-412-4">Expandable Menu demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <style>
+          .menu-demo-412 { display: inline-block; position: relative; }
+          .menu-demo-412__button { padding: 0.5rem 1rem; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 500; }
+          .menu-demo-412__list { position: absolute; top: 100%; left: 0; margin-top: 0.25rem; background: white; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); min-width: 180px; }
+          .menu-demo-412__list button { display: block; width: 100%; text-align: left; padding: 0.75rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.95rem; }
+          .menu-demo-412__list button:hover { background: #f5f5f5; }
+          .menu-demo-412__list[hidden] { display: none; }
+        </style>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>This menu button does not update <code>aria-expanded</code> when toggled. Screen readers always report the state as false, even when the menu is visually open.</p>
+            <div style="margin-top:0.75rem;">
+              <div class="menu-demo-412">
+                <button class="menu-demo-412__button" type="button" aria-expanded="false" onclick="var list=this.nextElementSibling;var hidden=list.hasAttribute('hidden');hidden?list.removeAttribute('hidden'):list.setAttribute('hidden','');">
+                  Options
+                </button>
+                <div class="menu-demo-412__list" hidden>
+                  <button type="button" onclick="alert('Profile opened');">View Profile</button>
+                  <button type="button" onclick="alert('Settings opened');">Settings</button>
+                  <button type="button" onclick="alert('Help opened');">Help</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>This menu button properly updates <code>aria-expanded</code> and supports keyboard navigation. Screen readers announce state changes, and users can navigate with arrow keys.</p>
+            <div style="margin-top:0.75rem;">
+              <div class="menu-demo-412">
+                <button class="menu-demo-412__button" type="button" id="menu-button-412" aria-expanded="false" aria-haspopup="menu" onclick="var btn=this;var list=document.getElementById('menu-list-412');var expanded=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',expanded?'false':'true');expanded?list.setAttribute('hidden',''):list.removeAttribute('hidden');!expanded&&list.querySelector('button').focus();">
+                  Options
+                </button>
+                <div class="menu-demo-412__list" id="menu-list-412" hidden role="menu">
+                  <button type="button" role="menuitem" onclick="alert('Profile opened');">View Profile</button>
+                  <button type="button" role="menuitem" onclick="alert('Settings opened');">Settings</button>
+                  <button type="button" role="menuitem" onclick="alert('Help opened');">Help</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-412-5"
+           data-announce-fail="Showing fail example. Icon buttons have no accessible name - screen readers announce them as just 'button' with no indication of purpose."
+           data-announce-pass="Showing pass example. Each icon button has an aria-label describing its action, so screen readers announce purpose clearly.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-412-5">Icon Buttons Without Labels demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>These icon-only buttons have no accessible name. A screen reader announces each one as just "button" — the user has no idea what any button does. This is the single most common 4.1.2 failure found in real-world audits.</p>
+            <div style="margin-top:0.75rem;display:flex;gap:0.75rem;align-items:center;">
+              <button type="button" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Search activated');">
+                &#x1F50D;
+              </button>
+              <button type="button" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Close activated');">
+                &#x2715;
+              </button>
+              <button type="button" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Menu activated');">
+                &#x2630;
+              </button>
+              <button type="button" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Favorite activated');">
+                &#x2764;
+              </button>
+            </div>
+            <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--color-text-muted);">Try navigating with a screen reader — each button is announced as just "button" with no label.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Each icon button now has an <code>aria-label</code> that describes its action. Screen readers announce "Search, button", "Close dialog, button", "Open menu, button", and "Add to favorites, button".</p>
+            <div style="margin-top:0.75rem;display:flex;gap:0.75rem;align-items:center;">
+              <button type="button" aria-label="Search" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Search activated');">
+                &#x1F50D;
+              </button>
+              <button type="button" aria-label="Close dialog" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Close activated');">
+                &#x2715;
+              </button>
+              <button type="button" aria-label="Open menu" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Menu activated');">
+                &#x2630;
+              </button>
+              <button type="button" aria-label="Add to favorites" style="padding:0.5rem;background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:1.25rem;line-height:1;" onclick="alert('Favorite activated');">
+                &#x2764;
+              </button>
+            </div>
+            <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--color-text-muted);">Now each button announces its purpose: "Search, button", "Close dialog, button", etc.</p>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
@@ -128,12 +369,48 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>H65</code>, <code>ARIA5</code>, <code>H44</code></p>
+      <p>WCAG techniques used in this demo: <code>H65</code>, <code>ARIA5</code>, <code>H44</code>, <code>ARIA14</code>, <code>ARIA16</code>, <code>H64</code>, <code>G131</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 163 real-world audit findings and official WCAG guidance.</p>
+
+      <h3>Official W3C / WAI</h3>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html">Understanding SC 4.1.2: Name, Role, Value</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">ARIA Authoring: Dialog (Modal) Pattern</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/">ARIA Authoring: Combobox Pattern</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/">ARIA Authoring: Menu Button Pattern</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/switch/">ARIA Authoring: Switch Pattern</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/radio/examples/radio/">ARIA Authoring: Radio Group Example</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">Technique ARIA14: Using aria-label for link purpose</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H44">Technique H44: Using label elements for form controls</a></li>
+      </ul>
+
+      <h3>MDN Web Docs</h3>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">aria-label attribute</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded">aria-expanded attribute</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-pressed">aria-pressed attribute</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-current">aria-current attribute</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">&lt;button&gt; element</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select">&lt;select&gt; element</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions">ARIA Live Regions</a></li>
+      </ul>
+
+      <h3>Component Checklists</h3>
+      <ul>
+        <li><a href="https://www.magentaa11y.com/checklist-native/button/">MagentaA11y: Button Checklist</a></li>
+        <li><a href="https://www.magentaa11y.com/checklist-native/radio/">MagentaA11y: Radio Button Checklist</a></li>
+        <li><a href="https://www.magentaa11y.com/checklist-native/checkbox/">MagentaA11y: Checkbox Checklist</a></li>
+        <li><a href="https://www.magentaa11y.com/checklist-native/text-input/">MagentaA11y: Text Input Checklist</a></li>
+      </ul>
     </section>
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -142,7 +419,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

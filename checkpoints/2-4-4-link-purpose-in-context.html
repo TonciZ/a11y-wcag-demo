@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -132,6 +132,60 @@
             </ul>
           </div>
         </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-244-2"
+           data-announce-fail="Showing fail example. Icon-only links without accessible names are ambiguous to screen reader users."
+           data-announce-pass="Showing pass example. ARIA labels provide clear accessible names for icon-only links.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-244-2">Demo 2: Icon-only links with ARIA labels</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Icon-only links without accessible names are indeterminate. Screen reader users hear only the link role with no indication of destination.</p>
+            <div style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+              <span style="font-size:0.9rem;color:#666;min-width:150px;">Navigate to related content:</span>
+              <a href="#" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+              <a href="#" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+              <a href="#" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Each icon-only link includes an <code>aria-label</code> that describes its destination. Screen reader users hear the full purpose of each link.</p>
+            <div style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+              <span style="font-size:0.9rem;color:#666;min-width:150px;">Navigate to related content:</span>
+              <a href="#" aria-label="Read more about Keyboard Accessibility Basics" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+              <a href="#" aria-label="Read more about Screen Reader Testing Guide" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+              <a href="#" aria-label="Read more about ARIA Authoring Practices" style="font-size:1.5rem;padding:0.5rem;"><span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
@@ -155,9 +209,19 @@
       <p>WCAG techniques used in this demo: <code>H30</code>, <code>H77</code>, <code>H78</code>, <code>H81</code>, <code>ARIA1</code></p>
     </section>
 
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 12 real-world audit findings and official WCAG guidance.</p>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html">Understanding SC 2.4.4: Link Purpose (In Context)</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H30">Technique H30: Providing link text from the a element content</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">MDN: aria-label attribute</a></li>
+      </ul>
+    </section>
+
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -166,7 +230,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

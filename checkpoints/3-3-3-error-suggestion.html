@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -125,7 +125,7 @@
           </div>
         </div>
 
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Error identifies the problem but gives no guidance --&gt;</span>
 &lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"dob"</span>&gt;Date of birth&lt;/<span class="hl-tag">label</span>&gt;
@@ -137,6 +137,10 @@
 &lt;<span class="hl-tag">input</span> <span class="hl-tag">id</span>=<span class="hl-value">"dob"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span> <span class="hl-tag">value</span>=<span class="hl-value">"15/01/90"</span>
        <span class="hl-tag">aria-describedby</span>=<span class="hl-value">"dob-err"</span>&gt;
 <span class="hl-line-pass">&lt;<span class="hl-tag">span</span> <span class="hl-tag">id</span>=<span class="hl-value">"dob-err"</span>&gt;⚠ Enter date in DD/MM/YYYY format — e.g. 15/01/1990&lt;/<span class="hl-tag">span</span>&gt;</span></code></pre>
+        </details>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
         </details>
       </div>
 
@@ -192,7 +196,7 @@
         </div>
 
         <!-- Code blocks for Demo 2 -->
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Error gives no recovery path --&gt;</span>
 &lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"pwd"</span>&gt;Password&lt;/<span class="hl-tag">label</span>&gt;
@@ -204,6 +208,10 @@
 &lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"password"</span> <span class="hl-tag">id</span>=<span class="hl-value">"pwd"</span> <span class="hl-tag">aria-invalid</span>=<span class="hl-value">"true"</span>
        <span class="hl-tag">aria-describedby</span>=<span class="hl-value">"pwd-err"</span>&gt;
 <span class="hl-line-pass">&lt;<span class="hl-tag">span</span> <span class="hl-tag">id</span>=<span class="hl-value">"pwd-err"</span>&gt;⚠ Password incorrect. &lt;<span class="hl-tag">a</span> <span class="hl-tag">href</span>=<span class="hl-value">"#"</span>&gt;Forgot your password?&lt;/<span class="hl-tag">a</span>&gt;&lt;/<span class="hl-tag">span</span>&gt;</span></code></pre>
+        </details>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
         </details>
       </div>
 
@@ -237,9 +245,18 @@
       <p>WCAG techniques used in this demo: <code>G177</code>, <code>G199</code></p>
     </section>
 
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 2 real-world audit findings.</p>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html">Understanding SC 3.3.3</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G177">Technique G177: Suggested correction text</a></li>
+      </ul>
+    </section>
+
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -248,7 +265,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

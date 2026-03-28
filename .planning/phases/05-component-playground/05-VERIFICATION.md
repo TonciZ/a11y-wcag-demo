@@ -154,4 +154,4 @@ Developers have an internal-only component showcase (`/components.html`) documen
 ---
 
 _Verified: 2026-03-14T12:36:28Z_
-_Verifier: Claude (gsd-executor)_
+_Verifier: Claude (executor)_

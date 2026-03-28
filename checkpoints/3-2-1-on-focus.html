@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -116,6 +116,63 @@
 &lt;/button&gt;</code></pre>
           </div>
         </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Help Dialog on Focus</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-321-2"
+           data-announce-fail="Showing fail example. A help dialog appears when the form field receives focus, blocking form access and requiring users to close the dialog before continuing. This violates 3.2.1 because focus alone changed the page context.
+"
+           data-announce-pass="Showing pass example. The help dialog only appears when the user explicitly clicks the help button, not on focus. Users can focus and fill form fields without unexpected dialogs.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-321-2">Help dialog on focus</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A help dialog launches the moment a user tabs into or focuses on a form field, without any explicit activation. This blocks access to the field until the user closes the dialog.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Fail: Help dialog triggered by focus --&gt;
+&lt;input id="email-fail"
+       type="email"
+       onfocus="showHelpDialog()"&gt;</code></pre>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same form field has no focus trigger. Help information appears only when the user explicitly clicks a dedicated help button, leaving the field accessible.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Pass: Help triggered by explicit button click --&gt;
+&lt;input id="email-pass"
+       type="email"&gt;
+&lt;button type="button"
+        onclick="showHelpDialog()"&gt;
+  Help
+&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
@@ -136,12 +193,21 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>H32</code></p>
+      <p>WCAG techniques used in this demo: <code>G107</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 5 real-world audit findings.</p>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html">Understanding SC 3.2.1</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G107">Technique G107: Using "activate" rather than "focus"</a></li>
+      </ul>
     </section>
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -150,7 +216,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

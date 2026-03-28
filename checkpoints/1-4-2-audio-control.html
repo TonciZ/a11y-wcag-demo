@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -66,17 +66,17 @@
 
     </section>
 
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+    <section class="content-section" aria-labelledby="demo-heading-1">
+      <h2 id="demo-heading-1">Demo 1: Autoplay without controls</h2>
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-142"
+           aria-labelledby="demo-label-142-1"
            data-announce-fail="Showing fail example. Audio element uses autoplay with no controls - users cannot pause or stop it."
            data-announce-pass="Showing pass example. Audio element includes the controls attribute - users have a pause mechanism.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-142">Audio control demo</span>
+          <span class="demo-container__label" id="demo-label-142-1">Audio control demo</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -121,6 +121,149 @@
 &lt;/audio&gt;</code></pre>
           </div>
         </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Volume control options</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-142-2"
+           data-announce-fail="Showing fail example. Instructions tell users to adjust audio using system volume only, not independent app-level control."
+           data-announce-pass="Showing pass example. Audio element provides independent volume slider control separate from system settings.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-142-2">Volume control demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The audio plays automatically, but there is no app-level volume control. Users are instructed to adjust volume using their system settings.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f5f5f5;">
+              <p style="margin:0 0 0.5rem;font-weight:600;">Background Music</p>
+              <audio autoplay loop>
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+              <p style="margin:0.5rem 0 0;font-size:0.8rem;color:#5a5a5a;">To adjust volume, use your system settings.</p>
+            </div>
+            <pre><code>&lt;audio autoplay loop&gt;
+  &lt;source src="music.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+&lt;p&gt;To adjust volume, use your system settings.&lt;/p&gt;</code></pre>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The audio plays with an independent volume slider control. Users can adjust the audio volume without affecting their system settings.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f5f5f5;">
+              <p style="margin:0 0 0.5rem;font-weight:600;">Background Music</p>
+              <div style="margin:0.5rem 0;display:flex;align-items:center;gap:0.75rem;">
+                <label for="vol-slider-142" style="font-weight:600;white-space:nowrap;">Volume:</label>
+                <input type="range" id="vol-slider-142" min="0" max="100" value="50" style="flex:1;max-width:200px;" aria-label="Adjust background audio volume from 0 to 100 percent">
+                <span style="font-size:0.9rem;min-width:35px;" aria-live="polite" aria-atomic="true" id="vol-display-142">50%</span>
+              </div>
+              <audio controls style="width:100%;max-width:400px;margin-top:0.75rem;">
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+            <pre><code>&lt;label for="volume-slider"&gt;Volume:&lt;/label&gt;
+&lt;input type="range" id="volume-slider" min="0" max="100" value="50"
+       aria-label="Adjust background audio volume..."&gt;
+&lt;audio autoplay loop&gt;
+  &lt;source src="music.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-3">
+      <h2 id="demo-heading-3">Demo 3: Three-second rule</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-142-3"
+           data-announce-fail="Showing fail example. Audio plays for 10 seconds with no controls - users cannot stop it and must wait for it to finish."
+           data-announce-pass="Showing pass example. Audio automatically stops after 3 seconds - no control mechanism is needed.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-142-3">Three-second rule demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Audio plays automatically for 10 seconds with no pause or stop button. Users must wait for the audio to finish playing before proceeding.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f5f5f5;">
+              <p style="margin:0 0 0.5rem;font-weight:600;">Background Music (10 seconds)</p>
+              <audio autoplay style="width:100%;max-width:400px;">
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+              <p style="margin:0.5rem 0 0;font-size:0.8rem;color:#5a5a5a;">(No audio file loaded - demonstrates absence of controls.)</p>
+            </div>
+            <pre><code>&lt;audio autoplay&gt;
+  &lt;source src="long-music.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+<!-- No controls or timeout specified --></code></pre>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Audio plays automatically but stops on its own after 3 seconds. Since the duration is at or below the threshold, no control mechanism is required.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;background:#f5f5f5;">
+              <p style="margin:0 0 0.5rem;font-weight:600;">Notification Sound (3 seconds)</p>
+              <audio id="short-audio-142" autoplay style="width:100%;max-width:400px;">
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+              <p style="margin:0.5rem 0 0;font-size:0.8rem;color:#5a5a5a;">(No audio file loaded - demonstrates auto-stop behavior.)</p>
+            </div>
+            <pre><code>&lt;audio id="notification" autoplay&gt;
+  &lt;source src="notification.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+&lt;script&gt;
+  setTimeout(() =&gt; {
+    document.getElementById('notification').pause();
+  }, 3000); // Stop after 3 seconds
+&lt;/script&gt;</code></pre>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
@@ -146,7 +289,7 @@
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -155,7 +298,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

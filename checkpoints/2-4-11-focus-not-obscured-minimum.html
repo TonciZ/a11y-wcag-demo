@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -116,6 +116,128 @@
             </div>
           </div>
         </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-2411-2"
+           data-announce-fail="Showing fail example. Cookie banner covers focused button - focus is not visible."
+           data-announce-pass="Showing pass example. Cookie banner can be dismissed - focused button remains visible.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-2411-2">Cookie banner demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Tab to focus buttons below. The cookie banner fully covers any focused element.</p>
+            <div style="position:relative;height:200px;border:1px solid #e0e0e0;border-radius:4px;overflow:hidden;margin-top:0.75rem;">
+              <div style="padding:1rem;">
+                <p style="margin-bottom:0.75rem;font-size:0.9rem;">This site uses cookies. By continuing, you agree to our use of cookies.</p>
+                <button type="button" style="margin-right:0.5rem;">Accept all</button>
+                <button type="button">Customize</button>
+              </div>
+              <div style="position:absolute;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e0e0e0;padding:1rem;">
+                <button type="button">Learn more about our site</button>
+              </div>
+              <div style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#fef3cd;border:1px solid #ffc107;border-radius:4px;padding:1rem;width:90%;max-width:400px;z-index:999;">
+                <strong>Cookie Consent Required</strong><br>
+                <small>We use cookies to improve your experience.</small>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Tab to focus buttons. A close button dismisses the banner, keeping focused elements visible.</p>
+            <div style="position:relative;height:200px;border:1px solid #e0e0e0;border-radius:4px;overflow:hidden;margin-top:0.75rem;">
+              <div style="padding:1rem;">
+                <p style="margin-bottom:0.75rem;font-size:0.9rem;">This site uses cookies. By continuing, you agree to our use of cookies.</p>
+                <button type="button" style="margin-right:0.5rem;">Accept all</button>
+                <button type="button">Customize</button>
+              </div>
+              <div style="position:absolute;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e0e0e0;padding:1rem;">
+                <button type="button">Learn more about our site</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-2411-3"
+           data-announce-fail="Showing fail example. Chat widget auto-expands and covers focused content."
+           data-announce-pass="Showing pass example. Chat widget stays collapsed until user opens it - focused elements remain visible.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-2411-3">Chat widget demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Tab through the form. The chat widget automatically expands and covers the submit button.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;position:relative;min-height:180px;">
+              <label style="display:block;margin-bottom:0.5rem;">Question:</label>
+              <input type="text" placeholder="Ask your question" style="width:100%;max-width:280px;margin-bottom:1rem;">
+              <label style="display:block;margin-bottom:0.5rem;">Email:</label>
+              <input type="email" placeholder="your@email.com" style="width:100%;max-width:280px;margin-bottom:1rem;">
+              <button type="button" style="margin-bottom:2rem;">Submit question</button>
+              <div style="position:fixed;bottom:20px;right:20px;background:#0055cc;color:#fff;border-radius:8px;padding:1rem;width:280px;z-index:999;box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+                <div style="font-weight:600;margin-bottom:0.75rem;">Chat with us</div>
+                <p style="font-size:0.9rem;margin:0;">We're here to help. Average response time: 2 minutes.</p>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Tab through the form. The chat widget stays collapsed - users can open it when ready.</p>
+            <div style="border:1px solid #e0e0e0;border-radius:4px;padding:1rem;margin-top:0.75rem;position:relative;min-height:180px;">
+              <label style="display:block;margin-bottom:0.5rem;">Question:</label>
+              <input type="text" placeholder="Ask your question" style="width:100%;max-width:280px;margin-bottom:1rem;">
+              <label style="display:block;margin-bottom:0.5rem;">Email:</label>
+              <input type="email" placeholder="your@email.com" style="width:100%;max-width:280px;margin-bottom:1rem;">
+              <button type="button">Submit question</button>
+              <button type="button" style="position:fixed;bottom:20px;right:20px;background:#0055cc;color:#fff;border:none;border-radius:50%;width:60px;height:60px;font-size:1.5rem;cursor:pointer;z-index:999;box-shadow:0 2px 8px rgba(0,0,0,0.2);" title="Open chat">💬</button>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
@@ -141,7 +263,7 @@
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -150,7 +272,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

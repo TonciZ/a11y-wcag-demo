@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -67,8 +67,8 @@
 
     </section>
 
-    <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+    <section class="content-section" aria-labelledby="demo-heading-1">
+      <h2 id="demo-heading-1">Demo 1: Complex Images (Charts)</h2>
       <div class="demo-container"
            data-mode="fail"
            role="region"
@@ -113,6 +113,284 @@
             </svg>
           </div>
         </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Functional Icons and Buttons</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-111-2"
+           data-announce-fail="Showing fail example. Icon buttons lack text alternatives. Screen reader users cannot determine button purposes."
+           data-announce-pass="Showing pass example. Icon buttons have aria-label attributes explaining their purpose. Screen reader users understand what each button does.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-111-2">Icon Buttons</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Icon buttons without accessible names. Screen reader announces just "button" - no context about what each button does.</p>
+            <div style="display:flex; gap:1rem; margin-top:0.75rem;">
+              <button type="button" style="padding:0.75rem; background:#4a90e2; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M2.5 3h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5zm0 5h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5zm0 5h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5z"/>
+                </svg>
+              </button>
+              <button type="button" style="padding:0.75rem; background:#4a90e2; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M8.5 3a.5.5 0 01.5.5v12a.5.5 0 01-1 0v-12a.5.5 0 01.5-.5zm3 0a.5.5 0 01.5.5v12a.5.5 0 01-1 0v-12a.5.5 0 01.5-.5z"/>
+                </svg>
+              </button>
+              <button type="button" style="padding:0.75rem; background:#e24a4a; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 11-2 0V5H4v11a1 1 0 01-1-1V4zm2 3a1 1 0 000 2h10a1 1 0 100-2H5zm0 3a1 1 0 000 2h10a1 1 0 100-2H5z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same buttons now have <code>aria-label</code> attributes. Screen reader announces the purpose of each button.</p>
+            <div style="display:flex; gap:1rem; margin-top:0.75rem;">
+              <button type="button" aria-label="Open menu" style="padding:0.75rem; background:#4a90e2; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M2.5 3h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5zm0 5h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5zm0 5h15a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-15a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5z"/>
+                </svg>
+              </button>
+              <button type="button" aria-label="Pause video" style="padding:0.75rem; background:#4a90e2; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M8.5 3a.5.5 0 01.5.5v12a.5.5 0 01-1 0v-12a.5.5 0 01.5-.5zm3 0a.5.5 0 01.5.5v12a.5.5 0 01-1 0v-12a.5.5 0 01.5-.5z"/>
+                </svg>
+              </button>
+              <button type="button" aria-label="Delete item" style="padding:0.75rem; background:#e24a4a; color:white; border:none; border-radius:4px; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 11-2 0V5H4v11a1 1 0 01-1-1V4zm2 3a1 1 0 000 2h10a1 1 0 100-2H5zm0 3a1 1 0 000 2h10a1 1 0 100-2H5z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-3">
+      <h2 id="demo-heading-3">Demo 3: Decorative vs. Informative Images</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-111-3"
+           data-announce-fail="Showing fail example. Images have missing or unhelpful alt text. Decorative images are announced as 'picture', creating noise."
+           data-announce-pass="Showing pass example. Informative images have descriptive alt text. Decorative images are properly hidden with alt=''.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-111-3">Product Listings</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Product images with poor alt text, and a decorative divider that's announced unnecessarily:</p>
+            <div style="margin-top:0.75rem; padding:1rem; background:#f5f5f5; border-radius:4px;">
+              <div style="margin-bottom:1rem; display:flex; gap:1rem;">
+                <div style="flex:1;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" alt="Picture" style="background:#ddd; margin-bottom:0.5rem;">
+                    <rect width="80" height="80" fill="#bbb"/>
+                  </svg>
+                  <h3 style="margin:0 0 0.5rem 0; font-size:1rem;">High-Performance Laptop</h3>
+                  <p style="margin:0; color:#666;">$999.99</p>
+                </div>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="2" viewBox="0 0 100 2" alt="divider line">
+                <line x1="0" y1="1" x2="100" y2="1" stroke="#ccc" stroke-width="1"/>
+              </svg>
+              <div style="margin-top:1rem; display:flex; gap:1rem;">
+                <div style="flex:1;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" alt="" style="background:#ddd; margin-bottom:0.5rem;">
+                    <rect width="80" height="80" fill="#bbb"/>
+                  </svg>
+                  <h3 style="margin:0 0 0.5rem 0; font-size:1rem;">Budget Laptop</h3>
+                  <p style="margin:0; color:#666;">$399.99</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Informative product images have descriptive alt text, and the decorative divider is properly hidden:</p>
+            <div style="margin-top:0.75rem; padding:1rem; background:#f5f5f5; border-radius:4px;">
+              <div style="margin-bottom:1rem; display:flex; gap:1rem;">
+                <div style="flex:1;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" alt="Silver laptop with 15.6 inch display" style="background:#ddd; margin-bottom:0.5rem;">
+                    <rect width="80" height="80" fill="#bbb"/>
+                  </svg>
+                  <h3 style="margin:0 0 0.5rem 0; font-size:1rem;">High-Performance Laptop</h3>
+                  <p style="margin:0; color:#666;">$999.99</p>
+                </div>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="2" viewBox="0 0 100 2" alt="" aria-hidden="true">
+                <line x1="0" y1="1" x2="100" y2="1" stroke="#ccc" stroke-width="1"/>
+              </svg>
+              <div style="margin-top:1rem; display:flex; gap:1rem;">
+                <div style="flex:1;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" alt="Black budget laptop with 14 inch display" style="background:#ddd; margin-bottom:0.5rem;">
+                    <rect width="80" height="80" fill="#bbb"/>
+                  </svg>
+                  <h3 style="margin:0 0 0.5rem 0; font-size:1rem;">Budget Laptop</h3>
+                  <p style="margin:0; color:#666;">$399.99</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-4">
+      <h2 id="demo-heading-4">Demo 4: Image + Text Link Duplication</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-111-4"
+           data-announce-fail="Showing fail example. Product image and text link are separate - screen readers announce the same destination twice."
+           data-announce-pass="Showing pass example. Image and text are wrapped in a single link with the image marked decorative - announced once.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-111-4">Image + text link duplication demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The product image and product name are separate links to the same page. Screen readers announce the link twice — once for the image (with duplicate alt text) and once for the text. Found in 8 real-world audits.</p>
+            <div style="margin-top:0.75rem;padding:1rem;background:var(--color-surface-alt, #f5f5f5);border-radius:4px;max-width:200px;">
+              <a href="#" onclick="return false;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="180" height="120" viewBox="0 0 180 120" role="img" aria-label="Ergonomic Office Chair" style="display:block;background:#ddd;border-radius:4px;">
+                  <rect width="180" height="120" fill="#bbb"/>
+                  <text x="90" y="65" text-anchor="middle" fill="#666" font-size="12">Chair photo</text>
+                </svg>
+              </a>
+              <a href="#" onclick="return false;" style="display:block;margin-top:0.5rem;font-weight:600;">Ergonomic Office Chair</a>
+              <p style="margin:0.25rem 0 0;color:#666;font-size:0.9rem;">$349.99</p>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Screen reader announces "Ergonomic Office Chair, link" twice — redundant and confusing.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Image and text wrapped in a single <code>&lt;a&gt;</code> tag. The image uses <code>alt=""</code> since the text link already describes the destination. Screen readers announce the link once.</p>
+            <div style="margin-top:0.75rem;padding:1rem;background:var(--color-surface-alt, #f5f5f5);border-radius:4px;max-width:200px;">
+              <a href="#" onclick="return false;" style="display:block;text-decoration:none;color:inherit;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="180" height="120" viewBox="0 0 180 120" role="img" alt="" aria-hidden="true" style="display:block;background:#ddd;border-radius:4px;">
+                  <rect width="180" height="120" fill="#bbb"/>
+                  <text x="90" y="65" text-anchor="middle" fill="#666" font-size="12">Chair photo</text>
+                </svg>
+                <span style="display:block;margin-top:0.5rem;font-weight:600;">Ergonomic Office Chair</span>
+              </a>
+              <p style="margin:0.25rem 0 0;color:#666;font-size:0.9rem;">$349.99</p>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Single link announced once: "Ergonomic Office Chair, link". Image hidden with <code>alt=""</code> and <code>aria-hidden</code>.</p>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-5">
+      <h2 id="demo-heading-5">Demo 5: Star Rating Without Context</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-111-5"
+           data-announce-fail="Showing fail example. Star rating icons have no text alternative - screen reader announces meaningless numbers or nothing."
+           data-announce-pass="Showing pass example. Star rating has a descriptive text alternative giving full context.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-111-5">Star rating context demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Star icons are announced individually or the numeric rating has no context. Screen reader may say "4.2" with no indication that it means stars or the scale. Found in multiple real-world audits.</p>
+            <div style="margin-top:0.75rem;display:flex;align-items:center;gap:0.5rem;">
+              <span style="color:#f59e0b;font-size:1.25rem;">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+              <span>4.2</span>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Screen reader may announce "star star star star star 4.2" with no meaningful context.</p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The star icons are hidden from AT with <code>aria-hidden</code>, and a visually-hidden text provides the full context. The visible number also has an <code>aria-label</code>.</p>
+            <div style="margin-top:0.75rem;display:flex;align-items:center;gap:0.5rem;">
+              <span aria-hidden="true" style="color:#f59e0b;font-size:1.25rem;">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+              <span aria-label="4.2 out of 5 stars, based on 127 reviews">4.2</span>
+              <span class="visually-hidden">4.2 out of 5 stars, based on 127 reviews</span>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Screen reader announces "4.2 out of 5 stars, based on 127 reviews" — complete context.</p>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
@@ -133,12 +411,40 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>H37</code> (Using alt attribute on img elements), <code>H67</code> (Using alt attribute on img elements with empty alt value), <code>ARIA10</code> (Using aria-labelledby to provide an accessible name)</p>
+      <p>WCAG techniques used in this demo: <code>H37</code>, <code>H67</code>, <code>H2</code>, <code>G94</code>, <code>F38</code>, <code>ARIA10</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 91 real-world audit findings and official WCAG guidance.</p>
+
+      <h3>Official W3C / WAI</h3>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html">Understanding SC 1.1.1: Non-text Content</a></li>
+        <li><a href="https://www.w3.org/WAI/tutorials/images/informative/">WAI Tutorial: Informative Images</a></li>
+        <li><a href="https://www.w3.org/WAI/tutorials/images/decorative/">WAI Tutorial: Decorative Images</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">Technique H37: Using alt on img elements</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H2">Technique H2: Combining adjacent image and text links</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G94">Technique G94: Short text alternative for non-text content</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F38">Failure F38: Not marking up decorative images</a></li>
+      </ul>
+
+      <h3>MDN Web Docs</h3>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden">aria-hidden attribute</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tooltip_role">tooltip role</a></li>
+      </ul>
+
+      <h3>Guides</h3>
+      <ul>
+        <li><a href="https://www.smashingmagazine.com/2023/08/designing-accessible-text-over-images-part1/">Smashing: Accessible Text Over Images</a></li>
+        <li><a href="https://www.magentaa11y.com/checklist-native/button/">MagentaA11y: Button Checklist</a></li>
+      </ul>
     </section>
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -147,7 +453,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

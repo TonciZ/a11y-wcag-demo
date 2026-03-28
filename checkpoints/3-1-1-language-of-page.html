@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -67,16 +67,16 @@
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+      <h2 id="demo-heading">Demo 1: Missing Language Declaration</h2>
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-311"
+           aria-labelledby="demo-label-311-1"
            data-announce-fail="Showing fail example. The html element has no lang attribute."
            data-announce-pass="Showing pass example. The html element declares the correct language.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-311">Language of Page demo</span>
+          <span class="demo-container__label" id="demo-label-311-1">Missing language declaration</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -111,6 +111,122 @@
 &lt;html lang="en-US"&gt;</code></pre>
           </div>
         </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Wrong Language Declared</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-311-2"
+           data-announce-fail="Showing fail example. The page content is in Spanish, but the html element declares English. Screen readers will mispronounce Spanish words."
+           data-announce-pass="Showing pass example. The page content is in Spanish and the html element correctly declares Spanish.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-311-2">Wrong language declared</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>The page content is in Spanish, but the HTML declares English. Screen readers will apply English pronunciation rules to Spanish words, making them unintelligible.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Fail: Spanish content with English lang --&gt;
+&lt;html lang="en"&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Bienvenido&lt;/h1&gt;
+    &lt;p&gt;Esto es contenido en español.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The page content is in Spanish and the HTML correctly declares Spanish. Screen readers apply Spanish pronunciation rules, making the content clear and intelligible.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Pass: Spanish content with Spanish lang --&gt;
+&lt;html lang="es"&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Bienvenido&lt;/h1&gt;
+    &lt;p&gt;Esto es contenido en español.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-3">
+      <h2 id="demo-heading-3">Demo 3: Valid vs. Invalid Language Tags</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-311-3"
+           data-announce-fail="Showing fail example. Invalid BCP 47 language tags that browsers and assistive technologies may not recognize."
+           data-announce-pass="Showing pass example. Valid BCP 47 language tags that are recognized by browsers and screen readers.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-311-3">Valid vs. invalid language tags</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Invalid language tags do not follow the BCP 47 standard. Browsers and screen readers may not recognize these values, falling back to default language settings.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Fail: Full language name (not BCP 47) --&gt;
+&lt;html lang="English"&gt;
+
+&lt;!-- Fail: Incorrect formatting (hyphens, case) --&gt;
+&lt;html lang="en-usa"&gt;
+
+&lt;!-- Fail: Empty attribute --&gt;
+&lt;html lang=""&gt;</code></pre>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Valid BCP 47 language tags use ISO 639-1 codes with optional region subtags in uppercase. These are recognized by all browsers and assistive technologies.</p>
+            <pre style="background:#f4f4f4;border:1px solid #ddd;border-radius:4px;padding:1rem;overflow-x:auto;font-size:0.85rem;line-height:1.5;margin-top:0.75rem;"><code>&lt;!-- Pass: Valid two-letter code --&gt;
+&lt;html lang="en"&gt;
+
+&lt;!-- Pass: Valid code with region --&gt;
+&lt;html lang="en-US"&gt;
+
+&lt;!-- Pass: Valid code for other languages --&gt;
+&lt;html lang="fr"&gt;
+&lt;html lang="de-CH"&gt;</code></pre>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
@@ -134,9 +250,17 @@
       <p>WCAG techniques used in this demo: <code>H57</code></p>
     </section>
 
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html">Understanding SC 3.1.1</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H57">Technique H57: Using lang attribute on HTML element</a></li>
+      </ul>
+    </section>
+
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -145,7 +269,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

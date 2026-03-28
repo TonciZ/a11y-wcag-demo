@@ -5,3 +5,18 @@ content/
 .planning/
 components.html
 node_modules/
+Training data - demo examples/
+tests/
+test-results/
+playwright-report/
+scripts/
+package.json
+package-lock.json
+*.png
+*.jpg
+*.jpeg
+*.gif
+.playwright-mcp/
+homepage-playground.html
+SESSION_SUMMARY.md
+CHECKLIST.md

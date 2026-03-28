@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -114,7 +114,11 @@
           </div>
         </div>
 
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code class="demo-live-code"></code></pre>
         </details>
@@ -171,7 +175,11 @@
           </div>
         </div>
 
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code class="demo-live-code"></code></pre>
         </details>
@@ -203,12 +211,21 @@
 
     <section class="content-section" aria-labelledby="resources-heading">
       <h2 id="resources-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>H50</code>, <code>H51</code>, <code>ARIA8</code></p>
+      <p>WCAG techniques used in this demo: <code>G96</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Based on official WCAG guidance (0 matching audit findings for this checkpoint).</p>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics.html">Understanding SC 1.3.3: Sensory Characteristics</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G96">Technique G96: Providing textual identification of items that rely on sensory info</a></li>
+      </ul>
     </section>
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -217,7 +234,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

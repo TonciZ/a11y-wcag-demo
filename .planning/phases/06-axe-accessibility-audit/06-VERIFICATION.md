@@ -129,5 +129,5 @@ Phase 6 goal achieved: **The site has an auditable, documented list of all acces
 ---
 
 _Verified: 2026-03-13T23:45:00Z_
-_Verifier: Claude (gsd-verifier)_
+_Verifier: Claude (verifier)_
 _Re-verification completed after gap closure (audit JSON files restored via git checkout)_

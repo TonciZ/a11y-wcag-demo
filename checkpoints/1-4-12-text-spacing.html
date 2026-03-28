@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -77,7 +77,7 @@
            data-announce-pass="Showing pass example. All content is accessible when users apply custom text spacing - fully readable.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-1412">Text spacing demo</span>
+          <span class="demo-container__label" id="demo-label-1412-1">Text spacing demo</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -107,6 +107,115 @@
             <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">All text visible - <code>min-height: 80px; overflow: visible</code></p>
           </div>
         </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <!-- Demo 2: Tooltip content overflow -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-1412-2"
+           data-announce-fail="Showing fail example. Tooltip text is clipped when custom text spacing is applied - content becomes unreadable."
+           data-announce-pass="Showing pass example. Tooltip text is fully visible and readable when custom text spacing is applied.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-1412-2">Tooltip text spacing demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>A tooltip uses a fixed width and height with <code>overflow: hidden</code>. When users apply WCAG 1.4.12 text spacing overrides, the tooltip content is clipped and becomes unreadable.</p>
+            <div style="position:relative;display:inline-block;margin-top:0.75rem;">
+              <button style="padding:0.5rem 1rem;background:#0055cc;color:white;border:none;border-radius:4px;cursor:pointer;">Hover for info</button>
+              <div style="position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#333;color:white;padding:0.75rem;border-radius:4px;white-space:nowrap;width:120px;overflow:hidden;z-index:1000;font-size:0.875rem;line-height:1.5;letter-spacing:0.12em;word-spacing:0.16em;">This is a tooltip with fixed width.</div>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">Tooltip content clipped - <code>width: 120px; overflow: hidden</code></p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>The same tooltip uses <code>white-space: normal</code> and no fixed width constraint. Content expands naturally when users apply text spacing overrides.</p>
+            <div style="position:relative;display:inline-block;margin-top:0.75rem;">
+              <button style="padding:0.5rem 1rem;background:#0055cc;color:white;border:none;border-radius:4px;cursor:pointer;">Hover for info</button>
+              <div style="position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#333;color:white;padding:0.75rem;border-radius:4px;white-space:normal;overflow:visible;z-index:1000;font-size:0.875rem;line-height:1.5;letter-spacing:0.12em;word-spacing:0.16em;max-width:200px;">This is a tooltip that adapts to content size.</div>
+            </div>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.75rem;">All content visible - <code>white-space: normal; overflow: visible; max-width: 200px</code></p>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <!-- Demo 3: Navigation menu text overflow -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-1412-3"
+           data-announce-fail="Showing fail example. Navigation menu items overlap when custom text spacing is applied - menu becomes unreadable."
+           data-announce-pass="Showing pass example. Navigation menu items wrap and remain readable when custom text spacing is applied.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-1412-3">Navigation menu text spacing demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Navigation uses fixed-width items with <code>white-space: nowrap</code>. When text spacing is applied, menu items overlap and text becomes unreadable.</p>
+            <nav style="border:1px solid #e0e0e0;border-radius:4px;padding:0.5rem;margin-top:0.75rem;background:#f9f9f9;">
+              <ul style="list-style:none;margin:0;padding:0;display:flex;gap:0.25rem;">
+                <li><a href="#" style="display:inline-block;padding:0.5rem 0.75rem;background:#0055cc;color:white;text-decoration:none;border-radius:3px;white-space:nowrap;width:100px;overflow:hidden;text-overflow:ellipsis;line-height:1.5;letter-spacing:0.12em;">Products</a></li>
+                <li><a href="#" style="display:inline-block;padding:0.5rem 0.75rem;background:#0055cc;color:white;text-decoration:none;border-radius:3px;white-space:nowrap;width:100px;overflow:hidden;text-overflow:ellipsis;line-height:1.5;letter-spacing:0.12em;">Services</a></li>
+                <li><a href="#" style="display:inline-block;padding:0.5rem 0.75rem;background:#0055cc;color:white;text-decoration:none;border-radius:3px;white-space:nowrap;width:100px;overflow:hidden;text-overflow:ellipsis;line-height:1.5;letter-spacing:0.12em;">Documentation</a></li>
+                <li><a href="#" style="display:inline-block;padding:0.5rem 0.75rem;background:#0055cc;color:white;text-decoration:none;border-radius:3px;white-space:nowrap;width:100px;overflow:hidden;text-overflow:ellipsis;line-height:1.5;letter-spacing:0.12em;">Support</a></li>
+              </ul>
+            </nav>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Menu items clip and overlap - <code>white-space: nowrap; width: 100px; overflow: hidden</code></p>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Navigation uses flexible widths and allows wrapping. When text spacing is applied, menu items expand and remain fully readable.</p>
+            <nav style="border:1px solid #e0e0e0;border-radius:4px;padding:0.5rem;margin-top:0.75rem;background:#f9f9f9;">
+              <ul style="list-style:none;margin:0;padding:0;display:flex;gap:0.25rem;flex-wrap:wrap;">
+                <li><a href="#" style="display:inline-block;padding:0.5rem 0.75rem;background:#0055cc;color:white;text-decoration:none;border-radius:3px;white-space:normal;line-height:1.5;letter-spacing:0.12em;">Products</a></li>
+                <li><a href="#" style="display:inline-block;padding:0.5rem 0.75rem;background:#0055cc;color:white;text-decoration:none;border-radius:3px;white-space:normal;line-height:1.5;letter-spacing:0.12em;">Services</a></li>
+                <li><a href="#" style="display:inline-block;padding:0.5rem 0.75rem;background:#0055cc;color:white;text-decoration:none;border-radius:3px;white-space:normal;line-height:1.5;letter-spacing:0.12em;">Documentation</a></li>
+                <li><a href="#" style="display:inline-block;padding:0.5rem 0.75rem;background:#0055cc;color:white;text-decoration:none;border-radius:3px;white-space:normal;line-height:1.5;letter-spacing:0.12em;">Support</a></li>
+              </ul>
+            </nav>
+            <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">All menu items visible - <code>white-space: normal; flex-wrap: wrap</code></p>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
@@ -127,12 +236,22 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>C36</code>, <code>C37</code></p>
+      <p>WCAG techniques used in this demo: <code>C35</code>, <code>C36</code>, <code>C37</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 3 real-world audit findings and official WCAG guidance.</p>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html">Understanding SC 1.4.12: Text Spacing</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C36">Technique C36: Allowing text spacing override</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C35">Technique C35: Allowing text spacing without wrapping</a></li>
+      </ul>
     </section>
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -141,7 +260,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

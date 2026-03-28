@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -122,6 +122,75 @@
             </div>
           </div>
         </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="demo-heading-2">
+      <h2 id="demo-heading-2">Demo 2: Chat Widget Availability</h2>
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-326-2"
+           data-announce-fail="Showing fail example. Chat help is available on some pages but missing on others, making it unpredictable."
+           data-announce-pass="Showing pass example. Chat help appears in the same location on all pages, always accessible.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-326-2">Chat widget consistency demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Chat widget is available on product pages but hidden on support/FAQ pages - users cannot find help where they need it.</p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
+              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;background-color:rgba(0,0,0,0.02);">
+                <strong style="font-size:0.8rem;color:#5a5a5a;">Product Page</strong>
+                <p style="font-size:0.875rem;margin:0.5rem 0 0;">View our latest products</p>
+                <div style="position:absolute;bottom:0.75rem;right:0.75rem;width:40px;height:40px;background-color:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;cursor:pointer;" title="Chat widget present">💬</div>
+              </div>
+              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;background-color:rgba(0,0,0,0.02);">
+                <strong style="font-size:0.8rem;color:#5a5a5a;">Support/FAQ Page</strong>
+                <p style="font-size:0.875rem;margin:0.5rem 0 0;">Find answers to common questions</p>
+                <p style="font-size:0.8rem;color:#a0a0a0;margin-top:0.75rem;font-style:italic;">Chat widget not available here</p>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Chat widget appears in the same bottom-right location on all pages - users can access help anywhere on the site.</p>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;">
+              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;background-color:rgba(0,0,0,0.02);">
+                <strong style="font-size:0.8rem;color:#5a5a5a;">Product Page</strong>
+                <p style="font-size:0.875rem;margin:0.5rem 0 0;">View our latest products</p>
+                <div style="position:absolute;bottom:0.75rem;right:0.75rem;width:40px;height:40px;background-color:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;cursor:pointer;" title="Chat widget present">💬</div>
+              </div>
+              <div style="flex:1;min-width:160px;border:1px solid #e0e0e0;border-radius:4px;padding:0.75rem;position:relative;min-height:100px;background-color:rgba(0,0,0,0.02);">
+                <strong style="font-size:0.8rem;color:#5a5a5a;">Support/FAQ Page</strong>
+                <p style="font-size:0.875rem;margin:0.5rem 0 0;">Find answers to common questions</p>
+                <div style="position:absolute;bottom:0.75rem;right:0.75rem;width:40px;height:40px;background-color:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;cursor:pointer;" title="Chat widget present">💬</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
@@ -145,9 +214,17 @@
       <p>WCAG techniques used in this demo: <code>G220</code></p>
     </section>
 
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html">Understanding SC 3.2.6</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G220">Technique G220: Consistent help location</a></li>
+      </ul>
+    </section>
+
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -156,7 +233,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

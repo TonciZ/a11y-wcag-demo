@@ -32,7 +32,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -151,7 +151,11 @@
         </div>
 
         <!-- Code blocks for Demo 1 -->
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code class="demo-live-code"></code></pre>
         </details>
@@ -234,7 +238,11 @@
         </div>
 
         <!-- Code blocks for Demo 2 -->
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code class="demo-live-code"></code></pre>
         </details>
@@ -269,9 +277,19 @@
       <p>WCAG techniques used in this demo: <code>C40</code>, <code>SCR39</code></p>
     </section>
 
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 1 real-world audit finding and official WCAG guidance.</p>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html">Understanding SC 1.4.13: Content on Hover or Focus</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C40">Technique C40: Creating a two-color focus indicator</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR39">Technique SCR39: Making content on focus dismissible</a></li>
+      </ul>
+    </section>
+
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -280,7 +298,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

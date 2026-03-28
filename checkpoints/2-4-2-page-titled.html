@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -114,6 +114,82 @@
 &lt;title&gt;Search results for "keyboard" - WCAG 2.2 Demo&lt;/title&gt;</code></pre>
           </div>
         </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-242-2"
+           data-announce-fail="Showing fail example. Multiple pages in a site share the same title, making tabs indistinguishable."
+           data-announce-pass="Showing pass example. Each page has a unique title that identifies its specific content.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-242-2">Demo 2: Multiple pages with identical titles</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>When browsing multiple pages of a site, all tabs show the same title. Screen reader users cannot identify which tab contains which content without switching to each one.</p>
+            <div style="margin-top:0.75rem;">
+              <p style="font-size:0.9rem;color:#666;margin:0 0 0.5rem 0;">Browser tabs open for:</p>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;font-family:monospace;font-size:0.85rem;">
+                <div style="padding:0.5rem 0.75rem;background:#e8e8e8;border-radius:4px;border:1px solid #999;">
+                  <div style="font-weight:bold;">My Website</div>
+                  <div style="font-size:0.8rem;color:#666;">← Contact page</div>
+                </div>
+                <div style="padding:0.5rem 0.75rem;background:#e8e8e8;border-radius:4px;border:1px solid #999;">
+                  <div style="font-weight:bold;">My Website</div>
+                  <div style="font-size:0.8rem;color:#666;">← Blog page</div>
+                </div>
+                <div style="padding:0.5rem 0.75rem;background:#e8e8e8;border-radius:4px;border:1px solid #999;">
+                  <div style="font-weight:bold;">My Website</div>
+                  <div style="font-size:0.8rem;color:#666;">← FAQ page</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Each page has a unique, specific title. Tab switching is fast because users can identify content by the tab title alone.</p>
+            <div style="margin-top:0.75rem;">
+              <p style="font-size:0.9rem;color:#666;margin:0 0 0.5rem 0;">Browser tabs open for:</p>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;font-family:monospace;font-size:0.85rem;">
+                <div style="padding:0.5rem 0.75rem;background:#e3f2fd;border-radius:4px;border:1px solid #1976d2;">
+                  <div style="font-weight:bold;">Contact Us - My Website</div>
+                  <div style="font-size:0.8rem;color:#1976d2;">✓</div>
+                </div>
+                <div style="padding:0.5rem 0.75rem;background:#e3f2fd;border-radius:4px;border:1px solid #1976d2;">
+                  <div style="font-weight:bold;">Blog - My Website</div>
+                  <div style="font-size:0.8rem;color:#1976d2;">✓</div>
+                </div>
+                <div style="padding:0.5rem 0.75rem;background:#e3f2fd;border-radius:4px;border:1px solid #1976d2;">
+                  <div style="font-weight:bold;">FAQ - My Website</div>
+                  <div style="font-size:0.8rem;color:#1976d2;">✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
@@ -134,12 +210,22 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>H25</code></p>
+      <p>WCAG techniques used in this demo: <code>H25</code>, <code>G88</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 24 real-world audit findings and official WCAG guidance.</p>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/page-titled.html">Understanding SC 2.4.2: Page Titled</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H25">Technique H25: Providing a descriptive title</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G88">Technique G88: Providing descriptive titles for web pages</a></li>
+      </ul>
     </section>
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -148,7 +234,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

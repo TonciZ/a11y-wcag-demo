@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -68,16 +68,18 @@
     </section>
 
     <section class="content-section" aria-labelledby="demo-heading">
-      <h2 id="demo-heading">Demo</h2>
+      <h2 id="demo-heading">Demos</h2>
+
+      <!-- Demo 1: Email Auto-Population -->
       <div class="demo-container"
            data-mode="fail"
            role="region"
-           aria-labelledby="demo-label-337"
+           aria-labelledby="demo-label-337-1"
            data-announce-fail="Showing fail example. Step 2 asks the user to re-enter their email address already given in step 1."
            data-announce-pass="Showing pass example. Step 2 pre-fills the email from step 1 - no redundant entry required.">
 
         <div class="demo-container__toolbar">
-          <span class="demo-container__label" id="demo-label-337">Redundant entry demo</span>
+          <span class="demo-container__label" id="demo-label-337-1">Demo 1: Email auto-population</span>
           <button class="demo-toggle" type="button" aria-pressed="false">
             <span class="demo-toggle__label--fail">Show passing example</span>
             <span class="demo-toggle__label--pass" hidden>Show failing example</span>
@@ -156,7 +158,7 @@
             </div>
           </div>
         </div>
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Step 2 asks for email that was already entered in step 1 --&gt;</span>
 &lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"email"</span>&gt;Email address&lt;/<span class="hl-tag">label</span>&gt;
@@ -166,6 +168,248 @@
 &lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"email"</span>&gt;Email address&lt;/<span class="hl-tag">label</span>&gt;
 <span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"email"</span> <span class="hl-tag">id</span>=<span class="hl-value">"email"</span> <span class="hl-tag">value</span>=<span class="hl-value">"jane@example.com"</span>&gt;</span>
 <span class="hl-comment">&lt;!-- Value carried from step 1 — user can edit but need not retype --&gt;</span></code></pre>
+        </details>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <!-- Demo 2: Billing/Shipping Address with Selection -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-337-2"
+           data-announce-fail="Showing fail example. Checkout asks for billing address in step 1 and shipping address in step 2 with no checkbox or selection mechanism."
+           data-announce-pass="Showing pass example. Checkout provides a checkbox to use the same address, avoiding redundant data entry.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-337-2">Demo 2: Address selection with checkbox</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Enter your billing address in step 1 then proceed — step 2 asks for shipping address with no checkbox or selection option.</p>
+            <div style="border:1px solid var(--color-border);border-radius:6px;padding:1rem;margin-top:0.75rem;max-width:420px;">
+              <div id="fail-337-addr-step1">
+                <p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Step 1 of 2 &mdash; Billing address</p>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="fail-337-addr-street1" style="display:block;margin-bottom:0.25rem;">Street address</label>
+                  <input type="text" id="fail-337-addr-street1" placeholder="e.g. 123 Main Street" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+                  <div>
+                    <label for="fail-337-addr-city1" style="display:block;margin-bottom:0.25rem;">City</label>
+                    <input type="text" id="fail-337-addr-city1" placeholder="e.g. Springfield" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                  </div>
+                  <div>
+                    <label for="fail-337-addr-zip1" style="display:block;margin-bottom:0.25rem;">ZIP</label>
+                    <input type="text" id="fail-337-addr-zip1" placeholder="e.g. 62701" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                  </div>
+                </div>
+                <button type="button" onclick="fail337AddrNext()" style="padding:0.4rem 1.2rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Next &rarr;</button>
+                <p id="fail-337-addr-step1-err" role="alert" style="color:#b91c1c;font-size:0.875rem;display:none;margin-top:0.5rem;">Please fill in all address fields.</p>
+              </div>
+              <div id="fail-337-addr-step2" hidden>
+                <p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Step 2 of 2 &mdash; Shipping address</p>
+                <p style="font-size:0.875rem;margin-bottom:0.75rem;">Enter your shipping address (no "same as billing" option)</p>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="fail-337-addr-street2" style="display:block;margin-bottom:0.25rem;">Street address</label>
+                  <input type="text" id="fail-337-addr-street2" placeholder="Enter street address" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+                  <div>
+                    <label for="fail-337-addr-city2" style="display:block;margin-bottom:0.25rem;">City</label>
+                    <input type="text" id="fail-337-addr-city2" placeholder="Enter city" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                  </div>
+                  <div>
+                    <label for="fail-337-addr-zip2" style="display:block;margin-bottom:0.25rem;">ZIP</label>
+                    <input type="text" id="fail-337-addr-zip2" placeholder="Enter ZIP" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                  </div>
+                </div>
+                <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                  <button type="button" onclick="fail337AddrBack()" style="padding:0.4rem 1rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">&larr; Back</button>
+                  <button type="button" style="padding:0.4rem 1.2rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Complete &rarr;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Enter your billing address in step 1 then proceed — step 2 provides a checkbox to use the same address.</p>
+            <div style="border:1px solid var(--color-border);border-radius:6px;padding:1rem;margin-top:0.75rem;max-width:420px;">
+              <div id="pass-337-addr-step1">
+                <p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Step 1 of 2 &mdash; Billing address</p>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="pass-337-addr-street1" style="display:block;margin-bottom:0.25rem;">Street address</label>
+                  <input type="text" id="pass-337-addr-street1" placeholder="e.g. 123 Main Street" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+                  <div>
+                    <label for="pass-337-addr-city1" style="display:block;margin-bottom:0.25rem;">City</label>
+                    <input type="text" id="pass-337-addr-city1" placeholder="e.g. Springfield" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                  </div>
+                  <div>
+                    <label for="pass-337-addr-zip1" style="display:block;margin-bottom:0.25rem;">ZIP</label>
+                    <input type="text" id="pass-337-addr-zip1" placeholder="e.g. 62701" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                  </div>
+                </div>
+                <button type="button" onclick="pass337AddrNext()" style="padding:0.4rem 1.2rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Next &rarr;</button>
+                <p id="pass-337-addr-step1-err" role="alert" style="color:#b91c1c;font-size:0.875rem;display:none;margin-top:0.5rem;">Please fill in all address fields.</p>
+              </div>
+              <div id="pass-337-addr-step2" hidden>
+                <p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Step 2 of 2 &mdash; Shipping address</p>
+                <div style="margin-bottom:1rem;padding:0.75rem;background:var(--color-surface-variant);border-radius:4px;">
+                  <label style="display:flex;align-items:center;cursor:pointer;gap:0.5rem;">
+                    <input type="checkbox" id="pass-337-same-addr" onchange="toggleShippingAddr()" style="cursor:pointer;">
+                    <span>Use my billing address for shipping</span>
+                  </label>
+                </div>
+                <div id="pass-337-shipping-fields">
+                  <div style="margin-bottom:0.75rem;">
+                    <label for="pass-337-addr-street2" style="display:block;margin-bottom:0.25rem;">Street address</label>
+                    <input type="text" id="pass-337-addr-street2" placeholder="Enter street address" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                  </div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+                    <div>
+                      <label for="pass-337-addr-city2" style="display:block;margin-bottom:0.25rem;">City</label>
+                      <input type="text" id="pass-337-addr-city2" placeholder="Enter city" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                    </div>
+                    <div>
+                      <label for="pass-337-addr-zip2" style="display:block;margin-bottom:0.25rem;">ZIP</label>
+                      <input type="text" id="pass-337-addr-zip2" placeholder="Enter ZIP" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                    </div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                  <button type="button" onclick="pass337AddrBack()" style="padding:0.4rem 1rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">&larr; Back</button>
+                  <button type="button" style="padding:0.4rem 1.2rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Complete &rarr;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ No checkbox or selection mechanism for reusing billing address --&gt;</span>
+&lt;<span class="hl-tag">label</span> <span class="hl-tag">for</span>=<span class="hl-value">"shipping-street"</span>&gt;Shipping address&lt;/<span class="hl-tag">label</span>&gt;
+<span class="hl-line-fail">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">id</span>=<span class="hl-value">"shipping-street"</span> <span class="hl-tag">placeholder</span>=<span class="hl-value">"Enter address"</span>&gt;</span>
+<span class="hl-comment">&lt;!-- User must retype entire address from memory --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Checkbox allows user to reuse billing address --&gt;</span>
+&lt;<span class="hl-tag">label</span>&gt;
+<span class="hl-line-pass">  &lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"checkbox"</span> <span class="hl-tag">id</span>=<span class="hl-value">"same-addr"</span>&gt;</span>
+  Use my billing address for shipping
+&lt;/<span class="hl-tag">label</span>&gt;</span>
+<span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">id</span>=<span class="hl-value">"shipping-street"</span>&gt;</span>
+<span class="hl-comment">&lt;!-- Fields auto-populate when checkbox is checked --&gt;</span></code></pre>
+        </details>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <!-- Demo 3: Form Validation Error Persistence -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-337-3"
+           data-announce-fail="Showing fail example. Form submission fails on credit card validation and clears all previously entered data."
+           data-announce-pass="Showing pass example. Form submission fails but retains previously entered data, user only needs to fix the invalid field.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-337-3">Demo 3: Data retention on form errors</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Fill in the payment form with an invalid credit card number — form clears all fields on error.</p>
+            <div style="border:1px solid var(--color-border);border-radius:6px;padding:1rem;margin-top:0.75rem;max-width:420px;">
+              <div id="fail-337-pay-form">
+                <div style="margin-bottom:0.75rem;">
+                  <label for="fail-337-pay-name" style="display:block;margin-bottom:0.25rem;">Full name</label>
+                  <input type="text" id="fail-337-pay-name" placeholder="e.g. Jane Smith" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="fail-337-pay-email" style="display:block;margin-bottom:0.25rem;">Email address</label>
+                  <input type="email" id="fail-337-pay-email" placeholder="e.g. jane@example.com" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="fail-337-pay-addr" style="display:block;margin-bottom:0.25rem;">Address</label>
+                  <input type="text" id="fail-337-pay-addr" placeholder="e.g. 123 Main Street" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="fail-337-pay-card" style="display:block;margin-bottom:0.25rem;">Card number (try 1234)</label>
+                  <input type="text" id="fail-337-pay-card" placeholder="e.g. 4532 1234 5678 9010" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <button type="button" onclick="fail337PaySubmit()" style="padding:0.4rem 1.2rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Submit &rarr;</button>
+                <p id="fail-337-pay-err" role="alert" style="color:#b91c1c;font-size:0.875rem;display:none;margin-top:0.5rem;"></p>
+              </div>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Fill in the payment form with an invalid credit card number — form retains all data, shows targeted error.</p>
+            <div style="border:1px solid var(--color-border);border-radius:6px;padding:1rem;margin-top:0.75rem;max-width:420px;">
+              <div id="pass-337-pay-form">
+                <div style="margin-bottom:0.75rem;">
+                  <label for="pass-337-pay-name" style="display:block;margin-bottom:0.25rem;">Full name</label>
+                  <input type="text" id="pass-337-pay-name" placeholder="e.g. Jane Smith" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="pass-337-pay-email" style="display:block;margin-bottom:0.25rem;">Email address</label>
+                  <input type="email" id="pass-337-pay-email" placeholder="e.g. jane@example.com" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="pass-337-pay-addr" style="display:block;margin-bottom:0.25rem;">Address</label>
+                  <input type="text" id="pass-337-pay-addr" placeholder="e.g. 123 Main Street" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <div style="margin-bottom:0.75rem;">
+                  <label for="pass-337-pay-card" style="display:block;margin-bottom:0.25rem;">Card number (try 1234)</label>
+                  <input type="text" id="pass-337-pay-card" placeholder="e.g. 4532 1234 5678 9010" style="width:100%;border:2px solid var(--color-border);border-radius:4px;padding:0.4rem 0.6rem;">
+                </div>
+                <button type="button" onclick="pass337PaySubmit()" style="padding:0.4rem 1.2rem;border-radius:4px;border:1px solid var(--color-border);background:var(--color-surface);cursor:pointer;">Submit &rarr;</button>
+                <p id="pass-337-pay-err" role="alert" style="color:#b91c1c;font-size:0.875rem;display:none;margin-top:0.5rem;"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Form clears all fields on validation error --&gt;</span>
+<span class="hl-line-fail">document.getElementById('paymentForm').reset(); <span class="hl-comment">// Clears all data!</span></span>
+alert('Invalid card number. Please try again.');
+<span class="hl-comment">&lt;!-- User must re-enter all data just to fix one field --&gt;</span></code></pre>
+          <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Form retains data, shows error for invalid field only --&gt;</span>
+<span class="hl-line-pass"><span class="hl-tag">if</span> (!isValidCard(cardNumber)) {</span>
+<span class="hl-line-pass">  cardField.focus(); <span class="hl-comment">// Focus only the invalid field</span></span>
+<span class="hl-line-pass">  errorMsg.textContent = 'Card number must be 16 digits';</span>
+<span class="hl-line-pass">  <span class="hl-comment">// Do NOT reset form — all other data stays</span></span>
+<span class="hl-line-pass">}</span></code></pre>
+        </details>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
         </details>
       </div>
     </section>
@@ -187,12 +431,20 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>G155</code></p>
+      <p>WCAG techniques used in this demo: <code>G221</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry.html">Understanding SC 3.3.7</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G221">Technique G221: Providing data from a previous step</a></li>
+      </ul>
     </section>
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -201,7 +453,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>
@@ -236,6 +487,93 @@
     function pass337Back() {
       document.getElementById('pass-337-step2').hidden = true;
       document.getElementById('pass-337-step1').hidden = false;
+    }
+
+    // Demo 2: Address with checkbox selection
+    function fail337AddrNext() {
+      var street = document.getElementById('fail-337-addr-street1').value.trim();
+      var city = document.getElementById('fail-337-addr-city1').value.trim();
+      var zip = document.getElementById('fail-337-addr-zip1').value.trim();
+      var err = document.getElementById('fail-337-addr-step1-err');
+      if (!street || !city || !zip) { err.style.display = 'block'; return; }
+      err.style.display = 'none';
+      document.getElementById('fail-337-addr-step1').hidden = true;
+      document.getElementById('fail-337-addr-step2').hidden = false;
+      document.getElementById('fail-337-addr-street2').focus();
+    }
+    function fail337AddrBack() {
+      document.getElementById('fail-337-addr-step2').hidden = true;
+      document.getElementById('fail-337-addr-step1').hidden = false;
+    }
+
+    function pass337AddrNext() {
+      var street = document.getElementById('pass-337-addr-street1').value.trim();
+      var city = document.getElementById('pass-337-addr-city1').value.trim();
+      var zip = document.getElementById('pass-337-addr-zip1').value.trim();
+      var err = document.getElementById('pass-337-addr-step1-err');
+      if (!street || !city || !zip) { err.style.display = 'block'; return; }
+      err.style.display = 'none';
+      document.getElementById('pass-337-addr-step1').hidden = true;
+      document.getElementById('pass-337-addr-step2').hidden = false;
+      document.getElementById('pass-337-same-addr').checked = true;
+      toggleShippingAddr();
+      document.getElementById('pass-337-same-addr').focus();
+    }
+    function pass337AddrBack() {
+      document.getElementById('pass-337-addr-step2').hidden = true;
+      document.getElementById('pass-337-addr-step1').hidden = false;
+    }
+    function toggleShippingAddr() {
+      var checked = document.getElementById('pass-337-same-addr').checked;
+      var street = document.getElementById('pass-337-addr-street2');
+      var city = document.getElementById('pass-337-addr-city2');
+      var zip = document.getElementById('pass-337-addr-zip2');
+      if (checked) {
+        var billingStreet = document.getElementById('pass-337-addr-street1').value;
+        var billingCity = document.getElementById('pass-337-addr-city1').value;
+        var billingZip = document.getElementById('pass-337-addr-zip1').value;
+        street.value = billingStreet;
+        city.value = billingCity;
+        zip.value = billingZip;
+        street.disabled = true;
+        city.disabled = true;
+        zip.disabled = true;
+      } else {
+        street.value = '';
+        city.value = '';
+        zip.value = '';
+        street.disabled = false;
+        city.disabled = false;
+        zip.disabled = false;
+      }
+    }
+
+    // Demo 3: Form validation error persistence
+    function fail337PaySubmit() {
+      var cardNum = document.getElementById('fail-337-pay-card').value.trim();
+      var err = document.getElementById('fail-337-pay-error');
+      if (cardNum.length < 13) {
+        err.style.display = 'block';
+        document.getElementById('fail-337-pay-name').value = '';
+        document.getElementById('fail-337-pay-email').value = '';
+        document.getElementById('fail-337-pay-addr').value = '';
+        document.getElementById('fail-337-pay-card').value = '';
+        document.getElementById('fail-337-pay-name').focus();
+        return;
+      }
+      err.style.display = 'none';
+      alert('Payment processed (demo)');
+    }
+    function pass337PaySubmit() {
+      var cardNum = document.getElementById('pass-337-pay-card').value.trim();
+      var err = document.getElementById('pass-337-pay-error');
+      if (cardNum.length < 13) {
+        err.style.display = 'block';
+        document.getElementById('pass-337-pay-card').focus();
+        return;
+      }
+      err.style.display = 'none';
+      alert('Payment processed (demo)');
     }
   </script>
 </body>

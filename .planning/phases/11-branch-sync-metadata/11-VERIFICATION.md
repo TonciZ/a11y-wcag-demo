@@ -144,4 +144,4 @@ The dev/master branch desync has been fully resolved. Verification artifacts for
 ---
 
 _Verified: 2026-03-14T13:42:00Z_
-_Verifier: Claude (gsd-verifier)_
+_Verifier: Claude (verifier)_

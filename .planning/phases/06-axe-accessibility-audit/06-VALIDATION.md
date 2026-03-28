@@ -29,7 +29,7 @@ created: 2026-03-13
 
 - **After every task commit:** Run `node scripts/audit-light.js` (quick scan of changed files)
 - **After every plan wave:** Run `node scripts/audit-light.js && node scripts/audit-dark.js`
-- **Before `/gsd:verify-work`:** Full suite must complete with JSON output in `.planning/audits/`
+- **Before `verification step`:** Full suite must complete with JSON output in `.planning/audits/`
 - **Max feedback latency:** ~120 seconds
 
 ---

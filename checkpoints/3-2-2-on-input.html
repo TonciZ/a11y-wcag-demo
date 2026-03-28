@@ -15,7 +15,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -158,7 +158,7 @@
           </div>
         </div>
 
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ onchange immediately reorders — user loses their place --&gt;</span>
 &lt;<span class="hl-tag">select</span>
@@ -174,6 +174,10 @@
   &lt;<span class="hl-tag">option</span>&gt;Price (high–low)&lt;/<span class="hl-tag">option</span>&gt;
 &lt;/<span class="hl-tag">select</span>&gt;
 <span class="hl-line-pass">&lt;<span class="hl-tag">button</span> <span class="hl-tag">onclick</span>=<span class="hl-value">"sortResults(select.value)"</span>&gt;Apply&lt;/<span class="hl-tag">button</span>&gt;</span></code></pre>
+        </details>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
         </details>
       </div>
     </section>
@@ -245,7 +249,7 @@
           </div>
         </div>
 
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ oninput moves focus to next field — context change on input --&gt;</span>
 &lt;<span class="hl-tag">input</span> <span class="hl-tag">maxlength</span>=<span class="hl-value">"1"</span>
@@ -258,6 +262,10 @@
           <pre><code data-demo-code="pass"><span class="hl-comment">&lt;!-- ✓ Single input — user types freely, no forced focus movement --&gt;</span>
 <span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">inputmode</span>=<span class="hl-value">"numeric"</span></span>
 <span class="hl-line-pass">  <span class="hl-tag">maxlength</span>=<span class="hl-value">"4"</span> <span class="hl-tag">pattern</span>=<span class="hl-value">"\d{4}"</span>&gt;</span></code></pre>
+        </details>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
         </details>
       </div>
     </section>
@@ -294,12 +302,20 @@
 
     <section class="content-section" aria-labelledby="resources-heading">
       <h2 id="resources-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>H32</code>, <code>H84</code>, <code>H85</code></p>
+      <p>WCAG techniques used in this demo: <code>G80</code>, <code>H32</code>, <code>H84</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input.html">Understanding SC 3.2.2</a></li>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H32">Technique H32: Providing submit buttons</a></li>
+      </ul>
     </section>
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -308,7 +324,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>

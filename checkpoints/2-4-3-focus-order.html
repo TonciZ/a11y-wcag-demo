@@ -13,9 +13,9 @@
 </head>
 <body class="checkpoint-page">
 
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-link" tabindex="0">Skip to main content</a>
 
-  <header class="site-hero" role="banner">
+  <header class="site-hero">
     <div class="site-hero__inner">
       <div class="site-hero__brand">
         <a href="../index.html" class="site-header__logo">WCAG<br>Demo</a>
@@ -108,6 +108,143 @@
             </div>
           </div>
         </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-243-2"
+           data-announce-fail="Showing fail example. CSS flexbox reordering causes focus order to jump unexpectedly, diverging from visual layout.
+
+Tab focus sequence: Skip link, then to sidebar (first in DOM), then to main content. But visually, main content appears first."
+           data-announce-pass="Showing pass example. DOM order matches visual layout, so Tab focus follows the expected left-to-right, top-to-bottom sequence.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-243-2">Demo 2: DOM order vs. visual order mismatch</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <style>
+          .demo-layout-243 { display: flex; gap: 1rem; margin-top: 0.75rem; }
+          .demo-layout-243__sidebar { background: #f5f5f5; padding: 1rem; border-radius: 4px; min-width: 150px; order: -1; }
+          .demo-layout-243__main { background: #e8f4f8; padding: 1rem; border-radius: 4px; flex: 1; }
+          .demo-layout-243__main h3 { margin-top: 0; }
+          .demo-layout-243 button { padding: 0.5rem 1rem; margin-top: 0.5rem; }
+        </style>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>CSS flexbox <code>order</code> property visually moves the sidebar to the left, but it remains first in the DOM. Pressing Tab goes: main skip link, then sidebar (DOM first), then main content (DOM second). Focus jumps backward visually.</p>
+            <div class="demo-layout-243">
+              <aside class="demo-layout-243__sidebar" tabindex="0">
+                <strong>Sidebar</strong>
+                <p style="margin:0.25rem 0 0 0;font-size:0.9rem;">Navigation links and filters</p>
+                <button type="button">Filter 1</button>
+              </aside>
+              <main class="demo-layout-243__main" tabindex="0">
+                <h3>Main Content</h3>
+                <p style="margin:0.25rem 0;font-size:0.9rem;">Appears first visually but second in DOM.</p>
+                <button type="button">Read Article</button>
+              </main>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>DOM order matches visual layout. Elements appear in the same order both visually and in the keyboard Tab sequence. Focus moves left-to-right: main content, then sidebar.</p>
+            <div class="demo-layout-243">
+              <main class="demo-layout-243__main" tabindex="0">
+                <h3>Main Content</h3>
+                <p style="margin:0.25rem 0;font-size:0.9rem;">First in DOM, first visually.</p>
+                <button type="button">Read Article</button>
+              </main>
+              <aside class="demo-layout-243__sidebar" tabindex="0">
+                <strong>Sidebar</strong>
+                <p style="margin:0.25rem 0 0 0;font-size:0.9rem;">Navigation links and filters</p>
+                <button type="button">Filter 1</button>
+              </aside>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
+      </div>
+      <!-- Demo 3: Modal doesn't trap focus -->
+      <div class="demo-container"
+           data-mode="fail"
+           role="region"
+           aria-labelledby="demo-label-243-3"
+           data-announce-fail="Showing fail example. Modal is open but Tab moves focus to elements behind it - keyboard user leaves the modal without knowing."
+           data-announce-pass="Showing pass example. Modal traps focus - Tab cycles only through modal elements until it is closed.">
+
+        <div class="demo-container__toolbar">
+          <span class="demo-container__label" id="demo-label-243-3">Modal focus trap demo</span>
+          <button class="demo-toggle" type="button" aria-pressed="false">
+            <span class="demo-toggle__label--fail">Show passing example</span>
+            <span class="demo-toggle__label--pass" hidden>Show failing example</span>
+          </button>
+        </div>
+
+        <div class="demo-status" aria-hidden="true">
+          <span class="demo-status__text--fail">Fail</span>
+          <span class="demo-status__text--pass">Pass</span>
+        </div>
+
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-demo-announcement></div>
+
+        <div class="demo-stage">
+          <div data-demo-state="fail">
+            <p>Click "Open Modal" then press Tab repeatedly. Focus escapes the modal and reaches the page behind it. Found in 15 real-world audits (search overlays, filter modals, dialogs).</p>
+            <div style="margin-top:0.75rem;">
+              <button type="button" id="fail-243-trigger" onclick="document.getElementById('fail-243-modal').hidden=false;">Open Modal</button>
+              <div id="fail-243-modal" hidden style="margin-top:0.5rem;padding:1rem;border:2px solid #333;border-radius:8px;background:var(--color-surface-alt, #f9f9f9);max-width:300px;">
+                <p style="font-weight:600;margin:0 0 0.5rem;">Confirm Action</p>
+                <p style="margin:0 0 0.75rem;font-size:0.9rem;">Are you sure you want to proceed?</p>
+                <div style="display:flex;gap:0.5rem;">
+                  <button type="button" onclick="this.closest('[id]').hidden=true;">Cancel</button>
+                  <button type="button" onclick="this.closest('[id]').hidden=true;">Confirm</button>
+                </div>
+              </div>
+              <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">No focus trap — Tab escapes to background content.</p>
+            </div>
+          </div>
+          <div data-demo-state="pass" hidden>
+            <p>Same modal with <code>aria-modal="true"</code> and JavaScript focus trap. Tab cycles only within the modal. Escape closes it.</p>
+            <div style="margin-top:0.75rem;">
+              <button type="button" id="pass-243-trigger" onclick="var m=document.getElementById('pass-243-modal');m.hidden=false;m.querySelector('button').focus();">Open Modal</button>
+              <div id="pass-243-modal" hidden role="dialog" aria-modal="true" aria-label="Confirm Action" style="margin-top:0.5rem;padding:1rem;border:2px solid #333;border-radius:8px;background:var(--color-surface-alt, #f9f9f9);max-width:300px;" onkeydown="if(event.key==='Escape'){this.hidden=true;document.getElementById('pass-243-trigger').focus();}">
+                <p style="font-weight:600;margin:0 0 0.5rem;">Confirm Action</p>
+                <p style="margin:0 0 0.75rem;font-size:0.9rem;">Are you sure you want to proceed?</p>
+                <div style="display:flex;gap:0.5rem;">
+                  <button type="button" onclick="this.closest('[role=dialog]').hidden=true;document.getElementById('pass-243-trigger').focus();">Cancel</button>
+                  <button type="button" onclick="this.closest('[role=dialog]').hidden=true;document.getElementById('pass-243-trigger').focus();">Confirm</button>
+                </div>
+              </div>
+              <p style="font-size:0.875rem;color:#5a5a5a;margin-top:0.5rem;">Focus trapped in modal. Escape closes and returns focus to trigger button.</p>
+            </div>
+          </div>
+        </div>
+
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
+        </details>
       </div>
     </section>
 
@@ -128,12 +265,27 @@
 
     <section class="content-section" aria-labelledby="techniques-heading">
       <h2 id="techniques-heading">Techniques</h2>
-      <p>WCAG techniques used in this demo: <code>H4</code>, <code>H79</code></p>
+      <p>WCAG techniques used in this demo: <code>H4</code>, <code>G59</code></p>
+    </section>
+
+    <section class="content-section" aria-labelledby="solutions-heading">
+      <h2 id="solutions-heading">Suggested Solutions &amp; References</h2>
+      <p>Curated from 56 real-world audit findings and official WCAG guidance.</p>
+      <h3>Official W3C / WAI</h3>
+      <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html">Understanding SC 2.4.3: Focus Order</a></li>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">ARIA Authoring: Dialog (Modal) Pattern</a></li>
+      </ul>
+      <h3>MDN Web Docs</h3>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus">HTMLElement.focus() method</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden">aria-hidden attribute</a></li>
+      </ul>
     </section>
 
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="site-footer__inner">
       <p>
         <a href="../index.html"><span aria-hidden="true">←</span> All checkpoints</a> &nbsp;|&nbsp;
@@ -142,7 +294,6 @@
     </div>
   </footer>
 
-  <script src="../assets/js/checkpoint-nav.js"></script>
   <script src="../assets/js/demo-toggle.js"></script>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/search-filter.js"></script>
