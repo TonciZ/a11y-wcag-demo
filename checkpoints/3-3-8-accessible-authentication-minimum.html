@@ -134,7 +134,7 @@
             </form>
           </div>
         </div>
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Login requires a cognitive function test (maths puzzle) with no alternative --&gt;</span>
 &lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">id</span>=<span class="hl-value">"username"</span> <span class="hl-tag">autocomplete</span>=<span class="hl-value">"username"</span>&gt;
@@ -147,6 +147,10 @@
 <span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"password"</span> <span class="hl-tag">id</span>=<span class="hl-value">"password"</span> <span class="hl-tag">autocomplete</span>=<span class="hl-value">"current-password"</span>&gt;
 &lt;<span class="hl-tag">button</span> <span class="hl-tag">type</span>=<span class="hl-value">"button"</span> <span class="hl-tag">aria-controls</span>=<span class="hl-value">"password"</span> <span class="hl-tag">aria-pressed</span>=<span class="hl-value">"false"</span>&gt;Show&lt;/<span class="hl-tag">button</span>&gt;</span>
 <span class="hl-comment">&lt;!-- No cognitive test — password manager handles recall for the user --&gt;</span></code></pre>
+        </details>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
         </details>
       </div>
 
@@ -201,7 +205,7 @@
           </div>
         </div>
 
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Split OTP fields block copy-paste; require manual entry --&gt;</span>
 &lt;<span class="hl-tag">div</span> <span class="hl-tag">style</span>=<span class="hl-value">"display:flex;gap:0.5rem;"</span>&gt;
@@ -215,6 +219,10 @@
 <span class="hl-line-pass">&lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"text"</span> <span class="hl-tag">inputmode</span>=<span class="hl-value">"numeric"</span> <span class="hl-tag">placeholder</span>=<span class="hl-value">"000000"</span>
         <span class="hl-tag">onchange</span>=<span class="hl-value">"this.value=this.value.replace(/\D/g,'').substring(0,6);"</span>&gt;</span>
 <span class="hl-comment">&lt;!-- Users paste the full code; field auto-strips non-digits and truncates --&gt;</span></code></pre>
+        </details>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
         </details>
       </div>
 
@@ -294,7 +302,7 @@
           </div>
         </div>
 
-        <details class="demo-code-section" open>
+        <details class="demo-code-section">
           <summary class="demo-code-section__toggle">Code</summary>
           <pre><code data-demo-code="fail"><span class="hl-comment">&lt;!-- ❌ Password-only authentication; no alternatives for users who cannot type or remember --&gt;</span>
 &lt;<span class="hl-tag">input</span> <span class="hl-tag">type</span>=<span class="hl-value">"email"</span> <span class="hl-tag">id</span>=<span class="hl-value">"email"</span>&gt;
@@ -317,6 +325,10 @@
   &lt;/<span class="hl-tag">label</span>&gt;
 &lt;/<span class="hl-tag">fieldset</span>&gt;</span>
 <span class="hl-comment">&lt;!-- Users choose the method that works for them --&gt;</span></code></pre>
+        </details>
+        <details class="demo-code-section">
+          <summary class="demo-code-section__toggle">Code</summary>
+          <pre><code class="demo-live-code"></code></pre>
         </details>
       </div>
     </section>
