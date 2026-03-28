@@ -101,7 +101,7 @@
 }
 
 .site-hero__eyebrow {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -377,7 +377,7 @@ a.checkpoint-card:hover {
 .checkpoint-card__header .badge {
   order: 3;
   flex-shrink: 0;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   padding: 1px var(--space-2);
 }
 
@@ -394,7 +394,7 @@ a.checkpoint-card:hover {
 .checkpoint-card__note {
   order: 5;
   flex: 0 0 100%;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--color-text-muted);
   font-style: italic;
   margin: 0;
@@ -410,7 +410,7 @@ a.checkpoint-card:hover {
 }
 
 .checkpoint-nav {
-  width: 200px;
+  width: 230px;
   flex-shrink: 0;
   position: sticky;
   top: var(--hero-h);
@@ -443,7 +443,7 @@ a.checkpoint-card:hover {
 
 .checkpoint-nav__heading {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -478,8 +478,8 @@ a.checkpoint-card:hover {
   border-radius: 3px;
   text-decoration: none;
   color: var(--color-text);
-  font-size: 0.68rem;
-  line-height: 1.35;
+  font-size: 0.8125rem;
+  line-height: 1.4;
 }
 
 .checkpoint-nav__link:hover,
@@ -507,7 +507,7 @@ a.checkpoint-card:hover {
 /* Guideline (1.1) — medium indent */
 .checkpoint-nav__guideline {
   display: block;
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--color-text-muted);
   text-decoration: none;
@@ -533,7 +533,7 @@ a.checkpoint-card:hover {
 .checkpoint-nav__code {
   font-family: var(--font-family-mono);
   flex-shrink: 0;
-  font-size: 0.68rem;
+  font-size: 0.8125rem;
 }
 
 .checkpoint-nav__title {
